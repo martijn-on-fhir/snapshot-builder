@@ -1,6 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+/**
+ * Represents a FHIR element definition within a structure definition
+ * Contains the structural and semantic characteristics of elements
+ */
 interface ElementDefinition {
     id?: string;
     path: string;
@@ -37,6 +41,10 @@ interface ElementDefinition {
     extension?: any[];
 }
 
+/**
+ * Represents a FHIR structure definition resource
+ * Defines the structure and constraints of FHIR resources or data types
+ */
 interface StructureDefinition {
     resourceType: string;
     id: string;
@@ -58,16 +66,27 @@ interface StructureDefinition {
     };
 }
 
+/**
+ * Generator class for creating FHIR structure definition snapshots
+ * Processes differential structure definitions and merges them with base FHIR definitions
+ * to create complete snapshots that fully define all elements
+ */
 class FHIRSnapshotGenerator {
 
-    // Load base elements from FHIR R4 core package
+    /**
+     * Loads base structure definition elements from FHIR R4 core package
+     * @param resourceType - The FHIR resource type to load (e.g., Patient, Observation)
+     * @returns Array of element definitions from the base structure
+     */
     private loadBaseStructureDefinition(resourceType: string): ElementDefinition[] {
+        
         const fhirCorePackagePath = path.join(__dirname, '..', 'node_modules', 'hl7.fhir.r4.core', `StructureDefinition-${resourceType}.json`);
 
         try {
             if (fs.existsSync(fhirCorePackagePath)) {
                 console.log(`Info: Loading ${resourceType} base definition from FHIR R4 core package`);
                 const baseStructureDef = FHIRSnapshotGenerator.fromFile(fhirCorePackagePath);
+
                 if (baseStructureDef.snapshot?.element) {
                     return baseStructureDef.snapshot.element;
                 }
@@ -79,14 +98,19 @@ class FHIRSnapshotGenerator {
         return [];
     }
 
-
-    // Method to get base elements for any resource type
+    /**
+     * Retrieves base elements for a given FHIR resource type
+     * @param resourceType - The FHIR resource type to get base elements for
+     * @returns Array of base element definitions for the resource type
+     * @throws Error if no base definition is found
+     */
     private getBaseElements(resourceType: string): ElementDefinition[] {
+        
         const baseElements: ElementDefinition[] = [];
 
         // For all FHIR resources, try to load from official base definitions
         // First try to load the specific resource type (e.g., Patient.json, Extension.json)
-        let resourceElements = this.loadBaseStructureDefinition(resourceType);
+        const resourceElements = this.loadBaseStructureDefinition(resourceType);
 
         if (resourceElements.length > 0 && resourceElements[0].path === resourceType) {
             // Use the loaded resource-specific elements directly (best case)
@@ -99,14 +123,24 @@ class FHIRSnapshotGenerator {
         return baseElements;
     }
 
-
-    // Method to extract resource type from base definition URL
+    /**
+     * Extracts the resource type from a FHIR base definition URL
+     * @param baseDefinition - The base definition URL
+     * @returns The extracted resource type or 'DomainResource' as default
+     */
     private extractResourceType(baseDefinition: string): string {
         const match = baseDefinition.match(/StructureDefinition\/(\w+)$/);
         return match ? match[1] : 'DomainResource';
     }
 
+    /**
+     * Generates a complete FHIR snapshot by merging differential elements with base definitions
+     * @param structureDefinition - The differential structure definition to process
+     * @returns Complete structure definition with generated snapshot
+     * @throws Error if differential elements are missing
+     */
     generateSnapshot(structureDefinition: StructureDefinition): StructureDefinition {
+        
         if (!structureDefinition.differential?.element) {
             throw new Error('StructureDefinition must have differential elements');
         }
@@ -132,6 +166,7 @@ class FHIRSnapshotGenerator {
 
             // Try to find existing element by ID first, then by path
             let existingElement = snapshotElements.find((el: ElementDefinition) => el.id === elementId);
+
             if (!existingElement) {
                 existingElement = snapshotElements.find((el: ElementDefinition) => el.path === path && !diffElement.sliceName);
             }
@@ -159,11 +194,14 @@ class FHIRSnapshotGenerator {
 
         // Sort elements by path depth and alphabetically
         snapshotElements.sort((a: ElementDefinition, b: ElementDefinition) => {
+            
             const aDepth = a.path.split('.').length;
             const bDepth = b.path.split('.').length;
+            
             if (aDepth !== bDepth) {
                 return aDepth - bDepth;
             }
+            
             return a.path.localeCompare(b.path);
         });
 
@@ -181,6 +219,11 @@ class FHIRSnapshotGenerator {
         return result;
     }
 
+    /**
+     * Merges differential element properties into base element
+     * @param baseElement - The base element to merge into
+     * @param diffElement - The differential element containing changes
+     */
     private mergeElementDefinition(baseElement: ElementDefinition, diffElement: ElementDefinition): void {
         // Merge properties from differential into base element
         Object.keys(diffElement).forEach(key => {
@@ -206,11 +249,21 @@ class FHIRSnapshotGenerator {
         });
     }
 
+    /**
+     * Loads a structure definition from a JSON file
+     * @param filePath - Path to the structure definition JSON file
+     * @returns Parsed structure definition
+     */
     static fromFile(filePath: string): StructureDefinition {
         const content = fs.readFileSync(filePath, 'utf-8');
         return JSON.parse(content);
     }
 
+    /**
+     * Saves a structure definition to a JSON file
+     * @param structureDefinition - The structure definition to save
+     * @param filePath - Target file path for saving
+     */
     static saveToFile(structureDefinition: StructureDefinition, filePath: string): void {
         const content = JSON.stringify(structureDefinition, null, 2);
         fs.writeFileSync(filePath, content, 'utf-8');
