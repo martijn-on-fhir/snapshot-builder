@@ -1,0 +1,149 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.4.4.1",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.4.1",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.4.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "MUST_BMI",
+  "title": "MUST_BMI",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "MUST_BMI",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 3,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active",
+      "type": "code"
+    }
+  ],
+  "concept": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 0
+        }
+      ],
+      "code": "B0",
+      "display": "BMIHigh",
+      "definition": "BMI >20 kg/m2",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BMIHigh"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 1
+        }
+      ],
+      "code": "B1",
+      "display": "BMIAverage",
+      "definition": "BMI tussen 18,5-20 kg/m2",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BMIAverage"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 2
+        }
+      ],
+      "code": "B2",
+      "display": "BMILow",
+      "definition": "BMI < 18,5 kg/m2",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BMILow"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    }
+  ]
+}

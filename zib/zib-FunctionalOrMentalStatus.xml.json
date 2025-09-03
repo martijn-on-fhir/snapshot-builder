@@ -1,0 +1,270 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-FunctionalOrMentalStatus",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-FunctionalOrMentalStatus",
+  "name": "ZibFunctionalOrMentalStatus",
+  "title": "zib FunctionalOrMentalStatus",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The functional or mental status provides insight into the patient’s functional and mental limitations.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) FunctionalOrMentalStatus v3.2 (2020)](https://zibs.nl/wiki/FunctionalOrMentalStatus-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/FunctionalOrMentalStatus-v3.2(2020EN)",
+      "name": "zib FunctionalOrMentalStatus-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FunctionalOrMentalStatus",
+        "alias": [
+          "FunctioneleOfMentaleStatus"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.1",
+            "comment": "FunctionalOrMentalStatus"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:medicalDevice",
+        "path": "Observation.extension",
+        "sliceName": "medicalDevice",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Observation.extension:medicalDevice.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "MedicalDevice",
+        "definition": "Medical aid the patient has or will receive to reduce the impact of the disability or disorder.",
+        "alias": [
+          "Hulpmiddel"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.5",
+            "comment": "MedicalDevice"
+          }
+        ]
+      },
+      {
+        "id": "Observation.category",
+        "path": "Observation.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1,
+        "constraint": [
+          {
+            "key": "zib-FunctionalOrMentalStatus-1",
+            "severity": "warning",
+            "human": "Either a category for functional status finding or mental status finding is present.",
+            "expression": "where(coding.system = 'http://snomed.info/sct' and coding.code = '118228005').exists() xor where(coding.system = 'http://snomed.info/sct' and coding.code = '384821006').exists()"
+          }
+        ]
+      },
+      {
+        "id": "Observation.category:functionalStatusFinding",
+        "path": "Observation.category",
+        "sliceName": "functionalStatusFinding",
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "118228005"
+            }
+          ]
+        },
+        "condition": [
+          "zib-FunctionalOrMentalStatus-1"
+        ]
+      },
+      {
+        "id": "Observation.category:mentalStatusFinding",
+        "path": "Observation.category",
+        "sliceName": "mentalStatusFinding",
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "384821006"
+            }
+          ]
+        },
+        "condition": [
+          "zib-FunctionalOrMentalStatus-1"
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "short": "StatusName",
+        "definition": "Coded description of the functional or mental status or limitation. &#xD;&#xA;Code systems used include: \r\n\r\n-  SNOMED CT\r\n-  ICF (International Classification of Functioning, Disability and Health)\r\n-  NOC (Nursing Outcomes Classification)\r\n-  OMAHA",
+        "alias": [
+          "StatusNaam"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.2",
+            "comment": "StatusName"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "StatusDate",
+        "definition": "Date on which the status was determined. A ‘vague’ date, such as only the year, is permitted.",
+        "alias": [
+          "StatusDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.6",
+            "comment": "StatusDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "StatusValue",
+        "definition": "The extent to which the patient is limited by the functional or mental condition.\r\n\r\nIf both the status name and the status value are recorded in code, then both values must come from the same code system. If the patient uses a medical device, the evaluation of the extent of the limitation will take place without this aid.\r\n\r\nThe answer codes must be selected from the subselection of the code system corresponding with the request in accordance with the rules applicable to that system.",
+        "alias": [
+          "StatusWaarde"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.3",
+            "comment": "StatusValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Explanatory comments as a description of the functional or mental status.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.4",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

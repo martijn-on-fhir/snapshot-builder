@@ -1,0 +1,364 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.2.7.8.1--20200901000000",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00+00:00"
+      }
+    }
+  ],
+  "url": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.8.1--20200901000000",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.7.8.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "WoningTypeCodelijst",
+  "title": "WoningTypeCodelijst",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "WoningTypeCodelijst",
+  "immutable": false,
+  "compose": {
+    "inactive": true,
+    "include": [
+      {
+        "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.13.1",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Bovenwoning"
+              }
+            ],
+            "code": "BOVENW",
+            "display": "Bovenwoning",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Bovenwoning"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Benedenwoning"
+              }
+            ],
+            "code": "BENEDENW",
+            "display": "Benedenwoning",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Benedenwoning"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Eengezinswoning"
+              }
+            ],
+            "code": "EENGEZW",
+            "display": "Eengezinswoning",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Eengezinswoning"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Appartement of flatwoning"
+              }
+            ],
+            "code": "FLATW",
+            "display": "Appartement of flatwoning",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Appartement of flatwoning"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Aanleunwoning"
+              }
+            ],
+            "code": "AANLW",
+            "display": "Aanleunwoning",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Aanleunwoning"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Woonboot"
+              }
+            ],
+            "code": "WOONB",
+            "display": "Woonboot",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Woonboot"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Woonwagen"
+              }
+            ],
+            "code": "WOONW",
+            "display": "Woonwagen",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Woonwagen"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-deprecated",
+                "valueBoolean": true
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Instelling AWBZ"
+              }
+            ],
+            "code": "AWBZIN",
+            "display": "Instelling AWBZ",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Instelling AWBZ"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Instelling WLZ"
+              }
+            ],
+            "code": "WLZIN",
+            "display": "Instelling WLZ",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Instelling WLZ"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Instelling ZVW"
+              }
+            ],
+            "code": "ZVWIN",
+            "display": "Instelling ZVW",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Instelling ZVW"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Instelling WMO"
+              }
+            ],
+            "code": "WMOIN",
+            "display": "Instelling WMO",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Instelling WMO"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Asielzoekers-centrum"
+              }
+            ],
+            "code": "AZC",
+            "display": "Asielzoekers-centrum",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Asielzoekers-centrum"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Dakloos"
+              }
+            ],
+            "code": "DAKLOO",
+            "display": "Dakloos",
+            "designation": [
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Dakloos"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+        "concept": [
+          {
+            "code": "OTH",
+            "display": "Anders",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Other"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Anders"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

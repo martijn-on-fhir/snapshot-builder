@@ -1,0 +1,81 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToPerformMouthcareActivities.Prosthesis",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToPerformMouthcareActivities.Prosthesis",
+  "name": "ZibAbilityToPerformMouthcareActivitiesProsthesis",
+  "title": "zib AbilityToPerformMouthcareActivities.Prosthesis",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Information on the dental aids used by the patient.",
+  "purpose": "This DeviceUseStatement resource represents the adaptations for the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToPerformMouthcareActivities v3.1 (2020)](https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)) of [zib MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)",
+      "name": "zib AbilityToPerformMouthcareActivities-v3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "DeviceUseStatement",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DeviceUseStatement",
+        "path": "DeviceUseStatement",
+        "short": "Prosthesis / MedicalDevice",
+        "definition": "Information on the dental aids used by the patient.",
+        "comment": "This is a specialization of the [zib-MedicalDevice](http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice) profile to represent Prosthesis devices within the context of zib AbilityToPerformMouthcareActivities.",
+        "alias": [
+          "Prothese"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+            "map": "NL-CM:4.13.4",
+            "comment": "Prosthesis"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.device",
+        "path": "DeviceUseStatement.device",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToPerformMouthcareActivities.Prosthesis.Product"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:stoma",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "stoma",
+        "max": "0"
+      }
+    ]
+  }
+}

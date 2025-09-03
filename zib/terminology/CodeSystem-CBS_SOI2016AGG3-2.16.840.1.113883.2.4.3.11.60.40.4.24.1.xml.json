@@ -1,0 +1,233 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.4.24.1",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.24.1",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.24.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "CBS_SOI2016AGG3",
+  "title": "CBS-SOI2016AGG3",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "CBS-SOI2016AGG3",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 8,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active",
+      "type": "code"
+    }
+  ],
+  "concept": [
+    {
+      "code": "111",
+      "display": "Basisonderwijs",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Basisonderwijs"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "121",
+      "display": "Vmbo-b/k, mbo1",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vmbo-b/k, mbo1"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "122",
+      "display": "Vmbo-g/t, havo-, vwo-onderbouw",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vmbo-g/t, havo-, vwo-onderbouw"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "211",
+      "display": "Mbo2 en mbo3",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mbo2 en mbo3"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "212",
+      "display": "Mbo4",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mbo4"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "213",
+      "display": "Havo, vwo",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Havo, vwo"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "311",
+      "display": "Hbo-, wo-bachelor",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Hbo-, wo-bachelor"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "321",
+      "display": "Hbo-, wo-master, doctor",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Hbo-, wo-master, doctor"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    }
+  ]
+}

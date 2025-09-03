@@ -1,0 +1,206 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-PainScore",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-PainScore",
+  "name": "ZibPainScore",
+  "title": "zib PainScore",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The pain score is a general measurement for pain experience, not a description of specific, localized pain.\r\n\r\nThe following are used as an easily reproducible measurement for pain experience:\r\nNRS (Numeric Rating Scale) in which the patient gives the pain a number on a scale of 1 (no pain) to 10 (unbearable pain).\r\nVAS (Visual Analogue Score), in which the patient points to a bar with a line to indicate the pain they feel. The back of the bar has a scale from 0 (no pain) to 10 (unbearable pain) on it.\r\n\r\nThe results of both scores have the same meaning, but the visual analogue method (VAS) is seen as more reliable than the NRS pain score.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) PainScore v4.0 (2020)](https://zibs.nl/wiki/PainScore-v4.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-painscore-v4.0-2020EN",
+      "uri": "https://zibs.nl/wiki/PainScore-v4.0(2020EN)",
+      "name": "zib PainScore-v4.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "PainScore",
+        "alias": [
+          "PijnScore"
+        ],
+        "constraint": [
+          {
+            "key": "zib-PainScore-1",
+            "severity": "error",
+            "human": "The maximum value is 10 if method is VAS10 or NRS, or 100 if method is VAS100",
+            "expression": "(method.coding.code in ('VAS10' | 'NRS') implies value <= 10) and (method.coding.code = 'VAS100' implies value <= 100)"
+          },
+          {
+            "key": "zib-PainScore-2",
+            "severity": "error",
+            "human": "The minimum value is 0",
+            "expression": "value >= 0"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-painscore-v4.0-2020EN",
+            "map": "NL-CM:12.9.1",
+            "comment": "PainScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "225908003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "PainScoreDateTime",
+        "definition": "The date and time at which the pain score was measured.",
+        "alias": [
+          "PijnscoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-painscore-v4.0-2020EN",
+            "map": "NL-CM:12.9.3",
+            "comment": "PainScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "PainScoreValue",
+        "definition": "The score is a general measurement of pain experience, not a description of specific, localized pain. \r\n \r\nDepending on the measuring method used, it indicates the level of pain experienced by the patient on a scale of 0 to 10: 0 = no pain and 10 = the worst pain imaginable. No descriptions are used for the intermediate values, so that the value is displayed as a number and not as a code.  \r\n \r\nSometimes a value range of 0-100 is used instead of 0-10.",
+        "alias": [
+          "PijnscoreWaarde"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "condition": [
+          "zib-PainScore-1",
+          "zib-PainScore-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-painscore-v4.0-2020EN",
+            "map": "NL-CM:12.9.2",
+            "comment": "PainScoreValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the pain score measurement, including comments on for example the circumstances and/or disruptive factors that may influence the result.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-painscore-v4.0-2020EN",
+            "map": "NL-CM:12.9.5",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "short": "PainMeasuringMethod",
+        "definition": "The measuring method describes the method used to determine the pain score. The measurement involves a visualization of the pain scale.",
+        "comment": "PijnMeetmethodeCodelijst uses codes from a custom code system. Although more standardized LOINC codes are available for VAS and NRS, these are about the *result* of the measurement (as determined by the method) rather than the method itself, and thus are not suitable as a drop-in replacement (they should be used on `Observation.code` rather than `Observation.method`). In future versions of the zib, the data model may be redesigned to adopt these standardized codes. See [ZIB-2199](https://nictiz.atlassian.net/browse/ZIB-2199) for more information.",
+        "alias": [
+          "PijnMeetmethode"
+        ],
+        "condition": [
+          "zib-PainScore-1",
+          "zib-PainScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.9.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-painscore-v4.0-2020EN",
+            "map": "NL-CM:12.9.4",
+            "comment": "PainMeasuringMethod"
+          }
+        ]
+      }
+    ]
+  }
+}

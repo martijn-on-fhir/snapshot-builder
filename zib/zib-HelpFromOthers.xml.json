@@ -1,0 +1,302 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HelpFromOthers",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HelpFromOthers",
+  "name": "ZibHelpFromOthers",
+  "title": "zib HelpFromOthers",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "There are often multiple people or parties involved in the care for a patient with a disorder or disability, particularly in the event of home care. Their efforts enable the patient to function more or less independently. This includes not only caregivers, but also professional help such as that offered by home care organizations, nurses, aids and helpers.\r\nCurrent doctors and staff from the facility to which a patient is admitted do not fall under this concept.",
+  "purpose": "This CarePlan resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HelpFromOthers v3.01 (2020)](https://zibs.nl/wiki/HelpFromOthers-v3.01(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-helpfromothers-v3.01-2020EN",
+      "uri": "https://zibs.nl/wiki/HelpFromOthers-v3.01(2020EN)",
+      "name": "zib HelpFromOthers-v3.01(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "CarePlan",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "CarePlan",
+        "path": "CarePlan",
+        "short": "HelpFromOthers",
+        "alias": [
+          "HulpVanAnderen"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.1",
+            "comment": "HelpFromOthers"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.status",
+        "path": "CarePlan.status",
+        "comment": "This element has no functional counterpart in the zib and cannot be implicitly mapped to other concepts. Unless a more appropriate status is recorded, it is assumed that only _active_ CarePlan resources will be exchanged."
+      },
+      {
+        "id": "CarePlan.intent",
+        "path": "CarePlan.intent",
+        "comment": "For zib HelpFromOthers, this will normally be _plan_, but the context may specify a more suitable intent."
+      },
+      {
+        "id": "CarePlan.category",
+        "path": "CarePlan.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "CarePlan.category:helpFromOthersCode",
+        "path": "CarePlan.category",
+        "sliceName": "helpFromOthersCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "243114000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "CarePlan.activity",
+        "path": "CarePlan.activity",
+        "comment": "The zib HelpFromOthers always consists of a single type of help. For this reason, the cardinality of `.activity` is restricted to `0..1`.",
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.activity.detail.code",
+        "path": "CarePlan.activity.detail.code",
+        "short": "TypeOfHelp",
+        "definition": "The type of help offered by the person in question.",
+        "alias": [
+          "SoortHulp"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.3.2.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.9",
+            "comment": "TypeOfHelp"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.scheduled[x]",
+        "path": "CarePlan.activity.detail.scheduled[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "CarePlan.activity.detail.scheduled[x]:scheduledString",
+        "path": "CarePlan.activity.detail.scheduled[x]",
+        "sliceName": "scheduledString",
+        "short": "Frequency",
+        "definition": "The frequency of the provided support, e.g. daily/weekly.",
+        "alias": [
+          "Frequentie"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.2",
+            "comment": "Frequency"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.performer",
+        "path": "CarePlan.activity.detail.performer",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "CareAid",
+        "definition": "A care aid can be a health professional such as nurses, carers and helpers but also a caregiver or healthcare provider such as a home care organization.",
+        "alias": [
+          "Hulpverlener"
+        ],
+        "max": "1",
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.5",
+            "comment": "CareAid"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.performer:healthProfessional",
+        "path": "CarePlan.activity.detail.performer",
+        "sliceName": "healthProfessional",
+        "short": "HealthProfessional",
+        "definition": "Details of the health professional involved in the patient’s care.",
+        "comment": "Each occurrence of the zib HealthProfessional is normally represented by _two_ FHIR resources: a PractitionerRole resource (instance of [zib-HealthProfessional-PractitionerRole](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole)) and a Practitioner resource (instance of [zib-HealthProfessional-Practitioner](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner)). The Practitioner resource is referenced from the PractitionerRole instance. For this reason, sending systems should fill the reference to the PractitionerRole instance here, and not the Practitioner resource. Receiving systems can then retrieve the reference to the Practitioner resource from that PractitionerRole instance.\r\n\r\nIn rare circumstances, there is only a Practitioner instance, in which case it is that instance which will be referenced here. However, since this should be the exception, the zib-HealthProfessional-Practitioner profile is not explicitly mentioned as a target profile.",
+        "alias": [
+          "Zorgverlener"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.6",
+            "comment": "HealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.performer:caregiver",
+        "path": "CarePlan.activity.detail.performer",
+        "sliceName": "caregiver",
+        "short": "Caregiver",
+        "definition": "Details of the caregiver involved in the patient’s support.",
+        "alias": [
+          "Mantelzorger"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.7",
+            "comment": "Caregiver"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.performer:healthcareProvider",
+        "path": "CarePlan.activity.detail.performer",
+        "sliceName": "healthcareProvider",
+        "short": "HealthcareProvider",
+        "definition": "Details of the organization the health professional/aid works for in the event that it is not entered as a person.",
+        "alias": [
+          "Zorgaanbieder"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthcareProvider-Organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.8",
+            "comment": "HealthcareProvider"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.activity.detail.description",
+        "path": "CarePlan.activity.detail.description",
+        "short": "Nature",
+        "definition": "The nature of the help/support provided to the patient.",
+        "alias": [
+          "Aard"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.3",
+            "comment": "Nature"
+          }
+        ]
+      },
+      {
+        "id": "CarePlan.note",
+        "path": "CarePlan.note",
+        "max": "1"
+      },
+      {
+        "id": "CarePlan.note.text",
+        "path": "CarePlan.note.text",
+        "short": "Comment",
+        "definition": "A comment on the help/support the patient receives from others.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-helpfromothers-v3.01-2020EN",
+            "map": "NL-CM:3.2.4",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

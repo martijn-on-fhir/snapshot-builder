@@ -1,0 +1,133 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-LifeStance",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-LifeStance",
+  "name": "ZibLifeStance",
+  "title": "zib LifeStance",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Patient’s life stance and/or religion.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) LifeStance v3.2 (2020)](https://zibs.nl/wiki/LifeStance-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-lifestance-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/LifeStance-v3.2(2020EN)",
+      "name": "zib LifeStance-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "LifeStanceRC",
+        "comment": "Please note: a core extension exists to communicate the religious affiliations of a Patient: <http://hl7.org/fhir/StructureDefinition/patient-religion>. However, zib LifeStance covers more than just religious affiliations of a Patient (although in actuality the core extension also covers more than just religious affiliations). For this reason, the core extension cannot faithfully represent zib LifeStance. The use of the core extension in addition to this profile is not prohibited, as long as the values don't contradict each other.",
+        "alias": [
+          "LevensovertuigingRC"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-lifestance-v3.2-2020EN",
+            "map": "NL-CM:7.5.1",
+            "comment": "LifeStanceRC"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "160538000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "LifeStance",
+        "definition": "Patient’s life stance and/or religion.",
+        "alias": [
+          "Levensovertuiging"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.5.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-lifestance-v3.2-2020EN",
+            "map": "NL-CM:7.5.2",
+            "comment": "LifeStance"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Explanation that reflects the importance of religion or life stance for the patient, for example how much value the patient attaches to rituals and the like.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-lifestance-v3.2-2020EN",
+            "map": "NL-CM:7.5.3",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.4.2.2",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.2.2",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.2.2"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "GCS_Motor",
+  "title": "GCS_Motor",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "GCS_Motor",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 9,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active",
+      "type": "code"
+    }
+  ],
+  "concept": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 1
+        }
+      ],
+      "code": "M1",
+      "display": "Geen reactie op pijnprikkel",
+      "definition": "Geen reactie op pijnprikkel [Geen enkele lichamelijke reactie beweging op een pijnprikkel] [DEPRECATED]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "No response"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Geen reactie op pijnprikkel"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 2
+        }
+      ],
+      "code": "M2",
+      "display": "Strekreactie",
+      "definition": "Strekreactie [Armen en handen op krampachtige manier geplooid met naar buitengedraaide hand. Mogelijk alle spieren van het lichaam gespannen]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Extensor response"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Strekreactie"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 3
+        }
+      ],
+      "code": "M3",
+      "display": "Buigreactie",
+      "definition": "Buigreactie [Armen en handen op krampachtige manier geplooid. Meestal benen gestrekt.]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Flexor response"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Buigreactie"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 4
+        }
+      ],
+      "code": "M4",
+      "display": "Terugtrekken",
+      "definition": "Terugtrekken [In staat om een afwerende of wegtrekkende beweging te maken op een pijnprikkel]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Withdrawal response"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Terugtrekken"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 5
+        }
+      ],
+      "code": "M5",
+      "display": "Lokaliseren",
+      "definition": "Lokaliseren [In staat zijn de pijn duidelijk te lokaliseren]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Localises pain"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Lokaliseren"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 6
+        }
+      ],
+      "code": "M6",
+      "display": "Voert opdracht uit",
+      "definition": "Voert opdracht uit [Een eenvoudig bevel wordt uitgevoerd]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Obeys"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Voert opdracht uit"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 4
+        }
+      ],
+      "code": "M4B",
+      "display": "Terugtrekken in respons op pijn",
+      "definition": "Terugtrekken in respons op pijn [Maakt afwerende of wegtrekkende beweging bij een pijnprikkel]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Withdraws to pain"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Terugtrekken in respons op pijn"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 5
+        }
+      ],
+      "code": "M5B",
+      "display": "Terugtrekken bij aanraking",
+      "definition": "Terugtrekken bij aanraking [Trekt terug bij aanraken]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Withdraws to tuch"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Terugtrekken bij aanraking"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+          "valueDecimal": 6
+        }
+      ],
+      "code": "M6B",
+      "display": "Normaal",
+      "definition": "Normaal [beweegt zoals verwacht]",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Moves spontaneously and purposefully"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Normaal"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    }
+  ]
+}

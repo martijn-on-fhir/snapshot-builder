@@ -1,0 +1,189 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-Payer.BankInformation",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-Payer.BankInformation",
+  "name": "ExtPayerBankInformation",
+  "title": "ext Payer.BankInformation",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "This extension adds the BankInformation concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Payer v3.1.1 (2020)](https://zibs.nl/wiki/Payer-v3.1.1(2020EN)) to the `.payor` element of the Consent resource. The extension contains all data elements of the BankInformation concept.",
+  "purpose": "This extension represents the BankInformation concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Payer v3.1.1 (2020)](https://zibs.nl/wiki/Payer-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-payer-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/Payer-v3.1.1(2020EN)",
+      "name": "zib Payer-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Coverage"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "BankInformation",
+        "alias": [
+          "Bankgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.4",
+            "comment": "BankInformation"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 0
+      },
+      {
+        "id": "Extension.extension:bankName",
+        "path": "Extension.extension",
+        "sliceName": "bankName",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.extension:bankName.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "bankName"
+      },
+      {
+        "id": "Extension.extension:bankName.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "BankName",
+        "definition": "Name of the financial organization.",
+        "alias": [
+          "BankNaam"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.9",
+            "comment": "BankName"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:bankCode",
+        "path": "Extension.extension",
+        "sliceName": "bankCode",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.extension:bankCode.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "bankCode"
+      },
+      {
+        "id": "Extension.extension:bankCode.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "BankCode",
+        "definition": "Code indicating the bank and branch. For European countries, this is the organization’s BIC or SWIFT code.",
+        "alias": [
+          "Bankcode"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.10",
+            "comment": "BankCode"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:accountNumber",
+        "path": "Extension.extension",
+        "sliceName": "accountNumber",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Extension.extension:accountNumber.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "accountNumber"
+      },
+      {
+        "id": "Extension.extension:accountNumber.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "AccountNumber",
+        "definition": "The payer’s bank account number at the listed organization. For European countries, this is the IBAN.",
+        "alias": [
+          "Rekeningnummer"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.11",
+            "comment": "AccountNumber"
+          }
+        ]
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-Payer.BankInformation"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

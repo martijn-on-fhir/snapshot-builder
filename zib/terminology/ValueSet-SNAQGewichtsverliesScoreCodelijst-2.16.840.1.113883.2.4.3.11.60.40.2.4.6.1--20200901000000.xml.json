@@ -1,0 +1,170 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.2.4.6.1--20200901000000",
+  "meta": {
+    "lastUpdated": "2024-08-16T13:00:00+00:00",
+    "source": "http://decor.nictiz.nl/fhir/4.0/zib2020bbr-",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ],
+    "tag": [
+      {
+        "system": "http://hl7.org/fhir/FHIR-version",
+        "code": "4.0.1"
+      }
+    ]
+  },
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.6.1--20200901000000",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.4.6.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "SNAQGewichtsverliesScoreCodelijst",
+  "title": "SNAQGewichtsverliesScoreCodelijst",
+  "status": "active",
+  "experimental": false,
+  "date": "2024-08-16T13:00:00Z",
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "Erratum ZIB-1729 - 2024-09-16 - Code G3 toegevoegd",
+  "immutable": false,
+  "compose": {
+    "include": [
+      {
+        "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.5.1",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 0
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Geen gewichtverlies"
+              }
+            ],
+            "code": "G0",
+            "display": "LossLow",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "LossLow"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Meer dan 3 kg in de laatste maand"
+              }
+            ],
+            "code": "G1",
+            "display": "LossAverage",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "LossAverage"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 3
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Meer dan 6 kg in de laatste 6 maanden"
+              }
+            ],
+            "code": "G2",
+            "display": "LossHigh",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "LossHigh"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 5
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Meer dan 3 kg in de laatste maand EN Meer dan 6 kg in de laatste 6 maanden)"
+              }
+            ],
+            "code": "G3",
+            "display": "LossBothAverageAndHigh",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "LossBothAverageAndHigh"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

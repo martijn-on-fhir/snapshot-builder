@@ -1,0 +1,102 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "VerificatieStatusCodelijst-to-ConditionVerificationStatus",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/VerificatieStatusCodelijst-to-ConditionVerificationStatus",
+  "version": "0.0.1",
+  "name": "VerificatieStatusCodelijst_to_ConditionVerificationStatus",
+  "title": "VerificatieStatusCodelijst to ConditionVerificationStatus",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps VerificationStatus codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Problem v4.4 (2020)](https://zibs.nl/wiki/Problem-v4.4(2020EN)) to ConditionVerificationStatus codes as found in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.4--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/condition-ver-status",
+  "group": [
+    {
+      "source": "http://snomed.info/sct",
+      "target": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "element": [
+        {
+          "code": "415684004",
+          "display": "Suspected",
+          "target": [
+            {
+              "code": "provisional",
+              "display": "Provisional",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "410590009",
+          "display": "Known possible",
+          "target": [
+            {
+              "code": "differential",
+              "display": "Differential",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "410605003",
+          "display": "Confirmed present",
+          "target": [
+            {
+              "code": "confirmed",
+              "display": "Confirmed",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "410516002",
+          "display": "Known absent",
+          "target": [
+            {
+              "code": "refuted",
+              "display": "Refuted",
+              "equivalence": "equal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+      "target": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "element": [
+        {
+          "code": "UNK",
+          "display": "Unknown",
+          "target": [
+            {
+              "code": "unconfirmed",
+              "display": "Unconfirmed",
+              "equivalence": "narrower",
+              "comment": "Unknown doesn't specify any relevant clinical information and means that nothing is known of the verification status while unconfirmed provides some clinical meaning, namely that the condition is not yet confirmed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

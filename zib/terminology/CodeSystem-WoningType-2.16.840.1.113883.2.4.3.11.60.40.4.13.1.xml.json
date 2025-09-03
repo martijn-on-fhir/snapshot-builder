@@ -1,0 +1,348 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.4.13.1",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.13.1",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.13.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "WoningType",
+  "title": "WoningType",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "WoningType",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 13,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active, deprecated",
+      "type": "code"
+    },
+    {
+      "code": "inactive",
+      "uri": "http://hl7.org/fhir/concept-properties#inactive",
+      "description": "True if the concept is not considered active - e.g. not a valid concept any more and not approved for current use. Property type is boolean, default value is false",
+      "type": "boolean"
+    }
+  ],
+  "concept": [
+    {
+      "code": "AANLW",
+      "display": "Aanleunwoning",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Aanleunwoning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "AWBZIN",
+      "display": "Instelling AWBZ",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Instelling AWBZ"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "AZC",
+      "display": "Asielzoekers-centrum",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Asielzoekers-centrum"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "BENEDENW",
+      "display": "Benedenwoning",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Benedenwoning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "BOVENW",
+      "display": "Bovenwoning",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bovenwoning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "DAKLOO",
+      "display": "Dakloos",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Dakloos"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "EENGEZW",
+      "display": "Eengezinswoning",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Eengezinswoning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "FLATW",
+      "display": "Appartement of flatwoning",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Appartement of flatwoning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "WLZIN",
+      "display": "Instelling WLZ",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Instelling WLZ"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "WMOIN",
+      "display": "Instelling WMO",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Instelling WMO"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "WOONB",
+      "display": "Woonboot",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Woonboot"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "WOONW",
+      "display": "Woonwagen",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Woonwagen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "ZVWIN",
+      "display": "Instelling ZVW",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Instelling ZVW"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    }
+  ]
+}

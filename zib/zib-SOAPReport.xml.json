@@ -1,0 +1,202 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-SOAPReport",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-SOAPReport",
+  "name": "ZibSOAPReport",
+  "title": "zib SOAPReport",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A SOAP report is a textual report of a (partial) consult with relation to a single problem according to the SOAP structure. SOAP (acronym for subjective, objective, assessment, plan) is a method used by health professionals to structurally record information that comes up during contact between the patient and a health professionals in the patient's record. The following standardized format is used for reporting:\r\n\r\n* Subjective: the patient's complaint and request for help and the amnesic data\r\n* Objective: the findings from the physical and supplementary examination.\r\n* Assessment: the working hypothesis and the thinking process, for example a differential diagnosis of the healthcare professional.\r\n* Plan: the diagnostic plan or treatment plan and what has been discussed or agreed with the patient.\r\n\r\nThe SOAP report is mainly used in general practice care.\r\n\r\nNote: the zib doesn't state explicitly if zib SOAPReport pertains a consult or a partial consult, but it has become clear that the zib, and thus this profile, should be interpreted as a partial consult with relation to a single problem (see <https://bits.nictiz.nl/browse/ZIB-1474>). The text above has been adjusted according to this insight.",
+  "purpose": "This Composition resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SOAPReport v1.0 (2020)](https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-soapreport-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)",
+      "name": "zib SOAPReport-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Composition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Composition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Composition",
+        "path": "Composition",
+        "short": "SOAPReport",
+        "comment": "Zib SOAPReport is implemented using two profiles: this profile implements the SOAPReport concept of the zib, while <http://nictiz.nl/fhir/StructureDefinition/zib-SOAPReport.SOAPLine> represents the SOAPLine concept of the zib which is referenced by `.section.entry`. \r\nThe Composition resource SHOULD hold a summary in the `.section.text` elements of the information found in the referenced SOAPReport.SOAPLine profile.",
+        "alias": [
+          "SOEPVerslag"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.1",
+            "comment": "SOAPReport"
+          }
+        ]
+      },
+      {
+        "id": "Composition.status",
+        "path": "Composition.status",
+        "comment": "Unless the status is explicitly recorded it is expected that only _final_ reports are exchanged."
+      },
+      {
+        "id": "Composition.type",
+        "path": "Composition.type",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "11591000146107"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.date",
+        "path": "Composition.date",
+        "short": "SOAPReportDateTime",
+        "definition": "Date and time when the report was recorded",
+        "alias": [
+          "SOEPVerslagDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.2",
+            "comment": "SOAPReportDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Composition.author",
+        "path": "Composition.author",
+        "short": "Author",
+        "definition": "The healthcare provider who prepared the report and who is responsible for its content.",
+        "comment": "Each occurrence of the zib HealthProfessional is normally represented by _two_ FHIR resources: a PractitionerRole resource (instance of [zib-HealthProfessional-PractitionerRole](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole)) and a Practitioner resource (instance of [zib-HealthProfessional-Practitioner](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner)). The Practitioner resource is referenced from the PractitionerRole instance. For this reason, sending systems should fill the reference to the PractitionerRole instance here, and not the Practitioner resource. Receiving systems can then retrieve the reference to the Practitioner resource from that PractitionerRole instance.\r\n\r\nIn rare circumstances, there is only a Practitioner instance, in which case it is that instance which will be referenced here. However, since this should be the exception, the zib-HealthProfessional-Practitioner profile is not explicitly mentioned as a target profile.",
+        "alias": [
+          "Auteur"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Practitioner",
+              "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.3",
+            "comment": "Author"
+          }
+        ]
+      },
+      {
+        "id": "Composition.title",
+        "path": "Composition.title",
+        "definition": "Official human-readable label for the composition. Suggested value is the ICPC display name on the A entry."
+      },
+      {
+        "id": "Composition.section",
+        "path": "Composition.section",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:soapLine",
+        "path": "Composition.section",
+        "sliceName": "soapLine",
+        "short": "SOAPLine",
+        "alias": [
+          "SOEPRegel"
+        ],
+        "max": "4",
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.4",
+            "comment": "SOAPLine"
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:soapLine.code",
+        "path": "Composition.section.code",
+        "short": "SOAPLineHeader",
+        "definition": "The name of the SOAP line as a coded description. In a SOAP report this can be one of the following: subjective, objective, assessment or plan.",
+        "alias": [
+          "SOEPRegelNaam"
+        ],
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.6.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.6",
+            "comment": "SOAPLineHeader"
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:soapLine.text",
+        "path": "Composition.section.text",
+        "comment": "This element SHOULD hold the information as found in the referenced [zib-SOAPReport.SOAPLine](http://nictiz.nl/StructureDefinition/zib-SOAPReport.SOAPLine) profile to provide a human-readable narrative of the Composition."
+      },
+      {
+        "id": "Composition.section:soapLine.entry",
+        "path": "Composition.section.entry",
+        "definition": "A reference to data that supports this section. At a minimum, there should be an entry for the SOAPReport.SOAPLine profile.",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-SOAPReport.SOAPLine"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

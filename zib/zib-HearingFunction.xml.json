@@ -1,0 +1,171 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HearingFunction",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HearingFunction",
+  "name": "ZibHearingFunction",
+  "title": "zib HearingFunction",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Hearing is the ability to observe sound, with the purpose of communicating with others, localizing the source of the sound and recognizing certain sounds. This pertains to observing the sound waves, and not processing the sounds in the brain.\r\nA hearing disorder can lead to things including communication problems.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HearingFunction v3.2 (2020)](https://zibs.nl/wiki/HearingFunction-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-hearingfunction-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/HearingFunction-v3.2(2020EN)",
+      "name": "zib HearingFunction-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "HearingFunction",
+        "alias": [
+          "FunctieHoren"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:4.17.1",
+            "comment": "HearingFunction"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:hearingAid",
+        "path": "Observation.extension",
+        "sliceName": "hearingAid",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Observation.extension:hearingAid.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "HearingAid",
+        "definition": "The medical aid used to help the patient hear.",
+        "alias": [
+          "HorenHulpmiddel"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HearingFunction.HearingAid"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:4.17.4",
+            "comment": "HearingAid"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "47078008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "HearingFunction",
+        "definition": "The faculty of hearing due to responses to stimuli from auditory organs, capacity to hear.",
+        "alias": [
+          "HoorFunctie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.17.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:4.17.3",
+            "comment": "HearingFunction"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the hearing function.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:4.17.2",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

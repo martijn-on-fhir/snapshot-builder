@@ -1,0 +1,61 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TextResult.VisualResult",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TextResult.VisualResult",
+  "name": "ZibTextResultVisualResult",
+  "title": "zib TextResult.VisualResult",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Visual examination results that are the starting point and reason for the textual report as represented by the zib TextResult. These results include visual material - e.g. radiological images, scopy images, medical photos and videos - as well as graphic recordings - e.g. ECGs, EEGs etc.",
+  "purpose": "This Media resource represents the VisualResult concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TextResult v4.4 (2020)](https://zibs.nl/wiki/TextResult-v4.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-textresult-v4.4-2020EN",
+      "uri": "https://zibs.nl/wiki/TextResult-v4.4(2020EN)",
+      "name": "zib TextResult-v4.4(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Media",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Media",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Media.content",
+        "path": "Media.content",
+        "short": "VisualResult",
+        "definition": "Visual examination results that are the starting point and reason for the textual report. These results include visual material - e.g. radiological images, scopy images, medical photos and videos - as well as graphic recordings - e.g. ECGs, EEGs etc.",
+        "alias": [
+          "VisueelResultaat"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.7",
+            "comment": "VisualResult"
+          }
+        ]
+      }
+    ]
+  }
+}

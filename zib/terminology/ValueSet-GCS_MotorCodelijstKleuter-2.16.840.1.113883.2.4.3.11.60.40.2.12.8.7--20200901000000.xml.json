@@ -1,0 +1,307 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.2.12.8.7--20200901000000",
+  "meta": {
+    "source": "http://decor.nictiz.nl/fhir/4.0/zib2020bbr-",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ],
+    "tag": [
+      {
+        "system": "http://hl7.org/fhir/FHIR-version",
+        "code": "4.0.1"
+      }
+    ]
+  },
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.8.7--20200901000000",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.12.8.7"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "GCS_MotorCodelijstKleuter",
+  "title": "GCS_MotorCodelijstKleuter",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "*                          [ZIB-1314](https://bits.nictiz.nl/browse/ZIB-1314): [GlasgowComaScale-v3.2](https://zibs.nl/wiki/GlasgowComaScale-v3.2(2020NL)). Replace Verbal en Motor value sets The Verbal and Motor value sets were updated in Publication 2020. Unfortunately these value sets had a couple of serious issues. This is why replacing them was decided. The new value sets are in this document: [GCS_waardenlijsten.pdf](https://zibs.nl/images/f/f4/GCS_waardenlijsten.pdf). Changes in this value set are: \n M6 \"Obeys commands\" > \"Obeys\", M5 \"Localising\" > \"Localises pain\", M4 \"Normal flexion\" > \"Withdrawal response\", M3 \"Abnormal flexion\" > \"Flexor response\", M2 \"Abnormal extension\" > \"Extensor response\"",
+  "immutable": false,
+  "compose": {
+    "include": [
+      {
+        "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.2.2",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 6
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Voert opdracht tot bewegen uit [Een eenvoudig verzoek tot bewegen wordt uitgevoerd]"
+              }
+            ],
+            "code": "M6",
+            "display": "Obeys",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Obeys"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Voert opdracht uit"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 5
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Terugtrekken bij aanraking [Trekt terug bij aanraken]"
+              }
+            ],
+            "code": "M5",
+            "display": "Localises pain",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Localises pain"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Terugtrekken bij aanraking"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 4
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Terugtrekken [In staat om een afwerende of wegtrekkende beweging te maken op een pijnprikkel]"
+              }
+            ],
+            "code": "M4",
+            "display": "Withdrawal response",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Withdrawal response"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Terugtrekken"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 3
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Buigreactie [Langzame, buiging van armen en/of benen]"
+              }
+            ],
+            "code": "M3",
+            "display": "Flexor response",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Flexor response"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Buigreactie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Decerebrale strekreactie [strekken van armen en/of benen]"
+              }
+            ],
+            "code": "M2",
+            "display": "Extensor response",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Extensor response"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Decerebrale strekreactie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Geen beweging op prikkel [Geen enkele beweging op een prikkel]"
+              }
+            ],
+            "code": "M1",
+            "display": "No response",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "No response"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Geen beweging op prikkel"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 0
+              }
+            ],
+            "code": "NA",
+            "display": "Not applicable",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Not applicable"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Niet van toepassing"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

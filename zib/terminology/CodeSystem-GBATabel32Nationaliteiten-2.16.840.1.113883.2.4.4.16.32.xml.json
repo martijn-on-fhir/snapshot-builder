@@ -1,0 +1,4938 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.4.16.32",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-03-31T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.4.16.32",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.4.16.32"
+    }
+  ],
+  "version": "2020-03-31T00:00:00",
+  "name": "GBATabel32Nationaliteiten",
+  "title": "GBA Tabel 32 Nationaliteiten",
+  "status": "active",
+  "experimental": false,
+  "date": "2022-07-14T17:18:08Z",
+  "publisher": "Rijksdienst voor Identiteitsgegevens",
+  "contact": [
+    {
+      "name": "Rijksdienst voor Identiteitsgegevens",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://publicaties.rvig.nl"
+        }
+      ]
+    }
+  ],
+  "description": "Een opsomming van alle door Nederland erkende nationaliteiten met hun codes, omschrijvingen en geldigheidstermijnen. Link naar de bron [https://publicaties.rvig.nl/Landelijke_tabellen/Inleiding_op_de_Landelijke_Tabellen_GBA](https://publicaties.rvig.nl/Landelijke_tabellen/Inleiding_op_de_Landelijke_Tabellen_GBA)",
+  "copyright": "Rijksdienst voor Identiteitsgegevens",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 217,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active, deprecated",
+      "type": "code"
+    },
+    {
+      "code": "deprecationDate",
+      "uri": "http://hl7.org/fhir/concept-properties#deprecationDate",
+      "description": "The date at which a concept was deprecated. Concepts that are deprecated but not inactive can still be used, but their use is discouraged, and they should be expected to be made inactive in a future release. Property type is dateTime. Note that the status property may also be used to indicate that a concept is deprecated",
+      "type": "dateTime"
+    },
+    {
+      "code": "effectiveDate",
+      "uri": "http://hl7.org/fhir/concept-properties#effectiveDate",
+      "description": "The date at which the concept was status was last changed. This is calculated based on the highest of 'creation date', 'expiration date', and 'official release date'",
+      "type": "dateTime"
+    },
+    {
+      "code": "inactive",
+      "uri": "http://hl7.org/fhir/concept-properties#inactive",
+      "description": "True if the concept is not considered active - e.g. not a valid concept any more and not approved for current use. Property type is boolean, default value is false",
+      "type": "boolean"
+    }
+  ],
+  "concept": [
+    {
+      "code": "0000",
+      "display": "Onbekend",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Onbekend"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0001",
+      "display": "Nederlandse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nederlandse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0002",
+      "display": "Behandeld als Nederlander",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Behandeld als Nederlander"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2007-04-01"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2007-04-01"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0027",
+      "display": "Slowaakse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Slowaakse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1993-01-01"
+        }
+      ]
+    },
+    {
+      "code": "0028",
+      "display": "Tsjechische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tsjechische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1993-01-01"
+        }
+      ]
+    },
+    {
+      "code": "0029",
+      "display": "Burger van Bosnië-Herzegovina",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Bosnië-Herzegovina"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1992-04-06"
+        }
+      ]
+    },
+    {
+      "code": "0030",
+      "display": "Georgische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Georgische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0031",
+      "display": "Turkmeense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Turkmeense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0032",
+      "display": "Tadzjiekse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tadzjiekse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0033",
+      "display": "Oezbeekse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Oezbeekse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0034",
+      "display": "Oekraïense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Oekraïense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0035",
+      "display": "Kirgizische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kirgizische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0036",
+      "display": "Moldavische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Moldavische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0037",
+      "display": "Kazachse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kazachse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0038",
+      "display": "Belarussische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Belarussische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0039",
+      "display": "Azerbeidzjaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Azerbeidzjaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0040",
+      "display": "Armeense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Armeense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0041",
+      "display": "Russische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Russische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        }
+      ]
+    },
+    {
+      "code": "0042",
+      "display": "Sloveense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Sloveense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1992-01-15"
+        }
+      ]
+    },
+    {
+      "code": "0043",
+      "display": "Kroatische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kroatische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1992-01-15"
+        }
+      ]
+    },
+    {
+      "code": "0044",
+      "display": "Letse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Letse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-08-28"
+        }
+      ]
+    },
+    {
+      "code": "0045",
+      "display": "Estische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Estische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-08-28"
+        }
+      ]
+    },
+    {
+      "code": "0046",
+      "display": "Litouwse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Litouwse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-08-28"
+        }
+      ]
+    },
+    {
+      "code": "0047",
+      "display": "Marshalleilandse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Marshalleilandse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0048",
+      "display": "Myanmarese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Myanmarese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0049",
+      "display": "Namibische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Namibische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0050",
+      "display": "Albanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Albanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0051",
+      "display": "Andorrese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Andorrese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0052",
+      "display": "Belgische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Belgische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0053",
+      "display": "Bulgaarse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bulgaarse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0054",
+      "display": "Deense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Deense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0055",
+      "display": "Burger van de Bondsrepubliek Duitsland",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van de Bondsrepubliek Duitsland"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0056",
+      "display": "Finse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Finse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0057",
+      "display": "Franse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Franse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0058",
+      "display": "Jemenitische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Jemenitische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1990-05-22"
+        }
+      ]
+    },
+    {
+      "code": "0059",
+      "display": "Griekse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Griekse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0060",
+      "display": "Brits burger",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Brits burger"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0061",
+      "display": "Hongaarse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Hongaarse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0062",
+      "display": "Ierse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ierse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0063",
+      "display": "IJslandse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "IJslandse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0064",
+      "display": "Italiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Italiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0065",
+      "display": "Joegoslavische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Joegoslavische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2004-02-01"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2004-02-01"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0066",
+      "display": "Liechtensteinse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Liechtensteinse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0067",
+      "display": "Luxemburgse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Luxemburgse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0068",
+      "display": "Maltese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Maltese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0069",
+      "display": "Monegaskische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Monegaskische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0070",
+      "display": "Noorse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Noorse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0071",
+      "display": "Oostenrijkse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Oostenrijkse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0072",
+      "display": "Poolse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Poolse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0073",
+      "display": "Portugese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Portugese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0074",
+      "display": "Roemeense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Roemeense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0075",
+      "display": "Burger van de Sovjet-Unie",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van de Sovjet-Unie"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1991-12-31"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1991-12-31"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0076",
+      "display": "San Marinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "San Marinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0077",
+      "display": "Spaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Spaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0078",
+      "display": "Tsjecho-Slowaakse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tsjecho-Slowaakse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1993-01-01"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1993-01-01"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0079",
+      "display": "Vaticaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vaticaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0080",
+      "display": "Zweedse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zweedse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0081",
+      "display": "Zwitserse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zwitserse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0082",
+      "display": "Oost-Duitse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Oost-Duitse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1990-10-03"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1990-10-03"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0083",
+      "display": "Brits onderdaan",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Brits onderdaan"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0084",
+      "display": "Eritrese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Eritrese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1993-05-28"
+        }
+      ]
+    },
+    {
+      "code": "0085",
+      "display": "Brits overzees burger",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Brits overzees burger"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0086",
+      "display": "Macedonische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Macedonische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2019-02-12"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2019-02-12"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0087",
+      "display": "Kosovaarse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kosovaarse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2008-06-15"
+        }
+      ]
+    },
+    {
+      "code": "0088",
+      "display": "Macedonische/Burger van Noord-Macedonië",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Macedonische/Burger van Noord-Macedonië"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2019-02-12"
+        }
+      ]
+    },
+    {
+      "code": "0100",
+      "display": "Algerijnse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Algerijnse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0101",
+      "display": "Angolese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Angolese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0104",
+      "display": "Burundese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burundese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0105",
+      "display": "Botswaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Botswaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0106",
+      "display": "Burkinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burkinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0108",
+      "display": "Centraal-Afrikaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Centraal-Afrikaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0109",
+      "display": "Comorese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Comorese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0110",
+      "display": "Burger van Congo",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Congo"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0111",
+      "display": "Beninse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Beninse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0112",
+      "display": "Egyptische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Egyptische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0113",
+      "display": "Equatoriaal-Guinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Equatoriaal-Guinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0114",
+      "display": "Ethiopische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ethiopische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0115",
+      "display": "Djiboutiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Djiboutiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0116",
+      "display": "Gabonese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Gabonese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0117",
+      "display": "Gambiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Gambiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0118",
+      "display": "Ghanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ghanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0119",
+      "display": "Guinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Guinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0120",
+      "display": "Ivoriaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ivoriaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0121",
+      "display": "Kaapverdische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kaapverdische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0122",
+      "display": "Kameroense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kameroense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0123",
+      "display": "Kenyaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kenyaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0124",
+      "display": "Zaïrese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zaïrese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1997-07-15"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1997-07-15"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0125",
+      "display": "Lesothaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Lesothaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0126",
+      "display": "Liberiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Liberiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0127",
+      "display": "Libische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Libische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0128",
+      "display": "Malagassische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Malagassische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0129",
+      "display": "Malawische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Malawische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0130",
+      "display": "Malinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Malinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0131",
+      "display": "Marokkaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Marokkaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0132",
+      "display": "Mauritaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mauritaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0133",
+      "display": "Mauritiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mauritiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0134",
+      "display": "Mozambikaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mozambikaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0135",
+      "display": "Swazische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Swazische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2018-04-19"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2018-04-19"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0136",
+      "display": "Nigerese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nigerese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0137",
+      "display": "Nigeriaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nigeriaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0138",
+      "display": "Ugandese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ugandese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0139",
+      "display": "Guinee-Bissause",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Guinee-Bissause"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0140",
+      "display": "Zuid-Afrikaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zuid-Afrikaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0141",
+      "display": "Eswatinische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Eswatinische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2018-04-19"
+        }
+      ]
+    },
+    {
+      "code": "0142",
+      "display": "Zimbabwaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zimbabwaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0143",
+      "display": "Rwandese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Rwandese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0144",
+      "display": "Burger van São Tomé en Principe",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van São Tomé en Principe"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0145",
+      "display": "Senegalese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Senegalese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0147",
+      "display": "Sierra Leoonse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Sierra Leoonse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0148",
+      "display": "Soedanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Soedanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0149",
+      "display": "Somalische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Somalische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0151",
+      "display": "Tanzaniaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tanzaniaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0152",
+      "display": "Togolese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Togolese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0154",
+      "display": "Tsjadische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tsjadische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0155",
+      "display": "Tunesische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tunesische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0156",
+      "display": "Zambiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zambiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0157",
+      "display": "Zuid-Soedanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zuid-Soedanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2011-07-09"
+        }
+      ]
+    },
+    {
+      "code": "0200",
+      "display": "Bahamaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bahamaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0202",
+      "display": "Belizaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Belizaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0204",
+      "display": "Canadese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Canadese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0205",
+      "display": "Costa Ricaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Costa Ricaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0206",
+      "display": "Cubaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Cubaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0207",
+      "display": "Dominicaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Dominicaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0208",
+      "display": "Salvadoraanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Salvadoraanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0211",
+      "display": "Guatemalaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Guatemalaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0212",
+      "display": "Haïtiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Haïtiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0213",
+      "display": "Hondurese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Hondurese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0214",
+      "display": "Jamaicaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Jamaicaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0216",
+      "display": "Mexicaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mexicaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0218",
+      "display": "Nicaraguaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nicaraguaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0219",
+      "display": "Panamese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Panamese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0222",
+      "display": "Burger van Trinidad en Tobago",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Trinidad en Tobago"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0223",
+      "display": "Amerikaans burger",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Amerikaans burger"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0250",
+      "display": "Argentijnse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Argentijnse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0251",
+      "display": "Barbadaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Barbadaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0252",
+      "display": "Boliviaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Boliviaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0253",
+      "display": "Braziliaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Braziliaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0254",
+      "display": "Chileense",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Chileense"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0255",
+      "display": "Colombiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Colombiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0256",
+      "display": "Ecuadoraanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Ecuadoraanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0259",
+      "display": "Guyaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Guyaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0261",
+      "display": "Paraguayaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Paraguayaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0262",
+      "display": "Peruaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Peruaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0263",
+      "display": "Surinaamse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Surinaamse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0264",
+      "display": "Uruguayaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Uruguayaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0265",
+      "display": "Venezolaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Venezolaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0267",
+      "display": "Grenadaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Grenadaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0268",
+      "display": "Burger van Saint Kitts en Nevis",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Saint Kitts en Nevis"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0300",
+      "display": "Afghaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Afghaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0301",
+      "display": "Bahreinse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bahreinse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0302",
+      "display": "Bhutaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bhutaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0303",
+      "display": "Burmaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burmaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1989-06-18"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1989-06-18"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0304",
+      "display": "Bruneise",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bruneise"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0305",
+      "display": "Cambodjaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Cambodjaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0306",
+      "display": "Sri Lankaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Sri Lankaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0307",
+      "display": "Chinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Chinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0308",
+      "display": "Cyprische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Cyprische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0309",
+      "display": "Filipijnse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Filipijnse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0310",
+      "display": "Taiwanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Taiwanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0312",
+      "display": "Indiase",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Indiase"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0313",
+      "display": "Indonesische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Indonesische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0314",
+      "display": "Iraakse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Iraakse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0315",
+      "display": "Iraanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Iraanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0316",
+      "display": "Israëlische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Israëlische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0317",
+      "display": "Japanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Japanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0318",
+      "display": "Noord-Jemenitische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Noord-Jemenitische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1990-05-22"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1990-05-22"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0319",
+      "display": "Jordaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Jordaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0320",
+      "display": "Koeweitse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Koeweitse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0321",
+      "display": "Laotiaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Laotiaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0322",
+      "display": "Libanese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Libanese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0324",
+      "display": "Maldivische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Maldivische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0325",
+      "display": "Maleisische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Maleisische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0326",
+      "display": "Mongolische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Mongolische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0327",
+      "display": "Omaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Omaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0328",
+      "display": "Nepalese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nepalese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0329",
+      "display": "Noord-Koreaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Noord-Koreaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0331",
+      "display": "Pakistaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Pakistaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0333",
+      "display": "Qatarese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Qatarese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0334",
+      "display": "Saoedi-Arabische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Saoedi-Arabische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0335",
+      "display": "Singaporese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Singaporese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0336",
+      "display": "Syrische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Syrische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0337",
+      "display": "Thaise",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Thaise"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0338",
+      "display": "Burger van de Verenigde Arabische Emiraten",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van de Verenigde Arabische Emiraten"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0339",
+      "display": "Turkse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Turkse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0340",
+      "display": "Zuid-Jemenitische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zuid-Jemenitische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1990-05-22"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1990-05-22"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0341",
+      "display": "Zuid-Koreaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Zuid-Koreaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0342",
+      "display": "Vietnamese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vietnamese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0345",
+      "display": "Bengalese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Bengalese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0400",
+      "display": "Australische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Australische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0401",
+      "display": "Papoea-Nieuw-Guinese",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Papoea-Nieuw-Guinese"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0402",
+      "display": "Nieuw-Zeelandse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nieuw-Zeelandse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0404",
+      "display": "West-Samoaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "West-Samoaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "1997-07-04"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1997-07-04"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0405",
+      "display": "Samoaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Samoaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1997-07-04"
+        }
+      ]
+    },
+    {
+      "code": "0421",
+      "display": "Burger van Antigua en Barbuda",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Antigua en Barbuda"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0424",
+      "display": "Vanuatuaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vanuatuaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0425",
+      "display": "Fijische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Fijische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0429",
+      "display": "Burger van Britse afhankelijke gebieden",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Britse afhankelijke gebieden"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0430",
+      "display": "Tongaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tongaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0431",
+      "display": "Nauruaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Nauruaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0432",
+      "display": "Palause",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Palause"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1994-10-01"
+        }
+      ]
+    },
+    {
+      "code": "0437",
+      "display": "Amerikaans onderdaan",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Amerikaans onderdaan"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0442",
+      "display": "Salomonseilandse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Salomonseilandse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0443",
+      "display": "Micronesische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Micronesische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0444",
+      "display": "Seychelse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Seychelse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0445",
+      "display": "Kiribatische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Kiribatische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0446",
+      "display": "Tuvaluaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Tuvaluaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0447",
+      "display": "Saint Luciaanse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Saint Luciaanse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0448",
+      "display": "Burger van Dominica",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Dominica"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0449",
+      "display": "Burger van Saint Vincent en de Grenadines",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Saint Vincent en de Grenadines"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0450",
+      "display": "British National (overseas)",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "British National (overseas)"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1987-07-01"
+        }
+      ]
+    },
+    {
+      "code": "0451",
+      "display": "Burger van Democratische Republiek Congo",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Democratische Republiek Congo"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "1997-05-17"
+        }
+      ]
+    },
+    {
+      "code": "0452",
+      "display": "Burger van Timor Leste",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Timor Leste"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2002-05-20"
+        }
+      ]
+    },
+    {
+      "code": "0453",
+      "display": "Burger van Servië en Montenegro",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Burger van Servië en Montenegro"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2006-06-03"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2006-06-03"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "code": "0454",
+      "display": "Servische",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Servische"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2006-06-03"
+        }
+      ]
+    },
+    {
+      "code": "0455",
+      "display": "Montenegrijnse",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Montenegrijnse"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2006-06-03"
+        }
+      ]
+    },
+    {
+      "code": "0499",
+      "display": "Staatloos",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Staatloos"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        }
+      ]
+    },
+    {
+      "code": "0500",
+      "display": "Vastgesteld niet-Nederlander",
+      "designation": [
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "Vastgesteld niet-Nederlander"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "deprecated"
+        },
+        {
+          "code": "deprecationDate",
+          "valueDateTime": "2007-04-01"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2007-04-01"
+        },
+        {
+          "code": "inactive",
+          "valueBoolean": true
+        }
+      ]
+    }
+  ]
+}

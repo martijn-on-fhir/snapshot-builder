@@ -1,0 +1,222 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Wound",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Wound",
+  "name": "ZibWound",
+  "title": "zib Wound",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A wound is an interruption of the continuity of the skin, often caused by external influences.\r\nA commonly used model for documenting the wound properties is the TIME (‘Tissue’, ‘Infection’, ‘Moisture’, ‘Edge’) model, which can be used to systematically describe the wound. For wound tissue (T in the TIME model), the structure of the WCS model (Woundcare Consultant Society, WCS Kenniscentrum Wondzorg) is used. The WCS model is not suited for describing oncological ulcers. There is a separate classification for that.\r\nOncological ulcers are skin defects which result from the tumor process. They are different from wounds resulting from cancer treatment, such as radiotherapy, chemotherapy or surgery.\r\n\r\nThe concept does not describe decubitus wounds and burn wounds. For these, the relevant information models can be used.",
+  "purpose": "This Condition resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Wound v3.3 (2020)](https://zibs.nl/wiki/Wound-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-wound-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Wound-v3.3(2020EN)",
+      "name": "zib Wound-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "Wound",
+        "comment": "The functional model of zib Wound represents a condition that needs to be tracked over time, but defines point-in-time assessments about the current state of the wound as well. For this reason, this zib is mapped onto multiple resources: this Condition profile represents the focal resource, while all point-in-time properties are mapped onto Observation and DocumentReference profiles. Those observable properties, in turn, are grouped using the [zib-wounds.WoundCharacteristics](http://nictiz.nl/fhir/StructureDefinition/zib-wounds.WoundCharacteristics) Observation profile, which can be referenced on `Condition.evidence.detail` (see slice \"woundCharacteristics\").\r\n\r\nThis model allows to track multiple distinct assessment moments over time in connection with the Condition. For this reason, it is not expected that the Observations for individual outcomes or DocumentReference resources are referenced from or to this Condition resource directly; all references should be channeled through the zib-wounds.WoundCharacteristics grouping Observation. Note that the individual Observations are referenced from the grouping Observation, but that the direction for DocumentReference resources is reversed.\r\n\r\nThis model deviates somewhat from the zib approach. The zib model is meant to group all concepts relevant for a wound into a model, but it doesn't have a concept of changes over time. For this reason, all observable properties have a cardinality of `0..1` on the zib level, but this works out differently in the FHIR model.",
+        "alias": [
+          "Wond"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.1",
+            "comment": "Wound"
+          }
+        ]
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Condition.category:woundCode",
+        "path": "Condition.category",
+        "sliceName": "woundCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "416462003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "WoundType",
+        "definition": "Description of the type of wound.",
+        "alias": [
+          "WondSoort"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.19.2.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.5",
+            "comment": "WoundType"
+          }
+        ]
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "short": "Location / AnatomicalLocation",
+        "definition": "The location of the wound on the body.",
+        "alias": [
+          "AnatomischeLocatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.19",
+            "comment": "AnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.onset[x]:onsetDateTime",
+        "path": "Condition.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "WoundDateOfOnset",
+        "definition": "The date on which the wound appeared.",
+        "alias": [
+          "WondOntstaansdatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.2",
+            "comment": "WoundDateOfOnset"
+          }
+        ]
+      },
+      {
+        "id": "Condition.evidence.detail",
+        "path": "Condition.evidence.detail",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.evidence.detail:woundCharacteristics",
+        "path": "Condition.evidence.detail",
+        "sliceName": "woundCharacteristics",
+        "comment": "The functional model of zib Wound represents a condition that needs to be tracked over time, but defines point-in-time assessments about the current state of the wound as well. For this reason, this zib is mapped onto multiple resources: this Condition profile represents the focal resource, while all point-in-time observations are mapped onto Observation profiles. See the comment on the root of this profile for further guidance.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-wounds.WoundCharacteristics"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Condition.note",
+        "path": "Condition.note",
+        "max": "1"
+      },
+      {
+        "id": "Condition.note.text",
+        "path": "Condition.note.text",
+        "short": "Comment",
+        "definition": "Comment on the wound.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.9",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

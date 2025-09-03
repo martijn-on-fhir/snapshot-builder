@@ -1,0 +1,24 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.6.7",
+  "language": "en-US",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-US\" xml:lang=\"en-US\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "urn:oid:2.16.840.1.113883.2.4.6.7",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.6.7"
+    }
+  ],
+  "version": "2013-06-12",
+  "name": "Vektis_AGB_medische_specialismen",
+  "title": "Vektis AGB-medische specialismen",
+  "status": "unknown",
+  "publisher": "ART-DECOR",
+  "description": "Vektis medische specialismen tabel COD016",
+  "content": "not-present"
+}

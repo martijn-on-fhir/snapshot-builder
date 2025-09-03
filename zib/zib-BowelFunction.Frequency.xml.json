@@ -1,0 +1,83 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-BowelFunction.Frequency",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.Frequency",
+  "name": "ZibBowelFunctionFrequency",
+  "title": "zib BowelFunction.Frequency",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The defecation frequency.",
+  "purpose": "This Observation resource represents the Frequency concept (NL-CM:4.15.4) of Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BowelFunction v3.1.1 (2020)](https://zibs.nl/wiki/BowelFunction-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-bowelfunction-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/BowelFunction-v3.1.1(2020EN)",
+      "name": "zib BowelFunction-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the Frequency concept (NL-CM:4.15.4) of Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BowelFunction v3.1.1 (2020)](https://zibs.nl/wiki/BowelFunction-v3.1.1(2020EN))."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "162098000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "Frequency",
+        "definition": "The defecation frequency.",
+        "alias": [
+          "Frequentie"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bowelfunction-v3.1.1-2020EN",
+            "map": "NL-CM:4.15.4",
+            "comment": "Frequency"
+          }
+        ]
+      }
+    ]
+  }
+}

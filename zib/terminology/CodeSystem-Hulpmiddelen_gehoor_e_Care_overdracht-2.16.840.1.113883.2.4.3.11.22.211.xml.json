@@ -1,0 +1,24 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.22.211",
+  "language": "en-US",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-US\" xml:lang=\"en-US\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.22.211",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.22.211"
+    }
+  ],
+  "version": "2012-02-27",
+  "name": "Hulpmiddelen_gehoor_e_Care_overdracht",
+  "title": "Hulpmiddelen gehoor (e-Care overdracht)",
+  "status": "unknown",
+  "publisher": "Nictiz",
+  "description": "Hulpmiddelen gehoor (e-Care overdracht)",
+  "content": "not-present"
+}

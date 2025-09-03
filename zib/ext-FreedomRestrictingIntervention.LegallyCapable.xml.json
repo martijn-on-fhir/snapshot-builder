@@ -1,0 +1,165 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-FreedomRestrictingIntervention.LegallyCapable",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-FreedomRestrictingIntervention.LegallyCapable",
+  "name": "ExtFreedomRestrictingInterventionLegallyCapable",
+  "title": "ext FreedomRestrictingIntervention.LegallyCapable",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to indicate whether the patient is deemed capable of overseeing the consequences of a certain procedure, situation or decision, and to provide a comment on the decisions which the patient is legally capable of making.",
+  "purpose": "This extension represents the LegallyCapable and LegallyCapableComment concepts of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) FreedomRestrictingIntervention v1.0 (2020)](https://zibs.nl/wiki/FreedomRestrictingIntervention-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/FreedomRestrictingIntervention-v1.0(2020EN)",
+      "name": "zib FreedomRestrictingIntervention-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Procedure"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "constraint": [
+          {
+            "key": "zib-FreedomRestrictingIntervention-01",
+            "severity": "warning",
+            "human": "If the patient is not legally capable, an explanation must be provided",
+            "expression": "extension.where(url='legallyCapable').value = false implies extension.where(url='legallyCapableComment').value.exists()"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 0
+      },
+      {
+        "id": "Extension.extension:legallyCapable",
+        "path": "Extension.extension",
+        "sliceName": "legallyCapable",
+        "min": 0,
+        "max": "1",
+        "condition": [
+          "zib-FreedomRestrictingIntervention-01"
+        ]
+      },
+      {
+        "id": "Extension.extension:legallyCapable.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "legallyCapable"
+      },
+      {
+        "id": "Extension.extension:legallyCapable.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "LegallyCapable",
+        "definition": "Indicator stating whether the patient is deemed capable of overseeing the consequences of a certain procedure, situation or decision.",
+        "alias": [
+          "Wilsbekwaam"
+        ],
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "condition": [
+          "zib-FreedomRestrictingIntervention-01"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.2",
+            "comment": "LegallyCapable"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:legallyCapableComment",
+        "path": "Extension.extension",
+        "sliceName": "legallyCapableComment",
+        "min": 0,
+        "max": "1",
+        "condition": [
+          "zib-FreedomRestrictingIntervention-01"
+        ]
+      },
+      {
+        "id": "Extension.extension:legallyCapableComment.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "legallyCapableComment"
+      },
+      {
+        "id": "Extension.extension:legallyCapableComment.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "LegallyCapableComment",
+        "definition": "Comment on the decisions which the patient is legally capable of making.",
+        "alias": [
+          "WilsbekwaamToelichting"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "condition": [
+          "zib-FreedomRestrictingIntervention-01"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.3",
+            "comment": "LegallyCapableComment"
+          }
+        ]
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-FreedomRestrictingIntervention.LegallyCapable"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

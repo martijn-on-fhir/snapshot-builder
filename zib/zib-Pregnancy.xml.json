@@ -1,0 +1,177 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Pregnancy",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy",
+  "name": "ZibPregnancy",
+  "title": "zib Pregnancy",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Pregnancy or gravidity is the condition in which a woman carries a fertilized egg, which grows into an embryo and then a fetus. A pregnancy of between 37 and 42 weeks is considered normal. “Term pregnancy” is 37 to 42 weeks. The term gravidity is also used for the number of times a woman has been pregnant. This and parity - the number of times a woman has given birth - provides insight into the patient’s obstetric history.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Pregnancy v4.0 (2020)](https://zibs.nl/wiki/Pregnancy-v4.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-pregnancy-v4.0-2020EN",
+      "uri": "https://zibs.nl/wiki/Pregnancy-v4.0(2020EN)",
+      "name": "zib Pregnancy-v4.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "Pregnancy",
+        "comment": "Several concepts of zib Pregnancy are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* [zib-Pregnancy.DateLastMenstruation](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.DateLastMenstruation)\r\n* [zib-Pregnancy.EstimatedDateOfDelivery](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.EstimatedDateOfDelivery)\r\n* [zib-Pregnancy.Gravidity](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.Gravidity)\r\n* [zib-Pregnancy.Parity](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.Parity)\r\n* [zib-Pregnancy.PregnancyDuration](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.PregnancyDuration)",
+        "alias": [
+          "Zwangerschap"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pregnancy-v4.0-2020EN",
+            "map": "NL-CM:7.14.1",
+            "comment": "Pregnancy"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "118185001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the pregnancy.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pregnancy-v4.0-2020EN",
+            "map": "NL-CM:7.14.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:pregnancyDuration",
+        "path": "Observation.hasMember",
+        "sliceName": "pregnancyDuration",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.PregnancyDuration"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:parity",
+        "path": "Observation.hasMember",
+        "sliceName": "parity",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.Parity"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:gravidity",
+        "path": "Observation.hasMember",
+        "sliceName": "gravidity",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.Gravidity"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:estimatedDateOfDelivery",
+        "path": "Observation.hasMember",
+        "sliceName": "estimatedDateOfDelivery",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.EstimatedDateOfDelivery"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:dateLastMenstruation",
+        "path": "Observation.hasMember",
+        "sliceName": "dateLastMenstruation",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.DateLastMenstruation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

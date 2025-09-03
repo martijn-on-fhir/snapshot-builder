@@ -1,0 +1,210 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TextResult",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TextResult",
+  "version": "0.0.1",
+  "name": "ZibTextResult",
+  "title": "zib TextResult",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Textual results describe the findings and interpretation of diagnostic or therapeutic procedures carried out on patients or on specimens from the patient.",
+  "purpose": "This DiagnosticReport resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TextResult v4.4 (2020)](https://zibs.nl/wiki/TextResult-v4.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-textresult-v4.4-2020EN",
+      "uri": "https://zibs.nl/wiki/TextResult-v4.4(2020EN)",
+      "name": "zib TextResult-v4.4(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "DiagnosticReport",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DiagnosticReport",
+        "path": "DiagnosticReport",
+        "short": "TextResult",
+        "comment": "Zib TextResult is mapped to this DiagnosticReport profile and a profile on Media (<http://nictiz.nl/fhir/StructureDefinition/zib-TextResult.VisualResult>). This DiagnosticReport profile acts as the focal resource of zib TextResult. This profile references the Media resource through `.media.link` that holds the VisualResult information.\r\n\r\nPlease note that on a functional level, zib TextResult references zib Procedure, but in FHIR this direction is reversed. Therefore, the concept Procedure (NL-CM:13.2.5) is mapped on `Procedure.report` in profile [zib-Procedure-event](http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-event) instead of in this profile.",
+        "alias": [
+          "TekstUitslag"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.1",
+            "comment": "TextResult"
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.status",
+        "path": "DiagnosticReport.status",
+        "short": "TextResultStatus",
+        "definition": "The status of the result.",
+        "comment": "Additional information about the mapping of the optional (`0..1`) TextResultStatus to the mandatory (`1..1`) `.status`: because `.status` is `1..1` implementers shall have to support `.status` one way or another although the _unknown_ code can be used as a fallback. When TextResultStatus is absent, other codes may be used than from the zib. In that case, the ext-CodeSpecification extension should be omitted.",
+        "alias": [
+          "TekstUitslagStatus"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap TekstStatusCodelijst_to_DiagnosticReportStatus to translate terminology from the functional model to profile terminology in ValueSet DiagnosticReportStatus.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/diagnostic-report-status|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/TekstStatusCodelijst-to-DiagnosticReportStatus"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.6",
+            "comment": "TextResultStatus"
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.status.extension:textResultStatus",
+        "path": "DiagnosticReport.status.extension",
+        "sliceName": "textResultStatus",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.status.extension:textResultStatus.value[x]",
+        "path": "DiagnosticReport.status.extension.value[x]",
+        "short": "TextResultStatus",
+        "definition": "The status of the result.",
+        "alias": [
+          "TekstUitslagStatus"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.2.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.6",
+            "comment": "TextResultStatus"
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.code",
+        "path": "DiagnosticReport.code",
+        "short": "TextResultType",
+        "definition": "The type of result.",
+        "alias": [
+          "TekstUitslagType"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.2.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.4",
+            "comment": "TextResultType"
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.effective[x]",
+        "path": "DiagnosticReport.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "DiagnosticReport.effective[x]:effectiveDateTime",
+        "path": "DiagnosticReport.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "TextResultDateTime",
+        "definition": "Date and if possible time of the result report.",
+        "alias": [
+          "TekstUitslagDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.3",
+            "comment": "TextResultDateTime"
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.media.link",
+        "path": "DiagnosticReport.media.link",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Media",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-TextResult.VisualResult"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DiagnosticReport.conclusion",
+        "path": "DiagnosticReport.conclusion",
+        "short": "TextResultReport",
+        "definition": "The text report detailing the actual results of the test or procedure.",
+        "alias": [
+          "TekstResultaat"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-textresult-v4.4-2020EN",
+            "map": "NL-CM:13.2.2",
+            "comment": "TextResultReport"
+          }
+        ]
+      }
+    ]
+  }
+}

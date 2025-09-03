@@ -1,0 +1,271 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ContactPerson",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson",
+  "name": "ZibContactPerson",
+  "title": "zib ContactPerson",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A contact is a person not being a healthcare professional who is involved in the patient’s care, such as family members, caregivers, mental caretakers, guardians and legal representatives.\r\n\r\nIn addition to identification information such as the name, address and contact information can also be entered. The relationship to the patient and the role this person has can be entered as well.",
+  "purpose": "This RelatedPerson resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ContactPerson v3.4 (2020)](https://zibs.nl/wiki/ContactPerson-v3.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-contactperson-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactPerson-v3.4(2020EN)",
+      "name": "zib ContactPerson-v3.4(2020EN)"
+    },
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    },
+    {
+      "identity": "zib-payer-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/Payer-v3.1.1(2020EN)",
+      "name": "zib Payer-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "RelatedPerson",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "RelatedPerson",
+        "path": "RelatedPerson",
+        "short": "Contact",
+        "comment": "Whereas the zib ContactPerson includes all (non-healthcare professional) persons that are involved in the care for a patient, FHIR distinguishes two use cases for these persons:\r\n\r\n* The RelatedPerson resource, and therefore this profile, is used to capture information about any person that is related to the patient.\r\n* Information about persons that should be _contacted_ regarding the care for the patient is captured using the `Patient.contact` resource.\r\n\r\nIf a person is both a related person and a contact person, then some data duplication is inevitable.",
+        "alias": [
+          "Contactpersoon"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.1",
+            "comment": "Contact"
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.relationship",
+        "path": "RelatedPerson.relationship",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "RelatedPerson.relationship:role",
+        "path": "RelatedPerson.relationship",
+        "sliceName": "role",
+        "short": "Role",
+        "definition": "Defines the role of the contact in relation to the patient.",
+        "alias": [
+          "Rol"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.3.1.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.2",
+            "comment": "Role"
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.relationship:relationship",
+        "path": "RelatedPerson.relationship",
+        "sliceName": "relationship",
+        "short": "Relationship",
+        "definition": "Defines the contact’s familial relationship to the patient.",
+        "alias": [
+          "Relatie"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.3.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.3",
+            "comment": "Relationship"
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.name",
+        "path": "RelatedPerson.name",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "use"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "NameInformation / PayerName",
+        "definition": "Full name of the contact.",
+        "alias": [
+          "Naamgegevens",
+          "BetalerNaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.4",
+            "comment": "NameInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.5",
+            "comment": "PayerName"
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.name:nameInformation",
+        "path": "RelatedPerson.name",
+        "sliceName": "nameInformation",
+        "max": "2",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.name:nameInformation-GivenName",
+        "path": "RelatedPerson.name",
+        "sliceName": "nameInformation-GivenName",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation.GivenName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.telecom",
+        "path": "RelatedPerson.telecom",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "ContactInformation",
+        "definition": "The contact’s telephone number and/or e-mail address.",
+        "comment": "The cardinality mismatch between the zib (`0..1`) and FHIR (`0..*`) is explained by the containers TelephoneNumbers (`0..*`) and EmailAddresses (`0..*`) inside the ContactInformation model. The FHIR datatype ContactPoint does not have these containers.",
+        "alias": [
+          "Contactgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.6",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.1",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.12",
+            "comment": "ContactInformation"
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.telecom:telephoneNumbers",
+        "path": "RelatedPerson.telecom",
+        "sliceName": "telephoneNumbers",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.telecom:emailAddresses",
+        "path": "RelatedPerson.telecom",
+        "sliceName": "emailAddresses",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "RelatedPerson.address",
+        "path": "RelatedPerson.address",
+        "definition": "Contact’s address information.",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AddressInformation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.5",
+            "comment": "AddressInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.17",
+            "comment": "AddressInformation"
+          }
+        ]
+      }
+    ]
+  }
+}

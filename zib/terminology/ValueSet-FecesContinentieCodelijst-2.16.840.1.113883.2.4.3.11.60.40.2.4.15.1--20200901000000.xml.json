@@ -1,0 +1,189 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.2.4.15.1--20200901000000",
+  "meta": {
+    "source": "http://decor.nictiz.nl/fhir/4.0/zib2020bbr-",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ],
+    "tag": [
+      {
+        "system": "http://hl7.org/fhir/FHIR-version",
+        "code": "4.0.1"
+      }
+    ]
+  },
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.15.1--20200901000000",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.4.15.1"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "FecesContinentieCodelijst",
+  "title": "FecesContinentieCodelijst",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "FecesContinentieCodelijst",
+  "immutable": false,
+  "copyright": "This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 0
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Incontinent"
+              }
+            ],
+            "code": "72042002",
+            "display": "incontinentie voor feces",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Incontinence of feces"
+              },
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Incontinence of faeces"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "incontinentie voor feces"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "incontinentie voor ontlasting"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 1
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Af en toe een ongelukje"
+              }
+            ],
+            "code": "165230005",
+            "display": "incidenteel ontlastingsverlies",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Bowels: occasional accident"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "incidenteel ontlastingsverlies"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/ordinalValue",
+                "valueDecimal": 2
+              },
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Continent"
+              }
+            ],
+            "code": "24029004",
+            "display": "volledig continent voor ontlasting",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Bowels: fully continent"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "volledig continent voor ontlasting"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

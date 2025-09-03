@@ -1,0 +1,139 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToDrink",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToDrink",
+  "name": "ZibAbilityToDrink",
+  "title": "zib AbilityToDrink",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Being able to independently prepare and drink beverages is part of self-care. Limitations in this ability indicate a reduced ability to cope for oneself.\r\nThis activity and activities such as those including eating, getting dressed and bathing are also known as activities of daily living (ADL). These are the activities people go through in daily life. The extent to which a person is able to do all these activities by themselves is a measure for their total ability to do things independently.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToDrink v3.1.1 (2020)](https://zibs.nl/wiki/AbilityToDrink-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytodrink-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToDrink-v3.1.1(2020EN)",
+      "name": "zib AbilityToDrink-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "AbilityToDrink",
+        "comment": "The DrinkingLimitations concept (NL-CM:4.8.4) is represented using distinct Observation resources, using profile [zib-AbilityToDrink.DrinkingLimitations](http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToDrink.DrinkingLimitations). It is referenced from this resource using `Observation.hasMember`.",
+        "alias": [
+          "VermogenTotDrinken"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytodrink-v3.1.1-2020EN",
+            "map": "NL-CM:4.8.1",
+            "comment": "AbilityToDrink"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "288852001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "Drinking",
+        "definition": "Taking fluids during meals and during the day or when thirsty.",
+        "alias": [
+          "Drinken"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.8.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytodrink-v3.1.1-2020EN",
+            "map": "NL-CM:4.8.3",
+            "comment": "Drinking"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:drinkingLimitations",
+        "path": "Observation.hasMember",
+        "sliceName": "drinkingLimitations",
+        "definition": "The DrinkingLimitations concept (NL-CM:4.8.4) of zib AbilityToDrink, represented as a distinct Observation resource.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToDrink.DrinkingLimitations"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

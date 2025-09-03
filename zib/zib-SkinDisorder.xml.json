@@ -1,0 +1,237 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-SkinDisorder",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-SkinDisorder",
+  "name": "ZibSkinDisorder",
+  "title": "zib SkinDisorder",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A skin condition is a disturbance of the organ skin caused by a source to be specified later on.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SkinDisorder v3.3 (2020)](https://zibs.nl/wiki/SkinDisorder-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-skindisorder-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/SkinDisorder-v3.3(2020EN)",
+      "name": "zib SkinDisorder-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "SkinDisorder",
+        "alias": [
+          "Huidaandoening"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.1",
+            "comment": "SkinDisorder"
+          }
+        ]
+      },
+      {
+        "id": "Condition.extension:cause",
+        "path": "Condition.extension",
+        "sliceName": "cause",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/condition-dueTo"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Condition.extension:cause.value[x]",
+        "path": "Condition.extension.value[x]",
+        "short": "Cause",
+        "definition": "The cause of the problem underlying the skin disorder.",
+        "alias": [
+          "Oorzaak"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://hl7.org/fhir/StructureDefinition/Procedure",
+              "http://hl7.org/fhir/StructureDefinition/MedicationAdministration",
+              "http://hl7.org/fhir/StructureDefinition/Immunization",
+              "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.7",
+            "comment": "Cause"
+          }
+        ]
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Condition.category:skinDisorderCode",
+        "path": "Condition.category",
+        "sliceName": "skinDisorderCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "95320005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "TypeOfDisorder",
+        "definition": "A description of the patient’s type of skin disorder.",
+        "alias": [
+          "SoortAandoening"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.19.3.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.2",
+            "comment": "TypeOfDisorder"
+          }
+        ]
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "short": "Location / AnatomicalLocation",
+        "definition": "The location of the skin condition on the body.",
+        "alias": [
+          "AnatomischeLocatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.9",
+            "comment": "Location / AnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.onset[x]:onsetDateTime",
+        "path": "Condition.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "DateOfOnset",
+        "definition": "The date on which the skin condition started. A ‘vague’ date, such as only the year, is permitted.",
+        "alias": [
+          "OntstaansDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.3",
+            "comment": "DateOfOnset"
+          }
+        ]
+      },
+      {
+        "id": "Condition.note",
+        "path": "Condition.note",
+        "max": "1"
+      },
+      {
+        "id": "Condition.note.text",
+        "path": "Condition.note.text",
+        "short": "Comment",
+        "definition": "A comment on the skin condition and how to care for it.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-skindisorder-v3.3-2020EN",
+            "map": "NL-CM:19.3.6",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

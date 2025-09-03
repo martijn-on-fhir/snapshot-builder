@@ -1,0 +1,103 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-wounds.DateOfLastDressingChange",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-wounds.DateOfLastDressingChange",
+  "name": "ZibwoundsDateOfLastDressingChange",
+  "title": "zib wounds.DateOfLastDressingChange",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Date on which the dressing was last changed.",
+  "purpose": "This Observation resource represents the DateOfLastDressingChange concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Burnwound v3.4 (2020)](https://zibs.nl/wiki/Burnwound-v3.4(2020EN)), the Dutch [zib PressureUlcer v3.4 (2020)](https://zibs.nl/wiki/PressureUlcer-v3.4(2020EN)) and the Dutch [zib Wound v3.3 (2020)](https://zibs.nl/wiki/Wound-v3.3(2020EN)) (NL-CM:19.4.8/NL-CM:19.1.8/NL-CM:19.2.3).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-burnwound-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/Burnwound-v3.4(2020EN)",
+      "name": "zib Burnwound-v3.4(2020EN)"
+    },
+    {
+      "identity": "zib-pressureulcer-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/PressureUlcer-v3.4(2020EN)",
+      "name": "zib PressureUlcer-v3.4(2020EN)"
+    },
+    {
+      "identity": "zib-wound-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Wound-v3.3(2020EN)",
+      "name": "zib Wound-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the DateOfLastDressingChange concept of zibs Burnwound, PressureUlcer and Wound (NL-CM:19.4.8/NL-CM:19.1.8/NL-CM:19.2.3). It is usually part of an assessment, which is represented using the [zib-wounds.WoundCharacteristics](http://nictiz.nl/fhir/StructureDefinition/zib-wounds.WoundCharacteristics) profile. See the comment on the root of that profile for guidance on using this resource."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "360541000146109"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "DateOfLastDressingChange",
+        "definition": "The date on which the dressing was last changed.",
+        "alias": [
+          "DatumLaatsteVerbandwissel"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-burnwound-v3.4-2020EN",
+            "map": "NL-CM:19.4.8",
+            "comment": "DateOfLastDressingChange"
+          },
+          {
+            "identity": "zib-pressureulcer-v3.4-2020EN",
+            "map": "NL-CM:19.1.8",
+            "comment": "DateOfLastDressingChange"
+          },
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.3",
+            "comment": "DateOfLastDressingChange"
+          }
+        ]
+      }
+    ]
+  }
+}

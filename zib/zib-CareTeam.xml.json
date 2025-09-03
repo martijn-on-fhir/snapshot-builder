@@ -1,0 +1,248 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-CareTeam",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-CareTeam",
+  "name": "ZibCareTeam",
+  "title": "zib CareTeam",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A care team is a group of health professionals and other people involved in caring for a patient for one or more problems.",
+  "purpose": "This CareTeam resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) CareTeam v1.0 (2020)](https://zibs.nl/wiki/CareTeam-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-careteam-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/CareTeam-v1.0(2020EN)",
+      "name": "zib CareTeam-v1.0(2020EN)"
+    },
+    {
+      "identity": "zib-healthprofessional-v3.5-2020EN",
+      "uri": "https://zibs.nl/wiki/HealthProfessional-v3.5(2020EN)",
+      "name": "zib HealthProfessional-v3.5(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "CareTeam",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/CareTeam",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "CareTeam",
+        "path": "CareTeam",
+        "short": "CareTeam",
+        "alias": [
+          "ZorgTeam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.1",
+            "comment": "CareTeam"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.name",
+        "path": "CareTeam.name",
+        "short": "CareTeamName",
+        "definition": "The name of the care team.",
+        "alias": [
+          "ZorgTeamNaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.12",
+            "comment": "CareTeamName"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.participant",
+        "path": "CareTeam.participant",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "member.resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "CareTeam.participant:contactPerson",
+        "path": "CareTeam.participant",
+        "sliceName": "contactPerson",
+        "max": "1"
+      },
+      {
+        "id": "CareTeam.participant:contactPerson.member",
+        "path": "CareTeam.participant.member",
+        "short": "CareTeamMember",
+        "definition": "A contact person of the patient as member of the care team.",
+        "alias": [
+          "Contactpersoon"
+        ],
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.8",
+            "comment": "CareTeamMember"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.participant:patient",
+        "path": "CareTeam.participant",
+        "sliceName": "patient",
+        "max": "1"
+      },
+      {
+        "id": "CareTeam.participant:patient.member",
+        "path": "CareTeam.participant.member",
+        "short": "CareTeamMember",
+        "definition": "The patient as member of the care team.",
+        "alias": [
+          "Patient"
+        ],
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Patient"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.7",
+            "comment": "CareTeamMember"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.participant:healthcareProfessional",
+        "path": "CareTeam.participant",
+        "sliceName": "healthcareProfessional",
+        "max": "1"
+      },
+      {
+        "id": "CareTeam.participant:healthcareProfessional.role",
+        "path": "CareTeam.participant.role",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "CareTeam.participant:healthcareProfessional.role:healthProfessionalRole",
+        "path": "CareTeam.participant.role",
+        "sliceName": "healthProfessionalRole",
+        "short": "HealthProfessionalRole",
+        "definition": "The role the health professional fulfils in the healthcare process. For health professionals, this could be for example attender, referrer or performer.",
+        "alias": [
+          "ZorgverlenerRol"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.17.1.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.5",
+            "comment": "HealthProfessionalRole"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.participant:healthcareProfessional.member",
+        "path": "CareTeam.participant.member",
+        "short": "CareTeamMember",
+        "definition": "A health professional as a member of the care team involved in the care around the patient.",
+        "comment": "Each occurrence of the zib HealthProfessional is normally represented by _two_ FHIR resources: a PractitionerRole resource (instance of [zib-HealthProfessional-PractitionerRole](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole)) and a Practitioner resource (instance of [zib-HealthProfessional-Practitioner](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner)). The Practitioner resource is referenced from the PractitionerRole instance. For this reason, sending systems should fill the reference to the PractitionerRole instance here, and not the Practitioner resource. Receiving systems can then retrieve the reference to the Practitioner resource from that PractitionerRole instance.\r\n\r\nIn rare circumstances, there is only a Practitioner instance, in which case it is that instance which will be referenced here. However, since this should be the exception, the zib-HealthProfessional-Practitioner profile is not explicitly mentioned as a target profile.",
+        "alias": [
+          "Zorgverlener"
+        ],
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.9",
+            "comment": "CareTeamMember"
+          }
+        ]
+      },
+      {
+        "id": "CareTeam.reasonReference",
+        "path": "CareTeam.reasonReference",
+        "short": "Problem",
+        "definition": "The disease and/or the health status for which the patient receives treatment via members of the care team.",
+        "alias": [
+          "Probleem"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-careteam-v1.0-2020EN",
+            "map": "NL-CM:17.3.5",
+            "comment": "Problem"
+          }
+        ]
+      }
+    ]
+  }
+}

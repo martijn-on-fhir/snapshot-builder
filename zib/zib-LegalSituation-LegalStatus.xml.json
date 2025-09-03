@@ -1,0 +1,181 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-LegalSituation-LegalStatus",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-LegalSituation-LegalStatus",
+  "name": "ZibLegalSituationLegalStatus",
+  "title": "zib LegalSituation LegalStatus",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A legal situation can concern a legal status and/or representation.\r\n\r\nThe legal status indicates the basis on which the patient is staying in a healthcare organization. This can be either voluntary or involuntary, however the legal status is always determined by a judge.",
+  "purpose": "This Condition resource represents the LegalStatus concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) LegalSituation v2.0 (2020)](https://zibs.nl/wiki/LegalSituation-v2.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-legalsituation-v2.0-2020EN",
+      "uri": "https://zibs.nl/wiki/LegalSituation-v2.0(2020EN)",
+      "name": "zib LegalSituation-v2.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "LegalSituation",
+        "comment": "Zib LegalSituation is implemented using two profiles: this profile implements the LegalStatus concept of the zib, while <http://nictiz.nl/fhir/StructureDefinition/zib-LegalSituation-Representation> represents the Representation concept of the zib.",
+        "alias": [
+          "JuridischeSituatie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-legalsituation-v2.0-2020EN",
+            "map": "NL-CM:7.17.1",
+            "comment": "LegalSituation"
+          }
+        ]
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Condition.category:legalStatusCode",
+        "path": "Condition.category",
+        "sliceName": "legalStatusCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "303186005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "LegalStatus",
+        "definition": "The legal status that applies to the patient. The legal status indicates the basis on which the patient is staying in a healthcare organization. This can be either voluntary or involuntary, however the legal status is always determined by a judge. A patient can also receive healthcare based on a forensic status.",
+        "alias": [
+          "JuridischeStatus"
+        ],
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.17.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-legalsituation-v2.0-2020EN",
+            "map": "NL-CM:7.17.2",
+            "comment": "LegalStatus"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.onset[x]:onsetDateTime",
+        "path": "Condition.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "DateStart",
+        "definition": "The date on which the legal situation of the patient starts.",
+        "alias": [
+          "DatumAanvang"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-legalsituation-v2.0-2020EN",
+            "map": "NL-CM:7.17.3",
+            "comment": "DateStart"
+          }
+        ]
+      },
+      {
+        "id": "Condition.abatement[x]",
+        "path": "Condition.abatement[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.abatement[x]:abatementDateTime",
+        "path": "Condition.abatement[x]",
+        "sliceName": "abatementDateTime",
+        "short": "DateStop",
+        "definition": "The date on which the legal situation of the patient ends.",
+        "alias": [
+          "DatumEinde"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-legalsituation-v2.0-2020EN",
+            "map": "NL-CM:7.17.4",
+            "comment": "DateStop"
+          }
+        ]
+      }
+    ]
+  }
+}

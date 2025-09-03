@@ -1,0 +1,137 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "ContactTypeCodeLijst-to-ActEncounterCode",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/ContactTypeCodeLijst-to-ActEncounterCode",
+  "version": "0.0.1",
+  "name": "ContactTypeCodeLijst_to_ActEncounterCode",
+  "title": "ContactTypeCodeLijst to ActEncounterCode",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps ContactType codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Encounter v4.0.1 (2020)](https://zibs.nl/wiki/Encounter-v4.0.1(2020EN)) to ActEncounterCode codes as found in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.15.1.1--20200901000000",
+  "targetCanonical": "http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "target": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "element": [
+        {
+          "code": "AMB",
+          "display": "Ambulatory",
+          "target": [
+            {
+              "code": "AMB",
+              "display": "ambulatory",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "EMER",
+          "display": "Emergency",
+          "target": [
+            {
+              "code": "EMER",
+              "display": "emergency",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "FLD",
+          "display": "Field",
+          "target": [
+            {
+              "code": "FLD",
+              "display": "field",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "HH",
+          "display": "Home",
+          "target": [
+            {
+              "code": "HH",
+              "display": "home",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "IMP",
+          "display": "Inpatient",
+          "target": [
+            {
+              "code": "IMP",
+              "display": "inpatient",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "SS",
+          "display": "Short Stay",
+          "target": [
+            {
+              "code": "SS",
+              "display": "short stay",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "VR",
+          "display": "Virtual",
+          "target": [
+            {
+              "code": "VR",
+              "display": "virtual",
+              "equivalence": "equal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+      "target": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+      "element": [
+        {
+          "code": "OTH",
+          "display": "Other",
+          "target": [
+            {
+              "equivalence": "unmatched",
+              "comment": "Unmatched code in ValueSet, but is allowed to be used in Encounter.class or Encounter.classHistory.class because it has a binding of 'extensible'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

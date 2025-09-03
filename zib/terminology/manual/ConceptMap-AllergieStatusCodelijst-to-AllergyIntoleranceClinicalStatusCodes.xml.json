@@ -1,0 +1,87 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "AllergieStatusCodelijst-to-AllergyIntoleranceClinicalStatusCodes",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/AllergieStatusCodelijst-to-AllergyIntoleranceClinicalStatusCodes",
+  "version": "0.0.1",
+  "name": "AllergieStatusCodelijst_to_AllergyIntoleranceClinicalStatusCodes",
+  "title": "AllergieStatusCodelijst to AllergyIntoleranceClinicalStatusCodes",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps AllergyStatus codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AllergyIntolerance v3.3 (2020)](https://zibs.nl/wiki/AllergyIntolerance-v3.3(2020EN)) to <http://hl7.org/fhir/ValueSet/allergyintolerance-clinical> as found in `AllergyIntolerance.clinicalStatus` in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.3--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical",
+  "group": [
+    {
+      "source": "http://terminology.hl7.org/CodeSystem/v3-ActStatus",
+      "target": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+      "element": [
+        {
+          "code": "active",
+          "display": "active",
+          "target": [
+            {
+              "code": "active",
+              "display": "Active",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "obsolete",
+          "display": "obsolete",
+          "target": [
+            {
+              "code": "inactive",
+              "display": "Inactive",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "completed",
+          "display": "Completed",
+          "target": [
+            {
+              "code": "resolved",
+              "display": "Resolved",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "nullified",
+          "display": "Nullified",
+          "target": [
+            {
+              "equivalence": "unmatched",
+              "comment": "Nullified means 'entered in error'. There is no mapping for that in AllergyIntolerance.clinicalStatus. Use AllergyIntolerance.verificationStatus = 'entered-in-error'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

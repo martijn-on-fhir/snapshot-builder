@@ -1,0 +1,325 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TobaccoUse",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TobaccoUse",
+  "name": "ZibTobaccoUse",
+  "title": "zib TobaccoUse",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Tobacco is a product that comes from the leaves of the tobacco plant, which is smoked as a drug. Smokable forms of tobacco include rolling tobacco, cigarettes, cigars and pipe tobacco. This information model describes the information asked of the patient about their use of tobacco.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TobaccoUse v3.2 (2020)](https://zibs.nl/wiki/TobaccoUse-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-tobaccouse-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/TobaccoUse-v3.2(2020EN)",
+      "name": "zib TobaccoUse-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "TobaccoUse",
+        "alias": [
+          "TabakGebruik"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.1",
+            "comment": "TobaccoUse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "365980008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectivePeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.start",
+        "path": "Observation.effective[x].start",
+        "short": "StartDate",
+        "definition": "The date on which the patient started smoking.",
+        "alias": [
+          "StartDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.4",
+            "comment": "StartDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.end",
+        "path": "Observation.effective[x].end",
+        "short": "StopDate",
+        "definition": "The date on which the patient quit smoking",
+        "alias": [
+          "StopDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.5",
+            "comment": "StopDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "TobaccoUseStatus",
+        "definition": "The status of the patient’s tobacco use.",
+        "alias": [
+          "TabakGebruikStatus"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.2.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.10",
+            "comment": "TobaccoUseStatus"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Relevant comments on the patient’s use of tobacco.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.3",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:typeOfTobaccoUsed",
+        "path": "Observation.component",
+        "sliceName": "typeOfTobaccoUsed",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:typeOfTobaccoUsed.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (SNOMED 53661000146106) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1403](https://bits.nictiz.nl/browse/ZIB-1403) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "53661000146106"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:typeOfTobaccoUsed.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "TypeOfTobaccoUsed",
+        "definition": "Type of tobacco the patient uses.",
+        "alias": [
+          "SoortTabakGebruik"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.2.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.9",
+            "comment": "TypeOfTobaccoUsed"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:amount",
+        "path": "Observation.component",
+        "sliceName": "amount",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:amount.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "266918002"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:amount.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Amount",
+        "definition": "The number of cigarettes, cigars or grams of rolling tobacco consumed per day, week, month or year.",
+        "alias": [
+          "Hoeveelheid"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org"
+        },
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.6",
+            "comment": "Amount"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:packYears",
+        "path": "Observation.component",
+        "sliceName": "packYears",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:packYears.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "401201003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:packYears.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "PackYears",
+        "definition": "The unit indicating the smoker’s total exposure to tobacco smoke.  For cigarettes, this is calculated using the number of smoked packs of cigarettes per day (one pack = 20 cigarettes) times the number of years of smoking. For other forms of tobacco, this is usually converted to an equivalent cigarette consumption. Often, only the number of pack years is estimated.",
+        "alias": [
+          "PackYears"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-tobaccouse-v3.2-2020EN",
+            "map": "NL-CM:7.2.7",
+            "comment": "PackYears"
+          }
+        ]
+      }
+    ]
+  }
+}

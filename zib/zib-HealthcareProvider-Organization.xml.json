@@ -1,0 +1,175 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HealthcareProvider-Organization",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HealthcareProvider-Organization",
+  "name": "ZibHealthcareProviderOrganization",
+  "title": "zib HealthcareProvider Organization",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A healthcare provider is an organization that offers and provides medical, paramedic and/or nursing care to patients/clients. Examples include: hospitals, nursing homes, doctor’s offices.",
+  "purpose": "This Organization resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HealthcareProvider v3.4 (2020)](https://zibs.nl/wiki/HealthcareProvider-v3.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-healthcareprovider-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/HealthcareProvider-v3.4(2020EN)",
+      "name": "zib HealthcareProvider-v3.4(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Organization",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Organization",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Organization",
+        "path": "Organization",
+        "short": "HealthcareProvider",
+        "comment": "The zib HealthcareProvider is mapped to this Organization profile and a profile on Location(<http://nictiz.nl/fhir/StructureDefinition/zib-HealthcareProvider>). The Location profile acts as the focal resource of the HealthcareProvider because most references to this zib are concerned about the recording of the physical location where the care to patient/client takes place rather than the organizational information. Often there's no clear distinction between an organizational structure and a physical location. As a rule of thumb, locations are always used for recording where a service occurs, and hence where encounters and observations take place.\r\n\r\nHealthcare providers usually consist of multiple organizational levels and physical locations. The hierarchical structure may be captured by using multiple instances of this profile, using the `Organization.partOf` element to refer to their parent organization. The physical location is captured using the zib-HealthcareProvider profile, which refers this profile at the appropriate level in the hierarchy.",
+        "alias": [
+          "Zorgaanbieder"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthcareprovider-v3.4-2020EN",
+            "map": "NL-CM:17.2.1",
+            "comment": "HealthcareProvider"
+          }
+        ]
+      },
+      {
+        "id": "Organization.identifier",
+        "path": "Organization.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "HealthcareProviderIdentificationNumber",
+        "definition": "The organization’s identification number. For Dutch healthcare providers, the URA number or the AGB number is used, if possible. Depending on the context other ID's are also possible. For foreign or non-affiliated healthcare providers, another unique identification number can be used. This must be accompanied by the name and/or code of the issuing organization.",
+        "alias": [
+          "ZorgaanbiederIdentificatienummer"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthcareprovider-v3.4-2020EN",
+            "map": "NL-CM:17.2.2",
+            "comment": "HealthcareProviderIdentificationNumber"
+          }
+        ]
+      },
+      {
+        "id": "Organization.identifier:ura",
+        "path": "Organization.identifier",
+        "sliceName": "ura",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/ura"
+        }
+      },
+      {
+        "id": "Organization.identifier:agb",
+        "path": "Organization.identifier",
+        "sliceName": "agb",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/agb-z"
+        }
+      },
+      {
+        "id": "Organization.type",
+        "path": "Organization.type",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Organization.type:departmentSpecialty",
+        "path": "Organization.type",
+        "sliceName": "departmentSpecialty",
+        "short": "DepartmentSpecialty",
+        "definition": "The specialty of the healthcare provider’s department. The departmental specialty can be filled in if further indication of the healthcare provider is needed. This refers to the recognized medical specialties as stated in the BIG Act.",
+        "alias": [
+          "AfdelingSpecialisme"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.17.2.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-healthcareprovider-v3.4-2020EN",
+            "map": "NL-CM:17.2.7",
+            "comment": "DepartmentSpecialty"
+          }
+        ]
+      },
+      {
+        "id": "Organization.type:organizationType",
+        "path": "Organization.type",
+        "sliceName": "organizationType",
+        "short": "OrganizationType",
+        "definition": "The type of healthcare provider, such as general hospital, or nursing home. If this field is filled in and an AGB code is used for the HealthcareProviderIdentificationNumber, the type must match the type implicitly contained in the AGB code.",
+        "alias": [
+          "OrganisatieType"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.17.2.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-healthcareprovider-v3.4-2020EN",
+            "map": "NL-CM:17.2.4",
+            "comment": "OrganizationType"
+          }
+        ]
+      },
+      {
+        "id": "Organization.name",
+        "path": "Organization.name",
+        "short": "OrganizationName",
+        "definition": "Name of the organization. If an identification number is given, the name must match the name that corresponds to the identification number.",
+        "alias": [
+          "OrganisatieNaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthcareprovider-v3.4-2020EN",
+            "map": "NL-CM:17.2.3",
+            "comment": "OrganizationName"
+          }
+        ]
+      }
+    ]
+  }
+}

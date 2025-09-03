@@ -1,0 +1,62 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "ProbleemStatusCodelijst-to-ConditionClinicalStatusCodes",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/ProbleemStatusCodelijst-to-ConditionClinicalStatusCodes",
+  "version": "0.0.1",
+  "name": "ProbleemStatusCodelijst_to_ConditionClinicalStatusCodes",
+  "title": "ProbleemStatusCodelijst to ConditionClinicalStatusCodes",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps ProblemStatus codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Problem v4.4 (2020)](https://zibs.nl/wiki/Problem-v4.4(2020EN)) to ConditionClinicalStatusCodes codes as found in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.2--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/condition-clinical",
+  "group": [
+    {
+      "source": "http://snomed.info/sct",
+      "target": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "element": [
+        {
+          "code": "55561003",
+          "display": "Active",
+          "target": [
+            {
+              "code": "active",
+              "display": "Active",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "73425007",
+          "display": "Inactive",
+          "target": [
+            {
+              "code": "inactive",
+              "display": "Inactive",
+              "equivalence": "equal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

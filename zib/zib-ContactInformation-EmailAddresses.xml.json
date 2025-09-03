@@ -1,0 +1,113 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ContactInformation-EmailAddresses",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses",
+  "name": "ZibContactInformationEmailAddresses",
+  "title": "zib ContactInformation EmailAddresses",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Contact information includes a person's telephone numbers en e-mail addresses.",
+  "purpose": "This ContactPoint resource represents the EmailAddresses concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ContactInformation v1.2 (2020)](https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)).\r\n\r\nTo implement the entire zib, the complementary profile [zib-ContactInformation-TelephoneNumbers](http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers) should be used. Both profiles can be added in a slice with the discriminator set to `profile`/`$this`.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "ContactPoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ContactPoint",
+        "path": "ContactPoint",
+        "short": "EmailAddresses",
+        "comment": "Implementation of the \"EmailAddresses\" concept of zib ContactInformation.",
+        "alias": [
+          "EmailAdressen"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.3",
+            "comment": "EmailAddresses"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.system",
+        "path": "ContactPoint.system",
+        "short": "email",
+        "min": 1,
+        "patternCode": "email"
+      },
+      {
+        "id": "ContactPoint.value",
+        "path": "ContactPoint.value",
+        "short": "EmailAddress",
+        "definition": "The person's e-mail address",
+        "alias": [
+          "EmailAdres"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.7",
+            "comment": "EmailAddress"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.use",
+        "path": "ContactPoint.use",
+        "short": "EmailAddressType",
+        "definition": "EmailAddressType indicates whether it is a private or business e-mail address.",
+        "alias": [
+          "EmailSoort"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap EmailSoortCodelijst-to-ContactInformation-EmailAddressesUse to translate terminology from the functional model to profile terminology in ValueSet ContactInformation-EmailAddressesUse.",
+          "valueSet": "http://nictiz.nl/fhir/ValueSet/ContactInformation-EmailAddressesUse",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/EmailSoortCodelijst-to-ContactInformation-EmailAddressesUse"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.8",
+            "comment": "EmailAddressType"
+          }
+        ]
+      }
+    ]
+  }
+}

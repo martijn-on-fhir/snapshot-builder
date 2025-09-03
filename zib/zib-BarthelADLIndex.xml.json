@@ -1,0 +1,553 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-BarthelADLIndex",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-BarthelADLIndex",
+  "name": "ZibBarthelADLIndex",
+  "title": "zib BarthelADLIndex",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Barthel ADL index is a validated scale used to measure and track patients’ activities of daily living (ADL) and indirectly, the extent to which they are dependent on help.\r\nThe list comprises 10 variables: bowels, bladder, grooming, toilet use, feeding, transfers (from chair to bed and vice versa), mobility, dressing, climbing stairs and bathing, which are all given a score.\r\nThe total score is the sum of the scores of the 10 variables.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BarthelADLIndex v3.1 (2020)](https://zibs.nl/wiki/BarthelADLIndex-v3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-bartheladlindex-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/BarthelADLIndex-v3.1(2020EN)",
+      "name": "zib BarthelADLIndex-v3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "BarthelADLIndex",
+        "alias": [
+          "BarthelIndex"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.1",
+            "comment": "BarthelADLIndex"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "273302005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The Barthel ADL index is the sum of the scores of the individual variables. \r\n\r\nThe interpretation of this total score is 0-9 for serious dependence, 10-19 for slight dependence and 20 for independence. Twenty is the maximum score.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 20,
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:bowels",
+        "path": "Observation.component",
+        "sliceName": "bowels",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:bowels.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bowels.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Bowels",
+        "definition": "The bowel function describes the extent of fecal incontinence. \r\n\r\nThe measurement takes the condition as measured in the preceding week. In this scale, the following interpretations are used: \r\n\r\n*  Incontinent: incontinent or enema required.\r\n*  Accident: max. 1 accident per week.\r\n*  Continent: continent for the entire week.",
+        "alias": [
+          "Darm"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.4",
+            "comment": "Bowels"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:bladder",
+        "path": "Observation.component",
+        "sliceName": "bladder",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:bladder.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bladder.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Bladder",
+        "definition": "The bladder function describes the extent of urinary incontinence. \r\n\r\nThe measurement takes the condition as measured in the preceding week.  In this scale, the following interpretations are used: \r\n\r\n*  Incontinent: incontinent or catheter required.\r\n*  Accident: max. 1 accident per 24 hours.\r\n*  Continent: continent for the entire week or patients who can attend to their own catheter.",
+        "alias": [
+          "Blaas"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.3",
+            "comment": "Bladder"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:grooming",
+        "path": "Observation.component",
+        "sliceName": "grooming",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:grooming.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:grooming.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Grooming",
+        "definition": "Grooming indicates the extent to which a patient is capable of maintaining their hygiene and appearance. This refers to personal hygiene such as brushing teeth, brushing hair, shaving and washing. \r\n\r\nThe measurement takes the condition as measured in the preceding 24-48 hours.  In this scale, the following interpretations are used:\r\n\r\n*  Dependent: not capable of grooming independently.\r\n*  Independent: capable of brushing teeth, brushing hair, shaving and washing independently.",
+        "alias": [
+          "UiterlijkeVerzorging"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.5",
+            "comment": "Grooming"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:toiletUse",
+        "path": "Observation.component",
+        "sliceName": "toiletUse",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:toiletUse.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:toiletUse.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ToiletUse",
+        "definition": "Toilet use indicates the extent to which a patient is capable of using the toilet independently.  \r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Dependent: dependent.\r\n*  Help: needs some help but can do certain things themselves, like wiping.\r\n*  Independent: capable of using the toilet, sufficiently undressing, cleaning, getting dressed and leaving.",
+        "alias": [
+          "Toiletgebruik"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.6",
+            "comment": "ToiletUse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:feeding",
+        "path": "Observation.component",
+        "sliceName": "feeding",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:feeding.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002007"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:feeding.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Feeding",
+        "definition": "Feeding indicates the extent to which a patient is capable of eating independently. \r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Not independent: not capable of eating independently.\r\n*  Help: food is puréed; patient does feed themselves, but needs help cutting food, spreading butter, et cetera.\r\n*  Independent: capable of eating normal food (including hard food). The food can be cooked and served by others, but is not to be puréed.",
+        "alias": [
+          "Eten"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.7",
+            "comment": "Feeding"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:transfers",
+        "path": "Observation.component",
+        "sliceName": "transfers",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:transfers.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:transfers.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Transfers",
+        "definition": "Transfers indicates the extent to which a patient is capable of independently getting from a chair to the bed and vice versa.\r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Not independent: not capable of sitting up; the use of a patient hoist is required.\r\n*  Major help: help from a strong, trained individual or 2 regular individuals, but the patient can sit up by themselves.\r\n*  Minor help: a person to supervise or provide some help, either verbally or physically.\r\n*  Independent: does not need help.",
+        "alias": [
+          "Transfers"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.6--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.8",
+            "comment": "Transfers"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:mobility",
+        "path": "Observation.component",
+        "sliceName": "mobility",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:mobility.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:mobility.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Mobility",
+        "definition": "Mobility indicates the extent to which a patient is capable of moving independently. \r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Dependent: cannot move themselves.\r\n*  Independent with wheelchair: uses a wheelchair, with the ability to go around corners or open doors without help.\r\n*  Assisted walking: help from one person, for example verbally or physically.\r\n*  Independent: can move within the home or department; aids may be used.",
+        "alias": [
+          "Mobiliteit"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.7--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.9",
+            "comment": "Mobility"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:dressing",
+        "path": "Observation.component",
+        "sliceName": "dressing",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:dressing.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002010"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:dressing.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Dressing",
+        "definition": "Dressing indicates the extent to which a patient is capable of dressing and undressing themselves independently.\r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n* Dependent: dependent.\r\n* Help: needs help but can do about half themselves, such as only needing help with buttons and/or zippers.\r\n* Independent: capable of selecting and putting on clothes.",
+        "alias": [
+          "AanUitkleden"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.8--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.10",
+            "comment": "Dressing"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:managingStairs",
+        "path": "Observation.component",
+        "sliceName": "managingStairs",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:managingStairs.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002011"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:managingStairs.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ManagingStairs",
+        "definition": "Managing stairs indicates the extent to which a patient is capable of going up and down stairs independently.\r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Dependent: not capable of going up and down stairs.\r\n*  Help: needs help, for example verbally, physically or in the form of an aid.\r\n*  Independent: capable of going up and down stairs independently, and if necessary can carry their own aid.",
+        "alias": [
+          "TrappenLopen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.9--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.11",
+            "comment": "ManagingStairs"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:bathing",
+        "path": "Observation.component",
+        "sliceName": "bathing",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:bathing.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4002012"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bathing.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Bathing",
+        "definition": "Bathing indicates the extent to which a patient is capable of independently taking a bath or shower. \r\n\r\nIn this scale, the following interpretations are used:\r\n\r\n*  Dependent: not capable of bathing independently.\r\n*  Independent: capable of getting in and out of the bath or shower and bathing without help or supervision.",
+        "alias": [
+          "BadenDouchen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.2.10--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bartheladlindex-v3.1-2020EN",
+            "map": "NL-CM:4.2.12",
+            "comment": "Bathing"
+          }
+        ]
+      }
+    ]
+  }
+}

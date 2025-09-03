@@ -1,0 +1,150 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToPerformMouthcareActivities",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToPerformMouthcareActivities",
+  "name": "ZibAbilityToPerformMouthcareActivities",
+  "title": "zib AbilityToPerformMouthcareActivities",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The ability to perform mouthcare activities is part of self-care. This includes brushing teeth twice a day with fluoride toothpaste and/or cleaning (partial) dentures, cleaning jaws without teeth (edentulous jaws) and taking care of the mucous membrane of the mouth.\r\nLimitations in this ability indicate a reduced ability to cope for oneself.\r\nThis activity and activities such as those including eating, getting dressed and bathing are also known as activities of daily living (ADL). These are the activities people go through in daily life. The extent to which a person is able to do all these activities by themselves is a measure for their total ability to do things independently.\r\n\r\n(Source: Instruction card for oral hygiene, 2011)",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToPerformMouthcareActivities v3.1 (2020)](https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)",
+      "name": "zib AbilityToPerformMouthcareActivities-v3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "AbilityToPerformMouthcareActivities",
+        "alias": [
+          "VermogenTotMondverzorging"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+            "map": "NL-CM:4.13.1",
+            "comment": "AbilityToPerformMouthcareActivities"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:prosthesis",
+        "path": "Observation.extension",
+        "sliceName": "prosthesis",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Observation.extension:prosthesis.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "Prosthesis",
+        "definition": "Information on the dental aids used by the patient.",
+        "alias": [
+          "Prothese"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToPerformMouthcareActivities.Prosthesis"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+            "map": "NL-CM:4.13.4",
+            "comment": "Prosthesis"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "288470005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "DentalHygiene",
+        "definition": "Taking care of mouth and teeth/molars or dentures.",
+        "alias": [
+          "VerzorgenTanden"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.13.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+            "map": "NL-CM:4.13.2",
+            "comment": "DentalHygiene"
+          }
+        ]
+      }
+    ]
+  }
+}

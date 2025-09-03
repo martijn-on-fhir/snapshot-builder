@@ -1,0 +1,166 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToWashOneself",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToWashOneself",
+  "name": "ZibAbilityToWashOneself",
+  "title": "zib AbilityToWashOneself",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Being able to bathe independently is part of self-care. Limitations in this ability indicate a reduced ability to cope for oneself.\r\nThis activity and activities such as those including eating, drinking, and dressing are also known as activities of daily living (ADL). These are the activities people go through in daily life. The extent to which a person is able to do all these activities by themselves is a measure for their total ability to do things independently.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToWashOneself v3.1.1 (2020)](https://zibs.nl/wiki/AbilityToWashOneself-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytowashoneself-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToWashOneself-v3.1.1(2020EN)",
+      "name": "zib AbilityToWashOneself-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "AbilityToWashOneself",
+        "alias": [
+          "VermogenTotZichWassen"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytowashoneself-v3.1.1-2020EN",
+            "map": "NL-CM:4.10.1",
+            "comment": "AbilityToWashOneself"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "284785009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "BathingOneself",
+        "definition": "The washing and drying of the entire body, or body parts, such as bathing, showering, washing of hands and feet, face and hair. \r\nThe BodyPartToBeBathed concept offers the option to specify to which part of the body the limitation applies.",
+        "alias": [
+          "ZichWassen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.10.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytowashoneself-v3.1.1-2020EN",
+            "map": "NL-CM:4.10.2",
+            "comment": "BathingOneself"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:bodyPartToBeBathed",
+        "path": "Observation.component",
+        "sliceName": "bodyPartToBeBathed"
+      },
+      {
+        "id": "Observation.component:bodyPartToBeBathed.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "38866009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bodyPartToBeBathed.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "BodyPartToBeBathed",
+        "definition": "The part or parts of the body for which help bathing is wanted/necessary.",
+        "alias": [
+          "TeWassenLichaamsdeel"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.10.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytowashoneself-v3.1.1-2020EN",
+            "map": "NL-CM:4.10.3",
+            "comment": "BodyPartToBeBathed"
+          }
+        ]
+      }
+    ]
+  }
+}

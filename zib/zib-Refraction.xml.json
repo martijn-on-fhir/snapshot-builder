@@ -1,0 +1,665 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Refraction",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Refraction",
+  "name": "ZibRefraction",
+  "title": "zib Refraction",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The refraction measurement is a measurement with which the refractive error of the eye is determined. During the refraction measurement, the necessary correction is established: the spherical power (in diopters), the cylindrical power (in diopters), the axis direction (in degrees) for any cylindrical correction, the prism (in prism diopters) and any additional power of the reading area (in diopters), the so-called reading addition.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Refraction v1.0 (2020)](https://zibs.nl/wiki/Refraction-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-refraction-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/Refraction-v1.0(2020EN)",
+      "name": "zib Refraction-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "Refraction",
+        "alias": [
+          "Refractie"
+        ],
+        "constraint": [
+          {
+            "key": "zib-Refraction-1",
+            "severity": "error",
+            "human": "When component:cylindricalRefractionValue is present, component:cylindricalRefractionAxis should also be present.",
+            "expression": "component.code.coding.where(system = 'http://snomed.info/sct' and code = '251797004').exists() implies component.code.coding.where(system = 'http://snomed.info/sct' and code = '251799001').exists()"
+          },
+          {
+            "key": "zib-Refraction-2",
+            "severity": "error",
+            "human": "When component:cylindricalRefractionAxis is present, component:cylindricalRefractionValue should also be present.",
+            "expression": "component.code.coding.where(system = 'http://snomed.info/sct' and code = '251799001').exists() implies component.code.coding.where(system = 'http://snomed.info/sct' and code = '251797004').exists()"
+          },
+          {
+            "key": "zib-Refraction-3",
+            "severity": "error",
+            "human": "When component:prismValue is present, component:prismBase should also be present.",
+            "expression": "component.code.coding.where(system = 'http://snomed.info/sct' and code = '251762001').exists() implies component.code.coding.where(system = 'http://snomed.info/sct' and code = '246223004').exists()"
+          },
+          {
+            "key": "zib-Refraction-4",
+            "severity": "error",
+            "human": "When component:prismBase is present, component:prismValue should also be present.",
+            "expression": "component.code.coding.where(system = 'http://snomed.info/sct' and code = '246223004').exists() implies component.code.coding.where(system = 'http://snomed.info/sct' and code = '251762001').exists()"
+          },
+          {
+            "key": "zib-Refraction-5",
+            "severity": "error",
+            "human": "When component:sphericalEquivalent is present, component:sphericalRefractionValue should also be present.",
+            "expression": "component.code.coding.where(system = 'http://snomed.info/sct' and code = '112881000146107').exists() implies component.code.coding.where(system = 'http://snomed.info/sct' and code = '251795007').exists()"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.1",
+            "comment": "Refraction"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251718005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "RefractionDateTime",
+        "definition": "The date and time when the refraction measurement was carried out.",
+        "alias": [
+          "RefractieDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.3",
+            "comment": "RefractionDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.bodySite",
+        "path": "Observation.bodySite",
+        "short": "AnatomicalLocation",
+        "definition": "The laterality of the eye of which the refraction has been measured.",
+        "comment": "The code on this element is added to make explicit what is implicit in the zib. See [ZIB-1442](https://bits.nictiz.nl/browse/ZIB-1442) for details.",
+        "alias": [
+          "AnatomischeLocatie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "81745001"
+            }
+          ]
+        },
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.2",
+            "comment": "AnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "Observation.bodySite.extension:laterality",
+        "path": "Observation.bodySite.extension",
+        "sliceName": "laterality"
+      },
+      {
+        "id": "Observation.bodySite.extension:laterality.value[x]",
+        "path": "Observation.bodySite.extension.value[x]",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.20.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.15",
+            "comment": "Laterality"
+          }
+        ]
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "short": "RefractionMeasurementMethod",
+        "definition": "The method used to measure the refraction.",
+        "alias": [
+          "RefractieMeetMethode"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.20.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.4",
+            "comment": "RefractionMeasurementMethod"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionValue",
+        "path": "Observation.component",
+        "sliceName": "cylindricalRefractionValue",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ]
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionValue.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251797004"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ]
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionValue.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "CylindricalRefractionValue",
+        "definition": "The power of the cylinder needed to correct the cylindrical error (astigmatism), expressed in diopters. When a cylindrical refraction is registered, the axis of the cylinder must also be specified.",
+        "alias": [
+          "CilindrischeRefractieWaarde"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "minValueQuantity": {
+          "value": -10,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "maxValueQuantity": {
+          "value": 0,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.11",
+            "comment": "CylindricalRefractionValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionAxis",
+        "path": "Observation.component",
+        "sliceName": "cylindricalRefractionAxis",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ]
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionAxis.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251799001"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ]
+      },
+      {
+        "id": "Observation.component:cylindricalRefractionAxis.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "CylindricalRefractionAxis",
+        "definition": "The axis direction of the cylindrical refraction value expressed in degrees.",
+        "alias": [
+          "CilindrischeRefractieAs"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "minValueQuantity": {
+          "value": 0,
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "maxValueQuantity": {
+          "value": 180,
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "condition": [
+          "zib-Refraction-1",
+          "zib-Refraction-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.13",
+            "comment": "CylindricalRefractionAxis"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:prismValue",
+        "path": "Observation.component",
+        "sliceName": "prismValue",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ]
+      },
+      {
+        "id": "Observation.component:prismValue.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251762001"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ]
+      },
+      {
+        "id": "Observation.component:prismValue.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "PrismValue",
+        "definition": "The power of the prism, expressed in prism diopters.",
+        "comment": "The unit (prism diopter) aligns with the future version of this zib. See [ZIB-1449](https://bits.nictiz.nl/browse/ZIB-1449) for details.",
+        "alias": [
+          "PrismaWaarde"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "[p'diop]"
+        },
+        "minValueQuantity": {
+          "value": 0,
+          "system": "http://unitsofmeasure.org",
+          "code": "[p'diop]"
+        },
+        "maxValueQuantity": {
+          "value": 40,
+          "system": "http://unitsofmeasure.org",
+          "code": "[p'diop]"
+        },
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.6",
+            "comment": "PrismValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:prismBase",
+        "path": "Observation.component",
+        "sliceName": "prismBase",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ]
+      },
+      {
+        "id": "Observation.component:prismBase.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "246223004"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ]
+      },
+      {
+        "id": "Observation.component:prismBase.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "PrismBase",
+        "definition": "The base of the prism, expressed in degrees.",
+        "alias": [
+          "PrismaBasis"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "minValueQuantity": {
+          "value": 0,
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "maxValueQuantity": {
+          "value": 360,
+          "system": "http://unitsofmeasure.org",
+          "code": "deg"
+        },
+        "condition": [
+          "zib-Refraction-3",
+          "zib-Refraction-4"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.7",
+            "comment": "PrismBase"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalRefractionValue",
+        "path": "Observation.component",
+        "sliceName": "sphericalRefractionValue",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-5"
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalRefractionValue.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251795007"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-5"
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalRefractionValue.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "SphericalRefractionValue",
+        "definition": "The spherical spectacle strength power needed to correct nearsightedness (myopia) or farsightedness (hyperopia), expressed in diopters, ascending by 0.25D.",
+        "alias": [
+          "SferischeRefractieWaarde"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "minValueQuantity": {
+          "value": -25,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "maxValueQuantity": {
+          "value": 25,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "condition": [
+          "zib-Refraction-5"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.9",
+            "comment": "SphericalRefractionValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalEquivalent",
+        "path": "Observation.component",
+        "sliceName": "sphericalEquivalent",
+        "max": "1",
+        "condition": [
+          "zib-Refraction-5"
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalEquivalent.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (SNOMED 112881000146107) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1420](https://bits.nictiz.nl/browse/ZIB-1420) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "112881000146107"
+            }
+          ]
+        },
+        "condition": [
+          "zib-Refraction-5"
+        ]
+      },
+      {
+        "id": "Observation.component:sphericalEquivalent.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "SphericalEquivalent",
+        "definition": "The spherical power added to half of the cylindrical power. Expressed in diopters, ascending by 0.1D. Some equipment automatically calculates the spherical equivalent.",
+        "alias": [
+          "SferischEquivalent"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "minValueQuantity": {
+          "value": -25,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "maxValueQuantity": {
+          "value": 25,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "condition": [
+          "zib-Refraction-5"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.10",
+            "comment": "SphericalEquivalent"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:readAddition",
+        "path": "Observation.component",
+        "sliceName": "readAddition",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:readAddition.code",
+        "path": "Observation.component.code",
+        "comment": "The DefintionCodes for the concepts Refraction and ReadAddition are identical in the zib Refraction. This is recognized and fixed in future publications in [ZIB-1443](https://bits.nictiz.nl/browse/ZIB-1443). In this profile, the codes are as defined in the 2020 publication.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251718005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:readAddition.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ReadAddition",
+        "definition": "A supplement that is added to the refraction value to determine the strength of the reading glasses, expressed in diopters.",
+        "alias": [
+          "LeesAdditie"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "minValueQuantity": {
+          "value": 0,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "maxValueQuantity": {
+          "value": 5,
+          "system": "http://unitsofmeasure.org",
+          "code": "[diop]"
+        },
+        "mapping": [
+          {
+            "identity": "zib-refraction-v1.0-2020EN",
+            "map": "NL-CM:12.20.8",
+            "comment": "ReadAddition"
+          }
+        ]
+      }
+    ]
+  }
+}

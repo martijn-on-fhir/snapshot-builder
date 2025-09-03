@@ -1,0 +1,93 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-wounds.WoundWidth",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-wounds.WoundWidth",
+  "name": "ZibwoundsWoundWidth",
+  "title": "zib wounds.WoundWidth",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The width of the wound.",
+  "purpose": "This Observation resource represents the WoundWidth concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) PressureUlcer v3.4 (2020)](https://zibs.nl/wiki/PressureUlcer-v3.4(2020EN)) and the Dutch [zib Wound v3.3 (2020)](https://zibs.nl/wiki/Wound-v3.3(2020EN)) (NL-CM:19.1.10/NL-CM:19.2.13).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-pressureulcer-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/PressureUlcer-v3.4(2020EN)",
+      "name": "zib PressureUlcer-v3.4(2020EN)"
+    },
+    {
+      "identity": "zib-wound-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Wound-v3.3(2020EN)",
+      "name": "zib Wound-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the WoundWidth concept of zibs PressureUlcer and Wound (NL-CM:19.1.10/NL-CM:19.2.13). It is usually part of an assessment, which is represented using the [zib-wounds.WoundCharacteristics](http://nictiz.nl/fhir/StructureDefinition/zib-wounds.WoundCharacteristics) profile. See the comment on the root of that profile for guidance on using this resource."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "39125-0"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "WoundWidth",
+        "definition": "The width of the (decubitus) wound.",
+        "alias": [
+          "Wondbreedte"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pressureulcer-v3.4-2020EN",
+            "map": "NL-CM:19.1.10",
+            "comment": "WoundWidth"
+          },
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.13",
+            "comment": "WoundWidth"
+          }
+        ]
+      }
+    ]
+  }
+}

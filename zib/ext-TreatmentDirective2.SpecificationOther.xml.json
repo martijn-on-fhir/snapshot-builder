@@ -1,0 +1,84 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-TreatmentDirective2.SpecificationOther",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.SpecificationOther",
+  "name": "ExtTreatmentDirective2SpecificationOther",
+  "title": "ext TreatmentDirective2.SpecificationOther",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide the specification of the treatment decision when the decision is 'Other'.",
+  "purpose": "This extension represents the SpecificationOther concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TreatmentDirective2 v1.0 (2020)](https://zibs.nl/wiki/TreatmentDirective2-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-treatmentdirective2-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/TreatmentDirective2-v1.0(2020EN)",
+      "name": "zib TreatmentDirective2-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Consent"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "max": "1",
+        "isModifier": true,
+        "isModifierReason": "This extension extends the options of _deny_ and _permit_ of `Consent.provision.type` with the opportunity to provide free text. The `Consent.provision` cannot be safely interpreted if the free text in this extension is omitted, hence the reason for labeling this extension as a modifier."
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.SpecificationOther"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "SpecificationOther",
+        "definition": "Specification of the treatment decision when the decision is 'Other'.",
+        "alias": [
+          "SpecificatieAnders"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.4",
+            "comment": "SpecificationOther"
+          }
+        ]
+      }
+    ]
+  }
+}

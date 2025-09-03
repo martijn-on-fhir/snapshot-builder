@@ -1,0 +1,111 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HearingFunction.HearingAid",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HearingFunction.HearingAid",
+  "name": "ZibHearingFunctionHearingAid",
+  "title": "zib HearingFunction.HearingAid",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Hearing is the ability to observe sound, with the purpose of communicating with others, localizing the source of the sound and recognizing certain sounds. This pertains to observing the sound waves, and not processing the sounds in the brain.\r\nA hearing disorder can lead to things including communication problems.",
+  "purpose": "This DeviceUseStatement resource represents the adaptations for [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HearingFunction v3.2 (2020)](https://zibs.nl/wiki/HearingFunction-v3.2(2020EN)) of [zib MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-hearingfunction-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/HearingFunction-v3.2(2020EN)",
+      "name": "zib HearingFunction-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "DeviceUseStatement",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DeviceUseStatement",
+        "path": "DeviceUseStatement",
+        "short": "MedicalDevice / HearingAid",
+        "definition": "The medical aid used to help the patient hear.",
+        "comment": "This is a specialization of the [zib-MedicalDevice](http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice) profile to represent HearingAid devices within the context of zib HearingFunction.",
+        "alias": [
+          "HorenHulpmiddel"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:4.17.4",
+            "comment": "HearingAid"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.extension:location",
+        "path": "DeviceUseStatement.extension",
+        "sliceName": "location"
+      },
+      {
+        "id": "DeviceUseStatement.extension:location.value[x]",
+        "path": "DeviceUseStatement.extension.value[x]",
+        "comment": "Please note that this zib concept (Location::HealthcareProvider) is also mapped on the `Procedure.location` element in profile [zib-Procedure-event](http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-event). The reason for this is that this zib concept aligns with the Location::HealthcareProvider concept in zib Procedure (NL-CM:14.1.5), but only for the situation that the Procedure is about placing the implant which is described using this instance of zib MedicalDevice. This is normally not the case in the context of hearing aids, so the mapping in zib-Procedure-event should be ignored in this situation."
+      },
+      {
+        "id": "DeviceUseStatement.device",
+        "path": "DeviceUseStatement.device",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HearingFunction.HearingAid.Product"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:stoma",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "stoma",
+        "max": "0"
+      },
+      {
+        "id": "DeviceUseStatement.bodySite",
+        "path": "DeviceUseStatement.bodySite",
+        "short": "Location / AnatomicalLocation / DeviceAnatomicalLocation",
+        "definition": "The anatomical location of the hearing aid, such as: ‘left ear’.",
+        "alias": [
+          "HulpmiddelAnatomischeLocatie"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.17.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-hearingfunction-v3.2-2020EN",
+            "map": "NL-CM:10.1.6",
+            "comment": "DeviceAnatomicalLocation"
+          }
+        ]
+      }
+    ]
+  }
+}

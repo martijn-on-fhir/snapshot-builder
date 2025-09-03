@@ -1,0 +1,123 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Payer.PayerPerson",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Payer.PayerPerson",
+  "name": "ZibPayerPayerPerson",
+  "title": "zib Payer.PayerPerson",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Payers are organizations or individuals that pay for the healthcare supplied to the patient. These organizations or individuals can be: facilities or people who financially guarantee or who are responsible for the patient (such as parents or guardians of minors), organizations with direct financial responsibility, combinations of these or the patient themselves.",
+  "purpose": "This Coverage resource represents the PayerPerson concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Payer v3.1.1 (2020)](https://zibs.nl/wiki/Payer-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-payer-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/Payer-v3.1.1(2020EN)",
+      "name": "zib Payer-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Coverage",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coverage",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Coverage",
+        "path": "Coverage",
+        "short": "Payer",
+        "comment": "The zib Payer is split into two focal profiles on Coverage based on the PayerPerson and InsuranceCompany containers. These two containers cannot be profiled within one profile because they both require mapping different concepts on elements such as `.payor` and `.type`.\r\n\r\nThe zib container Payer.PayerPerson is mapped to this Coverage profile and uses the profile [zib-Patient](http://nictiz.nl/fhir/StructureDefinition/zib-Patient), [zib-ContactPerson](http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson) or [zib-Payer-Organization](http://nictiz.nl/fhir/StructureDefinition/zib-Payer-Organization) to capture the PayerName, AddressInformation and ContactInformation concepts. These profiles are referenced using the `.payor` element.",
+        "alias": [
+          "Betaler"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.1",
+            "comment": "Payer"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.extension:bankInformation",
+        "path": "Coverage.extension",
+        "sliceName": "bankInformation",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Payer.BankInformation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Coverage.status",
+        "path": "Coverage.status",
+        "comment": "When systems don't record an explicit status and no status can be derived from the `.period.start` and `.period.end` elements it is expected that only _active_ Coverage resources are exchanged."
+      },
+      {
+        "id": "Coverage.type",
+        "path": "Coverage.type",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/coverage-selfpay",
+              "code": "pay"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Coverage.payor",
+        "path": "Coverage.payor",
+        "short": "PayerPerson",
+        "definition": "In the PayerPerson concept a person is a natural person or a juridical person, such as an organization, municipality, etc.",
+        "comment": "If the resource referenced is conformant to one of the target zib profiles, these profiles provide a mapping to the relevant zib Payer concepts. If it is not conformant to one of these zib profiles, it SHALL have at least the following FHIR elements filled to be compliant with the subsequent zib Payer concepts:\r\n* `name.text` - PayerPerson::PayerName (NL-CM:1.1.5)\r\n* `address` - AddressInformation (NL-CM:1.1.17)\r\n* `telecom` - ContactInformation (NL-CM:1.1.12)",
+        "alias": [
+          "BetalerPersoon"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Payer-Organization",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Patient",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.2",
+            "comment": "PayerPerson"
+          }
+        ]
+      }
+    ]
+  }
+}

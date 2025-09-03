@@ -1,0 +1,122 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "nl-core-HealthProfessional-Practitioner",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner",
+  "name": "NlcoreHealthProfessionalPractitioner",
+  "title": "nl core HealthProfessional Practitioner",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A health professional is a person who is authorized to perform actions in the field of individual healthcare.",
+  "purpose": "A derived profile from [zib-HealthProfessional-Practitioner](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner) to provide a version better suited for implementation purposes. This profile augments the base profile with elements found in the various use cases that have adopted the zib.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-healthprofessional-v3.5-2020EN",
+      "uri": "https://zibs.nl/wiki/HealthProfessional-v3.5(2020EN)",
+      "name": "zib HealthProfessional-v3.5(2020EN)"
+    },
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Practitioner",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Practitioner",
+        "path": "Practitioner",
+        "comment": "The zib HealthProfessional is mapped for all but one concept (HealthProfessionalRole) to this Practitioner profile and a profile on PractitionerRole (<http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole>). The PractitionerRole resource covers the recording of the location and types of services that HealthProfessionals are able to provide for a HealthcareProvider. The zib concepts Specialty and HealthcareProvider are therefore mapped onto PractitionerRole.\r\n\r\nAlthough the zib concept name HealthProfessionalRole superficially seems to match the PractitionerRole resource, this is not the case based on the definition and values of that concept. In FHIR, the role that a HealthProfessional fulfills is captured as part of the clinical resource for that specific case, for example in the `Procedure.performer.role` element. This prevents the creation of duplicate HealthProfessional instances for each clinical situation where the HealthProfessional performs a different role in the process.",
+        "alias": [
+          "nl-core-HealthProfessional-Practitioner"
+        ]
+      },
+      {
+        "id": "Practitioner.name:nameInformation",
+        "path": "Practitioner.name",
+        "sliceName": "nameInformation",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.name:nameInformation-GivenName",
+        "path": "Practitioner.name",
+        "sliceName": "nameInformation-GivenName",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation.GivenName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.telecom:telephoneNumbers",
+        "path": "Practitioner.telecom",
+        "sliceName": "telephoneNumbers",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactInformation-TelephoneNumbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.telecom:emailAddresses",
+        "path": "Practitioner.telecom",
+        "sliceName": "emailAddresses",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactInformation-EmailAddresses"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.address",
+        "path": "Practitioner.address",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-AddressInformation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

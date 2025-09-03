@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "icd-10-nl",
+  "language": "en-US",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-US\" xml:lang=\"en-US\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2009-10-07T12:00:00Z"
+      }
+    }
+  ],
+  "url": "http://hl7.org/fhir/sid/icd-10-nl",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.6.3.2"
+    }
+  ],
+  "version": "2009-10-07T12:00:00",
+  "name": "ICD10_Dutch_Translation",
+  "title": "ICD10, Dutch Translation",
+  "status": "unknown",
+  "publisher": "HL7 International / FHIR Infrastructure",
+  "contact": [
+    {
+      "name": "FHIR project team",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/fiwg"
+        }
+      ]
+    }
+  ],
+  "description": "Hirs, W., H.W. Becker, C. van Boven, S.K. Oskam, I.M. Okkes, H. Lamberts. ICD-10, Dutch Translation, 200403. Amsterdam: Department of General Practice, Academic Medical Center/University of Amsterdam, Dutch College of General Practitioners (NHG), March 20",
+  "purpose": "This CodeSystem is meant to satisfy basic FHIR validator needs. It was generated with fixed values from non-authorative source for the structuredefinition-wg extension, `publisher`, `.contact` and `.caseSensitive`. These properties may or may not be correct but should not influence validation results.",
+  "caseSensitive": true,
+  "content": "not-present"
+}

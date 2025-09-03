@@ -1,0 +1,317 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-NameInformation",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation",
+  "name": "ZibNameInformation",
+  "title": "zib NameInformation",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A person's official name information, including given names, last name and possibly the partner's last name.",
+  "purpose": "This HumanName datatype represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) NameInformation v1.1 (2020)](https://zibs.nl/wiki/NameInformation-v1.1(2020EN)), except for the GivenName concept.\r\n\r\nFor the entire zib, the complementary profile [zib-NameInformation.GivenName](http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation.GivenName) should be used. Both profiles can be added in a slice with the discriminator set to `value`/`use`.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-nameinformation-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/NameInformation-v1.1(2020EN)",
+      "name": "zib NameInformation-v1.1(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "HumanName",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/HumanName",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "HumanName",
+        "path": "HumanName",
+        "short": "NameInformation",
+        "definition": "This slice represents the person's official name information, including given names, last name and possibly the partner's last name.",
+        "comment": "This `.name` element represents a Dutch name according to the [zib NameInformation v1.1 (2020)](https://zibs.nl/wiki/NameInformation-v1.1(2020EN)) (except for the GivenName concept).\r\n\r\n**Note 1**: The zib cannot be represented straightforward in FHIR. Especially note the guidance on `.given` on how to map the FirstNames and Initials concepts, and on `.prefix`/`.suffix` on how to map the Titles concept.\r\n\r\n**Note 2**: This element should only contain a person's _official_ names. The GivenName concept is represented in another `.name` element with `.name.use` = _usual_.",
+        "alias": [
+          "Naamgegevens"
+        ],
+        "constraint": [
+          {
+            "key": "zib-NameInformation-1",
+            "severity": "error",
+            "human": "If a prefix for a family name is specified, the family name is expected as well",
+            "expression": "family.extension('http://hl7.org/fhir/StructureDefinition/humanname-own-prefix').empty().not() implies family.extension('http://hl7.org/fhir/StructureDefinition/humanname-own-name').empty().not()"
+          },
+          {
+            "key": "zib-NameInformation-2",
+            "severity": "error",
+            "human": "If the prefix for a partner family name is specified, the partner family name is expected as well",
+            "expression": "family.extension('http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix').empty().not() implies family.extension('http://hl7.org/fhir/StructureDefinition/humanname-partner-name').empty().not()"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.1",
+            "comment": "NameInformation"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.extension:nameUsage",
+        "path": "HumanName.extension",
+        "sliceName": "nameUsage",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.extension:nameUsage.value[x]",
+        "path": "HumanName.extension.value[x]",
+        "short": "NameUsage",
+        "definition": "This concept indicates the last name or order of last names with which the person is to be addressed.",
+        "alias": [
+          "Naamgebruik"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap NaamgebruikCodelijst-to-HumanNameAssemblyOrder to translate terminology from the functional model to profile terminology in ValueSet HumanNameAssemblyOrder.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/name-assembly-order|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/NaamgebruikCodelijst-to-HumanNameAssemblyOrder"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.7",
+            "comment": "NameUsage"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.use",
+        "path": "HumanName.use",
+        "min": 1,
+        "patternCode": "official"
+      },
+      {
+        "id": "HumanName.family.extension:prefix",
+        "path": "HumanName.family.extension",
+        "sliceName": "prefix",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:prefix.value[x]",
+        "path": "HumanName.family.extension.value[x]",
+        "short": "Prefix",
+        "definition": "Prefix to the person’s own last name.",
+        "alias": [
+          "Voorvoegsels"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.11",
+            "comment": "Prefix"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:lastName",
+        "path": "HumanName.family.extension",
+        "sliceName": "lastName",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:lastName.value[x]",
+        "path": "HumanName.family.extension.value[x]",
+        "short": "LastName",
+        "definition": "The person’s official last name",
+        "alias": [
+          "Achternaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.10",
+            "comment": "LastName"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:partnerPrefix",
+        "path": "HumanName.family.extension",
+        "sliceName": "partnerPrefix",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:partnerPrefix.value[x]",
+        "path": "HumanName.family.extension.value[x]",
+        "short": "PartnerPrefix",
+        "definition": "Prefix to the partner’s last name.",
+        "alias": [
+          "VoorvoegselsPartner"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.9",
+            "comment": "PartnerPrefix"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:partnerLastName",
+        "path": "HumanName.family.extension",
+        "sliceName": "partnerLastName",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/humanname-partner-name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.family.extension:partnerLastName.value[x]",
+        "path": "HumanName.family.extension.value[x]",
+        "short": "PartnerLastName",
+        "definition": "Partner’s official last name.",
+        "alias": [
+          "AchternaamPartner"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.8",
+            "comment": "PartnerLastName"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.given",
+        "path": "HumanName.given",
+        "short": "FirstName / Initial",
+        "definition": "One of a person’s official first names or the initial if the full name is not known.",
+        "comment": "This element represents the FirstNames and Initials concepts of zib NameInformation, but the FHIR implementation deviates from the zib model. The zib defines these concepts as a list of official first names (as a single string) and a list of initials (as a single string), both optional. They both represent the official name(s) of a person and thus represent the same concept. In FHIR however, each first name is either a complete name or an initial, but not both. In addition, each name may be defined separately.\r\n\r\nTherefore, the zib concepts are implemented here in the following way:\r\n\r\n* Systems SHOULD use a `.given` element for each official first name that they know of (either as a full name or an initial), in order of appearance (as specified by FHIR).\r\n* Each of these elements:\r\n  * SHOULD be populated with the complete name if it is known, or with the initial if no more information is available.\r\n  * SHALL be augmented with `extension:givenOrInitial` with code _BR_ when it represents a full name or code _IN_ when it represents an initial.\r\n\r\nInitials should thus not be communicated for each complete first name that is known, in contrast to what is specified by the zib. Receiving systems can recreate initials from the full names if needed.\r\n\r\nIf a system _does_ however only have a list of official first names and a separate list of official initials, without knowing the relationship between these two, only the full names SHOULD be communicated, while an additional `.name` instance MAY be used to communicate the initials. It is expected that the second instance just contains the initials and no other information from the zib. Receiving systems MAY ignore the second instance.\r\n\r\n**Note 1:** The GivenName concept should not be included here but in a separate `.name` instance where `.use` = _usual_.\r\n\r\n**Note 2**: As specified by FHIR, multiple official first names MAY be combined in a single `.given` element (separated by spaces), as long as the `.given` elements can be concatenated to form the full first name representation, and the 'extension:givenOrInitial` is used to mark the element as containing either full names or the initials. This pattern is strongly discouraged as it is hard to determine if the value pertains multiple names or a single combined name containing spaces.",
+        "alias": [
+          "Voornaam",
+          "Initiaal"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.4",
+            "comment": "FirstNames"
+          },
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.5",
+            "comment": "Initials"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.given.extension",
+        "path": "HumanName.given.extension",
+        "min": 1
+      },
+      {
+        "id": "HumanName.given.extension:givenOrInitial",
+        "path": "HumanName.given.extension",
+        "sliceName": "givenOrInitial",
+        "min": 1,
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "HumanName.prefix",
+        "path": "HumanName.prefix",
+        "short": "Titles",
+        "definition": "Noble and scientific titles. These can assist in formulating oral and formal addresing titles.",
+        "comment": "The zib concept 'titles' is mapped to elements `HumanName.prefix` and `HumanName.suffix`. Semantically this mapping is not complete: the zib uses a single concept that contains all the required information about noble and scientific titles, while FHIR captures the same information in a structured way.\r\n\r\n**Export:**\r\n\r\nSystems are expected to transform as much as possible to the FHIR datamodel and thereby to be as explicit as possible. Note that in order to mark the type of a prefix, you can use the FHIR standard extension for ISO 21090 EN Qualifiers. Examples include the use of the qualifier _HON_ to indicate honorific prefixes and _AC_ for academic prefixes.\r\n\r\nIf it is not possible to breakup the zib concept titles to positioned prefixes and suffixes, the prefix element is used to store all information.\r\n\r\n**Import:**\r\n\r\nSystems need to expect and be resilient for a broader range of information stored in the prefix element than stated by it's definition.",
+        "alias": [
+          "Titels"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.12",
+            "comment": "Titles"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.suffix",
+        "path": "HumanName.suffix",
+        "short": "Titles",
+        "definition": "Noble and scientific titles. These can assist in formulating oral and formal addresing titles.",
+        "comment": "The zib concept 'titles' is mapped to elements `HumanName.prefix` and `HumanName.suffix`. Semantically this mapping is not complete: the zib uses a single concept that contains all the required information about noble and scientific titles, while FHIR captures the same information in a structured way.\r\n\r\n**Export:**\r\n\r\nSystems are expected to transform as much as possible to the FHIR datamodel and thereby to be as explicit as possible. Note that in order to mark the type of a prefix, you can use the FHIR standard extension for ISO 21090 EN Qualifiers. Examples include the use of the qualifier _HON_ to indicate honorific prefixes and _AC_ for academic prefixes.\r\n\r\nIf it is not possible to breakup the zib concept titles to positioned prefixes and suffixes, the prefix element is used to store all information.\r\n\r\n**Import:**\r\n\r\nSystems need to expect and be resilient for a broader range of information stored in the prefix element than stated by it's definition.",
+        "alias": [
+          "Titels"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.12",
+            "comment": "Titles"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ApgarScore-10Minute",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ApgarScore-10Minute",
+  "name": "ZibApgarScore10Minute",
+  "title": "zib ApgarScore 10Minute",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Apgar score represents the overall clinical status of a newborn child. This is evaluated one, five and ten minutes after birth based on 5 parameters: Appearance, Pulse, Grimace, Activity, Respiration. If the score measured at 5 minutes is < 8, the Apgar score is measured again at 10, 15, 20 minutes etc. until the score = 8.\r\n\r\nThe zib explicitly defines the Apgar score at 1, 5 and 10 minutes after birth. This profile represents the Apgar score at 10 minutes after birth. Profiles have also been defined for the Apgar score [at 1 minute](http://nictiz.nl/fhir/StructureDefinition/zib-ApgarScore-1Minute) and [at 5 minutes](http://nictiz.nl/fhir/StructureDefinition/zib-ApgarScore-5Minute) after birth.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ApgarScore v1.0.1 (2020)](https://zibs.nl/wiki/ApgarScore-v1.0.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-apgarscore-v1.0.1-2020EN",
+      "uri": "https://zibs.nl/wiki/ApgarScore-v1.0.1(2020EN)",
+      "name": "zib ApgarScore-v1.0.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "ApgarScore",
+        "alias": [
+          "ApgarScore"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.1",
+            "comment": "ApgarScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "9271-8"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "ApgarScoreDateTime",
+        "definition": "The day and time at which the Apgar score is registered.",
+        "alias": [
+          "ApgarScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.3",
+            "comment": "ApgarScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "ApgarScoreTotal",
+        "definition": "Total of the Apgar score. The total score has a range from 0 - 10.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "ApgarScoreTotaal"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 10,
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.2",
+            "comment": "ApgarScoreTotal"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the Apgar score.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.9",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:respiratoryScore",
+        "path": "Observation.component",
+        "sliceName": "respiratoryScore",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:respiratoryScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "32405-3"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:respiratoryScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "RespiratoryScore",
+        "definition": "The Apgar subscore for respiration.",
+        "alias": [
+          "AdemhalingScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.16.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.4",
+            "comment": "RespiratoryScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:appearanceScore",
+        "path": "Observation.component",
+        "sliceName": "appearanceScore",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:appearanceScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "32401-2"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:appearanceScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "AppearanceScore",
+        "definition": "The Apgar subscore for skin color/appearance.",
+        "alias": [
+          "HuidskleurScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.16.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.7",
+            "comment": "AppearanceScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:pulseScore",
+        "path": "Observation.component",
+        "sliceName": "pulseScore",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:pulseScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "32402-0"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:pulseScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "PulseScore",
+        "definition": "The Apgar subscore for pulse.",
+        "alias": [
+          "HartslagScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.16.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.5",
+            "comment": "PulseScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:grimaceScore",
+        "path": "Observation.component",
+        "sliceName": "grimaceScore",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:grimaceScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "32404-6"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:grimaceScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "GrimaceScore",
+        "definition": "The Apgar subscore for grimace.",
+        "alias": [
+          "ReflexenScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.16.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.8",
+            "comment": "GrimaceScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:muscleToneScore",
+        "path": "Observation.component",
+        "sliceName": "muscleToneScore",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:muscleToneScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "32403-8"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:muscleToneScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "MuscleToneScore",
+        "definition": "The Apgar subscore for activity/muscle tone.",
+        "alias": [
+          "SpierspanningScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.16.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-apgarscore-v1.0.1-2020EN",
+            "map": "NL-CM:12.16.6",
+            "comment": "MuscleToneScore"
+          }
+        ]
+      }
+    ]
+  }
+}

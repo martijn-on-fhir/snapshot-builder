@@ -1,0 +1,105 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TimeInterval",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TimeInterval",
+  "name": "ZibTimeInterval",
+  "title": "zib TimeInterval",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A time interval indicates the time between two moments in time. Interval can be defined by a start time and end time, start time and duration or duration and end time.",
+  "purpose": "This Period datatype profile is one of the three StructureDefinitions that can be used to represent the Dutch (partial) [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TimeInterval v1.0 (2020)](https://zibs.nl/wiki/TimeInterval-v1.0(2020EN)). \r\n\r\nThis zib is represented in FHIR by a combination of two datatypes: _Period_ and _Duration_. To support this zib across different FHIR resource types, three related StructureDefinitions are provided:\r\n\r\n* [ext-TimeInterval.Duration](http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Duration): extension to provide the _Duration_ datatype to resource types where no element with this datatype is normally available. This exentions should not be used in isolation, but only via one of the two resources described below!\r\n* [zib-TimeInterval](http://nictiz.nl/fhir/StructureDefinition/zib-TimeInterval) (this profile): profile on the _Period_ datatype that defines mappings to zib TimeInterval and brings in the ext-TimeInterval.Duration extension mentioned above. For resource types that natively support an element of the _Period_ datatype but not of the _Duration_ datatype, this profile should be used.\r\n* [ext-TimeInterval.Period](http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Period): extension to provide the _Period_ datatype plus the _Duration_ extension mentioned above, with mappings to zib TimeInterval. For resource types that support neither elements of datatype _Period_ or _Duration_, this extension should be used. *Note*: In hindsight the name of this extension is confusing, 'ext-TimeInterval' would have been better suited.\r\n* *Note*: when the resource type natively supports elements of datatype _Period_ and _Duration_, the zib should be mapped onto these elements directly.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-timeinterval-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/TimeInterval-v1.0(2020EN)",
+      "name": "zib TimeInterval-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "Period",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Period",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Period",
+        "path": "Period",
+        "short": "TimeInterval",
+        "alias": [
+          "TijdsInterval"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-timeinterval-v1.0-2020EN",
+            "map": "NL-CM:20.3.1",
+            "comment": "TimeInterval"
+          }
+        ]
+      },
+      {
+        "id": "Period.extension:duration",
+        "path": "Period.extension",
+        "sliceName": "duration",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Duration"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Period.start",
+        "path": "Period.start",
+        "short": "startDateTime",
+        "definition": "The start date and time of the interval.",
+        "alias": [
+          "startDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-timeinterval-v1.0-2020EN",
+            "map": "NL-CM:20.3.2",
+            "comment": "startDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Period.end",
+        "path": "Period.end",
+        "short": "endDateTime",
+        "definition": "The end date and time of the interval.",
+        "alias": [
+          "eindDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-timeinterval-v1.0-2020EN",
+            "map": "NL-CM:20.3.3",
+            "comment": "endDateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

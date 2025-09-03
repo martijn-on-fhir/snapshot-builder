@@ -1,0 +1,480 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ComfortScale",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ComfortScale",
+  "name": "ZibComfortScale",
+  "title": "zib ComfortScale",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Comfort Behaviour scale/ComfortNeo scale is an assessment tool, that is used to assess the pain behaviour of neonates (newborn).\r\nThe Comfort Behaviour scale has 7 observation points that need to be addressed. For each observation a value is assigned from a 5-point scale, the final score indicates whether the observed child suffers pain and 'how much'. The score is combined with an NRS score that is completed by the nurses on basis of clinical experience.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ComfortScale v1.1 (2020)](https://zibs.nl/wiki/ComfortScale-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-comfortscale-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/ComfortScale-v1.1(2020EN)",
+      "name": "zib ComfortScale-v1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "ComfortScale",
+        "alias": [
+          "ComfortScore"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.1",
+            "comment": "ComfortScale"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108301000146109"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "ScoreDateTime",
+        "definition": "The date and time at which the Comfort Behaviour scale/ComfortNeo scale was determined.",
+        "alias": [
+          "ScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.11",
+            "comment": "ScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 35.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 35,
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.12",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:alertness",
+        "path": "Observation.component",
+        "sliceName": "alertness",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:alertness.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:alertness.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Alertness",
+        "definition": "Observation Alertness",
+        "alias": [
+          "Alertheid"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.3",
+            "comment": "Alertness"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:calmnessAgitation",
+        "path": "Observation.component",
+        "sliceName": "calmnessAgitation",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:calmnessAgitation.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:calmnessAgitation.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Calmness_Agitation",
+        "definition": "Observation Calmness/agitation",
+        "alias": [
+          "Kalmte_Agitatie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.4",
+            "comment": "Calmness_Agitation"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:respiratoryResponse",
+        "path": "Observation.component",
+        "sliceName": "respiratoryResponse",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:respiratoryResponse.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:respiratoryResponse.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "RespiratoryResponse",
+        "definition": "Observation Respiratory response (only in mechanically ventilated children)",
+        "alias": [
+          "Ademhalingsreactie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.5",
+            "comment": "RespiratoryResponse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:crying",
+        "path": "Observation.component",
+        "sliceName": "crying",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:crying.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:crying.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Crying",
+        "definition": "Observation Crying (only in spontaneously breathing children)",
+        "alias": [
+          "Huilen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.6",
+            "comment": "Crying"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:bodyMovement",
+        "path": "Observation.component",
+        "sliceName": "bodyMovement",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:bodyMovement.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bodyMovement.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "BodyMovement",
+        "definition": "Observation Physical movement",
+        "alias": [
+          "Lichaamsbeweging"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.8",
+            "comment": "BodyMovement"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:facialTone",
+        "path": "Observation.component",
+        "sliceName": "facialTone",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:facialTone.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:facialTone.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "FacialTone",
+        "definition": "Observation Facial tension",
+        "alias": [
+          "Gezichtsspanning"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.6--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.9",
+            "comment": "FacialTone"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:bodyMuscleTone",
+        "path": "Observation.component",
+        "sliceName": "bodyMuscleTone",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:bodyMuscleTone.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12012010"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bodyMuscleTone.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "BodyMuscleTone",
+        "definition": "Observation Muscle tone",
+        "alias": [
+          "Spierspanning"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.12.7--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-comfortscale-v1.1-2020EN",
+            "map": "NL-CM:12.12.10",
+            "comment": "BodyMuscleTone"
+          }
+        ]
+      }
+    ]
+  }
+}

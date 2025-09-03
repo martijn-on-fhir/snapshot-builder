@@ -1,0 +1,221 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Mobility",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility",
+  "name": "ZibMobility",
+  "title": "zib Mobility",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Mobility describes the abilities and any limitations in all aspects of mobility, such as changing position, walking and moving forward, in some cases with the help of an aid.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Mobility v3.3 (2020)](https://zibs.nl/wiki/Mobility-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-mobility-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Mobility-v3.3(2020EN)",
+      "name": "zib Mobility-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "Mobility",
+        "comment": "Several concepts of zib Mobility are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* Walking (NL-CM:4.3.3): [zib-Mobility.Walking](http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.Walking)\r\n* ClimbingStairs (NL-CM:4.3.18): [zib-Mobility.ClimbingStairs](http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.ClimbingStairs)\r\n* ChangingPosition (NL-CM:4.3.8): [zib-Mobility.ChangingPosition](http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.ChangingPosition)\r\n* MaintainingPosition (NL-CM:4.3.12): [zib-Mobility.MaintainingPosition](http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.MaintainingPosition)\r\n* Transfer (NL-CM:4.3.5): [zib-Mobility.Transfer](http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.Transfer)",
+        "alias": [
+          "Mobiliteit"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-mobility-v3.3-2020EN",
+            "map": "NL-CM:4.3.1",
+            "comment": "Mobility"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:medicalDevice",
+        "path": "Observation.extension",
+        "sliceName": "medicalDevice",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Observation.extension:medicalDevice.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "MedicalDevice",
+        "definition": "Description of medical aids that can be used for limitations in mobility.",
+        "alias": [
+          "MedischHulpmiddel"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-mobility-v3.3-2020EN",
+            "map": "NL-CM:4.3.4",
+            "comment": "MedicalDevice"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "301438001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the patient’s mobility.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-mobility-v3.3-2020EN",
+            "map": "NL-CM:4.3.16",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:walking",
+        "path": "Observation.hasMember",
+        "sliceName": "walking",
+        "definition": "The Walking concept (NL-CM:4.3.3) of zib Mobility, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.Walking"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:climbingStairs",
+        "path": "Observation.hasMember",
+        "sliceName": "climbingStairs",
+        "definition": "The ClimbingStairs concept (NL-CM:4.3.18) of zib Mobility, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.ClimbingStairs"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:changingPosition",
+        "path": "Observation.hasMember",
+        "sliceName": "changingPosition",
+        "definition": "The ChangingPosition concept (NL-CM:4.3.8) of zib Mobility, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.ChangingPosition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:maintainingPosition",
+        "path": "Observation.hasMember",
+        "sliceName": "maintainingPosition",
+        "definition": "The MaintainingPosition concept (NL-CM:4.3.12) of zib Mobility, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.MaintainingPosition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:transfer",
+        "path": "Observation.hasMember",
+        "sliceName": "transfer",
+        "definition": "The Transfer concept (NL-CM:4.3.5) of zib Mobility, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Mobility.Transfer"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

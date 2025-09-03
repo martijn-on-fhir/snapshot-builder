@@ -1,0 +1,212 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-BodyWeight",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-BodyWeight",
+  "name": "ZibBodyWeight",
+  "title": "zib BodyWeight",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Body weight is the common name for (human) body mass.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BodyWeight v3.2 (2020)](https://zibs.nl/wiki/BodyWeight-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-bodyweight-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/BodyWeight-v3.2(2020EN)",
+      "name": "zib BodyWeight-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/pattern-VitalSigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "BodyWeight",
+        "comment": "**HL7 Vital Signs compatibility**\r\n\r\nAlthough this profile represents a vital signs measurement, it is *not* directly based on the HL7 Vital Signs profile because of two issues in its current version that prevent it from being used for the exchange of zibs (see below). However, an effort has been made to make this profile functionally equivalent to (a profile derived from) the [HL7 Vital Signs BodyWeight profile](http://hl7.org/fhir/StructureDefinition/bodyweight). Instances for both profiles should be highly compatible.\r\n\r\nThis means that it should be possible to mostly validate an instance for this profile against the HL7 Vital Signs counterpart, _except_ for references on `Observation.hasMember` and `Observation.derivedFrom`. The base HL7 Vital Signs profile restricts the targets of these element to itself, which is a requirement that can never be satisfied for instances of profiles that are not directly derived from it.\r\n\r\nPlease note that this profile implements the zib and can therefore be more restricted than its HL7 counterpart. It should be regarded as a derived profile rather than a direct recreation of the HL7 version.\r\n\r\n**Differences with the HL7 Vital Signs counterpart**\r\n\r\n* The _required_ terminology binding on `Observation.component` to the [Vital Signs Units](http://hl7.org/fhir/ValueSet/ucum-vitals-common) dataset makes it impossible to use `.component` for representing anything else than a Quantity (like a CodeableConcept or a boolean). This binding has therefore been omitted in the current profile.\r\n* The `mustSupport` = _true_ flag found on numerous elements isn't further specified in the HL7 Vital Signs IG, as is required by FHIR. This flag has therefore been omitted from the current profile.\r\n* The target restriction on `Observation.hasMember` and `Observation.derivedFrom` to the HL7 Vital Signs profile cannot be fulfilled. This restriction has therefore been omitted from the current profile.\r\n\r\nIt might happen that for some concepts, the zib uses a different (but compatible) way than what is recommended by the [HL7 Vital Signs IG](http://hl7.org/fhir/r4/observation-vitalsigns.html). This is described in the comments for these concepts. There are also some differences in the profiling approach between the current and the HL7 profile, like the use of patterns rather than slices with fixed systems and codes to enforce the inclusion of some coding (for reasons of consistency with other zib profiles, the former approach has been chosen here). Apart from what is mentioned above, constraints, invariants and terminology bindings have been copied from the HL7 Vital Signs profile, but some textual descriptions have been omitted.\r\n\r\nNote: No equivalent for the HL7 Vital Signs base profile has been created to implement the zib profiles. The profile for this zib has been directly modelled onto its HL7 Vital Signs counterpart.",
+        "alias": [
+          "Lichaamsgewicht"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodyweight-v3.2-2020EN",
+            "map": "NL-CM:12.1.1",
+            "comment": "BodyWeight"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "WeightDateTime",
+        "definition": "Date and (if possible) time that the weight was measured or estimated.",
+        "alias": [
+          "GewichtDatumTijd"
+        ],
+        "min": 0,
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodyweight-v3.2-2020EN",
+            "map": "NL-CM:12.1.4",
+            "comment": "WeightDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "WeightValue",
+        "definition": "The patient’s body weight. Body weight is expressed in kilograms (kg). For infants under 3kg, body weight is often expressed in grams.\r\n\r\nThis concept can also be used to determine an estimated body weight in the event that measuring the exact body weight is not possible - such as for example weighing a resistant child, or in the case of having to estimate the weight of an unborn child.",
+        "alias": [
+          "GewichtWaarde"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://nictiz.nl/fhir/ValueSet/zib-BodyWeight-units"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bodyweight-v3.2-2020EN",
+            "map": "NL-CM:12.1.2",
+            "comment": "WeightValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the weight measurement, such as any problems or factors that may influence body weight at that time, such as timing within the menstrual cycle, timing of recent bowel movement or a note on any amputations.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodyweight-v3.2-2020EN",
+            "map": "NL-CM:12.1.3",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:clothing",
+        "path": "Observation.component",
+        "sliceName": "clothing",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:clothing.code",
+        "path": "Observation.component.code",
+        "comment": "LOINC code _8352-7_ (Clothing worn during measure) may be used here as well, as suggested by the HL7 Vital Signs IG.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "248159006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:clothing.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Clothing",
+        "definition": "The clothes the patient was wearing at the time of the measurement.",
+        "alias": [
+          "Kleding"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bodyweight-v3.2-2020EN",
+            "map": "NL-CM:12.1.5",
+            "comment": "Clothing"
+          }
+        ]
+      }
+    ]
+  }
+}

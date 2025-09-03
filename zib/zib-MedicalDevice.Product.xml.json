@@ -1,0 +1,253 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-MedicalDevice.Product",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice.Product",
+  "name": "ZibMedicalDeviceProduct",
+  "title": "zib MedicalDevice.Product",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Medical devices are any internally implanted and external devices and/or aids used by the patient (in the past) to reduce the effects of functional limitations in organ systems or to facilitate the treatment of a disease.",
+  "purpose": "This Device resource represents the Product concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-medicaldevice-v3.3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)",
+      "name": "zib MedicalDevice-v3.3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device",
+        "path": "Device",
+        "short": "Product",
+        "definition": "The medical device (internally or externally).",
+        "comment": "Frequently used coding systems to identify devices are Health Industry Bar Code (HIBC) or GS1's Global Trade Item Number (GTIN). If one of these systems is used, the device identification happens on the basis of a UDI. Next to these two, other systems to identify devices are allowed by the zib, as long as such a system allows for unique identification of the device.\r\n\r\nIn all cases the full identifier will be populated in `.identifier`. If the identifier is a UDI in particular, it should also be populated in `udiCarrier.carrierHRF`, and the element `udiCarrier.issuer` is used to indicate which 'coding system' is used. Moreover the identifier may be broken down into several parts in that case, namely `.udiCarrier.deviceIdentifier`, `.manufactureDate`, `.expirationDate`, `.lotNumber` and `.serialNumber`. For GTIN, guidance is given at the respective elements in this profile and is based on <https://www.gs1.org/industries/healthcare/udi>. For HIBC please consult the the Supplier Labeling Standard that can be found at <https://www.hibcc.org/udi-labeling-standards/barcode-standards/>, as conversion into the several parts is less straightforward.",
+        "alias": [
+          "Product"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.2",
+            "comment": "Product"
+          }
+        ]
+      },
+      {
+        "id": "Device.identifier",
+        "path": "Device.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "pattern",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "max": "1"
+      },
+      {
+        "id": "Device.identifier:gs1ProductID",
+        "path": "Device.identifier",
+        "sliceName": "gs1ProductID",
+        "short": "ProductID",
+        "definition": "Unique identification of the product, such as the serial number. The `identifier` may only be used if it also identifies the resource.",
+        "alias": [
+          "ProductID"
+        ],
+        "max": "1",
+        "patternIdentifier": {
+          "system": "https://www.gs1.org/gtin"
+        },
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.4",
+            "comment": "ProductID"
+          }
+        ]
+      },
+      {
+        "id": "Device.identifier:hibcProductID",
+        "path": "Device.identifier",
+        "sliceName": "hibcProductID",
+        "short": "ProductID",
+        "definition": "Unique identification of the product, such as the serial number. The `identifier` may only be used if it also identifies the resource.",
+        "alias": [
+          "ProductID"
+        ],
+        "max": "1",
+        "patternIdentifier": {
+          "system": "urn:oid:2.16.840.1.113883.6.40"
+        },
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.4",
+            "comment": "ProductID"
+          }
+        ]
+      },
+      {
+        "id": "Device.udiCarrier",
+        "path": "Device.udiCarrier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "issuer"
+            }
+          ],
+          "rules": "open"
+        },
+        "definition": "Unique device identifier (UDI) assigned to device label or package. Note that a udiCarrier is only applicable if the zib concept ProductID actually contains a UDI, e.g. an ID according to GTIN or HIBC.",
+        "max": "1"
+      },
+      {
+        "id": "Device.udiCarrier:gs1UdiCarrier",
+        "path": "Device.udiCarrier",
+        "sliceName": "gs1UdiCarrier",
+        "max": "1"
+      },
+      {
+        "id": "Device.udiCarrier:gs1UdiCarrier.deviceIdentifier",
+        "path": "Device.udiCarrier.deviceIdentifier",
+        "definition": "The device identifier (DI) is a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device.\r\nIn the GS1 standard this element represents the GTIN itself - e.g. 01234567891234 - as part of the Application Identifier (AI), namely AI(01)."
+      },
+      {
+        "id": "Device.udiCarrier:gs1UdiCarrier.issuer",
+        "path": "Device.udiCarrier.issuer",
+        "definition": "Organization that is charged with issuing UDIs for devices. For the zib this would be GS1's Global Trade Item Number (GTIN) or Health Industry Bar Code (HIBC). Note that the issuer must match the issuer implicitly contained in the ProductID.",
+        "patternUri": "https://www.gs1.org/gtin"
+      },
+      {
+        "id": "Device.udiCarrier:gs1UdiCarrier.carrierHRF",
+        "path": "Device.udiCarrier.carrierHRF",
+        "short": "ProductID",
+        "alias": [
+          "ProductID"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.4",
+            "comment": "ProductID"
+          }
+        ]
+      },
+      {
+        "id": "Device.udiCarrier:hibcUdiCarrier",
+        "path": "Device.udiCarrier",
+        "sliceName": "hibcUdiCarrier",
+        "max": "1"
+      },
+      {
+        "id": "Device.udiCarrier:hibcUdiCarrier.issuer",
+        "path": "Device.udiCarrier.issuer",
+        "definition": "Organization that is charged with issuing UDIs for devices. For the zib this would be GS1's Global Trade Item Number (GTIN) or Health Industry Bar Code (HIBC). Note that the issuer must match the issuer implicitly contained in the ProductID.",
+        "patternUri": "urn:oid:2.16.840.1.113883.6.40"
+      },
+      {
+        "id": "Device.udiCarrier:hibcUdiCarrier.carrierHRF",
+        "path": "Device.udiCarrier.carrierHRF",
+        "short": "ProductID",
+        "alias": [
+          "ProductID"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.4",
+            "comment": "ProductID"
+          }
+        ]
+      },
+      {
+        "id": "Device.manufactureDate",
+        "path": "Device.manufactureDate",
+        "definition": "The date a specific device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI. \r\nIn the GS1 standard this element represents the Manufacture date - e.g. 250717 - as part of the Application Identifier (AI), namely AI(11)."
+      },
+      {
+        "id": "Device.expirationDate",
+        "path": "Device.expirationDate",
+        "definition": "The expiration date of a specific device - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.\r\nIn the GS1 standard this element represents the Expiration date - e.g. 141120 - as part of the Application Identifier (AI), namely AI(17)."
+      },
+      {
+        "id": "Device.lotNumber",
+        "path": "Device.lotNumber",
+        "definition": "The lot or batch number within which a device was manufactured - which is a component of the production identifier (PI), a conditional, variable portion of a UDI.\r\nIn the GS1 standard this element represents the Lot/batch number - e.g. 1234AB - as part of the Application Identifier (AI), namely AI(10)."
+      },
+      {
+        "id": "Device.serialNumber",
+        "path": "Device.serialNumber",
+        "definition": "The serial number assigned by the organization when the device was manufactured.\r\nIn the GS1 standard this element represents the Serial number - e.g. 12345XYZ - as part of the Application Identifier (AI), namely AI(21)."
+      },
+      {
+        "id": "Device.type",
+        "path": "Device.type",
+        "short": "ProductType",
+        "definition": "The code of the type of product.",
+        "alias": [
+          "ProductType"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.3",
+            "comment": "ProductType"
+          }
+        ]
+      },
+      {
+        "id": "Device.note",
+        "path": "Device.note",
+        "max": "1"
+      },
+      {
+        "id": "Device.note.text",
+        "path": "Device.note.text",
+        "short": "ProductDescription",
+        "definition": "Textual description of the product.",
+        "alias": [
+          "ProductOmschrijving"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.13",
+            "comment": "ProductDescription"
+          }
+        ]
+      }
+    ]
+  }
+}

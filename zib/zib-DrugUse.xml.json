@@ -1,0 +1,324 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-DrugUse",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-DrugUse",
+  "name": "ZibDrugUse",
+  "title": "zib DrugUse",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Drugs (or: narcotics, amphetamines, intoxicants, highs, hallucinogenics, illegal substances or dope) is a collective term for drugs and chemical substances with a more or less ‘drugging' (anesthetic, boosting and/or hallucinogenic) effect and which can lead to addiction. Drug [Online] Available at: nl.Wikipedia.org/wiki/drug [Accessed: 11 February 2015].\r\n\r\nThis information model describes the information asked of the patient about their drug use.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) DrugUse v3.3 (2020)](https://zibs.nl/wiki/DrugUse-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-druguse-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/DrugUse-v3.3(2020EN)",
+      "name": "zib DrugUse-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "DrugUse",
+        "alias": [
+          "DrugsGebruik"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.1",
+            "comment": "DrugUse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "228366006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectivePeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.start",
+        "path": "Observation.effective[x].start",
+        "short": "StartDate",
+        "definition": "The date on which the patient started using.",
+        "alias": [
+          "StartDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.6",
+            "comment": "StartDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.end",
+        "path": "Observation.effective[x].end",
+        "short": "StopDate",
+        "definition": "The date on which the patient quit using",
+        "alias": [
+          "StopDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.7",
+            "comment": "StopDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "DrugUseStatus",
+        "definition": "Indication stating whether there was any drug use in the past or present.",
+        "alias": [
+          "DrugsGebruikStatus"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.4.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.3",
+            "comment": "DrugUseStatus"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Relevant comments on the drug use.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.9",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:amount",
+        "path": "Observation.component",
+        "sliceName": "amount",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:amount.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "363908000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:amount.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Amount",
+        "definition": "The number of units (pills, joints, shots etc.) per day, week, month or year or the frequency of use.",
+        "alias": [
+          "Hoeveelheid"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.8",
+            "comment": "Amount"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:drugOrMedicationType",
+        "path": "Observation.component",
+        "sliceName": "drugOrMedicationType",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:drugOrMedicationType.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "105590001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:drugOrMedicationType.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "DrugOrMedicationType",
+        "definition": "Type of drug used by the patient.",
+        "alias": [
+          "DrugsOfGeneesmiddelSoort"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.4.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.2",
+            "comment": "DrugOrMedicationType"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:routeOfAdministration",
+        "path": "Observation.component",
+        "sliceName": "routeOfAdministration"
+      },
+      {
+        "id": "Observation.component:routeOfAdministration.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "410675002"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:routeOfAdministration.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "RouteOfAdministration",
+        "definition": "The way the drugs are used.",
+        "alias": [
+          "Toedieningsweg"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.4.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-druguse-v3.3-2020EN",
+            "map": "NL-CM:7.4.4",
+            "comment": "RouteOfAdministration"
+          }
+        ]
+      }
+    ]
+  }
+}

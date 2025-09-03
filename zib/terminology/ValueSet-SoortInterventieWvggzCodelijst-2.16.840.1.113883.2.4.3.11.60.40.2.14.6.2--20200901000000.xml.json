@@ -1,0 +1,783 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.2.14.6.2--20200901000000",
+  "meta": {
+    "source": "http://decor.nictiz.nl/fhir/4.0/zib2020bbr-",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ],
+    "tag": [
+      {
+        "system": "http://hl7.org/fhir/FHIR-version",
+        "code": "4.0.1"
+      }
+    ]
+  },
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-09-01T00:00:00Z"
+      }
+    }
+  ],
+  "url": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.14.6.2--20200901000000",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.14.6.2"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "SoortInterventieWvggzCodelijst",
+  "title": "SoortInterventieWvggzCodelijst",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "SoortInterventieWvggzCodelijst",
+  "immutable": false,
+  "copyright": "This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Toedienen van vocht en voeding"
+              }
+            ],
+            "code": "37041007",
+            "display": "geforceerd toedienen van voeding bij patiënt",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced feeding of patient"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "geforceerd toedienen van voeding bij patiënt"
+              }
+            ]
+          },
+          {
+            "code": "121531000146107",
+            "display": "gedwongen oraal toedienen van orale medicatie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced medication via oral route"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen oraal toedienen van orale medicatie"
+              }
+            ]
+          },
+          {
+            "code": "121511000146100",
+            "display": "gedwongen intramusculair toedienen van medicatie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced medication via intramuscular route"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen intramusculair toedienen van medicatie"
+              }
+            ]
+          },
+          {
+            "code": "121521000146105",
+            "display": "gedwongen toedienen van intraveneuze medicatie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced medication via intravenous route"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen toedienen van intraveneuze medicatie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Toedienen van medicatie, overige toedieningsvormen"
+              }
+            ],
+            "code": "29211000146105",
+            "display": "gedwongen toedienen van medicatie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced medication"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen toedienen van medicatie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "ECT"
+              }
+            ],
+            "code": "23835007",
+            "display": "elektroconvulsietherapie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Electroconvulsive therapy"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "elektroconvulsietherapie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Het verrichten van overige medische controles en handelingen"
+              }
+            ],
+            "code": "123881000146109",
+            "display": "gedwongen handeling",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced procedure"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen handeling"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Fysieke fixatie"
+              }
+            ],
+            "code": "225212001",
+            "display": "vasthouden",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Holding procedure"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "vasthouden"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Mechanische fixatie"
+              }
+            ],
+            "code": "68894007",
+            "display": "aanbrengen van middel voor fysieke beperking",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Placing restraint"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "aanbrengen van middel voor fysieke beperking"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Plaatsing op een gesloten afdeling"
+              }
+            ],
+            "code": "225210009",
+            "display": "geslotendeurprocedure",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Locked door procedure"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "geslotendeurprocedure"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Overige beperking van de bewegingsvrijheid"
+              }
+            ],
+            "code": "130201000146105",
+            "display": "met dwang beperken van bewegingsvrijheid",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced restriction of movement"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "met dwang beperken van bewegingsvrijheid"
+              }
+            ]
+          },
+          {
+            "code": "124061000146109",
+            "display": "separeren in separeerverblijf",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Seclusion in seclusion room"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren in separeerverblijf"
+              }
+            ]
+          },
+          {
+            "code": "124041000146108",
+            "display": "separeren in extra beveiligde kamer",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Seclusion in extra secured room"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren in extra beveiligde kamer"
+              }
+            ]
+          },
+          {
+            "code": "124071000146103",
+            "display": "separeren in afzonderingsruimte",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Seclusion in separate area"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren in afzonderingsruimte"
+              }
+            ]
+          },
+          {
+            "code": "124051000146106",
+            "display": "separeren in verblijfsruimte van patiënt",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Seclusion in own acommodation"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren in verblijfsruimte van patiënt"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Overige vormen van insluiten"
+              }
+            ],
+            "code": "90278001",
+            "display": "separeren van patiënt",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Secluding patient"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren van patiënt"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Cameramonitoring"
+              }
+            ],
+            "code": "121411000146104",
+            "display": "constante supervisie met camera",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Constant supervision of patient with camera"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "constante supervisie met camera"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Toezicht met andere elektronische middelen"
+              }
+            ],
+            "code": "225309002",
+            "display": "constante supervisie",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Constant supervision"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "constante supervisie"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Onderzoek aan kleding of lichaam"
+              }
+            ],
+            "code": "121631000146108",
+            "display": "onderzoek aan kleding en/of lichaam",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Searching clothes and/or body"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "onderzoek aan kleding en/of lichaam"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Onderzoek van woon-/verblijfruimte op gedrag-beïnvloedende middelen en gevaarlijke voorwerpen"
+              }
+            ],
+            "code": "62407006",
+            "display": "opsporen van gevaarlijk object",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Search for dangerous objects"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "opsporen van gevaarlijk object"
+              }
+            ]
+          },
+          {
+            "code": "121621000146106",
+            "display": "controle op aanwezigheid van gedragsbeïnvloedende middelen",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Detection of agents that influence behaviour"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "controle op aanwezigheid van gedragsbeïnvloedende middelen"
+              }
+            ]
+          },
+          {
+            "code": "121471000146108",
+            "display": "beperken van gebruik van communicatiemiddelen",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Restriction of using communication systems"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "beperken van gebruik van communicatiemiddelen"
+              }
+            ]
+          },
+          {
+            "code": "121461000146102",
+            "display": "handelingen met betrekking tot het beperken van inrichten van eigen leven",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Restrictions to organize one's life"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "handelingen met betrekking tot het beperken van inrichten van eigen leven"
+              }
+            ]
+          },
+          {
+            "code": "121601000146103",
+            "display": "beperken van recht op ontvangen van bezoek",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Restriction to receive visitors"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "beperken van recht op ontvangen van bezoek"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Opnemen in een accommodatie"
+              }
+            ],
+            "code": "121541000146104",
+            "display": "gedwongen opnemen in instelling voor geestelijke gezondheid",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Forced admission to mental health department"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "gedwongen opnemen in instelling voor geestelijke gezondheid"
+              }
+            ]
+          },
+          {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/valueset-concept-comments",
+                "valueString": "Overbrengen naar een plaats die geschikt is voor tijdelijk verblijf"
+              }
+            ],
+            "code": "121641000146100",
+            "display": "separeren in een tijdelijk verblijf",
+            "designation": [
+              {
+                "language": "en-US",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "Seclusion in temporary accommodation"
+              },
+              {
+                "language": "nl-NL",
+                "use": {
+                  "system": "http://snomed.info/sct",
+                  "code": "900000000000013009",
+                  "display": "Synonym"
+                },
+                "value": "separeren in een tijdelijk verblijf"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

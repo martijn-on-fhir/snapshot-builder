@@ -1,0 +1,106 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Wound.Drain",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Wound.Drain",
+  "name": "ZibWoundDrain",
+  "title": "zib Wound.Drain",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A drain is a medical aid placed to drain blood and exudate from the wound area.",
+  "purpose": "This DeviceUseStatement resource represents the adaptations for the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Wound v3.3 (2020)](https://zibs.nl/wiki/Wound-v3.3(2020EN)) of [zib MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-wound-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Wound-v3.3(2020EN)",
+      "name": "zib Wound-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "DeviceUseStatement",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DeviceUseStatement",
+        "path": "DeviceUseStatement",
+        "short": "MedicalDevice / Drain",
+        "definition": "A drain is a medical aid placed to drain blood and exudate from the wound area.",
+        "comment": "This is a specialization of the [zib-MedicalDevice](http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice) profile to represent Drain devices within the context of zib Wound.",
+        "alias": [
+          "Drain"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.17",
+            "comment": "Drain"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.device",
+        "path": "DeviceUseStatement.device",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Wound.Drain.Product"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:stoma",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "stoma",
+        "max": "0"
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:wound",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "wound",
+        "short": "Wound",
+        "comment": "Please note that on a functional level, zib Wound references zib MedicalDevice, but in FHIR this direction is reversed.",
+        "alias": [
+          "Wond"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Wound"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-wound-v3.3-2020EN",
+            "map": "NL-CM:19.2.17",
+            "comment": "Reversed reference for zib Wound.Drain"
+          }
+        ]
+      }
+    ]
+  }
+}

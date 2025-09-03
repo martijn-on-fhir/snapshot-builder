@@ -1,0 +1,75 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AnatomicalLocation",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation",
+  "name": "ZibAnatomicalLocation",
+  "title": "zib AnatomicalLocation",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An anatomical location specifies the location (e.g. foot) and laterality (e.g. left) of a body part.",
+  "purpose": "This CodeableConcept resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AnatomicalLocation v1.0 (2020)](https://zibs.nl/wiki/AnatomicalLocation-v1.0(2020EN)).\r\n\r\nProfilers can use this profile in places where zib AnatomicalLocation is instantiated. In addition to using this profile, the binding should be set to ValueSet \"LocatieCodelijsten\" (<http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000>) with a binding strength of _required_.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-anatomicallocation-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/AnatomicalLocation-v1.0(2020EN)",
+      "name": "zib AnatomicalLocation-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "CodeableConcept",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/CodeableConcept",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "CodeableConcept",
+        "path": "CodeableConcept",
+        "short": "Location",
+        "definition": "Localisation on/in the body.",
+        "alias": [
+          "Locatie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-anatomicallocation-v1.0-2020EN",
+            "map": "NL-CM:20.7.4",
+            "comment": "Location"
+          }
+        ]
+      },
+      {
+        "id": "CodeableConcept.extension:laterality",
+        "path": "CodeableConcept.extension",
+        "sliceName": "laterality",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-AnatomicalLocation.Laterality"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

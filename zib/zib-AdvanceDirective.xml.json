@@ -1,0 +1,289 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AdvanceDirective",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective",
+  "name": "ZibAdvanceDirective",
+  "title": "zib AdvanceDirective",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A living will is a verbal or written description of the patient’s wishes with regard to future medical action or end of their life. A living will is mainly used for situations in which the patient is no longer able to speak about these decisions with their healthcare provider.",
+  "purpose": "This Consent resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AdvanceDirective v3.1.1 (2020)](https://zibs.nl/wiki/AdvanceDirective-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-advancedirective-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AdvanceDirective-v3.1.1(2020EN)",
+      "name": "zib AdvanceDirective-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Consent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent",
+        "path": "Consent",
+        "short": "AdvanceDirective",
+        "alias": [
+          "Wilsverklaring"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.1",
+            "comment": "AdvanceDirective"
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:disorder",
+        "path": "Consent.extension",
+        "sliceName": "disorder",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-AdvanceDirective.Disorder"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:comment",
+        "path": "Consent.extension",
+        "sliceName": "comment",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Comment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:comment.value[x]",
+        "path": "Consent.extension.value[x]",
+        "short": "Comment",
+        "definition": "Comment on the living will: the form, such as a medallion, tattoo, etc., or where the living will can be found.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.6",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Consent.status",
+        "path": "Consent.status",
+        "comment": "This element has no functional counterpart in the zib and cannot be implicitly mapped to other zib concepts. An appropriate status needs to be recorded in order to produce a valid instance."
+      },
+      {
+        "id": "Consent.scope",
+        "path": "Consent.scope",
+        "comment": "At the moment of writing (02-11-2021) the _adr_ code is incorrectly removed from the ConsentScopeCodes CodeSystem (http://terminology.hl7.org/CodeSystem/consentscope). This will be corrected within the R4 release of FHIR based on this tracker item: <https://jira.hl7.org/browse/FHIR-34215>.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code": "adr"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.category",
+        "path": "Consent.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.category:advanceDirectiveCode",
+        "path": "Consent.category",
+        "sliceName": "advanceDirectiveCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/consentcategorycodes",
+              "code": "acd"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.dateTime",
+        "path": "Consent.dateTime",
+        "short": "LivingWillDate",
+        "definition": "The date on which the living will was recorded.",
+        "alias": [
+          "WilsverklaringDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.7",
+            "comment": "LivingWillDate"
+          }
+        ]
+      },
+      {
+        "id": "Consent.source[x]",
+        "path": "Consent.source[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.source[x]:sourceAttachment",
+        "path": "Consent.source[x]",
+        "sliceName": "sourceAttachment",
+        "short": "LivingWillDocument",
+        "definition": "Scanned source document with the living will and the patient's signature, such as a PDF.",
+        "alias": [
+          "WilsverklaringDocument"
+        ],
+        "type": [
+          {
+            "code": "Attachment"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.5",
+            "comment": "LivingWillDocument"
+          }
+        ]
+      },
+      {
+        "id": "Consent.policy.uri",
+        "path": "Consent.policy.uri",
+        "comment": "Either `.policy` or `.policyRule` should exist following core constraint ppc-1. If no explicit value is recorded, a fallback is to populate `.policy.uri` with <https://wetten.overheid.nl/> if the advance directive is recorded following Dutch law and regulations."
+      },
+      {
+        "id": "Consent.provision.actor",
+        "path": "Consent.provision.actor",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "role"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.provision.actor:representative",
+        "path": "Consent.provision.actor",
+        "sliceName": "representative",
+        "max": "1"
+      },
+      {
+        "id": "Consent.provision.actor:representative.role",
+        "path": "Consent.provision.actor.role",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "code": "RESPRSN"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:representative.reference",
+        "path": "Consent.provision.actor.reference",
+        "short": "Representative",
+        "definition": "The person who is the legal representative or is appointed as the authorized representative in the signed authorization.",
+        "alias": [
+          "Vertegenwoordiger"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://hl7.org/fhir/StructureDefinition/Group",
+              "http://hl7.org/fhir/StructureDefinition/CareTeam",
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/Practitioner",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.3",
+            "comment": "Representative"
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "short": "LivingWillType",
+        "definition": "List of the different types of living wills.",
+        "alias": [
+          "WilsverklaringType"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.15.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-advancedirective-v3.1.1-2020EN",
+            "map": "NL-CM:7.15.2",
+            "comment": "LivingWillType"
+          }
+        ]
+      }
+    ]
+  }
+}

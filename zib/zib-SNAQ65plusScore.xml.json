@@ -1,0 +1,400 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-SNAQ65plusScore",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-SNAQ65plusScore",
+  "name": "ZibSNAQ65plusScore",
+  "title": "zib SNAQ65plusScore",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Short Nutritional Assessment Questionnaire 65+ (SNAQ65+) is a (validated) measuring tool for determining the extent of a patient’s malnutrition. The tool comprises a number of questions, each of which is assigned a score. The total score determines the extent of malnutrition.\r\nThe SNAQ helps to recognize and treat malnutrition at an early stage.\r\nThree varieties of the measuring tool were developed for different care settings: hospitals (adults and children), nursing and retirement homes and independently living seniors. This concept describes the tool intended for the setting of independently living elderly.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SNAQ65+Score v1.2 (2020)](https://zibs.nl/wiki/SNAQ65%2BScore-v1.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-snaq65plusscore-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/SNAQ65%2BScore-v1.2(2020EN)",
+      "name": "zib SNAQ65plusScore-v1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "SNAQ65+Score",
+        "alias": [
+          "SNAQ65+Score"
+        ],
+        "constraint": [
+          {
+            "key": "zib-SNAQ65PlusScore-1",
+            "severity": "error",
+            "human": "If one of the component codes is present, all SHALL be present.",
+            "expression": "component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4030003'|'4030008'|'4030004'|'4030005')).count().subsetOf(0|4)"
+          },
+          {
+            "key": "zib-SNAQ65PlusScore-2",
+            "severity": "error",
+            "human": "If the component codes are not all present, the value SHALL be present.",
+            "expression": "value.empty().not() or component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4030003'|'4030008'|'4030004'|'4030005')).count()=4"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.1",
+            "comment": "SNAQ65+Score"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108321000146101"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "SNAQScoreDateTime",
+        "definition": "The date and time at which the SNAQ65+ score was determined.",
+        "alias": [
+          "SNAQ65+ScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.6",
+            "comment": "SNAQScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 5. The relation between the value of the total score and the color outcome of the score tool is:\r\n* 0-1 = green\r\n* 2 = orange\r\n* 3 and higher = red.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 5,
+        "condition": [
+          "zib-SNAQ65PlusScore-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore",
+        "path": "Observation.component",
+        "sliceName": "weightLossScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:weightLossScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4030003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "WeightLossScore",
+        "definition": "The score based on undesired weight loss over the past six months.",
+        "alias": [
+          "GewichtsverliesScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.30.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.3",
+            "comment": "WeightLossScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:upperarmCircumference",
+        "path": "Observation.component",
+        "sliceName": "upperarmCircumference",
+        "max": "1",
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:upperarmCircumference.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4030008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:upperarmCircumference.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "UpperarmCircumference",
+        "definition": "The score based on circumference of the upper arm.",
+        "alias": [
+          "BovenarmOmtrekScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.30.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.8",
+            "comment": "UpperarmCircumference"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:appetiteScore",
+        "path": "Observation.component",
+        "sliceName": "appetiteScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:appetiteScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4030004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:appetiteScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "AppetiteScore",
+        "definition": "The score based on a reduced appetite over the past month.",
+        "alias": [
+          "EetlustScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.30.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.4",
+            "comment": "AppetiteScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:exerciseScore",
+        "path": "Observation.component",
+        "sliceName": "exerciseScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:exerciseScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4030005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:exerciseScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ExerciseScore",
+        "definition": "The score based on the ability to perform exercise like climbing stairs without rest or to walk for five minute without rest.",
+        "alias": [
+          "InspanningsScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQ65PlusScore-1",
+          "zib-SNAQ65PlusScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.30.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaq65plusscore-v1.2-2020EN",
+            "map": "NL-CM:4.30.5",
+            "comment": "ExerciseScore"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "pattern-VitalSigns",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/pattern-VitalSigns",
+  "name": "PatternVitalSigns",
+  "title": "pattern VitalSigns",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A pattern profile for creating (mostly) HL7 Vital Signs compatible zib profiles.",
+  "purpose": "Regarding the HL7 Vital Signs profile, the spec for the Observation resource states:\r\n\r\n> If implementations use this Resource when expressing the profile-specific concepts as structured data, they SHALL conform to the following profiles:\r\n\r\nHowever, the HL7 Vital Signs profile imposes two issues that make it impossible to implement zib profiles for the relevant vital signs measurements directly onto it (see the comment on the profle root). To circumvent this problem, the zib profiles aim to be as compatible as possible without directly using the HL7 Vital Signs profile or one of its derivations. This pattern profile ensures this is done in a consistent way. It is not meant to be instantiated directly.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "**HL7 Vital Signs compatibility**\r\n\r\nAlthough this profile represents a vital signs measurement, it is *not* directly based on the HL7 Vital Signs profile because of two issues in its current version that prevent it from being used for the exchange of zibs (see below). However, an effort has been made to make this profile functionally equivalent to (a profile derived from) the [HL7 Vital Signs [...] profile](http://hl7.org/fhir/StructureDefinition/[...]). Instances for both profiles should be highly compatible.\r\n\r\nThis means that it should be possible to mostly validate an instance for this profile against the HL7 Vital Signs counterpart, _except_ for references on `Observation.hasMember` and `Observation.derivedFrom`. The base HL7 Vital Signs profile restricts the targets of these element to itself, which is a requirement that can never be satisfied for instances of profiles that are not directly derived from it.\r\n\r\nPlease note that this profile implements the zib and can therefore be more restricted than its HL7 counterpart. It should be regarded as a derived profile rather than a direct recreation of the HL7 version.\r\n\r\n**Differences with the HL7 Vital Signs counterpart**\r\n\r\n* The _required_ terminology binding on `Observation.component` to the [Vital Signs Units](http://hl7.org/fhir/ValueSet/ucum-vitals-common) dataset makes it impossible to use `.component` for representing anything else than a Quantity (like a CodeableConcept or a boolean). This binding has therefore been omitted in the current profile.\r\n* The `mustSupport` = _true_ flag found on numerous elements isn't further specified in the HL7 Vital Signs IG, as is required by FHIR. This flag has therefore been omitted from the current profile.\r\n* The target restriction on `Observation.hasMember` and `Observation.derivedFrom` to the HL7 Vital Signs profile cannot be fulfilled. This restriction has therefore been omitted from the current profile.\r\n\r\nIt might happen that for some concepts, the zib uses a different (but compatible) way than what is recommended by the [HL7 Vital Signs IG](http://hl7.org/fhir/r4/observation-vitalsigns.html). This is described in the comments for these concepts. There are also some differences in the profiling approach between the current and the HL7 profile, like the use of patterns rather than slices with fixed systems and codes to enforce the inclusion of some coding (for reasons of consistency with other zib profiles, the former approach has been chosen here). Apart from what is mentioned above, constraints, invariants and terminology bindings have been copied from the HL7 Vital Signs profile, but some textual descriptions have been omitted.\r\n\r\nNote: No equivalent for the HL7 Vital Signs base profile has been created to implement the zib profiles. The profile for this zib has been directly modelled onto its HL7 Vital Signs counterpart.",
+        "constraint": [
+          {
+            "key": "vs-2",
+            "severity": "error",
+            "human": "If there is no component or hasMember element then either a value[x] or a data absent reason must be present.",
+            "expression": "(component.empty() and hasMember.empty()) implies (dataAbsentReason.exists() or value.exists())"
+          }
+        ]
+      },
+      {
+        "id": "Observation.category",
+        "path": "Observation.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "pattern",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Observation.category:VSCat",
+        "path": "Observation.category",
+        "sliceName": "VSCat",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+              "code": "vital-signs"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "min": 1
+      },
+      {
+        "id": "Observation.subject",
+        "path": "Observation.subject",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "min": 1,
+        "type": [
+          {
+            "code": "dateTime"
+          },
+          {
+            "code": "Period"
+          }
+        ],
+        "condition": [
+          "vs-1"
+        ],
+        "constraint": [
+          {
+            "key": "vs-1",
+            "severity": "error",
+            "human": "if Observation.effective[x] is dateTime and has a value then that value shall be precise to the day",
+            "expression": "($this as dateTime).toString().length() >= 8"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "condition": [
+          "vs-2"
+        ]
+      },
+      {
+        "id": "Observation.dataAbsentReason",
+        "path": "Observation.dataAbsentReason",
+        "condition": [
+          "vs-2"
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "constraint": [
+          {
+            "key": "vs-3",
+            "severity": "error",
+            "human": "If there is no a value a data absent reason must be present",
+            "expression": "value.exists() or dataAbsentReason.exists()"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component.value[x]",
+        "path": "Observation.component.value[x]",
+        "condition": [
+          "vs-3"
+        ]
+      },
+      {
+        "id": "Observation.component.dataAbsentReason",
+        "path": "Observation.component.dataAbsentReason",
+        "condition": [
+          "vs-3"
+        ]
+      }
+    ]
+  }
+}

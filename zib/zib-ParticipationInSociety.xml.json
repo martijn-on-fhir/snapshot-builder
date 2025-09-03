@@ -1,0 +1,152 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ParticipationInSociety",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety",
+  "name": "ZibParticipationInSociety",
+  "title": "zib ParticipationInSociety",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Participation in society pertains to the patient’s initiative to participate in social activities in daily life, such as practicing a profession and hobbies. Participation in society also describes the patient’s social network.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ParticipationInSociety v3.1 (2020)](https://zibs.nl/wiki/ParticipationInSociety-v3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-participationinsociety-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/ParticipationInSociety-v3.1(2020EN)",
+      "name": "zib ParticipationInSociety-v3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "ParticipationInSociety",
+        "comment": "Several concepts of zib ParticipationInSociety are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* SocialNetwork (NL-CM:18.6.2): [zib-ParticipationInSociety.SocialNetwork](http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.SocialNetwork)\r\n* Hobby (NL-CM:18.6.3): [zib-ParticipationInSociety.Hobby](http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.Hobby)\r\n* WorkSituation (NL-CM:18.6.5): [zib-ParticipationInSociety.WorkSituation](http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.WorkSituation)",
+        "alias": [
+          "ParticipatieInMaatschappij"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-participationinsociety-v3.1-2020EN",
+            "map": "NL-CM:18.6.1",
+            "comment": "ParticipationInSociety"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "314845004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the participation in society.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-participationinsociety-v3.1-2020EN",
+            "map": "NL-CM:18.6.5",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:socialNetwork",
+        "path": "Observation.hasMember",
+        "sliceName": "socialNetwork",
+        "definition": "The SocialNetwork concept (NL-CM:18.6.2) of zib ParticipationInSociety, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.SocialNetwork"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:hobby",
+        "path": "Observation.hasMember",
+        "sliceName": "hobby",
+        "definition": "The Hobby concept (NL-CM:18.6.3) of zib ParticipationInSociety, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.Hobby"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:workSituation",
+        "path": "Observation.hasMember",
+        "sliceName": "workSituation",
+        "definition": "The WorkSituation concept (NL-CM:18.6.4) of zib ParticipationInSociety, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ParticipationInSociety.WorkSituation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

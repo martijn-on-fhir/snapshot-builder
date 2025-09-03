@@ -1,0 +1,350 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-GlasgowComaScale",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-GlasgowComaScale",
+  "name": "ZibGlasgowComaScale",
+  "title": "zib GlasgowComaScale",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Fifteen-point scale for expressing a person’s level of consciousness, from fully awake to deep unconsciousness, in a number: the so-called EMV score.\r\nThe Glasgow Coma Scale score or EMV (Eye-Motor-Verbal) score is a scale to measure the extent of consciousness, based on eye, verbal and motor responses to specific prescribed sound and pain stimuli.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) GlasgowComaScale v3.2 (2020)](https://zibs.nl/wiki/GlasgowComaScale-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-glasgowcomascale-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/GlasgowComaScale-v3.2(2020EN)",
+      "name": "zib GlasgowComaScale-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "GlasgowComaScale",
+        "alias": [
+          "GlasgowComaScale"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.1",
+            "comment": "GlasgowComaScale"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "35088-4"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "GlasgowComaScaleDateTime",
+        "definition": "Time at which the EMV score was determined.",
+        "alias": [
+          "GlasgowComaScaleDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.8",
+            "comment": "GlasgowComaScaleDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The sum of the EMV scores, expressed as a number on a scale from 3-15. The value does not have to be recorded, as it can always be calculated based on the individual scores, and as recording the total is not common for a difficult to determine individual score.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 3,
+        "maxValueInteger": 15,
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.10",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on (the context of) the EMV score measurement, such as any problems or factors that may influence interpretation.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.9",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:gcsEyes",
+        "path": "Observation.component",
+        "sliceName": "gcsEyes",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:gcsEyes.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "281395000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:gcsEyes.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "GCS_Eyes",
+        "definition": "Best eye response to a stimulus. The element is mandatory, but does not require a numerical value. If no value is given, the reason for this is to be provided in the ConditionsDuringMeasurement concept.",
+        "alias": [
+          "GCS_Eyes"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.8.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.2",
+            "comment": "GCS_Eyes"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:gcsMotor",
+        "path": "Observation.component",
+        "sliceName": "gcsMotor",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:gcsMotor.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "281396004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:gcsMotor.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "GCS_Motor",
+        "definition": "Best motor response to a stimulus. The element is mandatory, but does not require a numerical value. If no value is given, the reason for this is to be provided in the ConditionsDuringMeasurement concept.",
+        "alias": [
+          "GCS_Motor"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.4",
+            "comment": "GCS_Motor"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:gcsVerbal",
+        "path": "Observation.component",
+        "sliceName": "gcsVerbal",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:gcsVerbal.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "281397008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:gcsVerbal.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "GCS_Verbal",
+        "definition": "Best verbal response to a stimulus. The element is mandatory, but does not require a numerical value. If no value is given, the reason for this is to be provided in the ConditionsDuringMeasurement concept.",
+        "alias": [
+          "GCS_Verbal"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.6--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.6",
+            "comment": "GCS_Verbal"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:conditionsDuringMeasurement",
+        "path": "Observation.component",
+        "sliceName": "conditionsDuringMeasurement"
+      },
+      {
+        "id": "Observation.component:conditionsDuringMeasurement.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (SNOMED 271000124103) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-2040](https://bits.nictiz.nl/browse/ZIB-2040) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "271000124103"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:conditionsDuringMeasurement.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ConditionsDuringMeasurement",
+        "definition": "Conditions during the measurement that prevent one or more of the subscores from being determined (non testable), such as,e.g. intubation during testing of GCS_Verbal.",
+        "alias": [
+          "ConditiesTijdensMeting"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.8.6--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-glasgowcomascale-v3.2-2020EN",
+            "map": "NL-CM:12.8.11",
+            "comment": "ConditionsDuringMeasurement"
+          }
+        ]
+      }
+    ]
+  }
+}

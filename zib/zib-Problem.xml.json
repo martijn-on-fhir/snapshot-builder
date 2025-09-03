@@ -1,0 +1,333 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Problem",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Problem",
+  "name": "ZibProblem",
+  "title": "zib Problem",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A problem describes a situation with regard to an individual’s health and/or welfare. This situation can be described by the person involved (the patient) themselves (in the form of a complaint), or by their healthcare provider (in the form of a diagnosis, for example). The situation can form cause for diagnostic or therapeutic policy.\r\n\r\nA problem includes all kinds of medical or nursing information that represents a health problem. A problem can represent various types of health problems:\r\n \r\nA complaint, finding by patient: a subjective, negatively experienced observation of the patient’s health. Examples: stomach ache, amnesia\r\n\r\nA symptom: an observation by or about the patient which may indicate a certain disease. Examples: fever, blood in stool, white spots on the roof of the mouth;\r\n\r\nA diagnosis: medical interpretation of complaints and findings. Examples: Diabetes Mellitus type II, pneumonia, hemolytic-uremic syndrome.\r\n\r\nA functional limitation: a reduction of functional options. Examples: reduced mobility, help required for dressing.\r\n\r\nA complication: Every diagnosis seen by the healthcare provider as an unforeseen and undesired result of medical action. Examples: post-operative wound infections, loss of hearing through the use of antibiotics.",
+  "purpose": "This Condition resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Problem v4.4 (2020)](https://zibs.nl/wiki/Problem-v4.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-problem-v4.4-2020EN",
+      "uri": "https://zibs.nl/wiki/Problem-v4.4(2020EN)",
+      "name": "zib Problem-v4.4(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "Problem",
+        "alias": [
+          "Probleem"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.1",
+            "comment": "Problem"
+          }
+        ]
+      },
+      {
+        "id": "Condition.clinicalStatus",
+        "path": "Condition.clinicalStatus",
+        "short": "ProblemStatus",
+        "definition": "The problem status describes the condition of the problem:\r\n1. Active problems are problems of which the patient experiences symptoms or for which evidence exists.\r\n\r\n2. Problems with the status 'Inactive' refer to problems that don't affect the patient anymore or that of which there is no evidence of existence anymore.",
+        "alias": [
+          "ProbleemStatus"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap ProbleemStatusCodelijst_to_ConditionClinicalStatusCodes to translate terminology from the functional model to profile terminology in ValueSet ConditionClinicalStatusCodes.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/condition-clinical|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/ProbleemStatusCodelijst-to-ConditionClinicalStatusCodes"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.4",
+            "comment": "ProblemStatus"
+          }
+        ]
+      },
+      {
+        "id": "Condition.verificationStatus",
+        "path": "Condition.verificationStatus",
+        "short": "VerificationStatus",
+        "definition": "Clinical status of the problem or the diagnosis.",
+        "alias": [
+          "VerificatieStatus"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap VerificatieStatusCodelijst_to_ConditionVerificationStatus to translate terminology from the functional model to profile terminology in ValueSet ConditionVerificationStatus.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/condition-ver-status|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/VerificatieStatusCodelijst-to-ConditionVerificationStatus"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.10",
+            "comment": "VerificationStatus"
+          }
+        ]
+      },
+      {
+        "id": "Condition.verificationStatus.coding",
+        "path": "Condition.verificationStatus.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Condition.verificationStatus.coding:verificationStatusCodelist",
+        "path": "Condition.verificationStatus.coding",
+        "sliceName": "verificationStatusCodelist",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "description": "In addition to a coding from this ValueSet, the corresponding coding from the FHIR base ValueSet SHALL be communicated. The ConceptMap <http://nictiz.nl/fhir/ConceptMap/VerificatieStatusCodelijst-to-ConditionVerificationStatus> can be used to relate these two ValueSets.",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.4--20200901000000"
+        }
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.category:problemType",
+        "path": "Condition.category",
+        "sliceName": "problemType",
+        "short": "ProblemType",
+        "definition": "The type of problem; see the concept description.",
+        "alias": [
+          "ProbleemType"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.8",
+            "comment": "ProblemType"
+          }
+        ]
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "ProblemName",
+        "definition": "The problem name defines the problem. Depending on the setting, different code systems can be used. The ProblemNameCodelist provides an overview of the possible code systems.",
+        "alias": [
+          "ProbleemNaam"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.3",
+            "comment": "ProblemName"
+          }
+        ]
+      },
+      {
+        "id": "Condition.code.extension:furtherSpecificationProblemName",
+        "path": "Condition.code.extension",
+        "sliceName": "furtherSpecificationProblemName",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Problem.FurtherSpecificationProblemName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "short": "Location / ProblemAnatomicalLocation",
+        "definition": "Anatomical location which is the focus of the problem.",
+        "alias": [
+          "ProbleemAnatomischeLocatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.14",
+            "comment": "ProblemAnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.onset[x]:onsetDateTime",
+        "path": "Condition.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "ProblemStartDate",
+        "definition": "Onset of the symptom, complaint, functional limitation, complication or date of diagnosis. A ‘vague’ date, such as only the year or the month and the year, is permitted.",
+        "alias": [
+          "ProbleemBeginDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.6",
+            "comment": "ProblemStartDate"
+          }
+        ]
+      },
+      {
+        "id": "Condition.abatement[x]",
+        "path": "Condition.abatement[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Condition.abatement[x]:abatementDateTime",
+        "path": "Condition.abatement[x]",
+        "sliceName": "abatementDateTime",
+        "short": "ProblemEndDate",
+        "definition": "Date on which the disorder to which the problem applies, is considered not to be present anymore.This datum needs not to be the same as the date of the change in problem status. A ‘vague’ date, such as only the year or the month and the year, is permitted.",
+        "alias": [
+          "ProbleemEindDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.9",
+            "comment": "ProblemEndDate"
+          }
+        ]
+      },
+      {
+        "id": "Condition.note",
+        "path": "Condition.note",
+        "max": "1"
+      },
+      {
+        "id": "Condition.note.text",
+        "path": "Condition.note.text",
+        "short": "Comment",
+        "definition": "Comment by the one who determined or updated the Problem.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.5",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-EpisodeOfCare",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-EpisodeOfCare",
+  "name": "ZibEpisodeOfCare",
+  "title": "zib EpisodeOfCare",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The period in which a health problem, such as a complaint or illness, receives attention from a care provider. During this period the designation of this health problem can change due to evolving insight and/or the progress of the illness. An episode of care serves as a context for all data related to the health problem.",
+  "purpose": "This EpisodeOfCare resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) EpisodeOfCare v1.0 (2020)](https://zibs.nl/wiki/EpisodeOfCare-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-episodeofcare-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/EpisodeOfCare-v1.0(2020EN)",
+      "name": "zib EpisodeOfCare-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "EpisodeOfCare",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "EpisodeOfCare",
+        "path": "EpisodeOfCare",
+        "short": "EpisodeOfCare",
+        "alias": [
+          "ZorgEpisode"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.1",
+            "comment": "EpisodeOfCare"
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.extension:comment",
+        "path": "EpisodeOfCare.extension",
+        "sliceName": "comment",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Comment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.extension:comment.value[x]",
+        "path": "EpisodeOfCare.extension.value[x]",
+        "short": "Comment",
+        "definition": "Additional information about the episode of care that the care provider wishes to see at first glance.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.6",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.extension:episodeOfCareName",
+        "path": "EpisodeOfCare.extension",
+        "sliceName": "episodeOfCareName",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-EpisodeOfCare.EpisodeOfCareName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.status",
+        "path": "EpisodeOfCare.status",
+        "definition": "Sending systems that don't record an explicit status can use the following guidance to infer a value from the zib:\r\n\r\n* No dates known:\r\n    * default value: _active_\r\n\r\n* StartDate present:\r\n    * and StartDate in the future: _planned_ \r\n    * and StartDate in the past:\r\n      * EndDate in the future or absent: _active_\r\n      * EndDate in the past: _finished_\r\n\r\n* StartDate absent:\r\n  * and EndDate in the future: _active_\r\n  * and EnDate in the past: _finished_",
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.2",
+            "comment": "StartDate (implicit, main mapping is on EpisodeOfCare.period.start)"
+          },
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.3",
+            "comment": "EndDate (implicit, main mapping is on EpisodeOfCare.period.end)"
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.diagnosis",
+        "path": "EpisodeOfCare.diagnosis",
+        "max": "1"
+      },
+      {
+        "id": "EpisodeOfCare.diagnosis.condition",
+        "path": "EpisodeOfCare.diagnosis.condition",
+        "short": "FocusEpisodeOfCare",
+        "definition": "The health problem on which the episode of care focuses.",
+        "alias": [
+          "FocusZorgEpisode"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.4",
+            "comment": "FocusEpisodeOfCare"
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.period.start",
+        "path": "EpisodeOfCare.period.start",
+        "short": "StartDate",
+        "definition": "The date that marks the beginning of the episode of care. Usually this is the date of the first contact of the patient with the care provider in the context of the health problem.",
+        "alias": [
+          "BeginDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.2",
+            "comment": "StartDate"
+          }
+        ]
+      },
+      {
+        "id": "EpisodeOfCare.period.end",
+        "path": "EpisodeOfCare.period.end",
+        "short": "EndDate",
+        "definition": "The date that marks the end of the episode of care. This can be the date of the last contact of the patient with the care provider in the context of the health problem, but also thereafter on the basis of hindsight",
+        "alias": [
+          "EindDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-episodeofcare-v1.0-2020EN",
+            "map": "NL-CM:16.6.3",
+            "comment": "EndDate"
+          }
+        ]
+      }
+    ]
+  }
+}

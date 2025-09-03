@@ -1,0 +1,81 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-LaboratoryTestResult.Specimen.Morphology",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-LaboratoryTestResult.Specimen.Morphology",
+  "name": "ExtLaboratoryTestResultSpecimenMorphology",
+  "title": "ext LaboratoryTestResult.Specimen.Morphology",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide the morphological abnormalities of the anatomical location where the specimen material is taken, for example wound, ulcer.",
+  "purpose": "This extension represents the Specimen.Morphology concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) LaboratoryTestResult v4.6 (2020)](https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-laboratorytestresult-v4.6-2020EN",
+      "uri": "https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)",
+      "name": "zib LaboratoryTestResult-v4.6(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Specimen.collection.bodySite"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-LaboratoryTestResult.Specimen.Morphology"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "Morphology",
+        "definition": "Morphology describes morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer.",
+        "alias": [
+          "Morfologie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.13--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-laboratorytestresult-v4.6-2020EN",
+            "map": "NL-CM:13.1.28",
+            "comment": "Morphology"
+          }
+        ]
+      }
+    ]
+  }
+}

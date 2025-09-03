@@ -1,0 +1,200 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ContactInformation-TelephoneNumbers",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers",
+  "name": "ZibContactInformationTelephoneNumbers",
+  "title": "zib ContactInformation TelephoneNumbers",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Contact information includes a person's telephone numbers en e-mail addresses.",
+  "purpose": "This ContactPoint resource represents the TelephoneNumbers concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ContactInformation v1.2 (2020)](https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)).\r\n\r\nFor the entire zib, the complementary profile [zib-ContactInformation-EmailAddresses](http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses) should be used. Both profiles can be added in a slice with the discriminator set to `profile`/`$this`.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "ContactPoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ContactPoint",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ContactPoint",
+        "path": "ContactPoint",
+        "short": "TelephoneNumbers",
+        "comment": "Implementation of the \"TelephoneNumbers\" concept of zib ContactInformation.\r\n\r\nPlease note that, although the zib concepts TelecomType and NumberType are functionally equivalent to the FHIR concepts `ContactPoint.system` and `ContactPoint.use` respectively, a mismatch occurs on the concept of mobile phone numbers; the zib uses the first concept and FHIR the second. For this reason, the ValueSet on `ContactPoint.system` is too narrow and the zib code will need to be communicated using the ext-CodeSpecification extension.",
+        "alias": [
+          "Telefoonnummers"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.2",
+            "comment": "TelephoneNumbers"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.extension:comment",
+        "path": "ContactPoint.extension",
+        "sliceName": "comment",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Comment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.extension:comment.value[x]",
+        "path": "ContactPoint.extension.value[x]",
+        "short": "Comment",
+        "definition": "Explanation about the telephone number and how to use it. It can be indicated, for example, that it is a department number (for healthcare professionnels) or that availability by phone is only possible during a specified part of the day.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.9",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.system",
+        "path": "ContactPoint.system",
+        "short": "TelecomType",
+        "definition": "The telecom or device type that the telephone number is connected to.",
+        "alias": [
+          "TelecomType"
+        ],
+        "min": 1,
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap TelecomType-to-ContactInformation-TelephoneNumbersSystem to translate terminology from the functional model to profile terminology in ValueSet ContactInformation-TelephoneNumbersSystem.",
+          "valueSet": "http://nictiz.nl/fhir/ValueSet/ContactInformation-TelephoneNumbersSystem",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/TelecomType-to-ContactInformation-TelephoneNumbersSystem"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.5",
+            "comment": "TelecomType"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.system.extension:telecomType",
+        "path": "ContactPoint.system.extension",
+        "sliceName": "telecomType",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.system.extension:telecomType.value[x]",
+        "path": "ContactPoint.system.extension.value[x]",
+        "short": "TelecomType",
+        "definition": "The telecom or device type that the telephone number is connected to.",
+        "alias": [
+          "TelecomType"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.6.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.5",
+            "comment": "TelecomType"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.value",
+        "path": "ContactPoint.value",
+        "short": "TelephoneNumber",
+        "definition": "The person's telephone number.",
+        "alias": [
+          "Telefoonnummer"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.4",
+            "comment": "TelephoneNumber"
+          }
+        ]
+      },
+      {
+        "id": "ContactPoint.use",
+        "path": "ContactPoint.use",
+        "short": "NumberType",
+        "definition": "NumberType indicates whether the number is a landline, temporary, work telephone number.",
+        "alias": [
+          "NummerSoort"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap NummerSoortCodelijst-to-ContactInformation-TelephoneNumbersUse to translate terminology from the functional model to profile terminology in ValueSet ContactInformation-TelephoneNumbersUse.",
+          "valueSet": "http://nictiz.nl/fhir/ValueSet/ContactInformation-TelephoneNumbersUse",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/NummerSoortCodelijst-to-ContactInformation-TelephoneNumbersUse"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.6",
+            "comment": "NumberType"
+          }
+        ]
+      }
+    ]
+  }
+}

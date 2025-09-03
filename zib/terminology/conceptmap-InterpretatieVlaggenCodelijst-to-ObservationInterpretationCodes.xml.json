@@ -1,0 +1,85 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "InterpretatieVlaggenCodelijst-to-ObservationInterpretationCodes",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": true
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/InterpretatieVlaggenCodelijst-to-ObservationInterpretationCodes",
+  "version": "0.0.1",
+  "name": "InterpretatieVlaggenCodelijst_to_ObservationInterpretationCodes",
+  "title": "InterpretatieVlaggenCodelijst to ObservationInterpretationCodes",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps test result interpretation flags as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) LaboratoryTestResult v4.6 (2020)](https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)) to <http://hl7.org/fhir/ValueSet/observation-interpretation> as found in `Observation.interpretation` in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.7--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/observation-interpretation",
+  "group": [
+    {
+      "source": "http://snomed.info/sct",
+      "target": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+      "element": [
+        {
+          "code": "281302008",
+          "target": [
+            {
+              "code": "H",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "281300000",
+          "target": [
+            {
+              "code": "L",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "11896004",
+          "target": [
+            {
+              "code": "I",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "30714006",
+          "target": [
+            {
+              "code": "R",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "131196009",
+          "target": [
+            {
+              "code": "S",
+              "equivalence": "equal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

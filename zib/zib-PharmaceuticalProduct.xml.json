@@ -1,0 +1,249 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-PharmaceuticalProduct",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-PharmaceuticalProduct",
+  "name": "ZibPharmaceuticalProduct",
+  "title": "zib PharmaceuticalProduct",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The prescribed substance is usually medication. However, medical aids and bandages can also be prescribed and supplied via the pharmacy. Food and blood products do not strictly belong in the medication category, but can be prescribed and supplied by a pharmacy as well.\r\n\r\nA type of medication can be indicated with **a single code**. That code can be chosen from several possible coding systems (concretely: GPK, PRK, HPK or article numbers). Correct use of these codes in the software systems will sufficiently record the composition of the product used, making a complete product specification unnecessary.\r\n\r\nIn addition to a primary code, **alternative codes** from other coding systems can also be entered (so that the GPK can be sent along in the event that the patient was registered based on PRK, for example).\r\n\r\nEntering multiple ingredients will enable you to display a compound product. If one of the composite parts is liquid, the dosage will be given in milliliters; otherwise it will be given in ‘units’.\r\n\r\nIn that case, the **composition of the medication** can be specified implicitly (with the use of a medication code) or explicitly, for example by listing the (active) ingredient(s) of the medication.\r\n\r\n**Magistral prescriptions** can be entered as well. This can be done by means of the option listed above to enter coded ingredients and/or by entering the composition and preparation method as free text.\r\nThis is a partial information model.",
+  "purpose": "This Medication resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) PharmaceuticalProduct v2.1.2 (2020)](https://zibs.nl/wiki/PharmaceuticalProduct-v2.1.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/PharmaceuticalProduct-v2.1.2(2020EN)",
+      "name": "zib PharmaceuticalProduct-v2.1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Medication",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Medication",
+        "path": "Medication",
+        "short": "PharmaceuticalProduct",
+        "alias": [
+          "FarmaceutischProduct"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19926",
+            "comment": "PharmaceuticalProduct"
+          }
+        ]
+      },
+      {
+        "id": "Medication.extension:description",
+        "path": "Medication.extension",
+        "sliceName": "description",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-PharmaceuticalProduct.Description"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.code",
+        "path": "Medication.code",
+        "short": "MedicationCode",
+        "definition": "Coding medication in the Netherlands is done on the basis of the G standard (issued by Z-index), which is filled under the direction of KNMP. \r\n\r\nThe coded medication can be expressed as:\r\n\r\n* GTIN International Article Number\r\n* ZI-nummer (2.16.840.1.113883.2.4.4.8)\n* Trade product code (HPK)\n* Prescription code (PRK)\n* Generic product code (GPK)\n* Anatomic Therapeutic Classification code (ATC)\n* Substance Name Code (SNK)\n*  Substance Name Code, in combination with Route of Administration (SSK)\n*  SNOMED CT code\r\n\r\nThe GTIN enables identification of the product including its origin with a barcode. The ZI number represents the tradeproduct and the package size. The HPK is the code for the trade product (with the brand name) as used per dose/per time the medication is taken (1 pill, 1 puff, 1ml) The PRK contains als GPK information supplemented with information needed to prescribe the right product. this level is intended to facilitate generic prescription of drugs. The GPK defines the pharmaceutical characteristics of a product: ingredients, strengths, units, pharmaceutical form and route of administration. The Substance Name Code (SNK) is the (active) compound. Further information about the G-Standaard levels see https://www.z-index.nl So called 90.000.000 numbers are used in local IT systems. These numbers shall not be used for external communication. In the this is necessary only the description (not the code) may be included. This is in accordance with national agreements (Nictiz Standard).\r\n\r\nThe bound ValueSet includes the NullFlavor code 'OTH', which is not allowed for the zib concept 'MedicationCode'. However, FHIR explicitly defines 'a textual description if no code is available', which is equivalent to the zib concept 'Medication', to be placed on `.code.text`. The 'OTH' code is included to allow this.",
+        "alias": [
+          "ProductCode"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.12--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19927",
+            "comment": "MedicationCode"
+          }
+        ]
+      },
+      {
+        "id": "Medication.code.text",
+        "path": "Medication.code.text",
+        "short": "Medication",
+        "definition": "For medication which has no code, enter the complete name of the pharmaceutical product here.",
+        "alias": [
+          "ProductNaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19929",
+            "comment": "Medication"
+          }
+        ]
+      },
+      {
+        "id": "Medication.form",
+        "path": "Medication.form",
+        "short": "PharmaceuticalForm",
+        "definition": "The pharmaceutical form indicates the form of the medication. Examples include: tablet, suppository, infusion liquid, ointment. If the product has a GPK code in the G standard, the form will be known in the G standard. For products without a code (free text, preparation by the pharmacy), the means of administration can be entered.",
+        "alias": [
+          "FarmaceutischeVorm"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.9.7.8--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19931",
+            "comment": "PharmaceuticalForm"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient",
+        "path": "Medication.ingredient",
+        "short": "Ingredient",
+        "definition": "A product contains one or more active substances and excipients. These are usually determined by the product code. For medication prepared or compounded by the local pharmacy, each ingredient must be entered separately.\r\n\r\nThe active substances play an important role, as they: a) determine the pharmacotherapeutic effect of the medication and b) serve as the basis for the indication of the strength of the medication (e.g. 200mg).",
+        "alias": [
+          "Ingredient"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19932",
+            "comment": "Ingredient"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Medication.ingredient.item[x]:itemCodeableConcept",
+        "path": "Medication.ingredient.item[x]",
+        "sliceName": "itemCodeableConcept",
+        "short": "SubstanceCode",
+        "definition": "Active substance or excipient. Here, the same codes can be used as for the ProductCode (for dilutions and compounds in particular), but now, the ATC, SSK and SNK codes can also be used to indicate a substance (to list ingredients of local products prepared by the pharmacy). \r\n\r\n* GTIN International Article Number \n* KNMP article number \n* Trade product code (HPK) \n* Prescription code (PRK) \n* Generic product code (GPK) \n* ATC (anatomic therapeutic classification) \n* SSK (substance name code with route of administration) \n* SNK (substance name code)\r\n\r\nFor further explanation about ATC see <https://www.whocc.no/atc/structure_and_principles/>",
+        "alias": [
+          "IngredientCode"
+        ],
+        "min": 0,
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.13--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19934",
+            "comment": "SubstanceCode"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient.strength",
+        "path": "Medication.ingredient.strength",
+        "short": "Concentration",
+        "definition": "The relative amount of this ingredient in this product.\r\nCalculation of Concentration = Ingredient Amount ÷ Product Amount.\r\n\r\nThis could be a concentration if the medication is dissolved in liquid, for example.",
+        "alias": [
+          "Sterkte"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.19933",
+            "comment": "Concentration"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient.strength.numerator",
+        "path": "Medication.ingredient.strength.numerator",
+        "short": "IngredientAmount",
+        "definition": "The amount and unit of this ingredient. This is the numerator for the calculation of the concentration. The unit should be selected from the G-Standard (Table 902).",
+        "alias": [
+          "IngredientHoeveelheid"
+        ],
+        "type": [
+          {
+            "code": "Quantity",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/pattern-GstdQuantity"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.22277",
+            "comment": "IngredientAmount"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient.strength.denominator",
+        "path": "Medication.ingredient.strength.denominator",
+        "short": "ProductAmount",
+        "definition": "Amount of the product. This is the denominator for the calculation of the concentration. Optionally a translation to NHG table Gebruiksvoorschriften(Table 25) is also allowed.",
+        "alias": [
+          "ProductHoeveelheid"
+        ],
+        "type": [
+          {
+            "code": "Quantity",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/pattern-GstdQuantity"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pharmaceuticalproduct-v2.1.2-2020EN",
+            "map": "NL-CM:9.7.22278",
+            "comment": "ProductAmount"
+          }
+        ]
+      }
+    ]
+  }
+}

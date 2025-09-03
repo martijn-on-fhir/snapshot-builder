@@ -1,0 +1,62 @@
+{
+  "resourceType": "ValueSet",
+  "id": "Monstermateriaal-en-Microorganisme-Codelijsten",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2020-08-31T23:00:00+00:00"
+      }
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ValueSet/Monstermateriaal-en-Microorganisme-Codelijsten",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.121.11.7"
+    }
+  ],
+  "version": "2020-09-01T00:00:00",
+  "name": "Monstermateriaal_en_Microorganisme_Codelijsten",
+  "title": "Monstermateriaal-en-Microorganisme-Codelijsten",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "Value set combining the distinct value sets for zib LaboratoryTestResult SpecimenMaterial (NL-CM:13.1.16) and Microorganism (NL-CM:13.1.22). This value set as such does not exist in the zib but facilitates referencing all these value sets at the same time",
+  "immutable": false,
+  "compose": {
+    "include": [
+      {
+        "valueSet": [
+          "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.6--20200901000000"
+        ]
+      },
+      {
+        "valueSet": [
+          "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.1.10--20200901000000"
+        ]
+      }
+    ]
+  }
+}

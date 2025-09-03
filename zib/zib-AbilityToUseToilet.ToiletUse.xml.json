@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToUseToilet.ToiletUse",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet.ToiletUse",
+  "name": "ZibAbilityToUseToiletToiletUse",
+  "title": "zib AbilityToUseToilet.ToiletUse",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Coordinating and realizing urination or defecation, such as indicating the need, getting into the right position, finding and reaching a suitable spot, manipulating clothing before and after urination, and cleaning up (the body) afterwards.",
+  "purpose": "This Observation resource represents the ToiletUse concept (NL-CM:4.22.6) of Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToUseToilet v3.1.1 (2020)](https://zibs.nl/wiki/AbilityToUseToilet-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytousetoilet-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToUseToilet-v3.1.1(2020EN)",
+      "name": "zib AbilityToUseToilet-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the ToiletUse concept (NL-CM:4.22.6) of zib AbilityToUseToilet. It can be used together with the [zib-AbilityToUseToilet](http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet) profile on the Observation resource, which groups references to the current and other resources on `Observation.hasMember`."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "284899001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "ToiletUse",
+        "definition": "Coordinating and realizing urination or defecation, such as indicating the need, getting into the right position, finding and reaching a suitable spot, manipulating clothing before and after urination, and cleaning up (the body) afterwards.",
+        "alias": [
+          "Toiletgebruik"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.22.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytousetoilet-v3.1.1-2020EN",
+            "map": "NL-CM:4.22.6",
+            "comment": "ToiletUse"
+          }
+        ]
+      }
+    ]
+  }
+}

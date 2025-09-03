@@ -1,0 +1,408 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-MedicalDevice",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice",
+  "name": "ZibMedicalDevice",
+  "title": "zib MedicalDevice",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Medical devices are any internally implanted and external devices and/or aids used by the patient (in the past) to reduce the effects of functional limitations in organ systems or to facilitate the treatment of a disease.",
+  "purpose": "This DeviceUseStatement resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-medicaldevice-v3.3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)",
+      "name": "zib MedicalDevice-v3.3.1(2020EN)"
+    },
+    {
+      "identity": "zib-procedure-v5.2-2020EN",
+      "uri": "https://zibs.nl/wiki/Procedure-v5.2(2020EN)",
+      "name": "zib Procedure-v5.2(2020EN)"
+    },
+    {
+      "identity": "zib-stoma-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Stoma-v3.3(2020EN)",
+      "name": "zib Stoma-v3.3(2020EN)"
+    },
+    {
+      "identity": "zib-treatmentobjective-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/TreatmentObjective-v3.2(2020EN)",
+      "name": "zib TreatmentObjective-v3.2(2020EN)"
+    },
+    {
+      "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/FunctionalOrMentalStatus-v3.2(2020EN)",
+      "name": "zib FunctionalOrMentalStatus-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "DeviceUseStatement",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DeviceUseStatement",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DeviceUseStatement",
+        "path": "DeviceUseStatement",
+        "short": "MedicalDevice",
+        "alias": [
+          "MedischHulpmiddel"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.1",
+            "comment": "MedicalDevice"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.extension:healthProfessional",
+        "path": "DeviceUseStatement.extension",
+        "sliceName": "healthProfessional",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-MedicalDevice.HealthProfessional"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.extension:location",
+        "path": "DeviceUseStatement.extension",
+        "sliceName": "location",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-MedicalDevice.Location"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.extension:location.value[x]",
+        "path": "DeviceUseStatement.extension.value[x]",
+        "comment": "Please note that this zib concept (Location::HealthcareProvider) is also mapped on the `Procedure.location` element in profile [zib-Procedure-event](http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-event). The reason for this is that this zib concept aligns with the Location::HealthcareProvider concept in zib Procedure (NL-CM:14.1.5), but only for the situation that the Procedure is about placing the implant which is described using this instance of zib MedicalDevice. In this situation, the current extension is redundant and it is advised to only use `Procedure.location` in profile zib-Procedure-event to represent the Location concept."
+      },
+      {
+        "id": "DeviceUseStatement.extension:treatmentObjective",
+        "path": "DeviceUseStatement.extension",
+        "sliceName": "treatmentObjective",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/resource-pertainsToGoal"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "DeviceUseStatement.extension:treatmentObjective.value[x]",
+        "path": "DeviceUseStatement.extension.value[x]",
+        "comment": "Zib TreatmentObjective (represented by the Goal resource in FHIR) can use the data model of zib FunctionalOrMentalStatus to describe the desired treatment objective, which in turn may refer zib MedicalDevice to indicate the intent to use that device for reaching the treatment objective.\r\n\r\nIn FHIR, the modeling deviates somewhat from this approach:\r\n\r\n* Both zib TreatmentObjective and the desired zib FunctionalOrMentalStatus are represented using the [zib-TreatmentObjective](http://nictiz.nl/fhir/zib-TreatmentObjective) profile on the Goal resource.\r\n* The reference from TreatmentObjective to MedicalDevice (via FunctionalOrMentalStatus) is in the opposite direction, to the Goal resource.\r\n\r\nThis extension may thus be used to represent the link zib TreatmentObjective -> zib FunctionalOrMentalStatus -> zib MedicalDevice. In this situation, it is expected that `DeviceUseStatement.status` is set to _intended_.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Goal",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentObjective"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.5",
+            "comment": "Reversed reference for zib FunctionalOrMentalStatus.MedicalDevice, when using zib FunctionalOrMentalStatus in the context of zib TreatmentObjective"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.status",
+        "path": "DeviceUseStatement.status",
+        "comment": "This element is implictly mapped to the zib concepts NL-CM:10.1.11 (StartDate) and NL-CM:10.1.14 (EndDate). Unless the status is explicitly recorded, the following guidance applies:\r\n\r\n* When StartDate is in the future, `.status` will usually be set to _intended_.\r\n* When StartDate is in the past and EndDate has a value and in the future or EndDate has no value, `.status` will usually be set to _active_.\r\n* When EndDate has a value and is in the past, `.status` will usually be set to _completed_.",
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.11",
+            "comment": "StartDate (implicit, main mapping is on DeviceUseStatement.timingPeriod.start)"
+          },
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.14",
+            "comment": "EndDate (implicit, main mapping is on DeviceUseStatement.timingPeriod.end)"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.derivedFrom",
+        "path": "DeviceUseStatement.derivedFrom",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "DeviceUseStatement.derivedFrom:procedure-request",
+        "path": "DeviceUseStatement.derivedFrom",
+        "sliceName": "procedure-request",
+        "short": "Procedure",
+        "definition": "The procedure which has the purpose of placing this product in or on the body.",
+        "comment": "* Note 1: on a functional level, zib Procedure references zib MedicalDevice, but in FHIR this direction is reversed.\r\n* Note 2: zib Procedure can represent a requested or (to be) performed procedure. This slice represents requested procedures, while slice `procedure-event` represents performed procedures.",
+        "alias": [
+          "Verrichting"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-request"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-procedure-v5.2-2020EN",
+            "map": "NL-CM:14.1.7",
+            "comment": "Reversed reference for zib Procedure.MedicalDevice"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.derivedFrom:procedure-event",
+        "path": "DeviceUseStatement.derivedFrom",
+        "sliceName": "procedure-event",
+        "short": "Procedure",
+        "definition": "The procedure which has the purpose of placing this product in or on the body.",
+        "comment": "* Note 1: on a functional level, zib Procedure references zib MedicalDevice, but in FHIR this direction is reversed.\r\n* Note 2: zib Procedure can represent a requested or (to be) performed procedure. This slice represents performed procedures, while slice `procedure-request` represents requested procedures.",
+        "alias": [
+          "Verrichting"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Procedure-event"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-procedure-v5.2-2020EN",
+            "map": "NL-CM:14.1.7",
+            "comment": "Reversed reference for zib Procedure.MedicalDevice"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.timing[x]",
+        "path": "DeviceUseStatement.timing[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "DeviceUseStatement.timing[x]:timingPeriod",
+        "path": "DeviceUseStatement.timing[x]",
+        "sliceName": "timingPeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.timing[x]:timingPeriod.start",
+        "path": "DeviceUseStatement.timing[x].start",
+        "short": "StartDate",
+        "definition": "The start date of the first use or implant of the medical device. A \"vague\" date, such as only the year, is permitted.",
+        "alias": [
+          "BeginDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.11",
+            "comment": "StartDate"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.timing[x]:timingPeriod.end",
+        "path": "DeviceUseStatement.timing[x].end",
+        "short": "EndDate",
+        "definition": "The end date of the last use or explant of the medical device. A \"vague\" date, such as only the year, is permitted.",
+        "alias": [
+          "EindDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.14",
+            "comment": "EndDate"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.device",
+        "path": "DeviceUseStatement.device",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice.Product"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference",
+        "path": "DeviceUseStatement.reasonReference",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:indication",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "indication",
+        "short": "Indication",
+        "definition": "The medical reason for use of the medical device.",
+        "alias": [
+          "Indicatie"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.7",
+            "comment": "Indication"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.reasonReference:stoma",
+        "path": "DeviceUseStatement.reasonReference",
+        "sliceName": "stoma",
+        "short": "Stoma",
+        "comment": "Please note that on a functional level, zib Stoma references zib MedicalDevice, but in FHIR this direction is reversed.",
+        "alias": [
+          "Stoma"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Stoma"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.3",
+            "comment": "Reversed reference for zib Stoma.StomaMaterial"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.bodySite",
+        "path": "DeviceUseStatement.bodySite",
+        "short": "Location / AnatomicalLocation",
+        "definition": "Patient's anatomical location of the medical device used.",
+        "alias": [
+          "AnatomischeLocatie"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.15",
+            "comment": "AnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "DeviceUseStatement.note",
+        "path": "DeviceUseStatement.note",
+        "max": "1"
+      },
+      {
+        "id": "DeviceUseStatement.note.text",
+        "path": "DeviceUseStatement.note.text",
+        "short": "Comment",
+        "definition": "Comment about use or information on the medical device used.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.10",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-SNAQrcScore",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-SNAQrcScore",
+  "name": "ZibSNAQrcScore",
+  "title": "zib SNAQrcScore",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Short Nutritional Assessment Questionnaire for Residential Care (SNAQ rc is a (validated) measuring tool for determining the extent of a patient’s malnutrition. The tool comprises three questions, each of which is assigned a score. The total score determines the extent of malnutrition.\r\nThe SNAQrc helps to recognize and treat malnutrition at an early stage.\r\nFour varieties of the measuring tool were developed for different care settings: hospitals (adults & children), nursing and retirement homes and independently living seniors. This concept describes the tool intended for the nursing and retirement homes setting.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SNAQrcScore v1.1 (2020)](https://zibs.nl/wiki/SNAQrcScore-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-snaqrcscore-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/SNAQrcScore-v1.1(2020EN)",
+      "name": "zib SNAQrcScore-v1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "SNAQrcScore",
+        "alias": [
+          "SNAQrcScore"
+        ],
+        "constraint": [
+          {
+            "key": "zib-SNAQrcScore-1",
+            "severity": "error",
+            "human": "If one of the component codes is present, all SHALL be present.",
+            "expression": "component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4029003'|'4029004'|'4029005'|'4029008')).count().subsetOf(0|4)"
+          },
+          {
+            "key": "zib-SNAQrcScore-2",
+            "severity": "error",
+            "human": "If the component codes are not all present, the value SHALL be present.",
+            "expression": "value.empty().not() or component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4029003'|'4029004'|'4029005'|'4029008')).count()=4"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.1",
+            "comment": "SNAQrcScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108311000146106"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "SNAQrcScoreDateTime",
+        "definition": "The date and time at which the SNAQrc score was determined.",
+        "alias": [
+          "SNAQrcScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.6",
+            "comment": "SNAQrcScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 6. The relation between the value of the total score and the color outcome of the score tool is:\r\n0 = green\r\n1= orange\r\n2 and higher = red.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 6,
+        "condition": [
+          "zib-SNAQrcScore-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore",
+        "path": "Observation.component",
+        "sliceName": "weightLossScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:weightLossScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4029003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "WeightLossScore",
+        "definition": "The score based on undesired weight loss over the past month(s).",
+        "alias": [
+          "GewichtsverliesScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.29.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.3",
+            "comment": "WeightLossScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:appetiteScore",
+        "path": "Observation.component",
+        "sliceName": "appetiteScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:appetiteScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4029004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:appetiteScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "AppetiteScore",
+        "definition": "The score based on a reduced appetite over the past month.",
+        "alias": [
+          "EetlustScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.29.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.4",
+            "comment": "AppetiteScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:bmiScore",
+        "path": "Observation.component",
+        "sliceName": "bmiScore",
+        "max": "1",
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:bmiScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4029005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:bmiScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "BMIScore",
+        "definition": "The score based on the BMI of the patient. For a BMI >28 (overweight) the score is not applicable.",
+        "alias": [
+          "BMIScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.29.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.5",
+            "comment": "BMIScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:assistedEating",
+        "path": "Observation.component",
+        "sliceName": "assistedEating",
+        "max": "1",
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:assistedEating.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4029008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:assistedEating.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "AssistedEating",
+        "definition": "The score based on the ability of the patient to eat and drink without assistance.",
+        "alias": [
+          "HulpBijEten"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "zib-SNAQrcScore-1",
+          "zib-SNAQrcScore-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.29.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-snaqrcscore-v1.1-2020EN",
+            "map": "NL-CM:4.29.8",
+            "comment": "AssistedEating"
+          }
+        ]
+      }
+    ]
+  }
+}

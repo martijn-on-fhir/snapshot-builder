@@ -1,0 +1,179 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Payer.InsuranceCompany",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Payer.InsuranceCompany",
+  "name": "ZibPayerInsuranceCompany",
+  "title": "zib Payer.InsuranceCompany",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Payers are organizations or individuals that pay for the healthcare supplied to the patient. These organizations or individuals can be: facilities or people who financially guarantee or who are responsible for the patient (such as parents or guardians of minors), organizations with direct financial responsibility, combinations of these or the patient themselves.",
+  "purpose": "This Coverage resource represents the InsuranceCompany concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Payer v3.1.1 (2020)](https://zibs.nl/wiki/Payer-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-payer-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/Payer-v3.1.1(2020EN)",
+      "name": "zib Payer-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Coverage",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coverage",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Coverage",
+        "path": "Coverage",
+        "short": "Payer / Insurance",
+        "comment": "The zib Payer is split into two focal profiles on Coverage based on the PayerPerson and InsuranceCompany containers. These two containers cannot be profiled within one profile because they both require mapping different concepts on elements such as `.payor` and `.type`.\r\n\r\nThe zib container Payer.InsuranceCompany is mapped to this Coverage profile and uses the profile zib-Payer-Organization (<http://nictiz.nl/fhir/StructureDefinition/zib-Payer-Organization>) to capture the OrganizationName, IdentificationNumber, AddressInformation and ContactInformation. The zib-Payer-Organization profile is referenced using the `.payor` element.",
+        "alias": [
+          "Betaler",
+          "Verzekering"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.1",
+            "comment": "Payer"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.8",
+            "comment": "Insurance"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.status",
+        "path": "Coverage.status",
+        "comment": "Sending systems that don't record an explicit status can use the following guidance to infer a value from the zib:\r\n\r\n* StartDateTime is present and in the future: _draft_\r\n* EndDateTime is present:\r\n    * and in the future: _active_\r\n    * and in the past: _cancelled_\r\n* When no status can be derived from StartDateTime and EndDateTime it is expected that only _active_ Coverage resources are exchanged.",
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.13",
+            "comment": "StartDateTime (implicit, main mapping is on Coverage.period.start)"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.14",
+            "comment": "EndDateTime (implicit, main mapping is on Coverage.period.end)"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.type",
+        "path": "Coverage.type",
+        "short": "InsuranceType",
+        "definition": "Type of insurance policy. Codes as returned in the Check for Right to Insurance.",
+        "alias": [
+          "Verzekeringssoort"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.1.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.15",
+            "comment": "InsuranceType"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.subscriberId",
+        "path": "Coverage.subscriberId",
+        "short": "InsurantNumber",
+        "definition": "Number under which the insured person is registered at the insurance company This item maps the ‘Identification number of the card’ on EHIC field 8",
+        "alias": [
+          "VerzekerdeNummer"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.6",
+            "comment": "InsurantNumber"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.period.start",
+        "path": "Coverage.period.start",
+        "short": "StartDateTime",
+        "definition": "Date from which the insurance policy coverage applies.",
+        "alias": [
+          "BeginDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.13",
+            "comment": "StartDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.period.end",
+        "path": "Coverage.period.end",
+        "short": "EndDateTime",
+        "definition": "Date until which the insurance policy coverage applies. This item maps the ‘Expiry date’ on EHIC field 9.",
+        "alias": [
+          "EindDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.14",
+            "comment": "EndDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.payor",
+        "path": "Coverage.payor",
+        "short": "InsuranceCompany",
+        "alias": [
+          "Verzekeraar"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Payer-Organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.3",
+            "comment": "InsuranceCompany"
+          }
+        ]
+      }
+    ]
+  }
+}

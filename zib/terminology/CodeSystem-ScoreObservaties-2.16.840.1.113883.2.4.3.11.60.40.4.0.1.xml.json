@@ -1,0 +1,2214 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablecodesystem"
+    ]
+  },
+  "language": "nl-NL",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"nl-NL\" xml:lang=\"nl-NL\">Definitie-resources zijn niet voorzien van een narrative. Een menselijk leesbare versie is te vinden via de implementation guide(s) waarin deze resource gebruikt wordt.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2023-03-06T00:00:00Z"
+      }
+    }
+  ],
+  "url": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1"
+    }
+  ],
+  "version": "2023-03-06T00:00:00",
+  "name": "ScoreObservaties",
+  "title": "ScoreObservaties",
+  "status": "active",
+  "experimental": false,
+  "date": "2024-02-05T09:53:25Z",
+  "publisher": "Registratie aan de bron",
+  "contact": [
+    {
+      "name": "Registratie aan de bron",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.registratieaandebron.nl"
+        },
+        {
+          "system": "url",
+          "value": "https://www.zibs.nl"
+        }
+      ]
+    }
+  ],
+  "description": "This zib code system serves to define definition codes for elements in zibs that describe a score instrument. Changes: \n* Version 2023-03-06T00:00:00: Added codes for BarthelADLIndex (ZIB-1692)\n* Version 2022-06-10T00:00:00: Added codes for DOSScore",
+  "caseSensitive": false,
+  "content": "complete",
+  "count": 63,
+  "property": [
+    {
+      "code": "status",
+      "uri": "http://hl7.org/fhir/concept-properties#status",
+      "description": "A code that indicates the status of the concept. Values found in this version of the code system are: active, draft",
+      "type": "code"
+    },
+    {
+      "code": "effectiveDate",
+      "uri": "http://hl7.org/fhir/concept-properties#effectiveDate",
+      "description": "The date at which the concept was status was last changed. This is calculated based on the highest of 'creation date', 'expiration date', and 'official release date'",
+      "type": "dateTime"
+    }
+  ],
+  "concept": [
+    {
+      "code": "12012003",
+      "display": "ComfortScore Alertheid",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale Alertness"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Alertheid"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012004",
+      "display": "ComfortScore Kalmte_Agitatie",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale Calmness_Agitation"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Kalmte_Agitatie"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012005",
+      "display": "ComfortScore Ademhalingsreactie",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale RespiratoryResponse"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Ademhalingsreactie"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012006",
+      "display": "ComfortScore Huilen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale Crying"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Huilen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012008",
+      "display": "ComfortScore Lichaamsbeweging",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale BodyMovement"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Lichaamsbeweging"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012009",
+      "display": "ComfortScore Gezichtsspanning",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale FacialTone"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Gezichtsspanning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12012010",
+      "display": "ComfortScore Spierspanning",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScale BodyMuscleTone"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ComfortScore Spierspanning"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12013003",
+      "display": "FLACCpijnScore Gezicht",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpainScale Face"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpijnScore Gezicht"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12013004",
+      "display": "FLACCpijnScore Benen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpainScale Legs"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpijnScore Benen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12013005",
+      "display": "FLACCpijnScore Activiteit",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpainScale Activity"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpijnScore Activiteit"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12013006",
+      "display": "FLACCpijnScore Huilen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpainScale Cry"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpijnScore Huilen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12013009",
+      "display": "FLACCpijnScore Troostbaar",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpainScale Consolability"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "FLACCpijnScore Troostbaar"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017003",
+      "display": "ChecklistPijngedrag Gezicht",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Face"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Gezicht"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017004",
+      "display": "ChecklistPijngedrag Mond",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Mouth"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Mond"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017005",
+      "display": "ChecklistPijngedrag Grimas",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Grimace"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Grimas"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017006",
+      "display": "ChecklistPijngedrag VerdrietigeBlik",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Looking sad"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag VerdrietigeBlik"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017007",
+      "display": "ChecklistPijngedrag Ogen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Eyes"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Ogen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017008",
+      "display": "ChecklistPijngedrag Paniek",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Panic"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Paniek"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017009",
+      "display": "ChecklistPijngedrag Kreunen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Moaning"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Kreunen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017010",
+      "display": "ChecklistPijngedrag Huilen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Cry"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Huilen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017011",
+      "display": "ChecklistPijngedrag Onrustgeluiden",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour SoundsOfRestlessness"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Onrustgeluiden"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "12017012",
+      "display": "ChecklistPijngedrag Tranen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPainBehaviour Tears"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "ChecklistPijngedrag Tranen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "18007006",
+      "display": "DOSScore ZaktWeg",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore DozesOff"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore ZaktWeg"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007007",
+      "display": "DOSScore SnelAfgeleid",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore EasilyDistracted"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore SnelAfgeleid"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007008",
+      "display": "DOSScore HeeftAandacht",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore MaintainsAttention"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore HeeftAandacht"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007009",
+      "display": "DOSScore VraagAntwoordNietAf",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore UnfinishedQuestionAnswer"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore VraagAntwoordNietAf"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007010",
+      "display": "DOSScore AntwoordenNietPassend",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore AnswersNoFit"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore AntwoordenNietPassend"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007011",
+      "display": "DOSScore ReageertTraag",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore ReactsSlowly"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore ReageertTraag"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007012",
+      "display": "DOSScore DenktErgensAnders",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore ThinksSomewhereElse"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore DenktErgensAnders"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007013",
+      "display": "DOSScore BeseftDagdeel",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore KnowsPartDay"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore BeseftDagdeel"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007014",
+      "display": "DOSScore HerinnertRecent",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore RemembersRecent"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore HerinnertRecent"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007015",
+      "display": "DOSScore Rusteloos",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore Restless"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore Rusteloos"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007016",
+      "display": "DOSScore TrektDraden",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore PullsWires"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore TrektDraden"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007017",
+      "display": "DOSScore SnelGeemotioneerd",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore EasilyEmotional"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore SnelGeemotioneerd"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "18007018",
+      "display": "DOSScore Hallucinaties",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore Hallucinations"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "DOSScore Hallucinaties"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2022-06-10"
+        }
+      ]
+    },
+    {
+      "code": "4005003",
+      "display": "MUSTScore BMIScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore BMIScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore BMIScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4005004",
+      "display": "MUSTScore GewichtsverliesScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore WeightLossScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore GewichtsverliesScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4005005",
+      "display": "MUSTScore ZiekteScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore IllnessScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "MUSTScore ZiekteScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4006003",
+      "display": "SNAQScore GewichtsverliesScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore WeightLossScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore GewichtsverliesScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4006004",
+      "display": "SNAQScore EetlustScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore AppetiteScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore EetlustScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4006005",
+      "display": "SNAQScore VoedingsScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore NutritionScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQScore VoedingsScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4028003",
+      "display": "StrongKidsScore GewichtsverliesScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore WeightLossScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore GewichtsverliesScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4028004",
+      "display": "StrongKidsScore ZiekteBeeldScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore ConditionScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore ZiekteBeeldScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4028005",
+      "display": "StrongKidsScore VoedingsScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore NutritionScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore VoedingsScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4028008",
+      "display": "StrongKidsScore VoedingstoestandScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore NutritionStatusScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "StrongKidsScore VoedingstoestandScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4029003",
+      "display": "SNAQrcScore GewichtsverliesScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore WeightLossScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore GewichtsverliesScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4029004",
+      "display": "SNAQrcScore EetlustScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore AppetiteScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore EetlustScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4029005",
+      "display": "SNAQrcScore BMIScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore BMIScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore BMIScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4029008",
+      "display": "SNAQrcScore HulpBijEtenScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore AssistedEatingScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQrcScore HulpBijEtenScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4030003",
+      "display": "SNAQ65+Score GewichtsverliesScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score WeightLossScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score GewichtsverliesScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4030004",
+      "display": "SNAQ65+Score EetlustScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score AppetiteScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score EetlustScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4030005",
+      "display": "SNAQ65+Score InspanningsScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score ExerciseScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score InspanningsScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4030008",
+      "display": "SNAQ65+Score BovenarmOmtrekScore",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score UpperArmCircumferenceScore"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "SNAQ65+Score BovenarmOmtrekScore"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "active"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2020-09-01"
+        }
+      ]
+    },
+    {
+      "code": "4002010",
+      "display": "BarthelIndex AanUitkleden",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Dressing"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex AanUitkleden"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002012",
+      "display": "BarthelIndex BadenDouchen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Bathing"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex BadenDouchen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002003",
+      "display": "BarthelIndex Blaas",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Bladder"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Blaas"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002004",
+      "display": "BarthelIndex Darm",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Bowels"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Darm"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002007",
+      "display": "BarthelIndex Eten",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Feeding"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Eten"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002009",
+      "display": "BarthelIndex Mobiliteit",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Mobility"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Mobiliteit"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002006",
+      "display": "BarthelIndex Toiletgebruik",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex ToiletUse"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Toiletgebruik"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002008",
+      "display": "BarthelIndex Transfers",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Transfers"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex Transfers"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002011",
+      "display": "BarthelIndex TrappenLopen",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex ManagingStairs"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex TrappenLopen"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    },
+    {
+      "code": "4002005",
+      "display": "BarthelIndex UiterlijkeVerzorging",
+      "designation": [
+        {
+          "language": "en-US",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelADLIndex Grooming"
+        },
+        {
+          "language": "nl-NL",
+          "use": {
+            "system": "http://snomed.info/sct",
+            "code": "900000000000013009",
+            "display": "Synonym"
+          },
+          "value": "BarthelIndex UiterlijkeVerzorging"
+        }
+      ],
+      "property": [
+        {
+          "code": "status",
+          "valueCode": "draft"
+        },
+        {
+          "code": "effectiveDate",
+          "valueDateTime": "2023-03-06"
+        }
+      ]
+    }
+  ]
+}

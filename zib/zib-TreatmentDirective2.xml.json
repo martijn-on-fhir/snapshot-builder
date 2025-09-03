@@ -1,0 +1,449 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TreatmentDirective2",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentDirective2",
+  "name": "ZibTreatmentDirective2",
+  "title": "zib TreatmentDirective2",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A treatment directive contains a joint decision between a health professional (for example a general practitioner) and a patient or his representative(s) about the desirability of performing a certain treatment, such as resuscitation, before this treatment becomes (acute) necessary.\r\nWhen the need arises and the treatment cannot be discussed with the patient or representative (s), that decision is an important indication for the treating health professional (for example an ER doctor).\r\nThe term treatment limit is a synonym of the term treatment directive.",
+  "purpose": "This Consent resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TreatmentDirective2-v1.0 (2020)](https://zibs.nl/wiki/TreatmentDirective2-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-treatmentdirective2-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/TreatmentDirective2-v1.0(2020EN)",
+      "name": "zib TreatmentDirective2-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Consent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent",
+        "path": "Consent",
+        "short": "TreatmentDirective",
+        "comment": "A straightforward and accurate mapping of zib TreatmentDirective2 to FHIR is not possible. The main consideration is to choose between the Consent and CarePlan resource. Unfortunately, the Consent resource does not have full support for treatment directives yet as its main focus is to model Patient's privacy consents. Regardless, it seems to be the best match to represent the intention of the zib, as both the resource and the zib cover a mutual agreement about treatments and not per se the resulting actions or policy for treatments, which would better be handled using the CarePlan resource. Future migration to a later version of FHIR or the zib will result in the reevaluation of the mapping.",
+        "alias": [
+          "BehandelAanwijzing"
+        ],
+        "constraint": [
+          {
+            "key": "zib-TreatmentDirective2-1",
+            "severity": "error",
+            "human": "`extension.additionalAdvanceDirective` may only be used for AdvanceDirective references in addition to first reference in `.source[x]`.",
+            "expression": "extension.where(url = 'http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.AdvanceDirective').empty() or source.exists()"
+          },
+          {
+            "key": "zib-TreatmentDirective2-2",
+            "severity": "error",
+            "human": "If the specificationOther extension is used, `.provision.type` MUST be absent and vice versa",
+            "expression": "(extension.where(url = 'http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.SpecificitionOther').exists() and provision.type.exists()).not()"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.1",
+            "comment": "TreatmentDirective"
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:comment",
+        "path": "Consent.extension",
+        "sliceName": "comment",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Comment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:comment.value[x]",
+        "path": "Consent.extension.value[x]",
+        "short": "Comment",
+        "definition": "The comment may include further information such as the reason why a treatment directive has been drawn up, persons who assisted the patient in agreeing the treatment directive but who are not otherwise involved in the agreement as a representative, etc.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.13",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Consent.extension:additionalAdvanceDirective",
+        "path": "Consent.extension",
+        "sliceName": "additionalAdvanceDirective",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.AdvanceDirective"
+            ]
+          }
+        ],
+        "condition": [
+          "zib-TreatmentDirective2-1"
+        ]
+      },
+      {
+        "id": "Consent.extension:additionalAdvanceDirective.value[x]",
+        "path": "Consent.extension.value[x]",
+        "comment": "`Consent.source:sourceReference` is the primary target for referencing zib AdvanceDirective (zib concept NL-CM:2.2.8). However, the cardinality of `Consent.source[x]` is restricted to `0..1`. If more than one AdvanceDirective needs to be referenced, the _additional_ references can be communicated using this extension. If this extension is used, `Consent.source:sourceReference` SHALL be populated and it SHALL not contain the same reference as this extension.",
+        "condition": [
+          "zib-TreatmentDirective2-1"
+        ]
+      },
+      {
+        "id": "Consent.modifierExtension:specificationOther",
+        "path": "Consent.modifierExtension",
+        "sliceName": "specificationOther",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.SpecificationOther"
+            ]
+          }
+        ],
+        "condition": [
+          "zib-TreatmentDirective2-2"
+        ]
+      },
+      {
+        "id": "Consent.modifierExtension:specificationOther.value[x]",
+        "path": "Consent.modifierExtension.value[x]",
+        "condition": [
+          "zib-TreatmentDirective2-2"
+        ]
+      },
+      {
+        "id": "Consent.status",
+        "path": "Consent.status",
+        "comment": "This element is implicitly mapped to the zib concepts NL-CM:2.2.5 (MostRecentReviewDate) and NL-CM:2.2.6 (DateExpired). Unless the status is explicitly recorded, the following guidance applies:\r\n\r\n* When MostRecentReviewDate is in the past and DateExpired is absent or in the future, `.status` will usually be set to _active_.\r\n* When DateExpired is in the past, `.status` will usually be set to _inactive_.\r\n* When MostRecentReviewDate is absent or in the future,  which is not possible following the zib, `.status` will usually be set to _draft_.",
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.5",
+            "comment": "MostRecentReviewDate (implicit, main mapping is on `Consent.dateTime`)"
+          },
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.6",
+            "comment": "DateExpired (implicit, main mapping is on `Consent.provision.period.end`)"
+          }
+        ]
+      },
+      {
+        "id": "Consent.scope",
+        "path": "Consent.scope",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+              "code": "treatment"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.category",
+        "path": "Consent.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.category:treatmentDirectiveCode",
+        "path": "Consent.category",
+        "sliceName": "treatmentDirectiveCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "129125009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.dateTime",
+        "path": "Consent.dateTime",
+        "short": "MostRecentReviewDate",
+        "definition": "The date on which the treatment directive has been agreed with the patient and / or his representative (s). This can be the first time that the treatment directive have been discussed, but an existing treatment directive may also have been discussed again. The content of the treatment directive may have changed or remained the same.",
+        "alias": [
+          "MeestRecenteBespreekdatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.5",
+            "comment": "MostRecentReviewDate"
+          }
+        ]
+      },
+      {
+        "id": "Consent.source[x]",
+        "path": "Consent.source[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "condition": [
+          "zib-TreatmentDirective2-1"
+        ]
+      },
+      {
+        "id": "Consent.source[x]:sourceReference",
+        "path": "Consent.source[x]",
+        "sliceName": "sourceReference",
+        "short": "AdvanceDirective",
+        "definition": "A (written) statement in which a person indicates wishes concerning future medical action, in the event that this person is at that point no longer (deemed) capable of taking decisions on the matter.",
+        "comment": "The cardinality of this `Consent.source[x]` element is restricted to `0..1`, which is narrower than the AdvanceDirective concept (NL-CM:2.2.8) specified in the HCIM TreatmentDirective2. If additional AdvanceDirective references are needed, the additionalAdvanceDirective extension can be used _in addition to_ this element. If the additionalAdvanceDirective extension is used, this element SHALL be populated and it SHALL not contain a reference that is also present in the extension.",
+        "alias": [
+          "Wilsverklaring"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Consent",
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+              "http://hl7.org/fhir/StructureDefinition/Contract",
+              "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AdvanceDirective"
+            ]
+          }
+        ],
+        "condition": [
+          "zib-TreatmentDirective2-1"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.8",
+            "comment": "AdvanceDirective"
+          }
+        ]
+      },
+      {
+        "id": "Consent.policy.uri",
+        "path": "Consent.policy.uri",
+        "comment": "Either `.policy` or `.policyRule` should exist following core constraint ppc-1. If no explicit value is recorded, a fallback is to populate `.policy.uri` with <https://wetten.overheid.nl/> if the treatment directive is recorded following Dutch law and regulations."
+      },
+      {
+        "id": "Consent.provision.extension:reasonForEnding",
+        "path": "Consent.provision.extension",
+        "sliceName": "reasonForEnding",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-TreatmentDirective2.ReasonForEnding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.type",
+        "path": "Consent.provision.type",
+        "short": "TreatmentDecision",
+        "definition": "The joint decision taken with regard to the desirability of performing the indicated treatment. If the agreement is 'Other', 'Specification Other' shall contain the instructions for whether or not to carry out the treatment. Implementers SHALL support the specificationOther modifier extension for this.",
+        "alias": [
+          "BehandelBesluit"
+        ],
+        "condition": [
+          "zib-TreatmentDirective2-2"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap TreatmentDecisionCodelist-to-ConsentProvisionType to translate terminology from the functional model to profile terminology in ValueSet ConsentProvisionType.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/consent-provision-type|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/TreatmentDecisionCodelist-to-ConsentProvisionType"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.2",
+            "comment": "TreatmentDecision"
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.period.end",
+        "path": "Consent.provision.period.end",
+        "short": "DateExpired",
+        "definition": "The date on which the treatment directive has been withdrawn and therefore no longer applies. An explicit decision must be taken about the 'date expired', in consultation between the responsible care provider and the patient or his representative(s).Any future termination can only be entered as a condition. Often this will be linked to 1 or more events.",
+        "alias": [
+          "DatumBeeindigd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.6",
+            "comment": "DateExpired"
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.actor",
+        "path": "Consent.provision.actor",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "role"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.provision.actor:agreementParty",
+        "path": "Consent.provision.actor",
+        "sliceName": "agreementParty",
+        "short": "AgreementParty",
+        "alias": [
+          "AfspraakPartij"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.9",
+            "comment": "AgreementParty"
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.actor:agreementParty.role",
+        "path": "Consent.provision.actor.role",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "code": "CONSENTER"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:agreementParty.reference",
+        "path": "Consent.provision.actor.reference",
+        "short": "Patient / Representative / HealthProfessional",
+        "definition": "* Patient as the person with whom the agreement was made.\r\n* Person who represents the patient in health care matters and with whom the agreement has been made (too).\r\n* HealthProfessional who has made the agreement regarding the treatment directive.",
+        "comment": "Each occurrence of the zib HealthProfessional is normally represented by _two_ FHIR resources: a PractitionerRole resource (instance of [zib-HealthProfessional-PractitionerRole](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole)) and a Practitioner resource (instance of [zib-HealthProfessional-Practitioner](http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner)). The Practitioner resource is referenced from the PractitionerRole instance. For this reason, sending systems should fill the reference to the PractitionerRole instance here, and not the Practitioner resource. Receiving systems can then retrieve the reference to the Practitioner resource from that PractitionerRole instance.\r\n\r\nIn rare circumstances, there is only a Practitioner instance, in which case it is that instance which will be referenced here. However, since this should be the exception, the zib-HealthProfessional-Practitioner profile is not explicitly mentioned as a target profile.",
+        "alias": [
+          "Patient",
+          "Vertegenwoordiger",
+          "Zorgverlener"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device",
+              "http://hl7.org/fhir/StructureDefinition/Group",
+              "http://hl7.org/fhir/StructureDefinition/CareTeam",
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://hl7.org/fhir/StructureDefinition/Practitioner",
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Patient",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.10",
+            "comment": "Patient"
+          },
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.11",
+            "comment": "Representative"
+          },
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.12",
+            "comment": "HealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "short": "Treatment",
+        "definition": "The medical treatment to which the treatment instruction applies.",
+        "alias": [
+          "Behandeling"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.2.2.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-treatmentdirective2-v1.0-2020EN",
+            "map": "NL-CM:2.2.3",
+            "comment": "Treatment"
+          }
+        ]
+      }
+    ]
+  }
+}

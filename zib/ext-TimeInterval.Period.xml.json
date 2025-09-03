@@ -1,0 +1,65 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-TimeInterval.Period",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Period",
+  "name": "ExtTimeIntervalPeriod",
+  "title": "ext TimeInterval.Period",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide all concepts of zib TimeInterval, to be used in resources where none of these concepts are natively supported.",
+  "purpose": "This extension is one of the three StructureDefinitions that can be used to represent the Dutch (partial) [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TimeInterval v1.0 (2020)](https://zibs.nl/wiki/TimeInterval-v1.0(2020EN)). \r\n\r\nThis zib is represented in FHIR by a combination of two datatypes: _Period_ and _Duration_. To support this zib across different FHIR resource types, three related StructureDefinitions are provided:\r\n\r\n* [ext-TimeInterval.Duration](http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Duration): extension to provide the _Duration_ datatype to resource types where no element with this datatype isn't normally available. This extension should not be used in isolation, but only via one of the two resources described below!\r\n* [zib-TimeInterval](http://nictiz.nl/fhir/StructureDefinition/zib-TimeInterval): profile on the _Period_ datatype that defines mappings to zib TimeInterval and brings in the ext-TimeInterval.Duration extension mentioned above. For resource types that natively support an element of the _Period_ datatype but not of the _Duration_ datatype, this profile should be used.\r\n* [ext-TimeInterval.Period](http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Period) (this extension): extension to provide the _Period_ datatype plus the _Duration_ extension mentioned above, with mappings to zib TimeInterval. For resource types that support neither elements of datatype _Period_ nor _Duration_, this extension should be used. *Note*: In hindsight the name of this extension is confusing, 'ext-TimeInterval' would have been better suited.\r\n* *Note*: when the resource type natively supports elements of datatype _Period_ and _Duration_, the zib should be mapped onto these elements directly.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "MedicationRequest"
+    },
+    {
+      "type": "element",
+      "expression": "MedicationDispense"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-TimeInterval.Period"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "type": [
+          {
+            "code": "Period",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-TimeInterval"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

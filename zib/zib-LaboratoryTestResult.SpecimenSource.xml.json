@@ -1,0 +1,78 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-LaboratoryTestResult.SpecimenSource",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-LaboratoryTestResult.SpecimenSource",
+  "name": "ZibLaboratoryTestResultSpecimenSource",
+  "title": "zib LaboratoryTestResult.SpecimenSource",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Source of obtained specimen material or a microbial isolate that is used in a laboratory analysis.",
+  "purpose": "This Device resource represents the SpecimenSource concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) LaboratoryTestResult v4.6 (2020)](https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-laboratorytestresult-v4.6-2020EN",
+      "uri": "https://zibs.nl/wiki/LaboratoryTestResult-v4.6(2020EN)",
+      "name": "zib LaboratoryTestResult-v4.6(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device",
+        "path": "Device",
+        "comment": "The Device container from Dutch zib LaboratoryTestResult contains the concept for SpecimenSource."
+      },
+      {
+        "id": "Device.deviceName",
+        "path": "Device.deviceName",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Device.deviceName.name",
+        "path": "Device.deviceName.name",
+        "short": "SpecimenSource",
+        "definition": "If the material is not collected directly from the patient but comes from a patient-related object, e.g. a cathetertip, this source of material can be recorded here.",
+        "alias": [
+          "BronMonster"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-laboratorytestresult-v4.6-2020EN",
+            "map": "NL-CM:13.1.29",
+            "comment": "SpecimenSource"
+          }
+        ]
+      },
+      {
+        "id": "Device.deviceName.type",
+        "path": "Device.deviceName.type",
+        "definition": "The type of name the device is referred by.",
+        "comment": "If type is unknown, use value `other`."
+      }
+    ]
+  }
+}

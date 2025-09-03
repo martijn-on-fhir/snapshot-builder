@@ -1,0 +1,85 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-MedicalDevice.Location",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-MedicalDevice.Location",
+  "name": "ExtMedicalDeviceLocation",
+  "title": "ext MedicalDevice.Location",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide the healthcare provider at which use of the medical device was initiated or where the aid was implanted.",
+  "purpose": "This extension represents the Location concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-medicaldevice-v3.3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)",
+      "name": "zib MedicalDevice-v3.3.1(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "DeviceUseStatement"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "max": "1"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-MedicalDevice.Location"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "Location",
+        "definition": "The healthcare provider at which use of the medical device was initiated or where the aid was implanted.",
+        "alias": [
+          "Locatie"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-HealthcareProvider"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicaldevice-v3.3.1-2020EN",
+            "map": "NL-CM:10.1.8",
+            "comment": "Location"
+          }
+        ]
+      }
+    ]
+  }
+}

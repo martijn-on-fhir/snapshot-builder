@@ -1,0 +1,77 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-Problem.FurtherSpecificationProblemName",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-Problem.FurtherSpecificationProblemName",
+  "name": "ExtProblemFurtherSpecificationProblemName",
+  "title": "ext Problem.FurtherSpecificationProblemName",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to specify the problem name. The extension can be seen as an addition to the ProblemName concept mapped to the code element.",
+  "purpose": "This extension represents the FurtherSpecificationProblemName concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Problem v4.4 (2020)](https://zibs.nl/wiki/Problem-v4.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-problem-v4.4-2020EN",
+      "uri": "https://zibs.nl/wiki/Problem-v4.4(2020EN)",
+      "name": "zib Problem-v4.4(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Condition.code"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-Problem.FurtherSpecificationProblemName"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "FurtherSpecificationProblemName",
+        "definition": "Further specification of problem name when it is recorded via a thesaurus or code system in which the required level of detail is not (yet) available.",
+        "alias": [
+          "NadereSpecificatieProbleemNaam"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-problem-v4.4-2020EN",
+            "map": "NL-CM:5.1.13",
+            "comment": "FurtherSpecificationProblemName"
+          }
+        ]
+      }
+    ]
+  }
+}

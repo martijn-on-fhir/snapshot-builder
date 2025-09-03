@@ -1,0 +1,49 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "icf-nl",
+  "language": "en-US",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en-US\" xml:lang=\"en-US\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+      "valueCode": "fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod",
+      "valuePeriod": {
+        "start": "2010-11-16T12:00:00Z"
+      }
+    }
+  ],
+  "url": "http://hl7.org/fhir/sid/icf-nl",
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:2.16.840.1.113883.6.254"
+    }
+  ],
+  "version": "2010-11-16T12:00:00",
+  "name": "International_Classification_of_Function",
+  "title": "International Classification of Function",
+  "status": "unknown",
+  "publisher": "HL7 International / FHIR Infrastructure",
+  "contact": [
+    {
+      "name": "FHIR project team",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.hl7.org/Special/committees/fiwg"
+        }
+      ]
+    }
+  ],
+  "description": "ICF describes how people live with their health condition. ICF is a classification of health and health related domains that describe body functions and structures, activities and participation. The domains are classified from body, individual and societal perspectives. Since an individual's functioning and disability occurs in a context, ICF also includes a list of environmental factors. ICF  is useful to understand and measure health outcomes. It can be used in clinical settings, health services or surveys at the individual or population level. Thus ICF complements ICD-10 , The International Statistical Classification of Diseases and Related Health Problems and therefore is looking beyond mortality and disease.",
+  "purpose": "This CodeSystem is meant to satisfy basic FHIR validator needs. It was generated with fixed values from non-authorative source for the structuredefinition-wg extension, `publisher`, `.contact` and `.caseSensitive`. These properties may or may not be correct but should not influence validation results.",
+  "caseSensitive": true,
+  "content": "not-present"
+}

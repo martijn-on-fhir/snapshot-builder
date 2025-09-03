@@ -1,0 +1,725 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-DOSScore",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-DOSScore",
+  "name": "ZibDOSScore",
+  "title": "zib DOSScore",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The Delirium Observation Screening Scale is a tool to determine whether a patient has delirium. The DOSS includes 13 observations of behavior (verbal and non-verbal) which represent the symptoms of a delirium. These observations can be performed during regular contact with the patient.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) DOSScore v1.0 (2020)](https://zibs.nl/wiki/DOSScore-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-dosscore-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/DOSScore-v1.0(2020EN)",
+      "name": "zib DOSScore-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "DOSScore",
+        "alias": [
+          "DOSScore"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.1",
+            "comment": "DOSScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "comment": "The code to identify this concept (SNOMED 55681000146102) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "55681000146102"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "DOSScoreDateTime",
+        "definition": "The date on which the DOS score is registered.",
+        "alias": [
+          "DOSScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.5",
+            "comment": "DOSScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "DOSScoreTotal",
+        "definition": "Per shift a total score is calculated (minimum 0 and maximum 13). The total scores of three shifts (day, evening and night shifts) are summed to the total score of the day (minimum 0 and maximum 39).\r\n\r\nThe DOS scale final score is calculated by dividing the total score of the day by 3 (minimum 0 and maximum 13).\r\n\r\nA DOS scale final score < 3 means that the patient is probably not delirious. A DOS scale final score > 3 means that the patient is probably delirious.",
+        "alias": [
+          "DOSScoreTotaal"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 13,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.3",
+            "comment": "DOSScoreTotal"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the DOS score.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.2",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:dozesOff",
+        "path": "Observation.component",
+        "sliceName": "dozesOff",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:dozesOff.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007006 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:dozesOff.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "DozesOff",
+        "definition": "DOS observation: patient dozes off during conversation or activities.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "ZaktWeg"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.6",
+            "comment": "DozesOff"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:easilyDistracted",
+        "path": "Observation.component",
+        "sliceName": "easilyDistracted",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:easilyDistracted.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007007 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007007"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:easilyDistracted.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "EasilyDistracted",
+        "definition": "DOS observation: patient is easily distracted by stimuli from the environment.\r\n\r\nSomeone is easily distracted by stimuli from the environment when he/she responds verbally or non-verbally to sounds or movements that have no relation to him/her and the nature of which does not make you expect a reaction from him/her.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "SnelAfgeleid"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.7",
+            "comment": "EasilyDistracted"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:maintainsAttention",
+        "path": "Observation.component",
+        "sliceName": "maintainsAttention",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:maintainsAttention.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007008 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:maintainsAttention.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "MaintainsAttention",
+        "definition": "DOS observation: patient maintains attention to conversation or action.\r\n\r\nSomeone is maintaining attention to a conversation or action if he/she verbally or non-verbally shows that they are following the conversation or action.\r\n\r\nScore:\r\n1: never\r\n0: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "HeeftAandacht"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.8",
+            "comment": "MaintainsAttention"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:unfinishedQuestionAnswer",
+        "path": "Observation.component",
+        "sliceName": "unfinishedQuestionAnswer",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:unfinishedQuestionAnswer.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007009 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:unfinishedQuestionAnswer.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "UnfinishedQuestionAnswer",
+        "definition": "DOS observation: patient does not finish question or answer.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "VraagAntwoordNietAf"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.9",
+            "comment": "UnfinishedQuestionAnswer"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:answersNoFit",
+        "path": "Observation.component",
+        "sliceName": "answersNoFit",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:answersNoFit.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007010 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007010"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:answersNoFit.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "AnswersNoFit",
+        "definition": "DOS observation: patient gives answers that do not fit the question.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "AntwoordenNietPassend"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.10",
+            "comment": "AnswersNoFit"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:reactsSlowly",
+        "path": "Observation.component",
+        "sliceName": "reactsSlowly",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:reactsSlowly.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007011 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007011"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:reactsSlowly.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ReactsSlowly",
+        "definition": "DOS observation: patient reacts slowly to instructions.\r\n\r\nSomeone reacts slowly to instructions when acting is delayed and/or there are moments of stillness/inactivity before moving into action.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "ReageertTraag"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.11",
+            "comment": "ReactsSlowly"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:thinksSomewhereElse",
+        "path": "Observation.component",
+        "sliceName": "thinksSomewhereElse",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:thinksSomewhereElse.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007012 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007012"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:thinksSomewhereElse.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ThinksSomewhereElse",
+        "definition": "DOS observation: patient thinks they are somewhere else.\r\n\r\nSomeone thinks they are somewhere else when he/she shows this in words or actions.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "DenktErgensAnders"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.12",
+            "comment": "ThinksSomewhereElse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:knowsPartDay",
+        "path": "Observation.component",
+        "sliceName": "knowsPartDay",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:knowsPartDay.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007013 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007013"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:knowsPartDay.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "KnowsPartDay",
+        "definition": "DOS observation: patient knows which part of the day it is.\r\n\r\nSomeone knows what part of the day it is when he/she shows such in words or actions.\r\n\r\nScore:\r\n1: never\r\n0: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "BeseftDagdeel"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.13",
+            "comment": "KnowsPartDay"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:remembersRecent",
+        "path": "Observation.component",
+        "sliceName": "remembersRecent",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:remembersRecent.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007014 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007014"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:remembersRecent.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "RemembersRecent",
+        "definition": "DOS observation: patient remembers recent events.\r\n\r\nSomeone remembers recent events when he/she can for example tell whether they had visitors or what he/she ate.\r\n\r\nScore:\r\n1: never\r\n0: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "HerinnertRecent"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.14",
+            "comment": "RemembersRecent"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:restless",
+        "path": "Observation.component",
+        "sliceName": "restless",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:restless.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007015 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007015"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:restless.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Restless",
+        "definition": "DOS observation: patient is picking, disorderly, restless.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "Rusteloos"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.15",
+            "comment": "Restless"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:pullsWires",
+        "path": "Observation.component",
+        "sliceName": "pullsWires",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:pullsWires.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007016 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007016"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:pullsWires.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "PullsWires",
+        "definition": "DOS observation: patient pulls IV tubing, feeding tubes, catheters, etc.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "TrektDraden"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.16",
+            "comment": "PullsWires"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:easilyEmotional",
+        "path": "Observation.component",
+        "sliceName": "easilyEmotional",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:easilyEmotional.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007017 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007017"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:easilyEmotional.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "EasilyEmotional",
+        "definition": "DOS observation: patient is easily or suddenly emotional.\r\n\r\nSomeone is easily or suddenly emotional when he/she responds with a fierce emotion without provocation or when the fierceness of the emotion does not seem to match the provocation.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "SnelGeemotioneerd"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.17",
+            "comment": "EasilyEmotional"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:hallucinations",
+        "path": "Observation.component",
+        "sliceName": "hallucinations",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:hallucinations.code",
+        "path": "Observation.component.code",
+        "comment": "The code to identify this concept (18007018 in code system urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1) aligns with the next version of the zib, since the current version doesn't provide a code. See [ZIB-1674](https://bits.nictiz.nl/browse/ZIB-1674) for more information.",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "18007018"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:hallucinations.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Hallucinations",
+        "definition": "DOS observation: patient sees/hears things which are not there.\r\n\r\nSomeone sees/hears things which are not there when he/she shows this verbally (ask!) or non-verbally.\r\n\r\nScore:\r\n0: never\r\n1: sometimes-always\r\n(if the answer is \"don't know\", do not instantiate this concept)",
+        "alias": [
+          "Hallucinaties"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-dosscore-v1.0-2020EN",
+            "map": "NL-CM:18.7.18",
+            "comment": "Hallucinations"
+          }
+        ]
+      }
+    ]
+  }
+}

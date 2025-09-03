@@ -1,0 +1,242 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AlcoholUse",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AlcoholUse",
+  "name": "ZibAlcoholUse",
+  "title": "zib AlcoholUse",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "In the context of this information model, alcohol is the collective term for alcoholic beverages consumed as a leisure product. This information model describes the information asked of the patient about their alcohol use.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AlcoholUse v3.2 (2020)](https://zibs.nl/wiki/AlcoholUse-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-alcoholuse-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/AlcoholUse-v3.2(2020EN)",
+      "name": "zib AlcoholUse-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "AlcoholUse",
+        "alias": [
+          "AlcoholGebruik"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.1",
+            "comment": "AlcoholUse"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "228273003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectivePeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.start",
+        "path": "Observation.effective[x].start",
+        "short": "StartDate",
+        "definition": "The date on which the patient started using alcohol.",
+        "alias": [
+          "StartDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.4",
+            "comment": "StartDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.end",
+        "path": "Observation.effective[x].end",
+        "short": "StopDate",
+        "definition": "The date on which the patient stopped consuming alcohol.",
+        "alias": [
+          "StopDatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.5",
+            "comment": "StopDate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueCodeableConcept",
+        "path": "Observation.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "short": "AlcoholUseStatus",
+        "definition": "The status of the patient’s alcohol use.",
+        "alias": [
+          "AlcoholGebruikStatus"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.3.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.2",
+            "comment": "AlcoholUseStatus"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Relevant comments on the alcohol consumption.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:amount",
+        "path": "Observation.component",
+        "sliceName": "amount",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:amount.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "897148007"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:amount.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Amount",
+        "definition": "The extent of the patient’s alcohol use in units of alcohol per time period.",
+        "alias": [
+          "Hoeveelheid"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org"
+        },
+        "mapping": [
+          {
+            "identity": "zib-alcoholuse-v3.2-2020EN",
+            "map": "NL-CM:7.3.6",
+            "comment": "Amount"
+          }
+        ]
+      }
+    ]
+  }
+}

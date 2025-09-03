@@ -1,0 +1,190 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-BodyTemperature",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-BodyTemperature",
+  "name": "ZibBodyTemperature",
+  "title": "zib BodyTemperature",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Measuring and documenting the body temperature of a person as a surrogate for a person’s central body temperature (the highest temperature at the centre of the torso)",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BodyTemperature v3.1.2 (2020)](https://zibs.nl/wiki/BodyTemperature-v3.1.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-bodytemperature-v3.1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/BodyTemperature-v3.1.2(2020EN)",
+      "name": "zib BodyTemperature-v3.1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/pattern-VitalSigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "BodyTemperature",
+        "comment": "**HL7 Vital Signs compatibility**\r\n\r\nAlthough this profile represents a vital signs measurement, it is *not* directly based on the HL7 Vital Signs profile because of two issues in its current version that prevent it from being used for the exchange of zibs (see below). However, an effort has been made to make this profile functionally equivalent to (a profile derived from) the [HL7 Vital Signs BodyTemp profile](http://hl7.org/fhir/StructureDefinition/bodytemp). Instances for both profiles should be highly compatible.\r\n\r\nThis means that it should be possible to mostly validate an instance for this profile against the HL7 Vital Signs counterpart, _except_ for references on `Observation.hasMember` and `Observation.derivedFrom`. The base HL7 Vital Signs profile restricts the targets of these element to itself, which is a requirement that can never be satisfied for instances of profiles that are not directly derived from it.\r\n\r\nPlease note that this profile implements the zib and can therefore be more restricted than its HL7 counterpart. It should be regarded as a derived profile rather than a direct recreation of the HL7 version.\r\n\r\n**Differences with the HL7 Vital Signs counterpart**\r\n\r\n* The _required_ terminology binding on `Observation.component` to the [Vital Signs Units](http://hl7.org/fhir/ValueSet/ucum-vitals-common) dataset makes it impossible to use `.component` for representing anything else than a Quantity (like a CodeableConcept or a boolean). This binding has therefore been omitted in the current profile.\r\n* The `mustSupport` = _true_ flag found on numerous elements isn't further specified in the HL7 Vital Signs IG, as is required by FHIR. This flag has therefore been omitted from the current profile.\r\n* The target restriction on `Observation.hasMember` and `Observation.derivedFrom` to the HL7 Vital Signs profile cannot be fulfilled. This restriction has therefore been omitted from the current profile.\r\n\r\nIt might happen that for some concepts, the zib uses a different (but compatible) way than what is recommended by the [HL7 Vital Signs IG](http://hl7.org/fhir/r4/observation-vitalsigns.html). This is described in the comments for these concepts. There are also some differences in the profiling approach between the current and the HL7 profile, like the use of patterns rather than slices with fixed systems and codes to enforce the inclusion of some coding (for reasons of consistency with other zib profiles, the former approach has been chosen here). Apart from what is mentioned above, constraints, invariants and terminology bindings have been copied from the HL7 Vital Signs profile, but some textual descriptions have been omitted.\r\n\r\nNote: No equivalent for the HL7 Vital Signs base profile has been created to implement the zib profiles. The profile for this zib has been directly modelled onto its HL7 Vital Signs counterpart.",
+        "alias": [
+          "Lichaamstemperatuur"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodytemperature-v3.1.2-2020EN",
+            "map": "NL-CM:12.6.1",
+            "comment": "BodyTemperature"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.code.coding:BodyTempCode",
+        "path": "Observation.code.coding",
+        "sliceName": "BodyTempCode",
+        "min": 1,
+        "max": "1",
+        "patternCoding": {
+          "system": "http://loinc.org",
+          "code": "8310-5"
+        }
+      },
+      {
+        "id": "Observation.code.coding:temperatureType",
+        "path": "Observation.code.coding",
+        "sliceName": "temperatureType",
+        "short": "TemperatureType",
+        "definition": "The TemperatureType indicates the way and place the measurement (temperature) has been performed.",
+        "comment": "The use of an additional Observation coding to further specify the body temperature measurement type differs from the recommendation by the HL7 Vital Signs IG to communicate this kind of information. The HL7 Vital Signs IG suggests that additional observations may be used for explicitly defining the temperature measurement site and the type of temperature device. Implementers can still use this mechanism if needed; however the HL7 Vital Signs IG doesn't specify ValueSets for these concepts so no mapping to the zib concept can be made.",
+        "alias": [
+          "TemperatuurType"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.6.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bodytemperature-v3.1.2-2020EN",
+            "map": "NL-CM:12.6.5",
+            "comment": "TemperatureType"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "TemperatureDateTime",
+        "definition": "Date and time of measurement.",
+        "alias": [
+          "TemperatuurDatumTijd"
+        ],
+        "min": 0,
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodytemperature-v3.1.2-2020EN",
+            "map": "NL-CM:12.6.4",
+            "comment": "TemperatureDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "TemperatureValue",
+        "definition": "Body temperature is the temperature inside the body, measured in °C (degrees Celsius). The measurement method must be specified for a correct interpretation of the measurement value.",
+        "alias": [
+          "TemperatuurWaarde"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "patternQuantity": {
+          "system": "http://unitsofmeasure.org",
+          "code": "Cel"
+        },
+        "mapping": [
+          {
+            "identity": "zib-bodytemperature-v3.1.2-2020EN",
+            "map": "NL-CM:12.6.2",
+            "comment": "TemperatureValue"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comments or details that may be of importance in interpreting the measurement value.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bodytemperature-v3.1.2-2020EN",
+            "map": "NL-CM:12.6.3",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

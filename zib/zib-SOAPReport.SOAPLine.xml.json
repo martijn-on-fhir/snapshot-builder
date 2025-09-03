@@ -1,0 +1,162 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-SOAPReport.SOAPLine",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-SOAPReport.SOAPLine",
+  "name": "ZibSOAPReportSOAPLine",
+  "title": "zib SOAPReport.SOAPLine",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A SOAP report is a textual report of a (partial) consult with relation to a single problem according to the SOAP structure. SOAP (acronym for subjective, objective, assessment, plan) is a method used by health professionals to structurally record information that comes up during contact between the patient and a health professionals in the patient's record. The following standardized format is used for reporting:\r\n\r\n* Subjective: the patient's complaint and request for help and the amnesic data\r\n* Objective: the findings from the physical and supplementary examination.\r\n* Assessment: the working hypothesis and the thinking process, for example a differential diagnosis of the healthcare professional.\r\n* Plan: the diagnostic plan or treatment plan and what has been discussed or agreed with the patient.\r\n\r\nThe SOAP report is mainly used in general practice care.\r\n\r\nNote: the zib doesn't state explicitly if zib SOAPReport pertains a consult or a partial consult, but it has become clear that the zib, and thus this profile, should be interpreted as a partial consult with relation to a single problem (see <https://bits.nictiz.nl/browse/ZIB-1474>). The text above has been adjusted according to this insight.",
+  "purpose": "This Observation resource represents the SOAPLine concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SOAPReport v1.0 (2020)](https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-soapreport-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)",
+      "name": "zib SOAPReport-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "SOAPLine",
+        "comment": "Zib SOAPReport is implemented using two profiles: this profile implements the SOAPLine concept of the zib, while <http://nictiz.nl/fhir/StructureDefinition/zib-SOAPReport> represents the SOAPReport concept of the zib.",
+        "alias": [
+          "SOEPRegel"
+        ],
+        "constraint": [
+          {
+            "key": "zib-SOAPReport-1",
+            "severity": "error",
+            "human": "In a SOAP report an ICPC code may be assigned, but only to the S and A line.",
+            "expression": "extension('http://nictiz.nl/fhir/StructureDefinition/ext-SOAPReport.SOAPLineCode').exists() implies (code.coding.where(code = '255362007' and system = 'http://snomed.info/sct').exists() or code.coding.where(code = '129265001' and system = 'http://snomed.info/sct').exists())"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.4",
+            "comment": "SOAPLine"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:soapLineCode",
+        "path": "Observation.extension",
+        "sliceName": "soapLineCode",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-SOAPReport.SOAPLineCode"
+            ]
+          }
+        ],
+        "condition": [
+          "zib-SOAPReport-1"
+        ]
+      },
+      {
+        "id": "Observation.extension:soapLineCode.value[x]",
+        "path": "Observation.extension.value[x]",
+        "condition": [
+          "zib-SOAPReport-1"
+        ]
+      },
+      {
+        "id": "Observation.status",
+        "path": "Observation.status",
+        "comment": "Unless explicitly recorded, a value of _final_ would be expected."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "short": "SOAPLineHeader",
+        "definition": "The name of the SOAP line as a coded description. In a SOAP report this can be one of the following: subjective, objective, assessment or plan.",
+        "alias": [
+          "SOEPRegelNaam"
+        ],
+        "condition": [
+          "zib-SOAPReport-1"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.6.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.6",
+            "comment": "SOAPLineHeader"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "condition": [
+          "zib-SOAPReport-1"
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueString",
+        "path": "Observation.value[x]",
+        "sliceName": "valueString",
+        "short": "SOAPLineText",
+        "definition": "The actual content of the section as free formatted text.",
+        "alias": [
+          "SOEPRegelTekst"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.7",
+            "comment": "SOAPLineText"
+          }
+        ]
+      }
+    ]
+  }
+}

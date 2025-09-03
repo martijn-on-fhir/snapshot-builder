@@ -1,0 +1,118 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-DevelopmentChild.AgeFirstMenstruation",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.AgeFirstMenstruation",
+  "name": "ZibDevelopmentChildAgeFirstMenstruation",
+  "title": "zib DevelopmentChild.AgeFirstMenstruation",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The age of the start of the first menstruation.",
+  "purpose": "This Observation resource represents the AgeFirstMenstruation concept (NL-CM:4.32.7) of Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) DevelopmentChild v1.2 (2020)](https://zibs.nl/wiki/DevelopmentChild-v1.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-developmentchild-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/DevelopmentChild-v1.2(2020EN)",
+      "name": "zib DevelopmentChild-v1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the AgeFirstMenstruation concept (NL-CM:4.32.7) of zib DevelopmentChild. It can be used together with the [zib-DevelopmentChild](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild) profile on the Observation resource, which groups references to the current and other resources on `Observation.hasMember`."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "42798-9"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "DevelopmentChildDateTime",
+        "definition": "The date and time on which the status of the development of the child are registered.",
+        "alias": [
+          "OntwikkelingKindDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-developmentchild-v1.2-2020EN",
+            "map": "NL-CM:4.32.2",
+            "comment": "DevelopmentChildDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "AgeFirstMenstruation",
+        "definition": "The age of the start of the first menstruation.",
+        "alias": [
+          "LeeftijdEersteMenstruatie"
+        ],
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-developmentchild-v1.2-2020EN",
+            "map": "NL-CM:4.32.7",
+            "comment": "AgeFirstMenstruation"
+          }
+        ]
+      }
+    ]
+  }
+}

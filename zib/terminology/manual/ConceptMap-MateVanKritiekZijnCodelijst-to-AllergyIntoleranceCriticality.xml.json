@@ -1,0 +1,88 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "MateVanKritiekZijnCodelijst-to-AllergyIntoleranceCriticality",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/MateVanKritiekZijnCodelijst-to-AllergyIntoleranceCriticality",
+  "version": "0.0.1",
+  "name": "MateVanKritiekZijnCodelijst_to_AllergyIntoleranceCriticality",
+  "title": "MateVanKritiekZijnCodelijst to AllergyIntoleranceCriticality",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps gender codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AllergyIntolerance v3.3 (2020)](https://zibs.nl/wiki/AllergyIntolerance-v3.3(2020EN)) to <http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality> as found in `AllergyIntolerance.reaction.severity` in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.4--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality",
+  "group": [
+    {
+      "source": "http://snomed.info/sct",
+      "target": "http://hl7.org/fhir/allergy-intolerance-criticality",
+      "element": [
+        {
+          "code": "255604002",
+          "display": "Mild",
+          "target": [
+            {
+              "code": "low",
+              "display": "Low Risk",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "6736007",
+          "display": "Moderate",
+          "target": [
+            {
+              "code": "high",
+              "display": "High Risk",
+              "equivalence": "wider"
+            }
+          ]
+        },
+        {
+          "code": "24484000",
+          "display": "Severe",
+          "target": [
+            {
+              "code": "high",
+              "display": "High Risk",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "399166001",
+          "display": "Fatal",
+          "target": [
+            {
+              "code": "high",
+              "display": "High Risk",
+              "equivalence": "wider"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

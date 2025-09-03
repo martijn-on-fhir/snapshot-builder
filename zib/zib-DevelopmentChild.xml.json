@@ -1,0 +1,247 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-DevelopmentChild",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild",
+  "name": "ZibDevelopmentChild",
+  "title": "zib DevelopmentChild",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Information on the development and growth of a child is important in determining the kind of care that should be provided to the child and the family. When the child is being transferred, continuity of care can be achieved. Information can provide insight in the process of development and whether the child has a developmental delay.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) DevelopmentChild v1.2 (2020)](https://zibs.nl/wiki/DevelopmentChild-v1.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-developmentchild-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/DevelopmentChild-v1.2(2020EN)",
+      "name": "zib DevelopmentChild-v1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "DevelopmentChild",
+        "comment": "Several concepts of zib DevelopmentChild are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* ToiletTrainednessUrine (NL-CM:4.32.4): [zib-DevelopmentChild.ToiletTrainednessUrine](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.ToiletTrainednessUrine)\r\n* ToiletTrainednessFeces (NL-CM:4.32.5): [zib-DevelopmentChild.ToiletTrainednessFeces](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.ToiletTrainednessFeces)\r\n* AgeFirstMenstruation (NL-CM:4.32.7): [zib-DevelopmentChild.AgeFirstMenstruation](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.AgeFirstMenstruation)\r\n* DevelopmentLocomotion (NL-CM:4.32.6): [zib-DevelopmentChild.DevelopmentLocomotion](http://nictiz.nl/fhir/StructureDefinition/zib-evelopmentChild.DevelopmentLocomotion)\r\n* DevelopmentSocial (NL-CM:4.32.8): [zib-DevelopmentChild.DevelopmentSocial](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentSocial)\r\n* DevelopmentLinguistics (NL-CM:4.32.9): [zib-DevelopmentChild.DevelopmentLinguistics](http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentLinguistics)",
+        "alias": [
+          "OntwikkelingKind"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-developmentchild-v1.2-2020EN",
+            "map": "NL-CM:4.32.1",
+            "comment": "DevelopmentChild"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "251803000"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "DevelopmentChildDateTime",
+        "definition": "The date and time on which the status of the development of the child are registered.",
+        "alias": [
+          "OntwikkelingKindDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-developmentchild-v1.2-2020EN",
+            "map": "NL-CM:4.32.2",
+            "comment": "DevelopmentChildDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the development of the child.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-developmentchild-v1.2-2020EN",
+            "map": "NL-CM:4.32.3",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:toiletTrainednessUrine",
+        "path": "Observation.hasMember",
+        "sliceName": "toiletTrainednessUrine",
+        "definition": "The ToiletTrainednessUrine concept (NL-CM:4.32.4) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.ToiletTrainednessUrine"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:toiletTrainednessFeces",
+        "path": "Observation.hasMember",
+        "sliceName": "toiletTrainednessFeces",
+        "definition": "The ToiletTrainednessFeces concept (NL-CM:4.32.5) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.ToiletTrainednessFeces"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:ageFirstMenstruation",
+        "path": "Observation.hasMember",
+        "sliceName": "ageFirstMenstruation",
+        "definition": "The AgeFirstMenstruation concept (NL-CM:4.32.7) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.AgeFirstMenstruation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:developmentLocomotion",
+        "path": "Observation.hasMember",
+        "sliceName": "developmentLocomotion",
+        "definition": "The DevelopmentLocomotion concept (NL-CM:4.32.6) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentLocomotion"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:developmentSocial",
+        "path": "Observation.hasMember",
+        "sliceName": "developmentSocial",
+        "definition": "The DevelopmentSocial concept (NL-CM:4.32.8) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentSocial"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:developmentLinguistics",
+        "path": "Observation.hasMember",
+        "sliceName": "developmentLinguistics",
+        "definition": "The DevelopmentLinguistics concept (NL-CM:4.32.9) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentLinguistics"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:developmentCognition",
+        "path": "Observation.hasMember",
+        "sliceName": "developmentCognition",
+        "definition": "The DevelopmentCognition concept (NL-CM:4.32.10) of zib DevelopmentChild, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-DevelopmentChild.DevelopmentCognition"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,476 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AllergyIntolerance",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AllergyIntolerance",
+  "name": "ZibAllergyIntolerance",
+  "title": "zib AllergyIntolerance",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An allergy or intolerance describes a patient’s tendency towards hypersensitivity to a certain substance, so that an unwanted physiological reaction is expected after exposure to the substance, while most people would not exhibit such a reaction to that amount. The observed physiological changes are usually the result of an immunological reaction.\r\nThe substances can be categorized as follows:\r\n* Medicine\r\n* Medicine category\r\n* Ingredient/addition\r\n* Nutrition\r\n* Environmental factor\r\n* Animal\r\n* Plants\r\n* Chemicals\r\n* Inhaled allergenic",
+  "purpose": "This AllergyIntolerance resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AllergyIntolerance v3.3 (2020)](https://zibs.nl/wiki/AllergyIntolerance-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-allergyintolerance-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/AllergyIntolerance-v3.3(2020EN)",
+      "name": "zib AllergyIntolerance-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "AllergyIntolerance",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "AllergyIntolerance",
+        "path": "AllergyIntolerance",
+        "short": "AllergyIntolerance",
+        "comment": "The zib defines certain allergy statuses in the AllergieStatusCodelijst (NL-CM:8.2.5 AllergyStatus). These statuses are represented using both the FHIR elements `AllergyIntolerance.clinicalStatus` and `AllergyIntolerance.verificationStatus`; most of the zib codes map to a `.clinicalStatus` code, but the zib code _nullified_ can only be represented by `.verificationStatus` = _entered-in-error_.\r\n\r\nFor both these FHIR elements, a separate ConceptMap is defined. Although both ConceptMaps include _unmatched_ concepts, together they provide an _equal_ mapping of each AllergieStatusCodelijst concept. Therefore, there's no need to include the zib code using the ext-CodeSpecification extension, as would normally be expected in these situations.",
+        "alias": [
+          "AllergieIntolerantie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.1",
+            "comment": "AllergyIntolerance"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.clinicalStatus",
+        "path": "AllergyIntolerance.clinicalStatus",
+        "short": "AllergyStatus",
+        "definition": "Statement on the status of the patient’s hypersensitivity.",
+        "comment": "See the comment on the root element for guidance on mapping zib AllergyStatus to FHIR.",
+        "alias": [
+          "AllergieStatus"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap AllergieStatusCodelijst_to_AllergyIntoleranceClinicalStatusCodes to translate terminology from the functional model to profile terminology in ValueSet AllergyIntoleranceClinicalStatusCodes.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/AllergieStatusCodelijst-to-AllergyIntoleranceClinicalStatusCodes"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.5",
+            "comment": "AllergyStatus"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.verificationStatus",
+        "path": "AllergyIntolerance.verificationStatus",
+        "short": "AllergyStatus",
+        "definition": "Statement on the status of the patient’s hypersensitivity.",
+        "comment": "See the comment on the root element for guidance on mapping zib AllergyStatus to FHIR.",
+        "alias": [
+          "AllergieStatus"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap AllergieStatusCodelijst_to_AllergyIntoleranceVerificationStatus to translate terminology from the functional model to profile terminology in ValueSet AllergyIntoleranceVerificationStatusCodes.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/allergyintolerance-verification|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/AllergieStatusCodelijst-to-AllergyIntoleranceVerificationStatus"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.5",
+            "comment": "AllergyStatus"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.category",
+        "path": "AllergyIntolerance.category",
+        "short": "AllergyCategory",
+        "definition": "Identifies the allergy category such as medication, food or environment.",
+        "alias": [
+          "AllergieCategorie"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap AllergieCategorieCodelijst_to_AllergyIntoleranceCategory to translate terminology from the functional model to profile terminology in ValueSet AllergyIntoleranceCategory.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/allergy-intolerance-category|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/AllergieCategorieCodelijst-to-AllergyIntoleranceCategory"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.4",
+            "comment": "AllergyCategory"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.category.extension:allergyCategoryCodelist",
+        "path": "AllergyIntolerance.category.extension",
+        "sliceName": "allergyCategoryCodelist",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.category.extension:allergyCategoryCodelist.value[x]",
+        "path": "AllergyIntolerance.category.extension.value[x]",
+        "short": "AllergyCategory",
+        "definition": "Identifies the allergy category such as medication, food or environment.",
+        "alias": [
+          "AllergieCategorie"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.4",
+            "comment": "AllergyCategory"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.criticality",
+        "path": "AllergyIntolerance.criticality",
+        "short": "Criticality",
+        "definition": "Critical extent is defined as “the potential severity of future reactions.” This represents a clinical evaluation of the worst case scenario for a future reaction. It can be based on the severity of past reactions, the dose and manner of exposure which caused reactions in the past, and the life-threatening potential of the type of reaction. Critical extent is a property of the allergy, and not of the reaction itself.",
+        "alias": [
+          "MateVanKritiekZijn"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap MateVanKritiekZijnCodelijst_to_AllergyIntoleranceCriticality to translate terminology from the functional model to profile terminology in ValueSet AllergyIntoleranceCriticality.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/MateVanKritiekZijnCodelijst-to-AllergyIntoleranceCriticality"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.7",
+            "comment": "Criticality"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.criticality.extension:criticalExtentCodelist",
+        "path": "AllergyIntolerance.criticality.extension",
+        "sliceName": "criticalExtentCodelist",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.criticality.extension:criticalExtentCodelist.value[x]",
+        "path": "AllergyIntolerance.criticality.extension.value[x]",
+        "short": "Criticality",
+        "definition": "Critical extent is defined as “the potential severity of future reactions.” This represents a clinical evaluation of the worst case scenario for a future reaction. It can be based on the severity of past reactions, the dose and manner of exposure which caused reactions in the past, and the life-threatening potential of the type of reaction. Critical extent is a property of the allergy, and not of the reaction itself.",
+        "alias": [
+          "MateVanKritiekZijn"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.7",
+            "comment": "Criticality"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.code",
+        "path": "AllergyIntolerance.code",
+        "short": "CausativeAgent",
+        "definition": "Substance, group of substances or environmental factor to which the patient is allergic or hypersensitive.",
+        "alias": [
+          "VeroorzakendeStof"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.2",
+            "comment": "CausativeAgent"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.onset[x]",
+        "path": "AllergyIntolerance.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "AllergyIntolerance.onset[x]:onsetDateTime",
+        "path": "AllergyIntolerance.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "StartDateTime",
+        "definition": "The date and time at which the allergy or undesired reaction was determined. This can be an exact date and time, or a rough indication of the date (such as only the year, or the month and the year).",
+        "alias": [
+          "BeginDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.6",
+            "comment": "StartDateTime"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.lastOccurrence",
+        "path": "AllergyIntolerance.lastOccurrence",
+        "short": "LastReactionDateTime",
+        "definition": "Entry of the last time a hypersensitive reaction took place.",
+        "alias": [
+          "LaatsteReactieDatumTijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.8",
+            "comment": "LastReactionDateTime"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.note",
+        "path": "AllergyIntolerance.note",
+        "max": "1"
+      },
+      {
+        "id": "AllergyIntolerance.note.text",
+        "path": "AllergyIntolerance.note.text",
+        "short": "Comment",
+        "definition": "Textual explanation of the hypersensitivity which cannot be entered in any of the other fields.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.9",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction",
+        "path": "AllergyIntolerance.reaction",
+        "short": "Reaction",
+        "alias": [
+          "Reactie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.10",
+            "comment": "Reaction"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.substance",
+        "path": "AllergyIntolerance.reaction.substance",
+        "short": "SpecificSubstance",
+        "definition": "More specific indication of the substance that caused the reaction. This can be a specific substance from a group of substances to which the patient is allergic or hypersensitive.",
+        "alias": [
+          "SpecifiekeStof"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.12",
+            "comment": "SpecificSubstance"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.manifestation",
+        "path": "AllergyIntolerance.reaction.manifestation",
+        "short": "Symptom",
+        "definition": "The content specifications of the reaction that takes place when the patient is exposed to the causative substance.",
+        "alias": [
+          "Symptoom"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.11",
+            "comment": "Symptom"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.description",
+        "path": "AllergyIntolerance.reaction.description",
+        "short": "ReactionDescription",
+        "definition": "Textual description of the reaction as a whole.",
+        "alias": [
+          "ReactieBeschrijving"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.13",
+            "comment": "ReactionDescription"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.onset",
+        "path": "AllergyIntolerance.reaction.onset",
+        "short": "ReactionTime",
+        "definition": "Date and time at which the reaction took place. This may also be just the date or a partial date, in the event that the exact date is unknown.",
+        "alias": [
+          "ReactieTijdstip"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.17",
+            "comment": "ReactionTime"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.severity",
+        "path": "AllergyIntolerance.reaction.severity",
+        "short": "Severity",
+        "definition": "The severity of the reaction as a result of exposure to the causative substance.",
+        "alias": [
+          "Ernst"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap ErnstCodelijst_to_AllergyIntoleranceSeverity to translate terminology from the functional model to profile terminology in ValueSet AllergyIntoleranceSeverity.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/reaction-event-severity|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/ErnstCodelijst-to-AllergyIntoleranceSeverity"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.14",
+            "comment": "Severity"
+          }
+        ]
+      },
+      {
+        "id": "AllergyIntolerance.reaction.exposureRoute",
+        "path": "AllergyIntolerance.reaction.exposureRoute",
+        "short": "RouteOfExposure",
+        "definition": "Way in which the patient came into contact with the causative agent or the way in which the agent was administered.",
+        "alias": [
+          "WijzeVanBlootstelling"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.8.2.12--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-allergyintolerance-v3.3-2020EN",
+            "map": "NL-CM:8.2.15",
+            "comment": "RouteOfExposure"
+          }
+        ]
+      }
+    ]
+  }
+}

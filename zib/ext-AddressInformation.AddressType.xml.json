@@ -1,0 +1,82 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-AddressInformation.AddressType",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-AddressInformation.AddressType",
+  "version": "0.0.1",
+  "name": "ExtAddressInformationAddressType",
+  "title": "ext AddressInformation.AddressType",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to bind the zib AddressInformation ValueSet \"AdresTypeCodelijst\" to the FHIR _Address_ datatype.",
+  "purpose": "This extension represents the AddressType concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AddressInformation v1.1 (2020)](https://zibs.nl/wiki/AddressInformation-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-addressinformation-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AddressInformation-v1.1(2020EN)",
+      "name": "zib AddressInformation-v1.1(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Address"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-AddressInformation.AddressType"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "AddressType",
+        "definition": "The type of address in question, such as a home address or mailing address.",
+        "alias": [
+          "AdresSoort"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.5.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-addressinformation-v1.1-2020EN",
+            "map": "NL-CM:20.5.8",
+            "comment": "AddressType"
+          }
+        ]
+      }
+    ]
+  }
+}

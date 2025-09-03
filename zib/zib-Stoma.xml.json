@@ -1,0 +1,201 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Stoma",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Stoma",
+  "name": "ZibStoma",
+  "title": "zib Stoma",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A stoma is an unnatural, surgically created opening connecting a body cavity with the outside world. A stoma is created e.g. as an exit opening for feces or urine in the event that they cannot leave the body naturally. In the case of a tracheostomy, the stoma is intended to facilitate breathing if that is no longer possible via the oral, nasal and throat cavity.",
+  "purpose": "This Condition resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Stoma v3.3 (2020)](https://zibs.nl/wiki/Stoma-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-stoma-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/Stoma-v3.3(2020EN)",
+      "name": "zib Stoma-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Condition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Condition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Condition",
+        "path": "Condition",
+        "short": "Stoma",
+        "comment": "Please note that on a functional level, zib Stoma references zib MedicalDevice, but in FHIR this direction is reversed. Therefore, the concept StomaMaterial (NL-CM:5.2.3) is mapped on `DeviceUseStatement.reasonReference` in profile [zib-MedicalDevice](http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice) instead of in this profile.",
+        "alias": [
+          "Stoma"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.1",
+            "comment": "Stoma"
+          }
+        ]
+      },
+      {
+        "id": "Condition.category",
+        "path": "Condition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Condition.category:stomaCode",
+        "path": "Condition.category",
+        "sliceName": "stomaCode",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "245857005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Condition.code",
+        "path": "Condition.code",
+        "short": "StomaType",
+        "definition": "Stoma type indicates which body cavity the stoma is in and the kind of stoma used.",
+        "alias": [
+          "StomaType"
+        ],
+        "min": 1,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.2.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.2",
+            "comment": "StomaType"
+          }
+        ]
+      },
+      {
+        "id": "Condition.bodySite",
+        "path": "Condition.bodySite",
+        "short": "Location / AnatomicalLocation",
+        "definition": "Anatomical location of the stoma on the patient.",
+        "alias": [
+          "AnatomischeLocatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AnatomicalLocation"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.9",
+            "comment": "AnatomicalLocation"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]",
+        "path": "Condition.onset[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "Condition.onset[x]:onsetDateTime",
+        "path": "Condition.onset[x]",
+        "sliceName": "onsetDateTime",
+        "short": "CreationDate",
+        "definition": "The date on which the stoma was created in the patient. A vague date, such as only the year, is permitted.",
+        "alias": [
+          "AanlegDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.5",
+            "comment": "CreationDate"
+          }
+        ]
+      },
+      {
+        "id": "Condition.note",
+        "path": "Condition.note",
+        "max": "1"
+      },
+      {
+        "id": "Condition.note.text",
+        "path": "Condition.note.text",
+        "short": "Comment",
+        "definition": "A comment on the stoma.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-stoma-v3.3-2020EN",
+            "map": "NL-CM:5.2.7",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

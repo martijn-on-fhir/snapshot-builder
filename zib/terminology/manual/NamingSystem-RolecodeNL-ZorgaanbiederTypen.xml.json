@@ -1,0 +1,38 @@
+{
+  "resourceType": "NamingSystem",
+  "id": "namingsystem-RolcodeNL-ZorgaanbiederTypen",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "name": "RoleCodeNLZorgaanbiedertypen",
+  "status": "draft",
+  "kind": "identifier",
+  "date": "2016-04-15",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "RoleCodeNL - Zorgaanbiedertypen",
+  "uniqueId": [
+    {
+      "type": "uri",
+      "value": "http://nictiz.nl/fhir/NamingSystem/organization-type",
+      "preferred": true
+    },
+    {
+      "type": "oid",
+      "value": "2.16.840.1.113883.2.4.15.1060",
+      "preferred": false
+    }
+  ]
+}

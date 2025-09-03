@@ -1,0 +1,236 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-BowelFunction",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction",
+  "name": "ZibBowelFunction",
+  "title": "zib BowelFunction",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An important function of the rectum in particular is the temporary storage and excretion of feces, at the moment there is cause to do so. Disrupting the bowel functions can lead to fecal incontinence and constipation.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) BowelFunction v3.1.1 (2020)](https://zibs.nl/wiki/BowelFunction-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-bowelfunction-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/BowelFunction-v3.1.1(2020EN)",
+      "name": "zib BowelFunction-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "BowelFunction",
+        "comment": "Several concepts of zib BowelFunction are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* FecalContinence (NL-CM:4.15.2): [zib-BowelFunction.FecalContinence](http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.FecalContinence)\r\n* Frequency (NL-CM:4.15.4): [zib-BowelFunction.Frequency](http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.Frequency)\r\n* DefecationConsistency(NL-CM:4.15.9): [zib-BowelFunction.DefecationConsistency](http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.DefecationConsistency)\r\n* DefecationColor(NL-CM:4.15.10): [zib-BowelFunction.DefecationColor](http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.DefecationColor)",
+        "alias": [
+          "Darmfunctie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bowelfunction-v3.1.1-2020EN",
+            "map": "NL-CM:4.15.1",
+            "comment": "BowelFunction"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:stoma",
+        "path": "Observation.extension",
+        "sliceName": "stoma",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-StomaReference"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:stoma.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "Stoma",
+        "definition": "Stoma describes the presence of an unnatural, surgically created opening. If the patient has a stoma, the type of stoma must be entered along with the date on and location at which the stoma and any stoma pouches were placed. A comment can also be entered.",
+        "alias": [
+          "Stoma"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bowelfunction-v3.1.1-2020EN",
+            "map": "NL-CM:4.15.3",
+            "comment": "Stoma"
+          }
+        ]
+      },
+      {
+        "id": "Observation.extension:incontinenceMaterial",
+        "path": "Observation.extension",
+        "sliceName": "incontinenceMaterial",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-supportingInfo"
+            ]
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "Observation.extension:incontinenceMaterial.value[x]",
+        "path": "Observation.extension.value[x]",
+        "short": "IncontinenceMaterial",
+        "definition": "A description of the incontinence material used.",
+        "alias": [
+          "Incontinentiemateriaal"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Resource",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bowelfunction-v3.1.1-2020EN",
+            "map": "NL-CM:4.15.6",
+            "comment": "IncontinenceMaterial"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "111989001"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the BowelFunction.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-bowelfunction-v3.1.1-2020EN",
+            "map": "NL-CM:4.15.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:fecalContinence",
+        "path": "Observation.hasMember",
+        "sliceName": "fecalContinence",
+        "definition": "The FecalContinence concept (NL-CM:4.15.2) of zib BowelFunction, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.FecalContinence"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:frequency",
+        "path": "Observation.hasMember",
+        "sliceName": "frequency",
+        "definition": "The Frequency concept (NL-CM:4.15.4) of zib BowelFunction, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.Frequency"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:defecationConsistency",
+        "path": "Observation.hasMember",
+        "sliceName": "defecationConsistency",
+        "definition": "The DefecationConsistency concept (NL-CM:4.15.9) of zib BowelFunction, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.DefecationConsistency"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:defecationColor",
+        "path": "Observation.hasMember",
+        "sliceName": "defecationColor",
+        "definition": "The DefecationColor concept (NL-CM:4.15.10) of zib BowelFunction, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-BowelFunction.DefecationColor"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

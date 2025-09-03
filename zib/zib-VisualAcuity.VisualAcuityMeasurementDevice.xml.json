@@ -1,0 +1,65 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-VisualAcuity.VisualAcuityMeasurementDevice",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-VisualAcuity.VisualAcuityMeasurementDevice",
+  "name": "ZibVisualAcuityVisualAcuityMeasurementDevice",
+  "title": "zib VisualAcuity.VisualAcuityMeasurementDevice",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The device used measuring the visual acuity.",
+  "purpose": "This Device resource represents the VisualAcuityMeasurementDevice concept (NL-CM:12.19.6) of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) VisualAcuity v1.0 (2020)](https://zibs.nl/wiki/VisualAcuity-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-visualacuity-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/VisualAcuity-v1.0(2020EN)",
+      "name": "zib VisualAcuity-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device.type",
+        "path": "Device.type",
+        "short": "VisualAcuityMeasurementDevice",
+        "definition": "The device used measuring the visual acuity.",
+        "alias": [
+          "VisusMeetHulpmiddel"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.19.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-visualacuity-v1.0-2020EN",
+            "map": "NL-CM:12.19.6",
+            "comment": "VisualAcuityMeasurementDevice"
+          }
+        ]
+      }
+    ]
+  }
+}

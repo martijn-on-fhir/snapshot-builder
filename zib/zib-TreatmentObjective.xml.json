@@ -1,0 +1,257 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-TreatmentObjective",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-TreatmentObjective",
+  "name": "ZibTreatmentObjective",
+  "title": "zib TreatmentObjective",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The treatment objective describes the desired result of the treatment/interventions in terms of the patient’s diagnosed problem. The objective and target date are entered in addition to the target value. Comparing the healthcare results to the treatment objective provides insight into the effectivity of the treatment/interventions.",
+  "purpose": "This Goal resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TreatmentObjective v3.2 (2020)](https://zibs.nl/wiki/TreatmentObjective-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-treatmentobjective-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/TreatmentObjective-v3.2(2020EN)",
+      "name": "zib TreatmentObjective-v3.2(2020EN)"
+    },
+    {
+      "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/FunctionalOrMentalStatus-v3.2(2020EN)",
+      "name": "zib FunctionalOrMentalStatus-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Goal",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Goal",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Goal",
+        "path": "Goal",
+        "short": "TreatmentObjective / DesiredHealthCondition / FunctionalOrMentalStatus",
+        "comment": "On the zib level, zib TreatmentObjective uses a reference to zib FunctionalOrMentalStatus (in future context). In FHIR the concepts from FunctionalOrMentalStatus are represented directly in the the Goal resource, with the exception of the reference to zib MedicalDevice; this reference is represented by the core extension resource-pertainsToGoal in the [zib-MedicalDevice](http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice) profile.",
+        "alias": [
+          "Behandeldoel",
+          "GewensteGezondheidstoestand",
+          "FunctioneleOfMentaleStatus"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentobjective-v3.2-2020EN",
+            "map": "NL-CM:13.5.1",
+            "comment": "TreatmentObjective"
+          },
+          {
+            "identity": "zib-treatmentobjective-v3.2-2020EN",
+            "map": "NL-CM:13.5.3",
+            "comment": "DesiredHealthCondition"
+          },
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.1",
+            "comment": "FunctionalOrMentalStatus"
+          }
+        ]
+      },
+      {
+        "id": "Goal.lifecycleStatus",
+        "path": "Goal.lifecycleStatus",
+        "comment": "No zib concept can be mapped (implicitly) to this element. Unless `.lifecycleStatus` is explicitly recorded, TreatmentObjectives may assumed to be _active_."
+      },
+      {
+        "id": "Goal.description.text",
+        "path": "Goal.description.text",
+        "short": "DesiredHealthcareResult",
+        "definition": "The textual account of the treatment objective.",
+        "comment": "This element is used to represent the zib concept DesiredHealthcareResult (NL-CM:13.5.5) if present. If instead DesiredHealthCondition::FunctionalOrMentalStatus is used (NL-CM:13.5.3), this element should be populated with a textual representation containg at least FunctionalOrMentalStatus.StatusName (NL-CM:4.26.2) and FunctionalOrMentalStatus.StatusValue (NL-CM:4.26.3).\r\n\r\nReceiving systems that need to map back to the zib could look at `.target.measure` and `.target.detailCodeableConcept`; if these elements are absent, this element represents zib concept DesiredHealthcareResult. If present, the discrete data can be found in the aforementioned elements.",
+        "alias": [
+          "GewenstZorgresultaat"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentobjective-v3.2-2020EN",
+            "map": "NL-CM:13.5.5",
+            "comment": "DesiredHealthcareResult"
+          },
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.2",
+            "comment": "StatusName (implicit, main mapping is on Goal.target.measure)"
+          },
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.3",
+            "comment": "StatusValue (implicit, main mapping is on Goal.target.detailCodeableConcept)"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.measure",
+        "path": "Goal.target.measure",
+        "short": "StatusName",
+        "definition": "Coded description of the functional or mental status or limitation.\r\nCode systems used include:\r\n\r\n* SNOMED CT\r\n* ICF (International Classification of Functioning, Disability and Health)\r\n* NOC (Nursing Outcomes Classification)\r\n* OMAHA",
+        "alias": [
+          "StatusNaam"
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.2",
+            "comment": "StatusName"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.detail[x]",
+        "path": "Goal.target.detail[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Goal.target.detail[x]:detailCodeableConcept",
+        "path": "Goal.target.detail[x]",
+        "sliceName": "detailCodeableConcept",
+        "short": "StatusValue",
+        "definition": "The extent to which the patient is limited by the functional or mental condition.\r\n\r\nIf both the status name and the status value are recorded in code, then both values must come from the same code system. If the patient uses a medical device, the evaluation of the extent of the limitation will take place without this aid.\r\n\r\nThe answer codes must be selected from the subselection of the code system corresponding with the request in accordance with the rules applicable to that system.",
+        "alias": [
+          "StatusWaarde"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.3",
+            "comment": "StatusValue"
+          }
+        ]
+      },
+      {
+        "id": "Goal.target.due[x]",
+        "path": "Goal.target.due[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Goal.target.due[x]:dueDate",
+        "path": "Goal.target.due[x]",
+        "sliceName": "dueDate",
+        "short": "StatusDate",
+        "definition": "Indicates the date of the DesiredHealthCondition by which the goal should be met.",
+        "comment": "Please note that this definition differs from that of zib FunctionalOrMentalStatus. However, [ZIB-1657](https://nictiz.atlassian.net/browse/ZIB-1657) clarifies that in the current context, the StatusDate should be interpreted this way.",
+        "alias": [
+          "StatusDatum"
+        ],
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.6",
+            "comment": "StatusDate"
+          }
+        ]
+      },
+      {
+        "id": "Goal.addresses",
+        "path": "Goal.addresses",
+        "short": "Problem",
+        "definition": "Description of the problem to which the treatment objective applies.",
+        "alias": [
+          "Probleem"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://hl7.org/fhir/StructureDefinition/Observation",
+              "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+              "http://hl7.org/fhir/StructureDefinition/NutritionOrder",
+              "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+              "http://hl7.org/fhir/StructureDefinition/RiskAssessment",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-treatmentobjective-v3.2-2020EN",
+            "map": "NL-CM:13.5.4",
+            "comment": "Problem"
+          }
+        ]
+      },
+      {
+        "id": "Goal.note",
+        "path": "Goal.note",
+        "max": "1"
+      },
+      {
+        "id": "Goal.note.text",
+        "path": "Goal.note.text",
+        "short": "Comment",
+        "definition": "Explanatory comments as a description of the functional or mental status.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-functionalormentalstatus-v3.2-2020EN",
+            "map": "NL-CM:4.26.4",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

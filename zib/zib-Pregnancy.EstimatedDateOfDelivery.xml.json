@@ -1,0 +1,152 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Pregnancy.EstimatedDateOfDelivery",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy.EstimatedDateOfDelivery",
+  "name": "ZibPregnancyEstimatedDateOfDelivery",
+  "title": "zib Pregnancy.EstimatedDateOfDelivery",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Pregnancy or gravidity is the condition in which a woman carries a fertilized egg, which grows into an embryo and then a fetus. A pregnancy of between 37 and 42 weeks is considered normal. “Term pregnancy” is 37 to 42 weeks. The term gravidity is also used for the number of times a woman has been pregnant. This and parity - the number of times a woman has given birth - provides insight into the patient’s obstetric history.",
+  "purpose": "This Observation resource represents the EstimatedDateOfDelivery concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Pregnancy v4.0 (2020)](https://zibs.nl/wiki/Pregnancy-v4.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-pregnancy-v4.0-2020EN",
+      "uri": "https://zibs.nl/wiki/Pregnancy-v4.0(2020EN)",
+      "name": "zib Pregnancy-v4.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This profile on the Observation resource represents the EstimatedDateOfDelivery concept (NL-CM:7.14.3) of zib Pregnancy. It can be used together with the [zib-Pregnancy](http://nictiz.nl/fhir/StructureDefinition/zib-Pregnancy) profile on the Observation resource, which groups references to the current and other resources on `Observation.hasMember`."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "161714006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "DateOfEstimation",
+        "definition": "Date on which the delivery date is estimated.",
+        "alias": [
+          "DatumBepaling"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pregnancy-v4.0-2020EN",
+            "map": "NL-CM:7.14.11",
+            "comment": "DateOfEstimation"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueDateTime",
+        "path": "Observation.value[x]",
+        "sliceName": "valueDateTime",
+        "short": "EstimatedDateOfDelivery",
+        "definition": "The date on which the pregnancy is expected to be 40w 0d (280 days). Different due dates are used at various points in the pregnancy.",
+        "alias": [
+          "ATermeDatum"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pregnancy-v4.0-2020EN",
+            "map": "NL-CM:7.14.3",
+            "comment": "EstimatedDateOfDelivery"
+          }
+        ]
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "short": "EstimatingMethod",
+        "definition": "Method by which the delivery date is estimated.",
+        "alias": [
+          "BepalingsMethode"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.14.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-pregnancy-v4.0-2020EN",
+            "map": "NL-CM:7.14.10",
+            "comment": "EstimatingMethod"
+          }
+        ]
+      }
+    ]
+  }
+}

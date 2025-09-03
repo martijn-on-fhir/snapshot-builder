@@ -1,0 +1,301 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-FreedomRestrictingIntervention",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-FreedomRestrictingIntervention",
+  "name": "ZibFreedomRestrictingIntervention",
+  "title": "zib FreedomRestrictingIntervention",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Freedom restricting interventions are interventions that are used against the will of the person concerned and that consciously restrict the person's freedom to protect the person or his environment. This definition includes many forms of freedom restriction, such as (not exhaustive)\r\n\r\n* Forced administration of fluid and nutrition\r\n* Forced administration of medication\r\n* Performing medical checks or other medical procedures\r\n* Restricting freedom of movement\r\n* Admitting to an accommodation and secluding when admitted to an accommodation.\r\n* Exercising supervision\r\n* Searching of clothing or body\r\n* Restriction of visitors and the use of communication means\r\n\r\nIn the hospital, it is usually about restricting the freedom of movement, for example by using bed rails, moving a chair near to the table or using an arm splint for infusion. In combination with freedom-restricting interventions, soothing medication can be administered. In the case of small children, it is often a question of fixing hands, for example, to prevent a stomach tube from being pulled out.\r\nFor nurses to use it in hospitals, Dutch Nurses Association (V&VN) published a guideline [ref. 3].\r\nIn mental health care, care for the disabled and psychogeriatric care, it always concerns care that is used against the will of the patient.\r\nThe legal framework for using these interventions is (per 1-1-2020) governed by two laws, namely:\r\n\r\n* The Wet verplichte ggz (Wvggz: Mandatory Care In Mental Health Act) for people with psychiatric disorders\r\n* The Wet zorg en dwang (Wzd: Care and Compulsion Act) for people with intellectual disabilities and people with a psychogeriatric disorder, such as dementia.\r\n\r\nThe Wvggz refers to the term compulsory care, while the Wzd uses the term involuntary care.\r\nA national registration system, the Argus registration, is used to register the interventions in the context of the Wvggz.",
+  "purpose": "This Procedure resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) FreedomRestrictingIntervention v1.0 (2020)](https://zibs.nl/wiki/FreedomRestrictingIntervention-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/FreedomRestrictingIntervention-v1.0(2020EN)",
+      "name": "zib FreedomRestrictingIntervention-v1.0(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure",
+        "path": "Procedure",
+        "short": "FreedomRestrictingIntervention",
+        "alias": [
+          "VrijheidsbeperkendeInterventie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.1",
+            "comment": "FreedomRestrictingIntervention"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.extension:legallyCapable",
+        "path": "Procedure.extension",
+        "sliceName": "legallyCapable",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-FreedomRestrictingIntervention.LegallyCapable"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Procedure.extension:assent",
+        "path": "Procedure.extension",
+        "sliceName": "assent",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-FreedomRestrictingIntervention.Assent"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Procedure.status",
+        "path": "Procedure.status",
+        "comment": "This element is implictly mapped to the zib concepts NL-CM:14.6.8 (Start) and NL-CM:14.6.9 (End). Unless the status is explicitly recorded, the following guidance applies:\r\n\r\n* When Start is in the future, `.status` will usually be set to _preparation_.\r\n* When Start is in the past and End is present and in the future, `.status` will usually be set to _in-progress_.\r\n* When End is present and in the past, `.status` will usually be set to _completed_.\r\n* When End is not present, this means it was a point-in-time procedure and `.status` will usually be set to _completed_.\r\n* When a system is unable to infer the status from the Start and End, `.status` will be set to _unknown_.\r\n\r\nThe _unknown_ code is not to be used to convey other statuses.  The _unknown_ code should be used when one of the statuses applies, but the authoring system doesn't know the current state of the procedure.\n\nThis element is labeled as a modifier because the status contains codes that mark the resource as not currently valid.",
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.8",
+            "comment": "Start (implicit, main mapping is on `Procedure.performedPeriod`)"
+          },
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.9",
+            "comment": "End (implicit, main mapping is on `Procedure.performedPeriod`)"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.category",
+        "path": "Procedure.category",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "225317005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Procedure.code",
+        "path": "Procedure.code",
+        "short": "TypeOfIntervention",
+        "definition": "The type of intervention describes the kind of freedom-restricting intervention/involuntary care.",
+        "alias": [
+          "SoortInterventie"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.20--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.5",
+            "comment": "TypeOfIntervention"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performed[x]",
+        "path": "Procedure.performed[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Procedure.performed[x]:performedPeriod",
+        "path": "Procedure.performed[x]",
+        "sliceName": "performedPeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performed[x]:performedPeriod.start",
+        "path": "Procedure.performed[x].start",
+        "short": "Start",
+        "definition": "The date and time on which the intervention was started for duration registrations.",
+        "alias": [
+          "Begin"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.8",
+            "comment": "Start"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performed[x]:performedPeriod.end",
+        "path": "Procedure.performed[x].end",
+        "short": "End",
+        "definition": "The date and time at which the intervention ended.",
+        "alias": [
+          "Einde"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.9",
+            "comment": "End"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performed[x]:performedDateTime",
+        "path": "Procedure.performed[x]",
+        "sliceName": "performedDateTime",
+        "short": "Start",
+        "definition": "The date and time on which the intervention was carried out for point in time registrations.",
+        "alias": [
+          "Begin"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.8",
+            "comment": "Start"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.reasonCode",
+        "path": "Procedure.reasonCode",
+        "short": "ReasonForUse",
+        "definition": "The reason for use provides the justification for applying involuntary care",
+        "alias": [
+          "RedenVanToepassen"
+        ],
+        "max": "1",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.5.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.6",
+            "comment": "ReasonForUse"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.reasonReference",
+        "path": "Procedure.reasonReference",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Procedure.reasonReference:legalSituation-LegalStatus",
+        "path": "Procedure.reasonReference",
+        "sliceName": "legalSituation-LegalStatus",
+        "short": "LegalSituation",
+        "definition": "The legal situation that applies to the patient during the intervention.",
+        "alias": [
+          "JuridischeSituatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-LegalSituation-LegalStatus"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.4",
+            "comment": "LegalSituation"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.reasonReference:legalSituation-Representation",
+        "path": "Procedure.reasonReference",
+        "sliceName": "legalSituation-Representation",
+        "short": "LegalSituation",
+        "definition": "The legal situation that applies to the patient during the intervention.",
+        "alias": [
+          "JuridischeSituatie"
+        ],
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-LegalSituation-Representation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-freedomrestrictingintervention-v1.0-2020EN",
+            "map": "NL-CM:14.6.4",
+            "comment": "LegalSituation"
+          }
+        ]
+      }
+    ]
+  }
+}

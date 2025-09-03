@@ -1,0 +1,90 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "TekstStatusCodelijst-to-DiagnosticReportStatus",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/concept-bidirectional",
+      "valueBoolean": false
+    }
+  ],
+  "url": "http://nictiz.nl/fhir/ConceptMap/TekstStatusCodelijst-to-DiagnosticReportStatus",
+  "version": "0.0.1",
+  "name": "TekstStatusCodelijst_to_DiagnosticReportStatus",
+  "title": "TekstStatusCodelijst to DiagnosticReportStatus",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Maps TextResultStatus codes as found in the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) TextResult v4.4 (2020)](https://zibs.nl/wiki/TextResult-v4.4(2020EN)) to DiagnosticReportStatus codes as found in FHIR R4.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "sourceCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.2.2--20200901000000",
+  "targetCanonical": "http://hl7.org/fhir/ValueSet/diagnostic-report-status",
+  "group": [
+    {
+      "source": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.16.1",
+      "target": "http://hl7.org/fhir/diagnostic-report-status",
+      "element": [
+        {
+          "code": "pending",
+          "target": [
+            {
+              "code": "registered",
+              "equivalence": "wider",
+              "comment": "Pending: waiting to be decided or approved (Cambridge dictionary). Registered: the existence of the report is registered, but there is nothing yet available."
+            }
+          ]
+        },
+        {
+          "code": "preliminary",
+          "target": [
+            {
+              "code": "preliminary",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "final",
+          "target": [
+            {
+              "code": "final",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "appended",
+          "target": [
+            {
+              "code": "appended",
+              "equivalence": "equal"
+            }
+          ]
+        },
+        {
+          "code": "corrected",
+          "target": [
+            {
+              "code": "corrected",
+              "equivalence": "equal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

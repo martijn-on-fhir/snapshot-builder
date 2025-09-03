@@ -1,0 +1,94 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-SOAPReport.SOAPLineCode",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-SOAPReport.SOAPLineCode",
+  "name": "ExtSOAPReportSOAPLineCode",
+  "title": "ext SOAPReport.SOAPLineCode",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide the SOAPLine code. The extension can be seen as an addition to the SOAPLineHeader and SOAPLineText concept mapped to the code and text element.",
+  "purpose": "This extension represents the SOAPLineCode concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) SOAPReport v1.0 (2020)](https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-soapreport-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/SOAPReport-v1.0(2020EN)",
+      "name": "zib SOAPReport-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Observation"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "max": "1"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-SOAPReport.SOAPLineCode"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "SOAPLineCode",
+        "definition": "Coded values can be added to a line that describe essential aspects of the line.\r\nIn a SOAP report an ICPC code may be assigned, but only to the S and A line.",
+        "alias": [
+          "SOEPRegelCode"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.6.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-soapreport-v1.0-2020EN",
+            "map": "NL-CM:13.6.5",
+            "comment": "SOAPLineCode"
+          }
+        ]
+      },
+      {
+        "id": "Extension.value[x].coding",
+        "path": "Extension.value[x].coding",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.13.6.1--20200901000000"
+        }
+      }
+    ]
+  }
+}

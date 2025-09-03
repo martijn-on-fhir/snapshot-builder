@@ -1,0 +1,206 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-NutritionAdvice",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-NutritionAdvice",
+  "name": "ZibNutritionAdvice",
+  "title": "zib NutritionAdvice",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A nutritional advice is a description of nourishment for the patient, which must meet specific requirements in view of the health condition of the patient. Allergies and food intolerances or chewing and swallowing problems may be a reason for special nutrition.",
+  "purpose": "This NutritionOrder resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) NutritionAdvice v3.2 (2020)](https://zibs.nl/wiki/NutritionAdvice-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-nutritionadvice-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/NutritionAdvice-v3.2(2020EN)",
+      "name": "zib NutritionAdvice-v3.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "NutritionOrder",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/NutritionOrder",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "NutritionOrder",
+        "path": "NutritionOrder",
+        "short": "NutritionAdvice",
+        "comment": "Please note that there's a mismatch between the zib concept Consistency (NL-CM:7.11.3) and the FHIR resource NutritionOrder.",
+        "alias": [
+          "Voedingsadvies"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.1",
+            "comment": "NutritionAdvice"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.extension:indication",
+        "path": "NutritionOrder.extension",
+        "sliceName": "indication",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/workflow-reasonReference"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.extension:indication.value[x]",
+        "path": "NutritionOrder.extension.value[x]",
+        "short": "Indication",
+        "definition": "The indication is the reason for advising the diet.",
+        "alias": [
+          "Indicatie"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://hl7.org/fhir/StructureDefinition/DiagnosticReport",
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+              "http://hl7.org/fhir/StructureDefinition/Observation",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-Problem"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.5",
+            "comment": "Indication"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.intent",
+        "path": "NutritionOrder.intent",
+        "comment": "No zib concept can be mapped to `intent`. Unless `intent` is explicitly recorded it may be assumed that a NutritionAdvice represents an _order_."
+      },
+      {
+        "id": "NutritionOrder.oralDiet.type.text",
+        "path": "NutritionOrder.oralDiet.type.text",
+        "short": "DietType",
+        "definition": "Description of the type of diet.",
+        "alias": [
+          "DieetType"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.2",
+            "comment": "DietType"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.oralDiet.texture.modifier",
+        "path": "NutritionOrder.oralDiet.texture.modifier",
+        "short": "Consistency",
+        "definition": "A description of the consistency of the food.",
+        "comment": "There's a mismatch between the zib concept Consistency (NL-CM:7.11.3) and the FHIR resource NutritionOrder. On the zib level, all information about the oral diet consistency is flattened to a single string. In FHIR however there are much richer semantics, recognizing at least the difference between solid (`.oralDiet.texture.modifier`) and liquid (`.oralDiet.fluidConsistencyType`) nutrition, and in addition allowing using coded data for the consistency and to distinguish between different types of solid foods.\r\n\r\nIn consultation with HL7 Netherlands and the zib centre at Nictiz, it has been decided that a one-to-one mapping from the simple zib concept to the FHIR resource is undesirable as it may result in the loss of valuable information. Sending systems should use `.oralDiet.texture.modifier` and/or `.oralDiet.fluidConsistencyType` concepts as intended wherever they can. If data is not available in coded form, sending systems can use the `.text` element in these concepts for textual descriptions; if there's just a single string like the zib defines it, it is the expectation that the `.text` element in `oralDiet.texture.modifier` is used, as this concept has a broader meaning and may include liquid foods as well. (Because of this mismatch, the Consistency concept has been mapped to `.oralDiet.texture.modifier`, `.oralDiet.texture.modifier.text`, and `.oralDiet.fluidConsistencyType`).\r\n\r\nThis means that receiving systems MUST be able to interpret `.oralDiet.texture.modifier` and `.oralDiet.fluidConsistencyType`, both as coded and textual concepts, to reconstruct the zib concept Consistency. Reconstructing this string could be a straightforward concatenation of all coded and textual information in these two elements. In order to assist receiving systems which do not support coded information, sending systems MUST add a `.display` to each coding.",
+        "alias": [
+          "Consistentie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.3",
+            "comment": "Consistency"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.oralDiet.texture.modifier.coding.display",
+        "path": "NutritionOrder.oralDiet.texture.modifier.coding.display",
+        "min": 1
+      },
+      {
+        "id": "NutritionOrder.oralDiet.texture.modifier.text",
+        "path": "NutritionOrder.oralDiet.texture.modifier.text",
+        "short": "Consistency",
+        "definition": "A description of the consistency of the food.",
+        "comment": "There's a mismatch between the zib concept Consistency (NL-CM:7.11.3) and the FHIR resource NutritionOrder. On the zib level, all information about the oral diet consistency is flattened to a single string. In FHIR however there are much richer semantics, recognizing at least the difference between solid (`.oralDiet.texture.modifier`) and liquid (`.oralDiet.fluidConsistencyType`) nutrition, and in addition allowing using coded data for the consistency and to distinguish between different types of solid foods.\r\n\r\nIn consultation with HL7 Netherlands and the zib centre at Nictiz, it has been decided that a one-to-one mapping from the simple zib concept to the FHIR resource is undesirable as it may result in the loss of valuable information. Sending systems should use `.oralDiet.texture.modifier` and/or `.oralDiet.fluidConsistencyType` concepts as intended wherever they can. If data is not available in coded form, sending systems can use the `.text` element in these concepts for textual descriptions; if there's just a single string like the zib defines it, it is the expectation that the `.text` element in `oralDiet.texture.modifier` is used, as this concept has a broader meaning and may include liquid foods as well. (Because of this mismatch, the Consistency concept has been mapped to `.oralDiet.texture.modifier`, `.oralDiet.texture.modifier.text`, and `.oralDiet.fluidConsistencyType`).\r\n\r\nThis means that receiving systems MUST be able to interpret `.oralDiet.texture.modifier` and `.oralDiet.fluidConsistencyType`, both as coded and textual concepts, to reconstruct the zib concept Consistency. Reconstructing this string could be a straightforward concatenation of all coded and textual information in these two elements. In order to assist receiving systems which do not support coded information, sending systems MUST add a `.display` to each coding.",
+        "alias": [
+          "Consistentie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.3",
+            "comment": "Consistency"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.oralDiet.fluidConsistencyType",
+        "path": "NutritionOrder.oralDiet.fluidConsistencyType",
+        "short": "Consistency",
+        "definition": "A description of the consistency of the food.",
+        "comment": "There's a mismatch between the zib concept Consistency (NL-CM:7.11.3) and the FHIR resource NutritionOrder. On the zib level, all information about the oral diet consistency is flattened to a single string. In FHIR however there are much richer semantics, recognizing at least the difference between solid (`.oralDiet.texture.modifier`) and liquid (`.oralDiet.fluidConsistencyType`) nutrition, and in addition allowing using coded data for the consistency and to distinguish between different types of solid foods.\r\n\r\nIn consultation with HL7 Netherlands and the zib centre at Nictiz, it has been decided that a one-to-one mapping from the simple zib concept to the FHIR resource is undesirable as it may result in the loss of valuable information. Sending systems should use `.oralDiet.texture.modifier` and/or `.oralDiet.fluidConsistencyType` concepts as intended wherever they can. If data is not available in coded form, sending systems can use the `.text` element in these concepts for textual descriptions; if there's just a single string like the zib defines it, it is the expectation that the `.text` element in `oralDiet.texture.modifier` is used, as this concept has a broader meaning and may include liquid foods as well. (Because of this mismatch, the Consistency concept has been mapped to `.oralDiet.texture.modifier`, `.oralDiet.texture.modifier.text`, and `.oralDiet.fluidConsistencyType`).\r\n\r\nThis means that receiving systems MUST be able to interpret `.oralDiet.texture.modifier` and `.oralDiet.fluidConsistencyType`, both as coded and textual concepts, to reconstruct the zib concept Consistency. Reconstructing this string could be a straightforward concatenation of all coded and textual information in these two elements. In order to assist receiving systems which do not support coded information, sending systems MUST add a `.display` to each coding.",
+        "alias": [
+          "Consistentie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.3",
+            "comment": "Consistency"
+          }
+        ]
+      },
+      {
+        "id": "NutritionOrder.oralDiet.fluidConsistencyType.coding.display",
+        "path": "NutritionOrder.oralDiet.fluidConsistencyType.coding.display",
+        "min": 1
+      },
+      {
+        "id": "NutritionOrder.note",
+        "path": "NutritionOrder.note",
+        "max": "1"
+      },
+      {
+        "id": "NutritionOrder.note.text",
+        "path": "NutritionOrder.note.text",
+        "short": "Comment",
+        "definition": "A comment on the nutrition advice.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-nutritionadvice-v3.2-2020EN",
+            "map": "NL-CM:7.11.4",
+            "comment": "Comment"
+          }
+        ]
+      }
+    ]
+  }
+}

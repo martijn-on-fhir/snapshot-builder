@@ -1,0 +1,589 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-ChecklistPainBehavior",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-ChecklistPainBehavior",
+  "name": "ZibChecklistPainBehavior",
+  "title": "zib ChecklistPainBehavior",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The CPB (Checklist Pain Behaviour) is a pain assessment tool, that is used to assess pain in children with a limited expressive repertoire or with a profound cognitive impairment, by observing their behaviour.\r\nThe CPB has ten observations that need to be addressed. The final score indicates whether the observed child suffers pain and 'how much'. The score is often combined with a VAS score that is completed by the nurses on basis of clinical experience.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) ChecklistPainBehavior v1.1 (2020)](https://zibs.nl/wiki/ChecklistPainBehavior-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/ChecklistPainBehavior-v1.1(2020EN)",
+      "name": "zib ChecklistPainBehavior-v1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "ChecklistPainBehaviour",
+        "alias": [
+          "ChecklistPijnGedrag"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.1",
+            "comment": "ChecklistPainBehaviour"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108331000146104"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "ScoreDateTime",
+        "definition": "The date and time at which the CPB score was determined.",
+        "alias": [
+          "ScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.13",
+            "comment": "ScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 10.",
+        "comment": "The total score communicated using this element is always determined using the individual scores, but these individual scores are not always registered or communicated. For this reason, all individual `Observation.component`s representing the individual scores are optional, and the total score might not align with the sum of the individual scores that are communicated.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 10,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.14",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:face",
+        "path": "Observation.component",
+        "sliceName": "face",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:face.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:face.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Face",
+        "definition": "Tense face; one or more muscles in the face are tensed.",
+        "alias": [
+          "Gezicht"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.3",
+            "comment": "Face"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:mouth",
+        "path": "Observation.component",
+        "sliceName": "mouth",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:mouth.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:mouth.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Mouth",
+        "definition": "Deeper naso-labial furrow; the line between the nose and mouth (naso-labial furrow) is deeper and aside.",
+        "alias": [
+          "Mond"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.4",
+            "comment": "Mouth"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:grimace",
+        "path": "Observation.component",
+        "sliceName": "grimace",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:grimace.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:grimace.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Grimace",
+        "definition": "Grimace; the co-occurrence of: furrowed eyebrows; eyes that are composed or pinched; a deeper line between the nose and mouth; opened mouth.",
+        "alias": [
+          "Grimas"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.5",
+            "comment": "Grimace"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:lookingSad",
+        "path": "Observation.component",
+        "sliceName": "lookingSad",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:lookingSad.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:lookingSad.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Looking sad",
+        "definition": "Looking sad, almost in tears: eyebrows which have been pulled up laterally on the inner sides; wrinkles in the forehead, especially over the nose; eyes are squeezed; mouth drawn down possibly combined with a pout.",
+        "alias": [
+          "VerdrietigeBlik"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.6",
+            "comment": "LookingSad"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:eyes",
+        "path": "Observation.component",
+        "sliceName": "eyes",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:eyes.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017007"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:eyes.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Eyes",
+        "definition": "Eyes squeezed.\r\nNote: Do NOT score as present when the child is blinking or when the eyes are still closed without blinking.",
+        "alias": [
+          "Ogen"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.7",
+            "comment": "Eyes"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:panic",
+        "path": "Observation.component",
+        "sliceName": "panic",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:panic.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:panic.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Panic",
+        "definition": "Panics, panic attack: an extreme form of anxiety which manifests itself in random restless body movements or violent resistance.\r\n\r\nThis may be associated with an anxious look characterized by large widely opened eyes and eyebrows which are on the inner side raised up.",
+        "alias": [
+          "Paniek"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.8",
+            "comment": "Panic"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:moaning",
+        "path": "Observation.component",
+        "sliceName": "moaning",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:moaning.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:moaning.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Moaning",
+        "definition": "Moaning, groaning; monotonous sound on plaintive tone.",
+        "alias": [
+          "Kreunen"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.9",
+            "comment": "Moaning"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:cry",
+        "path": "Observation.component",
+        "sliceName": "cry",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:cry.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017010"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:cry.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Cry",
+        "definition": "Cries softly; crying is accompanied by a shocking breath.",
+        "alias": [
+          "Huilen"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.10",
+            "comment": "Cry"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:soundsOfRestlessness",
+        "path": "Observation.component",
+        "sliceName": "soundsOfRestlessness",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:soundsOfRestlessness.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017011"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:soundsOfRestlessness.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "SoundsOfRestlessness",
+        "definition": "Penetrating sounds of restlessness: sudden or longer lasting intense cries or verbal expressions of pain, such as \"ow\" or \"you hurt me\".",
+        "alias": [
+          "Onrustgeluiden"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.11",
+            "comment": "SoundsOfRestlessness"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:tears",
+        "path": "Observation.component",
+        "sliceName": "tears",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:tears.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12017012"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:tears.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Tears",
+        "definition": "Tears: child produces tears in at least one eye, so more than just watery eyes.",
+        "alias": [
+          "Tranen"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 1,
+        "mapping": [
+          {
+            "identity": "zib-checklistpainbehavior-v1.1-2020EN",
+            "map": "NL-CM:12.17.12",
+            "comment": "Tears"
+          }
+        ]
+      }
+    ]
+  }
+}

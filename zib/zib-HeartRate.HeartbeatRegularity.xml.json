@@ -1,0 +1,143 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HeartRate.HeartbeatRegularity",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HeartRate.HeartbeatRegularity",
+  "name": "ZibHeartRateHeartbeatRegularity",
+  "title": "zib HeartRate.HeartbeatRegularity",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Regularity of the heartbeat.",
+  "purpose": "This Observation resource represents the HeartbeatRegularity concept (NL-CM-12.3.5) of Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HeartRate v3.4 (2020)](https://zibs.nl/wiki/HeartRate-v3.4(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-heartrate-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/HeartRate-v3.4(2020EN)",
+      "name": "zib HeartRate-v3.4(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/pattern-VitalSigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "comment": "This Observation resource represents the HeartbeatRegularity concept (NL-CM:12.3.5) of zib HeartRate. It can be used together with the [zib-HeartRate](http://nictiz.nl/fhir/StructureDefinition/zib-HeartRate) profile on the Observation resource, which groups references to the current and other resources on `Observation.hasMember`."
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "301112006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "HeartRateDateTime",
+        "definition": "Date and time of the heart rate measurement.",
+        "alias": [
+          "HartfrequentieDatumTijd"
+        ],
+        "min": 0,
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-heartrate-v3.4-2020EN",
+            "map": "NL-CM:12.3.4",
+            "comment": "HeartRateDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "short": "HeartbeatRegularity",
+        "definition": "Regularity of the heartbeat.",
+        "alias": [
+          "HartslagRegelmatigheid"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.3.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-heartrate-v3.4-2020EN",
+            "map": "NL-CM:12.3.5",
+            "comment": "HeartbeatRegularity"
+          }
+        ]
+      },
+      {
+        "id": "Observation.method",
+        "path": "Observation.method",
+        "short": "HeartRateMeasurementMethod",
+        "definition": "The method used to count and observe the heart rate.",
+        "alias": [
+          "HartslagMeetMethode"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.3.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-heartrate-v3.4-2020EN",
+            "map": "NL-CM:12.3.6",
+            "comment": "HeartRateMeasurementMethod"
+          }
+        ]
+      }
+    ]
+  }
+}

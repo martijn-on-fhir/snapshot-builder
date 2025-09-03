@@ -1,0 +1,77 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ext-MedicationContraIndication.ReasonClosure",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/ext-MedicationContraIndication.ReasonClosure",
+  "name": "ExtMedicationContraIndicationReasonClosure",
+  "title": "ext MedicationContraIndication.ReasonClosure",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "An extension to provide a textual explanation of why the medication contraindication has been closed.",
+  "purpose": "This extension represents the ReasonClosure concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) MedicationContraIndication](https://zibs.nl/wiki/MedicationContraIndication-v1.0(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-medicationcontraindication-v1.0-2020EN",
+      "uri": "https://zibs.nl/wiki/MedicationContraIndication-v1.0(2020EN)",
+      "name": "zib MedicationContraIndication-v1.0(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Flag"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://nictiz.nl/fhir/StructureDefinition/ext-MedicationContraIndication.ReasonClosure"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "ReasonClosure",
+        "definition": "Reason for closing the medication contraindication.",
+        "alias": [
+          "RedenVanAfsluiten"
+        ],
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-medicationcontraindication-v1.0-2020EN",
+            "map": "NL-CM:9.14.4",
+            "comment": "ReasonClosure"
+          }
+        ]
+      }
+    ]
+  }
+}

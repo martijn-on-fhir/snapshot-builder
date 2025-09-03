@@ -1,0 +1,48 @@
+{
+  "resourceType": "ValueSet",
+  "id": "zib-BodyWeight-units",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    ]
+  },
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/ValueSet/zib-BodyWeight-units",
+  "version": "0.1",
+  "name": "ZibBodyWeightUnits",
+  "title": "zib BodyWeight units",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "UCUM units for recording zib BodyWeight",
+  "compose": {
+    "include": [
+      {
+        "system": "http://unitsofmeasure.org",
+        "concept": [
+          {
+            "code": "kg"
+          },
+          {
+            "code": "g"
+          }
+        ]
+      }
+    ]
+  }
+}

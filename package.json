@@ -1,0 +1,19 @@
+{
+  "name": "snapshorbuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "snapshot": "npm run build && node dist/index.js",
+    "start": "npm run snapshot"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "^5.5.3"
+  },
+  "private": true,
+  "dependencies": {
+    "hl7.fhir.r4.core": "^4.0.1"
+  }
+}

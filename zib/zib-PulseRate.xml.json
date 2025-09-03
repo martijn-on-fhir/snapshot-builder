@@ -1,0 +1,173 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-PulseRate",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate",
+  "name": "ZibPulseRate",
+  "title": "zib PulseRate",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The element contains the value of the pulse rate measured. The pulse rate is expressed in the number of tangible pulsations of an artery per minute, usually the a. radialis, a. carotis or a. femoralis.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) PulseRate v3.3 (2020)](https://zibs.nl/wiki/PulseRate-v3.3(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-pulserate-v3.3-2020EN",
+      "uri": "https://zibs.nl/wiki/PulseRate-v3.3(2020EN)",
+      "name": "zib PulseRate-v3.3(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/pattern-VitalSigns",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "PulseRate",
+        "comment": "**HL7 Vital Signs compatibility**\r\n\r\nAlthough this profile represents a vital signs measurement, it is *not* directly based on a HL7 Vital Signs profile because there isn't a direct counterpart in HL7 Vital Signs. Moreover the HL7 Vital Signs profiles contain two issues in their current version that prevent them from being used for the exchange of zibs (see below). However, an effort has been made to make this profile consistent with the (other) [HL7 Vital Signs profiles](https://www.hl7.org/fhir/R4/observation-vitalsigns.html), since the zib PulseRate is considered to be a vital sign. In particular it is closely related to the zib HeartRate, the profile of which is derived from its HL7 Vital Signs counterpart.\r\n\r\n**Differences with the HL7 Vital Signs profiles**\r\n\r\n* The _required_ terminology binding on `Observation.component` to the [Vital Signs Units](http://hl7.org/fhir/ValueSet/ucum-vitals-common) dataset makes it impossible to use `.component` for representing anything else than a Quantity (like a CodeableConcept or a boolean). This binding has therefore been omitted in the current profile.\r\n* The `mustSupport` = _true_ flag found on numerous elements isn't further specified in the HL7 Vital Signs IG, as is required by FHIR. This flag has therefore been omitted from the current profile.\r\n* The target restriction on `Observation.hasMember` and `Observation.derivedFrom` to a HL7 Vital Signs profile cannot be fulfilled. This restriction has therefore been omitted from the current profile.\r\n\r\nIt might happen that for some concepts, the zib uses a different (but compatible) way than what is recommended by the [HL7 Vital Signs IG](http://hl7.org/fhir/r4/observation-vitalsigns.html). This is described in the comments for these concepts. There are also some differences in the profiling approach between the current profile and the HL7 profiles, like the use of patterns rather than slices with fixed systems and codes to enforce the inclusion of some coding (for reasons of consistency with other zib profiles, the former approach has been chosen here). Apart from what is mentioned above, constraints, invariants and terminology bindings have been copied from the HL7 Vital Signs profiles, but some textual descriptions have been omitted.\r\n\r\nNote: No equivalent for the HL7 Vital Signs base profile has been created to implement the zib profiles. The profile for this zib has been modelled taking the other HL7 Vital Signs profiles into consideration.\r\n\r\n**Multiple profiles to represent the zib**\r\n\r\nSeveral concepts of zib PulseRate are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* PulseRateValue (NL-CM:12.7.2): [zib-PulseRate.PulseRateValue](http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate.PulseRateValue)\r\n* PulseRegularity (NL-CM:12.7.5): [zib-PulseRate.PulseRegularity](http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate.PulseRegularity)",
+        "alias": [
+          "Polsfrequentie"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pulserate-v3.3-2020EN",
+            "map": "NL-CM:12.7.1",
+            "comment": "PulseRate"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "366199006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "PulseRateDateTime",
+        "definition": "Date and time of the pulse rate or pulse regularity measurement.",
+        "alias": [
+          "PolsfrequentieDatumTijd"
+        ],
+        "min": 0,
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pulserate-v3.3-2020EN",
+            "map": "NL-CM:12.7.3",
+            "comment": "PulseRateDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on any problems or factors that may influence the measurement. Further explanation of pulse properties can be provided here as well: aequale/inaequale, pulsus alternans, pulsus paradoxus, pulse volume, etc.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-pulserate-v3.3-2020EN",
+            "map": "NL-CM:12.7.4",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:pulseRateValue",
+        "path": "Observation.hasMember",
+        "sliceName": "pulseRateValue",
+        "definition": "The PulseRateValue concept (NL-CM:12.7.2) of zib PulseRate, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate.PulseRateValue"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:pulseRegularity",
+        "path": "Observation.hasMember",
+        "sliceName": "pulseRegularity",
+        "definition": "The PulseRegularity concept (NL-CM:12.7.5) of zib PulseRate, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-PulseRate.PulseRegularity"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

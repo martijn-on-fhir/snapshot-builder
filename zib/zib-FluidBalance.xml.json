@@ -1,0 +1,192 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-FluidBalance",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-FluidBalance",
+  "name": "ZibFluidBalance",
+  "title": "zib FluidBalance",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The total water intake and water excretion within a certain time period: a disbalance can lead to for example dehydration or overfilling.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) FluidBalance v1.0.1 (2020)](https://zibs.nl/wiki/FluidBalance-v1.0.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-fluidbalance-v1.0.1-2020EN",
+      "uri": "https://zibs.nl/wiki/FluidBalance-v1.0.1(2020EN)",
+      "name": "zib FluidBalance-v1.0.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FluidBalance",
+        "comment": "Several concepts of zib FluidBalance are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* FluidTotalIn (NL-CM:12.15.4): [zib-FluidBalance.FluidTotalIn](http://nictiz.nl/fhir/StructureDefinition/zib-FluidBalance.FluidTotalIn)\r\n* FluidTotalOut (NL-CM:12.15.5): [zib-FluidBalance.FluidTotalOut](http://nictiz.nl/fhir/StructureDefinition/zib-FluidBalance.FluidTotalOut)",
+        "alias": [
+          "Vochtbalans"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-fluidbalance-v1.0.1-2020EN",
+            "map": "NL-CM:12.15.1",
+            "comment": "FluidBalance"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "710853006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectivePeriod",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.start",
+        "path": "Observation.effective[x].start",
+        "short": "FluidBalanceStartTime",
+        "definition": "The time at which the measurement of the fluid balance was started.",
+        "alias": [
+          "VochtbalansStarttijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-fluidbalance-v1.0.1-2020EN",
+            "map": "NL-CM:12.15.2",
+            "comment": "FluidBalanceStartTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.effective[x]:effectivePeriod.end",
+        "path": "Observation.effective[x].end",
+        "short": "FluidBalanceStopTime",
+        "definition": "The time at which the measurement of the fluid balance was stopped.",
+        "alias": [
+          "VochtbalansStoptijd"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-fluidbalance-v1.0.1-2020EN",
+            "map": "NL-CM:12.15.3",
+            "comment": "FluidBalanceStopTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "Comment on the fluid balance.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-fluidbalance-v1.0.1-2020EN",
+            "map": "NL-CM:12.15.6",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:fluidTotalIn",
+        "path": "Observation.hasMember",
+        "sliceName": "fluidTotalIn",
+        "definition": "The FluidTotalIn concept (NL-CM:12.15.4) of zib FluidBalance, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-FluidBalance.FluidTotalIn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:fluidTotalOut",
+        "path": "Observation.hasMember",
+        "sliceName": "fluidTotalOut",
+        "definition": "The FluidTotalOut concept (NL-CM:12.15.5) of zib FluidBalance, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-FluidBalance.FluidTotalOut"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

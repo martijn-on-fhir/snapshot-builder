@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToUseToilet",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet",
+  "name": "ZibAbilityToUseToilet",
+  "title": "zib AbilityToUseToilet",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Being able to urinate, defecate and keep up hygiene during a menstrual cycle independently is part of self-care. Limitations in this ability indicate a reduced ability to cope for oneself.\r\nThis activity and activities such as those including eating, getting dressed and bathing are also known as activities of daily living (ADL). These are the activities people go through in daily life. The extent to which a person is able to do all these activities by themselves is a measure for their total ability to do things independently.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) AbilityToUseToilet v3.1.1 (2020)](https://zibs.nl/wiki/AbilityToUseToilet-v3.1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytousetoilet-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToUseToilet-v3.1.1(2020EN)",
+      "name": "zib AbilityToUseToilet-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "AbilityToUseToilet",
+        "comment": "Several concepts of zib AbilityToUseToillet are represented using distinct Observation resources. These are grouped using the current resource and are referenced on `Observation.hasMember`:\r\n\r\n* ToiletUse (NL-CM:4.22.6): [zib-AbilityToUseToilet.ToiletUse](http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet.ToiletUse)\r\n* MenstrualCare (NL-CM:4.22.4): [zib-AbilityToUseToilet.MenstrualCare](http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet.MenstrualCare)",
+        "alias": [
+          "VermogenTotToiletgang"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-abilitytousetoilet-v3.1.1-2020EN",
+            "map": "NL-CM:4.22.1",
+            "comment": "AbilityToUseToilet"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "284779002"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.hasMember",
+        "path": "Observation.hasMember",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resolve()"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.hasMember:toiletUse",
+        "path": "Observation.hasMember",
+        "sliceName": "toiletUse",
+        "definition": "The ToiletUse concept (NL-CM:4.22.6) of zib AbilityToUseToilet, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet.ToiletUse"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Observation.hasMember:menstrualCare",
+        "path": "Observation.hasMember",
+        "sliceName": "menstrualCare",
+        "definition": "The MenstrualCare concept (NL-CM:4.22.4) of zib AbilityToUseToilet, represented as a distinct Observation resource.",
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToUseToilet.MenstrualCare"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

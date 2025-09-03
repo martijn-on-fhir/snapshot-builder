@@ -1,0 +1,75 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-AbilityToPerformMouthcareActivities.Prosthesis.Product",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-AbilityToPerformMouthcareActivities.Prosthesis.Product",
+  "name": "ZibAbilityToPerformMouthcareActivitiesProsthesisProduct",
+  "title": "zib AbilityToPerformMouthcareActivities.Prosthesis.Product",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A specification of the type of medical aids used by the patient, such as a prosthesis or orthesis.",
+  "purpose": "This Device resource represents the Product container of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) MedicalDevice v3.3.1 (2020)](https://zibs.nl/wiki/MedicalDevice-v3.3.1(2020EN)) adjusted to the requirements of [zib AbilityToPerformMouthcareActivities v3.1 (2020)](https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/AbilityToPerformMouthcareActivities-v3.1(2020EN)",
+      "name": "zib AbilityToPerformMouthcareActivities-v3.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Device",
+  "baseDefinition": "http://nictiz.nl/fhir/StructureDefinition/zib-MedicalDevice.Product",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device.type",
+        "path": "Device.type",
+        "definition": "A specification of the type of medical aids used by the patient, such as a prosthesis or orthesis.",
+        "binding": {
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "purpose",
+                  "valueCode": "minimum"
+                },
+                {
+                  "url": "valueSet",
+                  "valueCanonical": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.13.2--20200901000000"
+                }
+              ],
+              "url": "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+            }
+          ],
+          "strength": "required"
+        },
+        "mapping": [
+          {
+            "identity": "zib-abilitytoperformmouthcareactivities-v3.1-2020EN",
+            "map": "NL-CM:10.1.3",
+            "comment": "ProductType"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-HealthProfessional-Practitioner",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-Practitioner",
+  "name": "ZibHealthProfessionalPractitioner",
+  "title": "zib HealthProfessional Practitioner",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A health professional is a person who is authorized to perform actions in the field of individual healthcare.",
+  "purpose": "This Practitioner resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) HealthProfessional v3.5 (2020)](https://zibs.nl/wiki/HealthProfessional-v3.5(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-healthprofessional-v3.5-2020EN",
+      "uri": "https://zibs.nl/wiki/HealthProfessional-v3.5(2020EN)",
+      "name": "zib HealthProfessional-v3.5(2020EN)"
+    },
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Practitioner",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Practitioner",
+        "path": "Practitioner",
+        "short": "HealthProfessional",
+        "definition": "A health professional is a person who is authorized to perform actions in the field of individual healthcare.",
+        "comment": "The zib HealthProfessional is mapped for all but one concept (HealthProfessionalRole) to this Practitioner profile and a profile on PractitionerRole (<http://nictiz.nl/fhir/StructureDefinition/zib-HealthProfessional-PractitionerRole>). The PractitionerRole resource covers the recording of the location and types of services that HealthProfessionals are able to provide for a HealthcareProvider. The zib concepts Specialty and HealthcareProvider are therefore mapped onto PractitionerRole.\r\n\r\nAlthough the zib concept name HealthProfessionalRole superficially seems to match the PractitionerRole resource, this is not the case based on the definition and values of that concept. In FHIR, the role that a HealthProfessional fulfills is captured as part of the clinical resource for that specific case, for example in the `Procedure.performer.role` element. This prevents the creation of duplicate HealthProfessional instances for each clinical situation where the HealthProfessional performs a different role in the process.",
+        "alias": [
+          "Zorgverlener"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.1",
+            "comment": "HealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.identifier",
+        "path": "Practitioner.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "HealthProfessionalIdentificationNumber",
+        "definition": "The healthcare provider identification number is a number that uniquely identifies the healthcare provider. \r\n                        \rThe following numbers are used in the Netherlands: \r1. UZI Health Professionals. Identification of health professionals (people) in the Dutch healthcare industry. \r2. VEKTIS AGB-Z. Identifies health professionals and healthcare organizations \r3. BIG-ID. The ID of the health professional listed in the BIG Register. \r\n                        \rThis information is not readily available for foreign health professionals.",
+        "alias": [
+          "ZorgverlenerIdentificatienummer"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.2",
+            "comment": "HealthProfessionalIdentificationNumber"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.identifier:big",
+        "path": "Practitioner.identifier",
+        "sliceName": "big",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/big"
+        }
+      },
+      {
+        "id": "Practitioner.identifier:uzi",
+        "path": "Practitioner.identifier",
+        "sliceName": "uzi",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/uzi-nr-pers"
+        }
+      },
+      {
+        "id": "Practitioner.identifier:agb",
+        "path": "Practitioner.identifier",
+        "sliceName": "agb",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/agb-z"
+        }
+      },
+      {
+        "id": "Practitioner.name",
+        "path": "Practitioner.name",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "use"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "NameInformation",
+        "definition": "Health professional’s full name. If a health professional identification number is entered, it will be the name as listed in UZI, AGB or by the healthcare center.",
+        "alias": [
+          "Naamgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.3",
+            "comment": "NameInformation"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.name:nameInformation",
+        "path": "Practitioner.name",
+        "sliceName": "nameInformation",
+        "max": "2",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.name:nameInformation-GivenName",
+        "path": "Practitioner.name",
+        "sliceName": "nameInformation-GivenName",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation.GivenName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.telecom",
+        "path": "Practitioner.telecom",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "ContactInformation",
+        "definition": "Health professional’s telephone number(s) or e-mail address(es).",
+        "comment": "The cardinality mismatch between the zib (`0..1`) and FHIR (`0..*`) is explained by the containers TelephoneNumbers (`0..*`) and EmailAddresses (`0..*`) inside the ContactInformation model. The FHIR datatype ContactPoint does not have these containers.",
+        "alias": [
+          "Contactgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.8",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.1",
+            "comment": "ContactInformation"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.telecom:telephoneNumbers",
+        "path": "Practitioner.telecom",
+        "sliceName": "telephoneNumbers",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.telecom:emailAddresses",
+        "path": "Practitioner.telecom",
+        "sliceName": "emailAddresses",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.address",
+        "path": "Practitioner.address",
+        "definition": "Health professional’s address information.",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AddressInformation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.7",
+            "comment": "AddressInformation"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.gender",
+        "path": "Practitioner.gender",
+        "short": "Gender",
+        "definition": "Patient’s administrative gender.",
+        "alias": [
+          "Geslacht"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap GeslachtCodelijst-to-AdministrativeGender to translate terminology from the functional model to profile terminology in ValueSet AdministrativeGender. This ConceptMap is based on GeslachtCodelijst as defined in the zib Patient to avoid duplication of ConceptMaps. The GeslachtCodelijst of Patient and HealthProfessional are identical in terms of codes.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/GeslachtCodelijst-to-AdministrativeGender"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-healthprofessional-v3.5-2020EN",
+            "map": "NL-CM:17.1.9",
+            "comment": "Gender"
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.gender.extension:genderCodelist",
+        "path": "Practitioner.gender.extension",
+        "sliceName": "genderCodelist",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Practitioner.gender.extension:genderCodelist.value[x]",
+        "path": "Practitioner.gender.extension.value[x]",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.17.1.8--20200901000000"
+        }
+      }
+    ]
+  }
+}

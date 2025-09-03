@@ -1,0 +1,38 @@
+{
+  "resourceType": "ValueSet",
+  "id": "ContactInformation-TelephoneNumbersSystem",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/ValueSet/ContactInformation-TelephoneNumbersSystem",
+  "version": "4.0.1",
+  "name": "ContactInformationTelephoneNumbersSystem",
+  "title": "ContactPointSystem ValueSet for zib ContactInformation TelephoneNumbers",
+  "status": "active",
+  "experimental": false,
+  "publisher": "Nictiz",
+  "description": "Telecommunications form for contact point, restricted to the use for the TelephoneNumbers concept of zib ContactInformation.",
+  "immutable": true,
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.org/fhir/contact-point-system",
+        "concept": [
+          {
+            "code": "phone",
+            "display": "Phone"
+          },
+          {
+            "code": "fax",
+            "display": "Fax"
+          },
+          {
+            "code": "pager",
+            "display": "Pager"
+          }
+        ]
+      }
+    ]
+  }
+}

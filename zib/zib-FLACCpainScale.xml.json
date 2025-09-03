@@ -1,0 +1,394 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-FLACCpainScale",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-FLACCpainScale",
+  "name": "ZibFLACCpainScale",
+  "title": "zib FLACCpainScale",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The FLACC (Faces, Legs, Activity, Cry and Consolability) is a pain assessment tool, that is used to assess pain in children aged 0-7 years old by observing their behaviour.\r\nThe FLACC has five subscales that need to be addressed. The final score indicates whether the observed child suffers pain and 'how much'. The score is often combined with a NRS-score that is completed by the nurses on basis of clinical experience.",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) FLACCpainScale v1.1 (2020)](https://zibs.nl/wiki/FLACCpainScale-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-flaccpainscale-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/FLACCpainScale-v1.1(2020EN)",
+      "name": "zib FLACCpainScale-v1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "FLACCpainScale",
+        "alias": [
+          "FLACCpijnScore"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.1",
+            "comment": "FLACCpainScale"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108291000146105"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "ScoreDateTime",
+        "definition": "The date and time at which the FLACC score was determined.",
+        "alias": [
+          "ScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.11",
+            "comment": "ScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 10.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 10,
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.12",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:face",
+        "path": "Observation.component",
+        "sliceName": "face",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:face.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12013003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:face.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Face",
+        "definition": "Observation Faces;\r\nThe extent to which the child’s expression on the face is tensed, grimace, tension of jaws.",
+        "alias": [
+          "Gezicht"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.13.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.3",
+            "comment": "Face"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:legs",
+        "path": "Observation.component",
+        "sliceName": "legs",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:legs.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12013004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:legs.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Legs",
+        "definition": "Observation legs: the extent to which the child is restless (body and legs).",
+        "alias": [
+          "Benen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.13.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.4",
+            "comment": "Legs"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:activity",
+        "path": "Observation.component",
+        "sliceName": "activity",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:activity.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12013005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:activity.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Activity",
+        "definition": "Observation activity: the extent to which the child is restless and has tense muscles.",
+        "alias": [
+          "Activiteit"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.13.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.5",
+            "comment": "Activity"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:cry",
+        "path": "Observation.component",
+        "sliceName": "cry",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:cry.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12013006"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:cry.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Cry",
+        "definition": "Observation Crying: the extent to which the child is crying, whimpers or laments.",
+        "alias": [
+          "Huilen"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.13.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.6",
+            "comment": "Cry"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:consolability",
+        "path": "Observation.component",
+        "sliceName": "consolability",
+        "max": "1"
+      },
+      {
+        "id": "Observation.component:consolability.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "12013009"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:consolability.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "Consolability",
+        "definition": "Observation Consolability: the extent to which the child is consolable.",
+        "alias": [
+          "Troostbaar"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.12.13.5--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-flaccpainscale-v1.1-2020EN",
+            "map": "NL-CM:12.13.9",
+            "comment": "Consolability"
+          }
+        ]
+      }
+    ]
+  }
+}

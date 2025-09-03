@@ -1,0 +1,89 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-NameInformation.GivenName",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation.GivenName",
+  "name": "ZibNameInformationGivenName",
+  "title": "zib NameInformation.GivenName",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The name normally used to address the person.",
+  "purpose": "This HumanName datatype represents the GivenName concept of the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) NameInformation v1.1 (2020)](https://zibs.nl/wiki/NameInformation-v1.1(2020EN)).\r\n\r\nFor the entire zib, the complementary profile [zib-NameInformation](http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation) should be used. Both profiles can be added in a slice with the discriminator set to `value`/`use`.",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-nameinformation-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/NameInformation-v1.1(2020EN)",
+      "name": "zib NameInformation-v1.1(2020EN)"
+    }
+  ],
+  "kind": "complex-type",
+  "abstract": true,
+  "type": "HumanName",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/HumanName",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "HumanName",
+        "path": "HumanName",
+        "definition": "This slice represents the name information normally used to address the person.",
+        "comment": "This `.name` element represents the Dutch given name (\"roepnaam\") according to the [zib NameInformation v1.1 (2020)](https://zibs.nl/wiki/NameInformation-v1.1(2020EN)).\r\n\r\n**Note 1**: This element should only contain a person's _unofficial_ name. The official names are represented in one or more other `.name` elements with `.name.use` = _official_.\r\n\r\n**Note 2**: The examples illustrate how the zib is mapped to FHIR."
+      },
+      {
+        "id": "HumanName.use",
+        "path": "HumanName.use",
+        "min": 1,
+        "patternCode": "usual"
+      },
+      {
+        "id": "HumanName.family",
+        "path": "HumanName.family",
+        "max": "0"
+      },
+      {
+        "id": "HumanName.given",
+        "path": "HumanName.given",
+        "short": "GivenName",
+        "definition": "The name normally used to address the person.",
+        "alias": [
+          "Roepnaam"
+        ],
+        "min": 1,
+        "mapping": [
+          {
+            "identity": "zib-nameinformation-v1.1-2020EN",
+            "map": "NL-CM:20.4.6",
+            "comment": "GivenName"
+          }
+        ]
+      },
+      {
+        "id": "HumanName.prefix",
+        "path": "HumanName.prefix",
+        "max": "0"
+      },
+      {
+        "id": "HumanName.suffix",
+        "path": "HumanName.suffix",
+        "max": "0"
+      }
+    ]
+  }
+}

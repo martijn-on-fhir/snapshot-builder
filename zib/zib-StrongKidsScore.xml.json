@@ -1,0 +1,384 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-StrongKidsScore",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-StrongKidsScore",
+  "name": "ZibStrongKidsScore",
+  "title": "zib StrongKidsScore",
+  "status": "draft",
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "The StrongKids score is a (validated) measuring tool for determining the extent of a child’s malnutrition.\r\nStrongKids is developed to recognize and treat malnutrition in children aged > 1 month to 18 years in a hospital setting.\r\nThe tool comprises four questions, each of which is assigned a score. The total score determines the extent of malnutrition.\r\n(STRONGkids= Screening Tool Risk On Nutritional Status and Growth)",
+  "purpose": "This Observation resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) StrongKidsScore v1.1 (2020)](https://zibs.nl/wiki/StrongKidsScore-v1.1(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-strongkidsscore-v1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/StrongKidsScore-v1.1(2020EN)",
+      "name": "zib StrongKidsScore-v1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation",
+        "path": "Observation",
+        "short": "StrongKidsScore",
+        "alias": [
+          "StrongKidsScore"
+        ],
+        "constraint": [
+          {
+            "key": "zib-StrongKidsScore-1",
+            "severity": "error",
+            "human": "If one of the component codes is present, all SHALL be present.",
+            "expression": "component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4028003'|'4028004'|'4028005'|'4028008')).count().subsetOf(0|4)"
+          },
+          {
+            "key": "zib-StrongKidsScore-2",
+            "severity": "error",
+            "human": "If the component codes are not all present, the value SHALL be present.",
+            "expression": "value.empty().not() or component.where(code.coding.system='urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1' and code.coding.code.subsetOf('4028003'|'4028004'|'4028005'|'4028008')).count()=4"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.1",
+            "comment": "StrongKidsScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.code",
+        "path": "Observation.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "108341000146107"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.effective[x]",
+        "path": "Observation.effective[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.effective[x]:effectiveDateTime",
+        "path": "Observation.effective[x]",
+        "sliceName": "effectiveDateTime",
+        "short": "ScoreDateTime",
+        "definition": "The date and time at which the StrongKids score was determined.",
+        "alias": [
+          "ScoreDatumTijd"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.6",
+            "comment": "ScoreDateTime"
+          }
+        ]
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.value[x]:valueInteger",
+        "path": "Observation.value[x]",
+        "sliceName": "valueInteger",
+        "short": "TotalScore",
+        "definition": "The total score is the sum of all the individual scores. The total score has a range from 0 - 5.",
+        "comment": "The individual scores are communicated using the different `Observation.component` slices. The ordinal values of these indivdual scores, which are used to calculate the total score, are defined by the underlying code system and are registered in the ValueSet resources bound on these slices, using the [ordinalValue](http://hl7.org/fhir/StructureDefinition/ordinalValue) extension.",
+        "alias": [
+          "TotaalScore"
+        ],
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "minValueInteger": 0,
+        "maxValueInteger": 5,
+        "condition": [
+          "zib-StrongKidsScore-2"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.2",
+            "comment": "TotalScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.note",
+        "path": "Observation.note",
+        "max": "1"
+      },
+      {
+        "id": "Observation.note.text",
+        "path": "Observation.note.text",
+        "short": "Comment",
+        "definition": "A comment on the circumstances during the measurement.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.7",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component",
+        "path": "Observation.component",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore",
+        "path": "Observation.component",
+        "sliceName": "weightLossScore",
+        "max": "1",
+        "condition": [
+          "zib-StrongKidsScore-1",
+          "zib-StrongKidsScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:weightLossScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4028003"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:weightLossScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "WeightLossScore",
+        "definition": "The score based on undesired weight loss or arrest in growth or weight gain over the past weeks to month(s).",
+        "alias": [
+          "GewichtsverliesScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.28.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.3",
+            "comment": "WeightLossScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:conditionScore",
+        "path": "Observation.component",
+        "sliceName": "conditionScore",
+        "max": "1",
+        "condition": [
+          "zib-StrongKidsScore-1",
+          "zib-StrongKidsScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:conditionScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4028004"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:conditionScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "ConditionScore",
+        "definition": "The score based on the presence of a condition that can cause an increased risk of malnutrition. A list with conditions with increased risk is given on http://www.stuurgroepondervoeding.nl/toolkits/screeningsinstrument.",
+        "alias": [
+          "ZiekteBeeldScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.28.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.4",
+            "comment": "ConditionScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:nutritionScore",
+        "path": "Observation.component",
+        "sliceName": "nutritionScore",
+        "max": "1",
+        "condition": [
+          "zib-StrongKidsScore-1",
+          "zib-StrongKidsScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:nutritionScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4028005"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:nutritionScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "NutritionScore",
+        "definition": "The score based on the presence of aspects that indicate a deteriorated nutrition status:\r\n- excessive diarrhea and/or vomiting\r\n- use of fluid or enteral nutrition\r\n- reduced intake of food during the past 1-3 days\r\n- obstruction of food intake by pain",
+        "alias": [
+          "VoedingsScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.28.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.5",
+            "comment": "NutritionScore"
+          }
+        ]
+      },
+      {
+        "id": "Observation.component:nutritionStatusScore",
+        "path": "Observation.component",
+        "sliceName": "nutritionStatusScore",
+        "max": "1",
+        "condition": [
+          "zib-StrongKidsScore-1",
+          "zib-StrongKidsScore-2"
+        ]
+      },
+      {
+        "id": "Observation.component:nutritionStatusScore.code",
+        "path": "Observation.component.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.2.4.3.11.60.40.4.0.1",
+              "code": "4028008"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Observation.component:nutritionStatusScore.value[x]",
+        "path": "Observation.component.value[x]",
+        "short": "NutritionStatusScore",
+        "definition": "The score gives an indication of the nutrition status of the patient based on the professional opinion of the healthcare professional.",
+        "alias": [
+          "VoedingstoestandScore"
+        ],
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.28.4--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-strongkidsscore-v1.1-2020EN",
+            "map": "NL-CM:4.28.8",
+            "comment": "NutritionStatusScore"
+          }
+        ]
+      }
+    ]
+  }
+}
