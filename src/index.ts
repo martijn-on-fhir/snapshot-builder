@@ -16,14 +16,24 @@ if (!fs.existsSync(inputFile)) {
 }
 
 try {
+
   console.log('Loading StructureDefinition from:', inputFile);
   
   // Load the differential StructureDefinition
   const structureDefinition = FHIRSnapshotGenerator.fromFile(inputFile);
-  
-  // Construct output file path using the name property
-  const outputFileName = `${structureDefinition.name}.json`;
-  const outputFile = path.join(__dirname, '..', 'output', outputFileName);
+
+    // Function to convert to kebab case
+    const toKebabCase = (str: string) => {
+        return str
+            .replace(/^zib/i, '') // Remove 'zib' prefix
+            .replace(/([A-Z])/g, '-$1') // Add hyphen before capitals
+            .toLowerCase() // Convert to lowercase
+            .replace(/^-/, ''); // Remove leading hyphen
+    };
+
+    // Construct output file path using the name property
+    const outputFileName = `${toKebabCase(structureDefinition.name)}.json`;
+    const outputFile = path.join(__dirname, '..', 'output', outputFileName);
   
   console.log(`Processing ${structureDefinition.name} (${structureDefinition.id})`);
   console.log(`\nBase definition: ${structureDefinition.baseDefinition}`);
