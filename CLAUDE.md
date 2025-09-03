@@ -69,7 +69,7 @@ Healthcare data follows standardized JSON formats with:
 
 ### Core Architecture Components
 
-**FHIRSnapshotGenerator Class** (`src/snapshotGenerator.ts`):
+**FHIRSnapshotGenerator Class** (`src/snapshot-generator.ts`):
 - Main service for generating FHIR snapshots from differential StructureDefinitions
 - Loads base definitions from `hl7.fhir.r4.core` package
 - Merges differential elements with base elements to create complete snapshots

@@ -4,3 +4,5 @@ dist/
 .DS_Store
 CLAUDE.md
 /.claude/
+/output/*.json
+/output/*.json
