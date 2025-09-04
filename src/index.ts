@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 // Get command line arguments
 const args = process.argv.slice(2);
-const inputFileName = args[0] || 'zib-Patient.xml.json';
+const inputFileName = args[0] || 'example.json';
 
 // Construct input file path
 const inputFile = path.join(__dirname, '..', 'input', inputFileName);
