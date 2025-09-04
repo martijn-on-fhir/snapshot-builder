@@ -9,6 +9,7 @@
     "snapshot": "npm run build && node dist/index.js",
     "start": "npm run snapshot",
     "release": "semantic-release",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "release:dry-run": "semantic-release --dry-run",
     "test": "jest",
     "test:watch": "jest --watch",
