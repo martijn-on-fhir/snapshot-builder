@@ -400,7 +400,7 @@ describe('FHIRSnapshotGenerator', () => {
 
             const result = generator.generateSnapshot(structureDefinition);
 
-            // Should have Patient base element + custom extension element  
+            // Should have Patient base element + custom extension element
             expect(result.snapshot!.element.length).toBe(2);
             
             // Verify Patient base element is present
@@ -446,11 +446,7 @@ describe('FHIRSnapshotGenerator', () => {
             
             // Check that Patient comes first (depth 1)
             expect(paths[0]).toBe('Patient');
-            
-            // Check that depth 2 elements come before depth 3 elements if any exist  
-            const depth2Elements = result.snapshot!.element.filter(el => el.path.split('.').length === 2);
-            const depth3Elements = result.snapshot!.element.filter(el => el.path.split('.').length === 3);
-            
+
             // Verify elements are present (the ones that should be there based on processing)
             expect(paths).toContain('Patient');
             expect(paths).toContain('Patient.identifier');
@@ -484,7 +480,7 @@ describe('FHIRSnapshotGenerator', () => {
                         { path: 'Patient.name', min: 1, max: '*', sliceName: 'officialName' }
                     ]
                 }
-            };
+            }
 
             jest.spyOn<any, any>(generator, 'getBaseElements').mockImplementation(() => [
                 { id: 'Patient', path: 'Patient', min: 0, max: '*' },
