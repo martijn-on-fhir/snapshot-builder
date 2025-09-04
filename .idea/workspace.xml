@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="259f8d93-7fa1-44fa-955f-5d60c143f76b" name="Changes" comment="chore: add FHIRSnapshotGenerator test and update dev dependencies&#10;&#10;- Introduced unit test for `FHIRSnapshotGenerator` to validate snapshot generation logic.&#10;- Added `@types/jest` to dev dependencies.&#10;- Updated `package-lock.json` to reflect new dependency additions." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "martijn-on-fhir"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/martijn-on-fhir/snapshot-builder.git",
+    "accountId": "9e04ab60-fb3a-4d4e-ae15-f32cce7a6c56"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="32CXRuXJwNXPeCHwVoGySoKlKyZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Jest.FHIRSnapshotGenerator (1).executor": "Run",
+    "Jest.FHIRSnapshotGenerator.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "development",
+    "last_opened_file_path": "C:/projects/snapshot-builder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/projects/snapshot-builder/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.release:dry-run.executor": "Run",
+    "npm.test.executor": "Run",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "C:\\projects\\snapshot-builder\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\projects\snapshot-builder" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.FHIRSnapshotGenerator (1)">
+    <configuration name="FHIRSnapshotGenerator (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/snapshot-generator.spec.ts" />
+      <test-names>
+        <test-name value="FHIRSnapshotGenerator" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="FHIRSnapshotGenerator" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/snapshot-generator.test.ts" />
+      <test-names>
+        <test-name value="FHIRSnapshotGenerator" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="release:dry-run" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="release:dry-run" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.FHIRSnapshotGenerator (1)" />
+        <item itemvalue="Jest.FHIRSnapshotGenerator" />
+        <item itemvalue="npm.release:dry-run" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="259f8d93-7fa1-44fa-955f-5d60c143f76b" name="Changes" comment="" />
+      <created>1756925522594</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756925522594</updated>
+      <workItem from="1756925523652" duration="6768000" />
+    </task>
+    <task id="LOCAL-00001" summary="chore(initial): correct project name, update CLAUDE.md for commands, structure, and core architecture">
+      <option name="closed" value="true" />
+      <created>1756930390374</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1756930390374</updated>
+    </task>
+    <task id="LOCAL-00002" summary="chore(initial): correct project name, update CLAUDE.md for commands, structure, and core architecture">
+      <option name="closed" value="true" />
+      <created>1756930414071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756930414071</updated>
+    </task>
+    <task id="LOCAL-00003" summary="chore: improve code formatting, add kebab-case conversion, and update dependencies&#10;&#10;- Reformatted TypeScript code with consistent indentation.  &#10;- Introduced function to convert `StructureDefinition.name` to kebab-case for output file naming.  &#10;- Updated package-lock.json with new ESLint and semantic-release dependencies for better toolchain support.">
+      <option name="closed" value="true" />
+      <created>1756931655206</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756931655206</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore: improve code formatting, add kebab-case conversion, and update dependencies&#10;&#10;- Reformatted TypeScript code with consistent indentation.  &#10;- Introduced function to convert `StructureDefinition.name` to kebab-case for output file naming.  &#10;- Updated package-lock.json with new ESLint and semantic-release dependencies for better toolchain support.">
+      <option name="closed" value="true" />
+      <created>1756932258743</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1756932258743</updated>
+    </task>
+    <task id="LOCAL-00005" summary="chore: improve code formatting, add kebab-case conversion, and update dependencies&#10;&#10;- Reformatted TypeScript code with consistent indentation.  &#10;- Introduced function to convert `StructureDefinition.name` to kebab-case for output file naming.  &#10;- Updated package-lock.json with new ESLint and semantic-release dependencies for better toolchain support.">
+      <option name="closed" value="true" />
+      <created>1756932397223</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1756932397223</updated>
+    </task>
+    <task id="LOCAL-00006" summary="chore: improve code formatting, add kebab-case conversion, and update dependencies&#10;&#10;- Reformatted TypeScript code with consistent indentation.  &#10;- Introduced function to convert `StructureDefinition.name` to kebab-case for output file naming.  &#10;- Updated package-lock.json with new ESLint and semantic-release dependencies for better toolchain support.">
+      <option name="closed" value="true" />
+      <created>1756933182858</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756933182858</updated>
+    </task>
+    <task id="LOCAL-00007" summary="chore: add testing dependencies and update package-lock.json&#10;&#10;- Added `jest`, `supertest`, and `ts-jest` to dependencies for testing framework setup.&#10;- Updated `package-lock.json` to reflect new dependencies and changes in the dependency tree.">
+      <option name="closed" value="true" />
+      <created>1756933734242</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1756933734242</updated>
+    </task>
+    <task id="LOCAL-00008" summary="chore: add FHIRSnapshotGenerator test and update dev dependencies&#10;&#10;- Introduced unit test for `FHIRSnapshotGenerator` to validate snapshot generation logic.&#10;- Added `@types/jest` to dev dependencies.&#10;- Updated `package-lock.json` to reflect new dependency additions.">
+      <option name="closed" value="true" />
+      <created>1756934019172</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1756934019172</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore(initial): " />
+    <MESSAGE value="chore(initial): correct project name, update CLAUDE.md for commands, structure, and core architecture" />
+    <MESSAGE value="chore: improve code formatting, add kebab-case conversion, and update dependencies&#10;&#10;- Reformatted TypeScript code with consistent indentation.  &#10;- Introduced function to convert `StructureDefinition.name` to kebab-case for output file naming.  &#10;- Updated package-lock.json with new ESLint and semantic-release dependencies for better toolchain support." />
+    <MESSAGE value="chore: add testing dependencies and update package-lock.json&#10;&#10;- Added `jest`, `supertest`, and `ts-jest` to dependencies for testing framework setup.&#10;- Updated `package-lock.json` to reflect new dependencies and changes in the dependency tree." />
+    <MESSAGE value="chore: add FHIRSnapshotGenerator test and update dev dependencies&#10;&#10;- Introduced unit test for `FHIRSnapshotGenerator` to validate snapshot generation logic.&#10;- Added `@types/jest` to dev dependencies.&#10;- Updated `package-lock.json` to reflect new dependency additions." />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: add FHIRSnapshotGenerator test and update dev dependencies&#10;&#10;- Introduced unit test for `FHIRSnapshotGenerator` to validate snapshot generation logic.&#10;- Added `@types/jest` to dev dependencies.&#10;- Updated `package-lock.json` to reflect new dependency additions." />
+  </component>
+</project>
