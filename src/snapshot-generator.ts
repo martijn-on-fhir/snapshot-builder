@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as _ from 'lodash-es'
+import {orderBy} from 'lodash-es'
 
 /**
  * Represents a FHIR element definition within a structure definition
@@ -80,7 +80,7 @@ class FHIRSnapshotGenerator {
      * @returns Array of element definitions from the base structure
      */
     private loadBaseStructureDefinition(resourceType: string): ElementDefinition[] {
-        
+
         const fhirCorePackagePath = path.join(__dirname, '..', 'node_modules', 'hl7.fhir.r4.core', `StructureDefinition-${resourceType}.json`);
 
         try {
@@ -106,7 +106,7 @@ class FHIRSnapshotGenerator {
      * @throws Error if no base definition is found
      */
     private getBaseElements(resourceType: string): ElementDefinition[] {
-        
+
         const baseElements: ElementDefinition[] = [];
 
         // For all FHIR resources, try to load from official base definitions
@@ -141,7 +141,7 @@ class FHIRSnapshotGenerator {
      * @throws Error if differential elements are missing
      */
     generateSnapshot(structureDefinition: StructureDefinition): StructureDefinition {
-        
+
         if (!structureDefinition.differential?.element) {
             throw new Error('StructureDefinition must have differential elements');
         }
@@ -195,18 +195,18 @@ class FHIRSnapshotGenerator {
 
         // Sort elements by path depth and alphabetically
         snapshotElements.sort((a: ElementDefinition, b: ElementDefinition) => {
-            
+
             const aDepth = a.path.split('.').length;
             const bDepth = b.path.split('.').length;
-            
+
             if (aDepth !== bDepth) {
                 return aDepth - bDepth;
             }
-            
+
             return a.path.localeCompare(b.path);
         });
 
-        const elements =_.orderBy(snapshotElements, ['path'], ['asc'])
+        const elements = orderBy(snapshotElements, ['path'], ['asc'])
 
         // Create the result
         const result: StructureDefinition = {
@@ -273,4 +273,4 @@ class FHIRSnapshotGenerator {
     }
 }
 
-export { FHIRSnapshotGenerator, StructureDefinition, ElementDefinition };
+export {FHIRSnapshotGenerator, StructureDefinition, ElementDefinition};
