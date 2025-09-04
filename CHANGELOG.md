@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/martijn-on-fhir/snapshot-builder/compare/v1.2.0...v1.2.1) (2025-09-04)
+
+
+### Bug Fixes
+
+* replace lodash-es wildcard import with named import and clean up whitespace ([0fd0f88](https://github.com/martijn-on-fhir/snapshot-builder/commit/0fd0f880dd288f6f01bcb4ae99e37602227f04d0))
+
 # [1.2.0](https://github.com/martijn-on-fhir/snapshot-builder/compare/v1.1.0...v1.2.0) (2025-09-04)
 
 
