@@ -1,0 +1,67 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "mitz-consent-response",
+  "language": "nl-NL",
+  "url": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-consent-response",
+  "version": "4.0.0-beta.1",
+  "name": "MitzConsentResponse",
+  "title": "Mitz Consent Response",
+  "status": "draft",
+  "publisher": "VZVZ",
+  "contact": [
+    {
+      "name": "VZVZ",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "standaardisatie@vzvz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "OperationOutcome to express a permit/deny response",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Netherlands"
+        }
+      ]
+    }
+  ],
+  "copyright": "VZVZ",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "OperationOutcome",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/OperationOutcome",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "OperationOutcome",
+        "path": "OperationOutcome",
+        "constraint": [
+          {
+            "key": "oo-1",
+            "severity": "error",
+            "human": "If a consent response is given, the severity should be information and the code informational",
+            "expression": "issue.where(details.coding.system.contains('http://vzvz.nl/fhir/otv/CodeSystem/consent-response')).all(code = 'informational' and severity = 'information')",
+            "source": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-consent-response"
+          }
+        ]
+      },
+      {
+        "id": "OperationOutcome.issue.details",
+        "path": "OperationOutcome.issue.details",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.org/fhir/ValueSet/consent-provision-type"
+        }
+      }
+    ]
+  }
+}
