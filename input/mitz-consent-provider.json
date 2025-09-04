@@ -1,0 +1,79 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "mitz-consent-provider",
+  "language": "nl-NL",
+  "url": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-consent-provider",
+  "version": "4.0.0-beta.1",
+  "name": "MitzConsentProvider",
+  "status": "draft",
+  "publisher": "VZVZ",
+  "contact": [
+    {
+      "name": "VZVZ",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "standaardisatie@vzvz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Notification of a care provider to Mitz registry that the \n'consent button' is used on behalf of the patient",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Netherlands"
+        }
+      ]
+    }
+  ],
+  "copyright": "VZVZ",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Consent",
+  "baseDefinition": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-base-consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent.status",
+        "path": "Consent.status",
+        "fixedCode": "active"
+      },
+      {
+        "id": "Consent.policyRule",
+        "path": "Consent.policyRule",
+        "comment": "PolicyRule is required therefore a fixed value to indicate the Mitz connector as provider of these consents",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "MC",
+              "system": "http://vzvz.nl/fhir/otv/CodeSystem/toestemmingbron"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend",
+        "path": "Consent.provision.actor",
+        "sliceName": "dossierhoudend",
+        "definition": "Source provider. Only required when the consent is given to a specific provider."
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "short": "Situation code",
+        "definition": "Situation code",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/situatiecode"
+        }
+      }
+    ]
+  }
+}

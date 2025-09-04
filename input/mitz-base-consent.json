@@ -1,0 +1,271 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "mitz-base-consent",
+  "language": "nl-NL",
+  "url": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-base-consent",
+  "version": "4.0.0-beta.1",
+  "name": "MitzBaseConsent",
+  "status": "draft",
+  "publisher": "VZVZ",
+  "contact": [
+    {
+      "name": "VZVZ",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "standaardisatie@vzvz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "This is the base profile of the Mitz Consent profiles. \nThis profile is not intended to be instantiated.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Netherlands"
+        }
+      ]
+    }
+  ],
+  "copyright": "VZVZ",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": true,
+  "type": "Consent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent.meta",
+        "path": "Consent.meta",
+        "min": 1
+      },
+      {
+        "id": "Consent.meta.profile",
+        "path": "Consent.meta.profile",
+        "comment": "The profile is required",
+        "min": 1
+      },
+      {
+        "id": "Consent.scope",
+        "path": "Consent.scope",
+        "short": "Consent type",
+        "definition": "Type of consent given",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "patient-privacy",
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.category",
+        "path": "Consent.category",
+        "comment": "Category is required but actual data category is defined by the gegevenscategorie or situation code. Therefore fixed value INFA.",
+        "max": "1"
+      },
+      {
+        "id": "Consent.category.coding",
+        "path": "Consent.category.coding",
+        "fixedCoding": {
+          "code": "INFA",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        }
+      },
+      {
+        "id": "Consent.patient",
+        "path": "Consent.patient",
+        "comment": "Add the patient object as a reference to allow adding a birthdate",
+        "min": 1
+      },
+      {
+        "id": "Consent.patient.reference",
+        "path": "Consent.patient.reference",
+        "min": 1
+      },
+      {
+        "id": "Consent.dateTime",
+        "path": "Consent.dateTime",
+        "short": "Consent registration date",
+        "definition": "Date and time of consent registration or current date and time if the registration moment is unknown.",
+        "min": 1
+      },
+      {
+        "id": "Consent.organization",
+        "path": "Consent.organization",
+        "comment": "This element is not used because it would always contain Mitz as custodian. \nThis does not provide any added value."
+      },
+      {
+        "id": "Consent.source[x]",
+        "path": "Consent.source[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Consent.source[x]:sourceReference",
+        "path": "Consent.source[x]",
+        "sliceName": "sourceReference",
+        "comment": "It is possible to add a reference to the documentation that supports this consent, but the added value is slim.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Consent",
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+              "http://hl7.org/fhir/StructureDefinition/Contract",
+              "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.policyRule",
+        "path": "Consent.policyRule",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/policyrule-codes"
+        }
+      },
+      {
+        "id": "Consent.provision.type",
+        "path": "Consent.provision.type",
+        "definition": "Action  to take - permit or deny. Consent is given (permit) or denied (deny) when status is 'active'. \n    When status is inactive, the provision element is absent.",
+        "min": 1
+      },
+      {
+        "id": "Consent.provision.period",
+        "path": "Consent.provision.period",
+        "short": "Validity of consent",
+        "definition": "Period during which the consent is valid"
+      },
+      {
+        "id": "Consent.provision.period.start",
+        "path": "Consent.provision.period.start",
+        "comment": "The start should only be entered when it is noted during registration in which case it is usually equal to the registration date and time."
+      },
+      {
+        "id": "Consent.provision.period.end",
+        "path": "Consent.provision.period.end",
+        "definition": "Optional end date and time of consent. If empty, the consent is given indefinitely."
+      },
+      {
+        "id": "Consent.provision.actor",
+        "path": "Consent.provision.actor",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "role"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend",
+        "path": "Consent.provision.actor",
+        "sliceName": "raadplegend",
+        "short": "Person and Organization or application requesting information",
+        "definition": "A reference to the organization requesting consent information in case of a care provider.",
+        "alias": [
+          "Raadplegende zorgaanbieder"
+        ],
+        "min": 1,
+        "max": "*"
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend.role",
+        "path": "Consent.provision.actor.role",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "110152",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend.reference",
+        "path": "Consent.provision.actor.reference",
+        "short": "Organization resource",
+        "definition": "A reference to the organization resource this consent relates to",
+        "comment": "Use a reference to an organization to provide the organization type.\n      Set the organization type using the Nictiz RoleCodeNLZorgaanbiederType Codesystem (see https://simplifier.net/Nictiz-R4-zib2020/organization-type/~overview)",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend",
+        "path": "Consent.provision.actor",
+        "sliceName": "dossierhoudend",
+        "short": "Custodian of the medical record",
+        "definition": "Organization resource referring to a specific organization or specific type of organization that has the requested information",
+        "alias": [
+          "Dossierhoudende zorgaanbieder"
+        ],
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend.role",
+        "path": "Consent.provision.actor.role",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "110153",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend.reference",
+        "path": "Consent.provision.actor.reference",
+        "short": "Organization resource",
+        "definition": "A reference to the organization resource this consent relates to",
+        "comment": "Use a reference to an organization to provide the organization type.\n      Set the organization type using the Nictiz RoleCodeNLZorgaanbiederType Codesystem (see https://simplifier.net/Nictiz-R4-zib2020/organization-type/~overview)",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "short": "Data category",
+        "definition": "This code indicates the data category the consent pertains to"
+      }
+    ]
+  }
+}

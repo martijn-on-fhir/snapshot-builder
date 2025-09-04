@@ -1,0 +1,127 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "mitz-consent-notify",
+  "language": "nl-NL",
+  "url": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-consent-notify",
+  "version": "4.0.0-beta.1",
+  "name": "MitzConsentNotify",
+  "status": "draft",
+  "publisher": "VZVZ",
+  "contact": [
+    {
+      "name": "VZVZ",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "standaardisatie@vzvz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Notification of the care provider of the consent change by the patient.\nThis notification is the result of the subscription taken by the care provider.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Netherlands"
+        }
+      ]
+    }
+  ],
+  "copyright": "VZVZ",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Consent",
+  "baseDefinition": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-base-consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent.text",
+        "path": "Consent.text",
+        "short": "Text representation of the consent, for human interpretation",
+        "definition": "A human-readable narrative that describes the consent",
+        "comment": "The text element is required, but will be filled by the Mitz server",
+        "min": 1
+      },
+      {
+        "id": "Consent.text.status",
+        "path": "Consent.text.status",
+        "patternCode": "generated"
+      },
+      {
+        "id": "Consent.status",
+        "path": "Consent.status",
+        "definition": "Indicates the current state of this consent. \nInactive for unanswered consent questions, active for answered consent questions, regardless of the answer."
+      },
+      {
+        "id": "Consent.policyRule",
+        "path": "Consent.policyRule",
+        "comment": "PolicyRule needs to be present, therefore a fixed value to indicate Mitz is the provider",
+        "min": 1
+      },
+      {
+        "id": "Consent.policyRule.coding",
+        "path": "Consent.policyRule.coding",
+        "min": 1,
+        "max": "1",
+        "fixedCoding": {
+          "code": "MITZ",
+          "system": "http://vzvz.nl/fhir/otv/CodeSystem/toestemmingbron"
+        }
+      },
+      {
+        "id": "Consent.provision.actor",
+        "path": "Consent.provision.actor",
+        "min": 2
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend",
+        "path": "Consent.provision.actor",
+        "sliceName": "raadplegend",
+        "comment": "For every organization type an actor with role 'Raadplegend' is created \n    with a reference to an Organization type with the appropriate role type"
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend",
+        "path": "Consent.provision.actor",
+        "sliceName": "dossierhoudend",
+        "definition": "The care provider whose subscription triggered this notification",
+        "min": 1
+      },
+      {
+        "id": "Consent.provision.purpose",
+        "path": "Consent.provision.purpose",
+        "short": "Kind of treatment",
+        "definition": "Regular or emergency treatment",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Consent.provision.purpose.system",
+        "path": "Consent.provision.purpose.system",
+        "min": 1,
+        "fixedUri": "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+      },
+      {
+        "id": "Consent.provision.purpose.code",
+        "path": "Consent.provision.purpose.code",
+        "short": "Kind of treatment",
+        "definition": "TREAT for regular treatment or ETREAT in case of emergency",
+        "min": 1
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "definition": "The data category or categories the consent pertains to.\n    In case there are multilpe data categories, the provision.type is valid for all of them.",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/gegevenscategorie"
+        }
+      }
+    ]
+  }
+}

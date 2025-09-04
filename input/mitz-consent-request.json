@@ -1,0 +1,266 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "mitz-consent-request",
+  "language": "nl-NL",
+  "url": "http://vzvz.nl/fhir/otv/StructureDefinition/mitz-consent-request",
+  "version": "4.0.0-beta.1",
+  "name": "MitzConsentRequest",
+  "status": "draft",
+  "publisher": "VZVZ",
+  "contact": [
+    {
+      "name": "VZVZ",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "standaardisatie@vzvz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Profile to request if consent is given for the exchange of information between the provided care providers \nor to request which care providers are allowed to exchange information for this paient",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NL",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Netherlands"
+        }
+      ]
+    }
+  ],
+  "copyright": "VZVZ",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Consent",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Consent",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Consent.meta",
+        "path": "Consent.meta",
+        "min": 1
+      },
+      {
+        "id": "Consent.meta.profile",
+        "path": "Consent.meta.profile",
+        "comment": "The profile is required",
+        "min": 1
+      },
+      {
+        "id": "Consent.extension",
+        "path": "Consent.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Consent.extension:regulatoryBasis",
+        "path": "Consent.extension",
+        "sliceName": "regulatoryBasis",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://vzvz.nl/fhir/otv/StructureDefinition/regulatoryBasis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.status",
+        "path": "Consent.status",
+        "fixedCode": "proposed"
+      },
+      {
+        "id": "Consent.scope",
+        "path": "Consent.scope",
+        "short": "Consent type",
+        "definition": "Type of consent given",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "patient-privacy",
+              "system": "http://terminology.hl7.org/CodeSystem/consentscope"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.category",
+        "path": "Consent.category",
+        "comment": "Category is required but actual data category is defined in provision.code. Therefore fixed value INFA.",
+        "max": "1"
+      },
+      {
+        "id": "Consent.category.coding",
+        "path": "Consent.category.coding",
+        "fixedCoding": {
+          "code": "INFA",
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+        }
+      },
+      {
+        "id": "Consent.patient",
+        "path": "Consent.patient",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient",
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.patient.reference",
+        "path": "Consent.patient.reference",
+        "max": "0"
+      },
+      {
+        "id": "Consent.patient.identifier",
+        "path": "Consent.patient.identifier",
+        "min": 1
+      },
+      {
+        "id": "Consent.patient.identifier.system",
+        "path": "Consent.patient.identifier.system",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/patientidentifiers"
+        }
+      },
+      {
+        "id": "Consent.policyRule",
+        "path": "Consent.policyRule",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "MITZ",
+              "system": "http://vzvz.nl/fhir/otv/CodeSystem/toestemmingbron"
+            }
+          ]
+        },
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/policyrule-codes"
+        }
+      },
+      {
+        "id": "Consent.provision.actor",
+        "path": "Consent.provision.actor",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "role"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend",
+        "path": "Consent.provision.actor",
+        "sliceName": "raadplegend",
+        "short": "Person and Organization or application requesting information",
+        "definition": "A reference to the person and organization requesting consent information in case of a care provider.\nIf the person requesting the consent information is the patient itself, \nthen the reference points to a device which contains the identifier of the application of the person.\nIn turn the device points to the id of the patient, with an id that is appropriate for the context.",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend.role",
+        "path": "Consent.provision.actor.role",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "110152",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:raadplegend.reference",
+        "path": "Consent.provision.actor.reference",
+        "short": "Responsible practitioner or organization",
+        "definition": "A practitionerRole containing the reference to the practitioner and the organization.\nOr a reference to a device acting on behalf of a patient performing the request.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole",
+              "http://vzvz.nl/fhir/StructureDefinition/nl-vzvz-Device"
+            ],
+            "aggregation": [
+              "contained"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend",
+        "path": "Consent.provision.actor",
+        "sliceName": "dossierhoudend",
+        "short": "Organization providing the information",
+        "definition": "Organization resource referring to a specific organization or specific type of organization that has the requested information.\nIf the request is closed, there should be an URA identifying the organization.\nIf the request is open, there is only a role type if the request is for a specific role type, otherwise there is no reference to an organization",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend.role",
+        "path": "Consent.provision.actor.role",
+        "fixedCodeableConcept": {
+          "coding": [
+            {
+              "code": "110153",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Consent.provision.actor:dossierhoudend.reference",
+        "path": "Consent.provision.actor.reference",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization",
+              "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
+            ],
+            "aggregation": [
+              "contained"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Consent.provision.code",
+        "path": "Consent.provision.code",
+        "definition": "Classification of the consent statement",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://vzvz.nl/fhir/otv/ValueSet/gegevenscategorie"
+        }
+      }
+    ]
+  }
+}
