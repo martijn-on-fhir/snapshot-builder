@@ -24,7 +24,7 @@ Builds the project and runs the snapshot generator. Accepts optional filename ar
 ```bash
 npm run build && node dist/index.js [filename]
 ```
-Default input file is `zib-Patient.xml.json` from the `zib/` directory.
+Default input file is `zib-Patient.xml.json` from the `input/` directory.
 
 ### Development
 Currently no development server or watch mode is configured. Build manually after changes.
@@ -32,7 +32,7 @@ Currently no development server or watch mode is configured. Build manually afte
 ## Architecture and Structure
 
 ### Healthcare Data Organization
-- `zib/` - Healthcare Information Building Blocks with terminology, patterns, and clinical definitions (170+ files)
+- `input/` - Input FHIR StructureDefinition files including Healthcare Information Building Blocks with terminology, patterns, and clinical definitions (170+ files)
 - `src/` - TypeScript source code with FHIR snapshot generation
 - `output/` - Generated snapshot files
 - `node_modules/hl7.fhir.r4.core/` - Official FHIR R4 base StructureDefinitions

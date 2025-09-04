@@ -1,0 +1,863 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "zib-Patient",
+  "text": {
+    "status": "empty",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">No narrative is provided for definitional resources. A human-readable rendering can be found in the implementation guide(s) where this resource is used.</div>"
+  },
+  "url": "http://nictiz.nl/fhir/StructureDefinition/zib-Patient",
+  "version": "0.0.1",
+  "name": "ZibPatient",
+  "title": "zib Patient",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "Nictiz",
+  "contact": [
+    {
+      "name": "Nictiz",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://www.nictiz.nl",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "A person who receives medical, psychological, paramedical or nursing care. In some care settings, the term client or participant is used instead of the term patient.\r\nNationality is used as an indication of the country of citizenship. \r\nMarital status is a person’s formal position as defined by the Dutch civil code. There is a distinction between marriage and civil union.\r\nLinguistic proficiency is the ability to express oneself in a certain language and understand statements made in that language. This includes both oral and written communication.",
+  "purpose": "This Patient resource represents the Dutch [zib ('Zorginformatiebouwsteen', i.e. Health and Care Information Model) Patient v3.2 (2020)](https://zibs.nl/wiki/Patient-v3.2(2020EN)). It also includes [zib Nationality v3.0 (2020)](https://zibs.nl/wiki/Nationality-v3.0(2020EN)), [zib MaritalStatus v3.1 (2020)](https://zibs.nl/wiki/MaritalStatus-v3.1(2020EN)) and [zib LanguageProficiency v3.2 (2020)](https://zibs.nl/wiki/LanguageProficiency-v3.2(2020EN)).",
+  "copyright": "Copyright and related rights waived via CC0, https://creativecommons.org/publicdomain/zero/1.0/. This does not apply to information from third parties, for example a medical terminology system. The implementer alone is responsible for identifying and obtaining any necessary licenses or authorizations to utilize third party IP in connection with the specification or otherwise.",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "zib-patient-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/Patient-v3.2(2020EN)",
+      "name": "zib Patient-v3.2(2020EN)"
+    },
+    {
+      "identity": "zib-nationality-v3.0-2020EN",
+      "uri": "https://zibs.nl/wiki/Nationality-v3.0(2020EN)",
+      "name": "zib Nationality-v3.0(2020EN)"
+    },
+    {
+      "identity": "zib-maritalstatus-v3.1-2020EN",
+      "uri": "https://zibs.nl/wiki/MaritalStatus-v3.1(2020EN)",
+      "name": "zib MaritalStatus-v3.1(2020EN)"
+    },
+    {
+      "identity": "zib-languageproficiency-v3.2-2020EN",
+      "uri": "https://zibs.nl/wiki/LanguageProficiency-v3.2(2020EN)",
+      "name": "zib LanguageProficiency-v3.2(2020EN)"
+    },
+    {
+      "identity": "zib-contactinformation-v1.2-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactInformation-v1.2(2020EN)",
+      "name": "zib ContactInformation-v1.2(2020EN)"
+    },
+    {
+      "identity": "zib-contactperson-v3.4-2020EN",
+      "uri": "https://zibs.nl/wiki/ContactPerson-v3.4(2020EN)",
+      "name": "zib ContactPerson-v3.4(2020EN)"
+    },
+    {
+      "identity": "zib-payer-v3.1.1-2020EN",
+      "uri": "https://zibs.nl/wiki/Payer-v3.1.1(2020EN)",
+      "name": "zib Payer-v3.1.1(2020EN)"
+    }
+  ],
+  "kind": "resource",
+  "abstract": true,
+  "type": "Patient",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Patient",
+        "path": "Patient",
+        "short": "Patient",
+        "alias": [
+          "Patient"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.1",
+            "comment": "Patient"
+          }
+        ]
+      },
+      {
+        "id": "Patient.extension:nationality",
+        "path": "Patient.extension",
+        "sliceName": "nationality",
+        "comment": "Due to the nature of the nationality core extension (which allows for a period to be placed next to the nationality and thus allows for different nationalities over time), the cardinality of the extension is left at `0..*` instead of the zib cardinality of `0..1`.",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.extension:nationality.extension:code",
+        "path": "Patient.extension.extension",
+        "sliceName": "code"
+      },
+      {
+        "id": "Patient.extension:nationality.extension:code.value[x]",
+        "path": "Patient.extension.extension.value[x]",
+        "short": "Nationality",
+        "definition": "Indicates the country of citizenship.",
+        "alias": [
+          "Nationaliteit"
+        ],
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.6.3--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-nationality-v3.0-2020EN",
+            "map": "NL-CM:7.6.3",
+            "comment": "Nationality"
+          }
+        ]
+      },
+      {
+        "id": "Patient.identifier",
+        "path": "Patient.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "PatientIdentificationNumber",
+        "definition": "The patient’s identification number. In transfer situations, use of the social security number (BSN) must comply with the Use of Social Security Numbers in Healthcare Act (Wbsn-z). In other situations, other number systems can be used, such as internal hospital patient numbers for example.",
+        "alias": [
+          "Identificatienummer"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.7",
+            "comment": "PatientIdentificationNumber"
+          }
+        ]
+      },
+      {
+        "id": "Patient.identifier:bsn",
+        "path": "Patient.identifier",
+        "sliceName": "bsn",
+        "patternIdentifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/bsn"
+        }
+      },
+      {
+        "id": "Patient.name",
+        "path": "Patient.name",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "use"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "NameInformation / PayerName",
+        "definition": "Patient's full name.",
+        "alias": [
+          "Naamgegevens",
+          "BetalerNaam"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.6",
+            "comment": "NameInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.5",
+            "comment": "PayerName"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:nameInformation",
+        "path": "Patient.name",
+        "sliceName": "nameInformation",
+        "max": "2",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:nameInformation-GivenName",
+        "path": "Patient.name",
+        "sliceName": "nameInformation-GivenName",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation.GivenName"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.telecom",
+        "path": "Patient.telecom",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "ContactInformation",
+        "definition": "Patient’s telephone number(s) or e-mail address(es).",
+        "comment": "The cardinality mismatch between the zib (`0..1`) and FHIR (`0..*`) is explained by the containers TelephoneNumbers (`0..*`) and EmailAddresses (`0..*`) inside the ContactInformation model. The FHIR datatype ContactPoint does not have these containers.",
+        "alias": [
+          "Contactgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.5",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.1",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.12",
+            "comment": "ContactInformation"
+          }
+        ]
+      },
+      {
+        "id": "Patient.telecom:telephoneNumbers",
+        "path": "Patient.telecom",
+        "sliceName": "telephoneNumbers",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.telecom:emailAddresses",
+        "path": "Patient.telecom",
+        "sliceName": "emailAddresses",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.gender",
+        "path": "Patient.gender",
+        "short": "Gender",
+        "definition": "Patient’s administrative gender.",
+        "alias": [
+          "Geslacht"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "Use ConceptMap GeslachtCodelijst-to-AdministrativeGender to translate terminology from the functional model to profile terminology in ValueSet AdministrativeGender.",
+          "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender|4.0.1",
+          "_valueSet": {
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap",
+                "valueCanonical": "http://nictiz.nl/fhir/ConceptMap/GeslachtCodelijst-to-AdministrativeGender"
+              }
+            ]
+          }
+        },
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.9",
+            "comment": "Gender"
+          }
+        ]
+      },
+      {
+        "id": "Patient.gender.extension:genderCodelist",
+        "path": "Patient.gender.extension",
+        "sliceName": "genderCodelist",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-CodeSpecification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.gender.extension:genderCodelist.value[x]",
+        "path": "Patient.gender.extension.value[x]",
+        "short": "Gender",
+        "definition": "Patient’s administrative gender.",
+        "alias": [
+          "Geslacht"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "GeslachtCodelijst",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.0.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.9",
+            "comment": "Gender"
+          }
+        ]
+      },
+      {
+        "id": "Patient.birthDate",
+        "path": "Patient.birthDate",
+        "short": "DateOfBirth",
+        "definition": "Patient’s date of birth. The date of birth is mandatory for a patient. A vague date (such as only the year) is permitted.",
+        "alias": [
+          "Geboortedatum"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.10",
+            "comment": "DateOfBirth"
+          }
+        ]
+      },
+      {
+        "id": "Patient.deceased[x]",
+        "path": "Patient.deceased[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Patient.deceased[x]:deceasedBoolean",
+        "path": "Patient.deceased[x]",
+        "sliceName": "deceasedBoolean",
+        "short": "DeathIndicator",
+        "definition": "An indication stating whether the patient has died.",
+        "alias": [
+          "OverlijdensIndicator"
+        ],
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.32",
+            "comment": "DeathIndicator"
+          }
+        ]
+      },
+      {
+        "id": "Patient.deceased[x]:deceasedDateTime",
+        "path": "Patient.deceased[x]",
+        "sliceName": "deceasedDateTime",
+        "short": "DateOfDeath",
+        "definition": "The date on which the patient died. A ‘vague’ date, such as only the year, is permitted.",
+        "comment": "The zib recognizes both the DeathIndicator (boolean) and DateOfDeath (datetime) concepts, whereas in FHIR only one of these concepts may be present. Therefore, if deceasedDateTime is present and has a value, its value can be mapped to DateOfDeath and DeathIndicator is assumed to be true.",
+        "alias": [
+          "DatumOverlijden",
+          "OverlijdensIndicator"
+        ],
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.33",
+            "comment": "DateOfDeath"
+          },
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.32",
+            "comment": "DeathIndicator"
+          }
+        ]
+      },
+      {
+        "id": "Patient.address",
+        "path": "Patient.address",
+        "definition": "Patient's address information.",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AddressInformation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.4",
+            "comment": "AddressInformation"
+          },
+          {
+            "identity": "zib-payer-v3.1.1-2020EN",
+            "map": "NL-CM:1.1.17",
+            "comment": "AddressInformation"
+          }
+        ]
+      },
+      {
+        "id": "Patient.maritalStatus",
+        "path": "Patient.maritalStatus",
+        "short": "MaritalStatus",
+        "definition": "A person’s marital status according to the terms and definition in the Dutch civil code.",
+        "alias": [
+          "BurgerlijkeStaat"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "BurgerlijkeStaatCodelijst",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.9.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-maritalstatus-v3.1-2020EN",
+            "map": "NL-CM:7.9.2",
+            "comment": "MaritalStatus"
+          }
+        ]
+      },
+      {
+        "id": "Patient.multipleBirth[x]",
+        "path": "Patient.multipleBirth[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Patient.multipleBirth[x]:multipleBirthBoolean",
+        "path": "Patient.multipleBirth[x]",
+        "sliceName": "multipleBirthBoolean",
+        "short": "MultipleBirthIndicator",
+        "definition": "An indication stating whether the patient is of a multiple birth.",
+        "alias": [
+          "MeerlingIndicator"
+        ],
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-patient-v3.2-2020EN",
+            "map": "NL-CM:0.1.31",
+            "comment": "MultipleBirthIndicator"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact",
+        "path": "Patient.contact",
+        "short": "Contact",
+        "comment": "Whereas the zib ContactPerson includes all (non-healthcare professional) persons that are involved in the care for a patient, FHIR distinguishes two use cases for these persons:\r\n\r\n* The RelatedPerson resource is used to capture information about any person that is related to the patient, using the profile <http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson>.\r\n* Information about persons that should be _contacted_ regarding the care for the patient is captured using the `Patient.contact` resource.\r\n\r\nIf a person is both a related person and a contact person, then some data duplication is inevitable. The zib-ContactPerson can be referenced using the extension in `contact:contactPerson`.",
+        "alias": [
+          "Contactpersoon"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.1",
+            "comment": "Contact"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.extension:contactPerson",
+        "path": "Patient.contact.extension",
+        "sliceName": "contactPerson",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/patient-relatedPerson"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.extension:contactPerson.value[x]",
+        "path": "Patient.contact.extension.value[x]",
+        "short": "Contact",
+        "definition": "Reference to a [zib-ContactPerson](http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson) instance containing the full details for the current contact.",
+        "alias": [
+          "Contactpersoon"
+        ],
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson",
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.1",
+            "comment": "Contact"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.relationship",
+        "path": "Patient.contact.relationship",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Patient.contact.relationship:role",
+        "path": "Patient.contact.relationship",
+        "sliceName": "role",
+        "short": "Role",
+        "definition": "Defines the role of the contact in relation to the patient.",
+        "alias": [
+          "Rol"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "RolCodelijst",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.3.1.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.2",
+            "comment": "Role"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.relationship:relationship",
+        "path": "Patient.contact.relationship",
+        "sliceName": "relationship",
+        "short": "Relationship",
+        "definition": "Defines the contact’s familial relationship to the patient.",
+        "alias": [
+          "Relatie"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "RelatieCodelijst",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.3.1.1--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.3",
+            "comment": "Relationship"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.name",
+        "path": "Patient.contact.name",
+        "definition": "Full name of the contact.",
+        "comment": "This element can and should not completely capture the NameInformation concept from zib ContactPerson; it should just be used for the information that is needed for contacting the person in relation to care of the patient. The full name information should instead be captured using an instance of [zib-ContactPerson](http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson), which can then be referenced from this resource. See the comment on `Patient.contact` for more information.",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-NameInformation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.4",
+            "comment": "NameInformation"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.telecom",
+        "path": "Patient.contact.telecom",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "ContactInformation",
+        "definition": "The contact’s telephone number and/or e-mail address.",
+        "comment": "The cardinality mismatch between the zib (`0..1`) and FHIR (`0..*`) is explained by the containers TelephoneNumbers (`0..*`) and EmailAddresses (`0..*`) inside the ContactInformation model. The FHIR datatype ContactPoint does not have these containers.",
+        "alias": [
+          "Contactgegevens"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.6",
+            "comment": "ContactInformation"
+          },
+          {
+            "identity": "zib-contactinformation-v1.2-2020EN",
+            "map": "NL-CM:20.6.1",
+            "comment": "ContactInformation"
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.telecom:telephoneNumbers",
+        "path": "Patient.contact.telecom",
+        "sliceName": "telephoneNumbers",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-TelephoneNumbers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.telecom:emailAddresses",
+        "path": "Patient.contact.telecom",
+        "sliceName": "emailAddresses",
+        "type": [
+          {
+            "code": "ContactPoint",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-ContactInformation-EmailAddresses"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.contact.address",
+        "path": "Patient.contact.address",
+        "definition": "Contact’s address information.",
+        "comment": "This element can and should not completely capture the AddressInformation concept from zib ContactPerson; it should just be used for the information that is needed for contacting the person in relation to care of the patient. The full address information should instead be captured using an instance of [zib-ContactPerson](http://nictiz.nl/fhir/StructureDefinition/zib-ContactPerson), which can then be referenced from this resource. See the comment on `Patient.contact` for more information.",
+        "type": [
+          {
+            "code": "Address",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/zib-AddressInformation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-contactperson-v3.4-2020EN",
+            "map": "NL-CM:3.1.5",
+            "comment": "AddressInformation"
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication",
+        "path": "Patient.communication",
+        "short": "LanguageProficiency",
+        "alias": [
+          "Taalvaardigheid"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.1",
+            "comment": "LanguageProficiency"
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication.extension:languageControl",
+        "path": "Patient.communication.extension",
+        "sliceName": "languageControl",
+        "short": "LanguageControlListening / LanguageControlSpeaking / LanguageControlReading",
+        "definition": "The ability to understand spoken text in the language in question.\r\nThe ability to express oneself in spoken language.\r\nThe ability to understand written text in he language in question.",
+        "comment": "The zib concepts LanguageControlListening, LanguageControlReading, LanguageControlSpeaking are captured using a core extension from the R4 FHIR specification. Each of these three concepts is encoded as a copy of the extension, typed using the code in the type slice according to the following mapping:\r\n* LanguageControlListening maps to code 'RSP' (Received spoken)\r\n* LanguageControlReading maps to code 'RWR' (Received written)\r\n* LanguageControlSpeaking maps to code 'ESP' (Expressed spoken)",
+        "alias": [
+          "TaalvaardigheidBegrijpen",
+          "TaalvaardigheidSpreken",
+          "TaalvaardigheidLezen"
+        ],
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/patient-proficiency"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.6",
+            "comment": "LanguageControlListening"
+          },
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.7",
+            "comment": "LanguageControlSpeaking"
+          },
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.8",
+            "comment": "LanguageControlReading"
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication.extension:languageControl.extension",
+        "path": "Patient.communication.extension.extension",
+        "min": 2
+      },
+      {
+        "id": "Patient.communication.extension:languageControl.extension:level",
+        "path": "Patient.communication.extension.extension",
+        "sliceName": "level",
+        "min": 1
+      },
+      {
+        "id": "Patient.communication.extension:languageControl.extension:level.value[x]",
+        "path": "Patient.communication.extension.extension.value[x]",
+        "comment": "The zib ValueSets TaalvaardigheidBegrijpenCodelijst, TaalvaardigheidSprekenCodelijst and TaalvaardigheidLezenCodelijst are equal to the default FHIR ValueSet.",
+        "binding": {
+          "strength": "required"
+        }
+      },
+      {
+        "id": "Patient.communication.extension:languageControl.extension:type",
+        "path": "Patient.communication.extension.extension",
+        "sliceName": "type",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Patient.communication.extension:communicationDetails",
+        "path": "Patient.communication.extension",
+        "sliceName": "communicationDetails",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-LanguageProficiency.CommunicationDetails"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication.extension:comment",
+        "path": "Patient.communication.extension",
+        "sliceName": "comment",
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://nictiz.nl/fhir/StructureDefinition/ext-Comment"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication.extension:comment.value[x]",
+        "path": "Patient.communication.extension.value[x]",
+        "short": "Comment",
+        "definition": "A comment on the linguistic proficiency. When using sign language, this field can be used to clarify, for example, which sign language is used. This can be informative, as there is not always a one-to-one relationship between the spoken language and sign language.",
+        "alias": [
+          "Toelichting"
+        ],
+        "mapping": [
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.5",
+            "comment": "Comment"
+          }
+        ]
+      },
+      {
+        "id": "Patient.communication.language",
+        "path": "Patient.communication.language",
+        "short": "CommunicationLanguage",
+        "definition": "The language of communication.",
+        "alias": [
+          "CommunicatieTaal"
+        ],
+        "binding": {
+          "strength": "required",
+          "description": "CommunicatieTaalCodelijst",
+          "valueSet": "http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.12.2--20200901000000"
+        },
+        "mapping": [
+          {
+            "identity": "zib-languageproficiency-v3.2-2020EN",
+            "map": "NL-CM:7.12.3",
+            "comment": "CommunicationLanguage"
+          }
+        ]
+      }
+    ]
+  }
+}

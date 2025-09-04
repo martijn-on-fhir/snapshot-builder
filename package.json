@@ -1,7 +1,8 @@
 {
-  "name": "snapshorbuilder",
+  "name": "snapshotbuilder",
   "version": "1.0.0",
-  "description": "",
+  "description": "A TypeScript/Node.js tool for generating FHIR snapshots from differential StructureDefinitions, specifically designed for processing Dutch healthcare standards (ZiB) and FHIR R4 resources.",
+  "author": "Martijn Schimmel",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

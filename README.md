@@ -75,9 +75,9 @@ snapshot-builder/
 ├── src/
 │   ├── index.ts                 # CLI entry point
 │   └── snapshot-generator.ts    # Core snapshot generation logic
-├── zib/                         # Dutch healthcare building blocks
+├── input/                       # Input FHIR StructureDefinition files
 │   ├── terminology/             # Terminology and code systems
-│   └── *.xml.json              # ZiB StructureDefinitions
+│   └── *.xml.json              # FHIR StructureDefinitions (including ZiB)
 ├── output/                      # Generated snapshot files
 ├── dist/                        # Compiled JavaScript
 └── node_modules/
@@ -137,7 +137,7 @@ This tool ensures compliance with:
 
 **"Input file does not exist"**
 - Verify the file path is correct relative to the project root
-- Ensure the file is in the `zib/` directory for ZiB files
+- Ensure the file is in the `input/` directory
 
 **Build failures**
 - Run `npm install` to ensure all dependencies are installed
