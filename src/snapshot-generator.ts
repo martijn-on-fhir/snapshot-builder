@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as _ from 'lodash-es'
 
 /**
  * Represents a FHIR element definition within a structure definition
@@ -205,11 +206,13 @@ class FHIRSnapshotGenerator {
             return a.path.localeCompare(b.path);
         });
 
+        const elements =_.orderBy(snapshotElements, ['path'], ['asc'])
+
         // Create the result
         const result: StructureDefinition = {
             ...structureDefinition,
             snapshot: {
-                element: snapshotElements
+                element: elements
             }
         };
 

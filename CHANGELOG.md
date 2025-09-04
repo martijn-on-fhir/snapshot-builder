@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/martijn-on-fhir/snapshot-builder/compare/v1.1.0...v1.2.0) (2025-09-04)
+
+
+### Features
+
+* enable npm publishing for automated releases ([2283afa](https://github.com/martijn-on-fhir/snapshot-builder/commit/2283afa4da0bcb85599d7d5f8812b9b5c1238589))
+
 # [1.1.0](https://github.com/martijn-on-fhir/snapshot-builder/compare/v1.0.2...v1.1.0) (2025-09-04)
 
 
