@@ -23,7 +23,7 @@ try {
   const structureDefinition = FHIRSnapshotGenerator.fromFile(inputFile);
 
     // Function to convert to kebab case
-    const toKebabCase = (str: string) => {
+    const toKebabCase = (str: string): string => {
         return str
             .replace(/^zib/i, '') // Remove 'zib' prefix
             .replace(/([A-Z])/g, '-$1') // Add hyphen before capitals
